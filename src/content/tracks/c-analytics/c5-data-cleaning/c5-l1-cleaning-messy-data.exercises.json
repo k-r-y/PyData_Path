@@ -1,0 +1,54 @@
+[
+  {
+    "id": "c5-l1-ex1",
+    "type": "code",
+    "title": "Clean a Messy Synthetic IS Table",
+    "prompt": "Given raw_df with columns 'sku' (whitespace/lowercase) and 'qty' (strings including 'bad'), clean 'sku' with .str.strip().str.upper(), convert 'qty' with pd.to_numeric(..., errors='coerce'), drop rows where 'qty' is NaN, and drop duplicate 'sku' rows into clean_df.",
+    "difficulty": "intermediate",
+    "concepts": ["data-cleaning", "to_numeric", "drop_duplicates"],
+    "points": 20,
+    "hints": [
+      "df['sku'] = df['sku'].str.strip().str.upper()",
+      "df['qty'] = pd.to_numeric(df['qty'], errors='coerce')",
+      "clean_df = df.dropna(subset=['qty']).drop_duplicates(subset=['sku'])"
+    ],
+    "solution": "import pandas as pd\nraw_df = pd.DataFrame({'sku': [' a1 ', 'A1', 'b2'], 'qty': ['5', '5', 'bad']})\nraw_df['sku'] = raw_df['sku'].str.strip().str.upper()\nraw_df['qty'] = pd.to_numeric(raw_df['qty'], errors='coerce')\nclean_df = raw_df.dropna(subset=['qty']).drop_duplicates(subset=['sku'])",
+    "explanation": "Normalizing strings before drop_duplicates ensures ' a1 ' and 'A1' are recognized as duplicates.",
+    "sources": ["pandas-docs"],
+    "starterCode": "import pandas as pd\nraw_df = pd.DataFrame({'sku': [' a1 ', 'A1', 'b2'], 'qty': ['5', '5', 'bad']})\n# Produce clean_df\n",
+    "visibleTests": "assert list(clean_df['sku']) == ['A1']\nassert list(clean_df['qty']) == [5.0]",
+    "hiddenTests": "assert len(clean_df) == 1"
+  },
+  {
+    "id": "c5-l1-fc1",
+    "type": "flashcard",
+    "title": "pd.to_numeric errors='coerce'",
+    "prompt": "Recall what errors='coerce' does.",
+    "difficulty": "intermediate",
+    "concepts": ["data-cleaning"],
+    "points": 5,
+    "hints": ["Invalid values become NaN"],
+    "solution": "Converts unparseable strings to NaN instead of raising ValueError.",
+    "explanation": "Safe numeric parsing in pandas.",
+    "sources": ["pandas-docs"],
+    "front": "What does `pd.to_numeric(s, errors=\"coerce\")` do when it encounters `'N/A'`?",
+    "back": "It converts invalid/unparseable values into `NaN` instead of raising an error.",
+    "deckId": "c5-cleaning"
+  },
+  {
+    "id": "c5-l1-fc2",
+    "type": "flashcard",
+    "title": "Count missing values per column",
+    "prompt": "Recall the pandas idiom for counting nulls.",
+    "difficulty": "intermediate",
+    "concepts": ["data-cleaning"],
+    "points": 5,
+    "hints": ["isna().sum()"],
+    "solution": "df.isna().sum()",
+    "explanation": "Null audit in pandas.",
+    "sources": ["pandas-docs"],
+    "front": "How do you count the number of missing values in every column of a DataFrame `df`?",
+    "back": "`df.isna().sum()`",
+    "deckId": "c5-cleaning"
+  }
+]

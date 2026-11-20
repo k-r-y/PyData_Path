@@ -1,0 +1,42 @@
+[
+  {
+    "id": "a1-l1-ex1",
+    "type": "code",
+    "title": "Inspect the Python Runtime",
+    "prompt": "Import the built-in sys module. Store the major version integer (sys.version_info.major) in a variable named major_ver, and print it.",
+    "difficulty": "beginner",
+    "concepts": ["imports", "sys", "variables"],
+    "points": 10,
+    "hints": [
+      "Start with: import sys",
+      "Access sys.version_info.major and assign it to major_ver.",
+      "Use print(major_ver) to display the result."
+    ],
+    "solution": "import sys\nmajor_ver = sys.version_info.major\nprint(major_ver)",
+    "explanation": "import sys loads the standard library sys module, which exposes runtime metadata such as sys.version_info.",
+    "sources": ["python-tutorial"],
+    "starterCode": "# Import sys and assign major_ver\n",
+    "visibleTests": "assert 'sys' in globals(), 'Make sure you imported sys'\nassert major_ver == 3, f'Expected 3, got {major_ver}'",
+    "hiddenTests": "assert isinstance(major_ver, int)"
+  },
+  {
+    "id": "a1-l1-ex2",
+    "type": "code",
+    "title": "Dynamic Typing in Practice",
+    "prompt": "Create a variable named status_code and set it to the integer 200. Then reassign status_code to the string \"OK\". Finally, create a variable named final_type equal to type(status_code).__name__.",
+    "difficulty": "beginner",
+    "concepts": ["variables", "dynamic-typing"],
+    "points": 10,
+    "hints": [
+      "First line: status_code = 200",
+      "Second line: status_code = \"OK\"",
+      "Third line: final_type = type(status_code).__name__"
+    ],
+    "solution": "status_code = 200\nstatus_code = \"OK\"\nfinal_type = type(status_code).__name__",
+    "explanation": "In Python, variable names are labels bound to objects, so the same name can be rebound from an int to a str.",
+    "sources": ["python-lang-ref"],
+    "starterCode": "status_code = 200\n# Reassign status_code to \"OK\" and set final_type\n",
+    "visibleTests": "assert status_code == 'OK'\nassert final_type == 'str'",
+    "hiddenTests": "assert isinstance(status_code, str)"
+  }
+]

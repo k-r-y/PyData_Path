@@ -1,0 +1,71 @@
+[
+  {
+    "id": "b3-l1-ex1",
+    "type": "code",
+    "title": "Stream Filter Generator",
+    "prompt": "Write a generator function high_scores(scores, cutoff=80) that yields each score >= cutoff.",
+    "difficulty": "intermediate",
+    "concepts": ["yield", "generators"],
+    "points": 15,
+    "hints": [
+      "Loop over scores with for s in scores:",
+      "If s >= cutoff: yield s"
+    ],
+    "solution": "def high_scores(scores, cutoff=80):\n    for s in scores:\n        if s >= cutoff:\n            yield s",
+    "explanation": "Using yield turns high_scores into a lazy generator.",
+    "sources": ["python-tutorial"],
+    "starterCode": "def high_scores(scores, cutoff=80):\n    # yield scores >= cutoff\n    pass\n",
+    "visibleTests": "import types\ng = high_scores([70, 85, 92, 60])\nassert isinstance(g, types.GeneratorType)\nassert list(g) == [85, 92]",
+    "hiddenTests": "assert list(high_scores([50], 90)) == []"
+  },
+  {
+    "id": "b3-l1-ex2",
+    "type": "predict",
+    "title": "Predict Exhausted Generator",
+    "prompt": "Type the exact two lines printed when converting a generator to a list twice.",
+    "difficulty": "intermediate",
+    "concepts": ["generators"],
+    "points": 10,
+    "hints": [
+      "The first list(gen) consumes all items.",
+      "The second list(gen) finds the generator already exhausted."
+    ],
+    "solution": "[0, 1, 2]\n[]",
+    "explanation": "Generators are single-pass iterators.",
+    "sources": ["python-tutorial"],
+    "code": "gen = (x for x in range(3))\nprint(list(gen))\nprint(list(gen))",
+    "expectedOutput": "[0, 1, 2]\n[]"
+  },
+  {
+    "id": "b3-l1-fc1",
+    "type": "flashcard",
+    "title": "yield vs return",
+    "prompt": "Contrast yield and return.",
+    "difficulty": "intermediate",
+    "concepts": ["yield"],
+    "points": 5,
+    "hints": ["Pauses and resumes", "Terminates function"],
+    "solution": "yield pauses and saves state; return exits the function.",
+    "explanation": "Generator functions.",
+    "sources": ["python-tutorial"],
+    "front": "How does `yield` differ from `return`?",
+    "back": "`return` terminates the function permanently; `yield` produces a value and pauses the function's state until the next `next()` call.",
+    "deckId": "b3-generators"
+  },
+  {
+    "id": "b3-l1-fc2",
+    "type": "flashcard",
+    "title": "StopIteration",
+    "prompt": "Recall the exception raised when an iterator ends.",
+    "difficulty": "intermediate",
+    "concepts": ["iterators"],
+    "points": 5,
+    "hints": ["Built-in exception", "Stop..."],
+    "solution": "StopIteration",
+    "explanation": "Signals iterator exhaustion.",
+    "sources": ["python-tutorial"],
+    "front": "What exception does `next(it)` raise when an iterator has no more items?",
+    "back": "`StopIteration`",
+    "deckId": "b3-generators"
+  }
+]

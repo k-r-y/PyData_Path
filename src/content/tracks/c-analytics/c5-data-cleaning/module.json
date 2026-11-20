@@ -1,0 +1,10 @@
+{
+  "id": "c5-data-cleaning",
+  "track": "c-analytics",
+  "title": "C5: Data Cleaning",
+  "order": 5,
+  "summary": "Handle missing values, duplicate rows, dtypes, messy strings, dates, outliers, and validation checks in pandas.",
+  "prerequisites": ["c4-pandas-basics"],
+  "lessons": ["c5-l1-cleaning-messy-data"],
+  "packages": ["numpy", "pandas"]
+}

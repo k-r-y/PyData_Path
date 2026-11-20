@@ -1,0 +1,10 @@
+{
+  "id": "b5-context-managers",
+  "track": "b-advanced",
+  "title": "B5: Context Managers",
+  "order": 5,
+  "summary": "Manage resources cleanly with the with statement, __enter__/__exit__, and contextlib.contextmanager.",
+  "prerequisites": ["b4-functions-deeper"],
+  "lessons": ["b5-l1-context-managers"],
+  "packages": []
+}

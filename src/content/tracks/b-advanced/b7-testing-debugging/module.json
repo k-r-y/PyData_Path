@@ -1,0 +1,10 @@
+{
+  "id": "b7-testing-debugging",
+  "track": "b-advanced",
+  "title": "B7: Testing and Debugging",
+  "order": 7,
+  "summary": "Write assert-based tests, understand unittest and pytest workflows, and debug systematically using tracebacks.",
+  "prerequisites": ["b6-type-hints-clean-code"],
+  "lessons": ["b7-l1-testing-and-debugging"],
+  "packages": []
+}

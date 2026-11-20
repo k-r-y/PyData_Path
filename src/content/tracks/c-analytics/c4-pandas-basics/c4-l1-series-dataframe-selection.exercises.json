@@ -1,0 +1,75 @@
+[
+  {
+    "id": "c4-l1-ex1",
+    "type": "code",
+    "title": "Filter and Sort a Sales DataFrame",
+    "prompt": "Given df with columns 'item', 'units', 'price', add a 'revenue' column (units * price), filter rows where units >= 4, and store the sorted (by revenue descending) DataFrame in result.",
+    "difficulty": "intermediate",
+    "concepts": ["pandas", "filtering", "sort_values"],
+    "points": 20,
+    "hints": [
+      "df['revenue'] = df['units'] * df['price']",
+      "filtered = df[df['units'] >= 4]",
+      "result = filtered.sort_values('revenue', ascending=False)"
+    ],
+    "solution": "import pandas as pd\ndf = pd.DataFrame({'item': ['Hub', 'Mouse', 'Pen'], 'units': [3, 5, 12], 'price': [24.5, 18.0, 2.0]})\ndf['revenue'] = df['units'] * df['price']\nresult = df[df['units'] >= 4].sort_values('revenue', ascending=False)",
+    "explanation": "Vectorized column math, boolean filtering, and sort_values() are the core pandas workflow.",
+    "sources": ["pandas-docs"],
+    "starterCode": "import pandas as pd\ndf = pd.DataFrame({'item': ['Hub', 'Mouse', 'Pen'], 'units': [3, 5, 12], 'price': [24.5, 18.0, 2.0]})\n# Add revenue, filter units >= 4, sort descending by revenue\n",
+    "visibleTests": "assert list(result['item']) == ['Mouse', 'Pen']\nassert list(result['revenue']) == [90.0, 24.0]",
+    "hiddenTests": "assert len(result) == 2"
+  },
+  {
+    "id": "c4-l1-ex2",
+    "type": "quiz",
+    "title": "loc vs iloc Check",
+    "prompt": "Test your understanding of pandas selection.",
+    "difficulty": "intermediate",
+    "concepts": ["loc", "iloc"],
+    "points": 10,
+    "hints": ["loc = label, iloc = integer position."],
+    "solution": "iloc",
+    "explanation": "iloc selects by integer position.",
+    "sources": ["pandas-docs"],
+    "questions": [
+      {
+        "question": "Which indexer selects rows and columns strictly by 0-based integer position?",
+        "options": ["df.loc", "df.iloc", "df.at"],
+        "correct": [1],
+        "explanation": "iloc stands for integer-location based indexing."
+      }
+    ]
+  },
+  {
+    "id": "c4-l1-fc1",
+    "type": "flashcard",
+    "title": "loc vs iloc",
+    "prompt": "Contrast df.loc and df.iloc.",
+    "difficulty": "intermediate",
+    "concepts": ["loc", "iloc"],
+    "points": 5,
+    "hints": ["Label vs Integer position"],
+    "solution": "loc uses labels (inclusive slices); iloc uses integer positions (exclusive stop).",
+    "explanation": "pandas indexers.",
+    "sources": ["pandas-docs"],
+    "front": "How do `df.loc` and `df.iloc` differ?",
+    "back": "`loc` selects by row/column **labels** (slice stop is inclusive); `iloc` selects by 0-based **integer positions** (slice stop is exclusive).",
+    "deckId": "c4-pandas"
+  },
+  {
+    "id": "c4-l1-fc2",
+    "type": "flashcard",
+    "title": "Inspecting a DataFrame",
+    "prompt": "Recall key inspection methods.",
+    "difficulty": "intermediate",
+    "concepts": ["pandas"],
+    "points": 5,
+    "hints": ["head, info, describe"],
+    "solution": "df.head(), df.info(), df.describe()",
+    "explanation": "First-look pandas methods.",
+    "sources": ["pandas-docs"],
+    "front": "What three methods give a quick first look at a DataFrame's rows, dtypes/nulls, and numeric summary?",
+    "back": "`df.head()`, `df.info()`, and `df.describe()`.",
+    "deckId": "c4-pandas"
+  }
+]

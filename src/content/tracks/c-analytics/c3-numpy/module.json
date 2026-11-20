@@ -1,0 +1,10 @@
+{
+  "id": "c3-numpy",
+  "track": "c-analytics",
+  "title": "C3: NumPy",
+  "order": 3,
+  "summary": "Perform fast vectorized numerical computing with NumPy arrays, shapes, indexing, broadcasting, and basic statistics.",
+  "prerequisites": ["c2-sql-sqlite"],
+  "lessons": ["c3-l1-numpy-arrays-vectorization"],
+  "packages": ["numpy"]
+}

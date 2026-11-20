@@ -1,0 +1,10 @@
+{
+  "id": "c13-intro-ml",
+  "track": "c-analytics",
+  "title": "C13: Intro to Machine Learning",
+  "order": 13,
+  "summary": "Build supervised models with scikit-learn: train/test split, linear regression, classification, evaluation metrics, and overfitting.",
+  "prerequisites": ["c12-communicating-findings"],
+  "lessons": ["c13-l1-supervised-ml-basics"],
+  "packages": ["numpy", "scikit-learn"]
+}

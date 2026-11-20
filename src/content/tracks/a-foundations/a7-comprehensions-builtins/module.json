@@ -1,0 +1,10 @@
+{
+  "id": "a7-comprehensions-builtins",
+  "track": "a-foundations",
+  "title": "A7: Comprehensions and Built-ins",
+  "order": 7,
+  "summary": "Write concise list, dict, and set comprehensions and use sorted, enumerate, zip, map, filter, any, all, and lambda.",
+  "prerequisites": ["a6-data-structures"],
+  "lessons": ["a7-l1-comprehensions-and-builtins"],
+  "packages": []
+}

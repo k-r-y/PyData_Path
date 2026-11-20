@@ -1,0 +1,13 @@
+{
+  "id": "a2-variables-types",
+  "track": "a-foundations",
+  "title": "A2: Variables, Types, and Operators",
+  "order": 2,
+  "summary": "Master Python's core data types (int, float, str, bool, None), explicit type conversion, arithmetic and comparison operators, and truthiness.",
+  "prerequisites": ["a1-setup"],
+  "lessons": [
+    "a2-l1-variables-and-core-types",
+    "a2-l2-operators-conversion-truthiness"
+  ],
+  "packages": []
+}

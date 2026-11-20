@@ -1,0 +1,10 @@
+{
+  "id": "b4-functions-deeper",
+  "track": "b-advanced",
+  "title": "B4: Functions Deeper",
+  "order": 4,
+  "summary": "Master *args, **kwargs, closures, higher-order functions, decorators, and functools.wraps.",
+  "prerequisites": ["b3-iterators-generators"],
+  "lessons": ["b4-l1-closures-decorators"],
+  "packages": []
+}

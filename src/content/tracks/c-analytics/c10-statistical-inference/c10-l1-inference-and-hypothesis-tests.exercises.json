@@ -1,0 +1,54 @@
+[
+  {
+    "id": "c10-l1-ex1",
+    "type": "code",
+    "title": "Mini-Project: Synthetic A/B Test With scipy.stats",
+    "prompt": "Run Welch's t-test (equal_var=False) on group_a = [10, 12, 11, 13, 12] and group_b = [16, 18, 17, 19, 18]. Store the p-value as p_val (float) and set significant = bool(p_val < 0.05).",
+    "difficulty": "advanced",
+    "concepts": ["scipy", "ttest_ind", "p-value"],
+    "points": 20,
+    "hints": [
+      "from scipy import stats",
+      "t_stat, p_val = stats.ttest_ind(group_b, group_a, equal_var=False)",
+      "Convert p_val = float(p_val)."
+    ],
+    "solution": "from scipy import stats\ngroup_a = [10, 12, 11, 13, 12]\ngroup_b = [16, 18, 17, 19, 18]\n_, p_raw = stats.ttest_ind(group_b, group_a, equal_var=False)\np_val = float(p_raw)\nsignificant = bool(p_val < 0.05)",
+    "explanation": "Welch's t-test compares two independent sample means without assuming equal variances.",
+    "sources": ["scipy-docs"],
+    "starterCode": "from scipy import stats\ngroup_a = [10, 12, 11, 13, 12]\ngroup_b = [16, 18, 17, 19, 18]\n# Compute p_val and significant\n",
+    "visibleTests": "assert isinstance(p_val, float)\nassert significant is True\nassert p_val < 0.001",
+    "hiddenTests": "assert p_val > 0"
+  },
+  {
+    "id": "c10-l1-fc1",
+    "type": "flashcard",
+    "title": "What p-value means",
+    "prompt": "Recall the definition of a p-value.",
+    "difficulty": "advanced",
+    "concepts": ["p-value"],
+    "points": 5,
+    "hints": ["Assuming H0 is true"],
+    "solution": "Probability of observing data at least as extreme as the sample, assuming the null hypothesis is true.",
+    "explanation": "Frequentist p-value definition.",
+    "sources": ["openintro-stats"],
+    "front": "What does a p-value represent?",
+    "back": "The probability of observing results at least as extreme as your sample **assuming the null hypothesis (H0) is true**.",
+    "deckId": "c10-inference"
+  },
+  {
+    "id": "c10-l1-fc2",
+    "type": "flashcard",
+    "title": "Why report effect size",
+    "prompt": "Recall why p-values alone are insufficient.",
+    "difficulty": "advanced",
+    "concepts": ["effect-size", "p-value"],
+    "points": 5,
+    "hints": ["Large N makes tiny differences significant"],
+    "solution": "Large samples can produce tiny p-values for practically meaningless differences.",
+    "explanation": "Statistical vs practical significance.",
+    "sources": ["openintro-stats"],
+    "front": "Why should you always report effect size alongside a p-value?",
+    "back": "With large sample sizes, even trivial differences can yield `p < 0.05`; effect size shows whether the difference matters in practice.",
+    "deckId": "c10-inference"
+  }
+]

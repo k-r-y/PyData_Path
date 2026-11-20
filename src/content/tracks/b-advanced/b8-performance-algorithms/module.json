@@ -1,0 +1,10 @@
+{
+  "id": "b8-performance-algorithms",
+  "track": "b-advanced",
+  "title": "B8: Performance and Algorithms Basics",
+  "order": 8,
+  "summary": "Build Big-O intuition, benchmark snippets with timeit, and choose fast data structures (set/dict vs list).",
+  "prerequisites": ["b7-testing-debugging"],
+  "lessons": ["b8-l1-big-o-and-timeit"],
+  "packages": []
+}

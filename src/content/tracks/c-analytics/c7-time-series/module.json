@@ -1,0 +1,10 @@
+{
+  "id": "c7-time-series",
+  "track": "c-analytics",
+  "title": "C7: Time Series Basics",
+  "order": 7,
+  "summary": "Parse dates, use DatetimeIndex, resample daily data to monthly totals, and compute rolling moving averages.",
+  "prerequisites": ["c6-transform-combine"],
+  "lessons": ["c7-l1-datetime-resampling-rolling"],
+  "packages": ["numpy", "pandas"]
+}

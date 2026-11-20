@@ -1,0 +1,93 @@
+[
+  {
+    "id": "a7-l1-ex1",
+    "type": "code",
+    "title": "Rewrite Loop as a Comprehension",
+    "prompt": "Given prices = [100, 45, 220, 80], use a list comprehension to create high_prices containing prices >= 100 increased by 10% (p * 1.1).",
+    "difficulty": "beginner",
+    "concepts": ["list-comprehension"],
+    "points": 15,
+    "hints": [
+      "Syntax: [expr for p in prices if condition]",
+      "Condition: p >= 100",
+      "Expression: round(p * 1.1, 2) or p * 1.1"
+    ],
+    "solution": "prices = [100, 45, 220, 80]\nhigh_prices = [round(p * 1.1, 2) for p in prices if p >= 100]",
+    "explanation": "List comprehensions combine filtering (if) and transformation (p * 1.1) in one expression.",
+    "sources": ["python-tutorial"],
+    "starterCode": "prices = [100, 45, 220, 80]\n# Build high_prices using a list comprehension\n",
+    "visibleTests": "assert high_prices == [110.0, 242.0]",
+    "hiddenTests": "assert len(high_prices) == 2"
+  },
+  {
+    "id": "a7-l1-ex2",
+    "type": "predict",
+    "title": "Predict enumerate and any()",
+    "prompt": "Type the exact two lines printed by the code.",
+    "difficulty": "beginner",
+    "concepts": ["enumerate", "any", "all"],
+    "points": 10,
+    "hints": [
+      "enumerate(['a', 'b'], start=1) yields (1, 'a'), (2, 'b').",
+      "any([False, True]) is True; all([False, True]) is False."
+    ],
+    "solution": "[(1, 'a'), (2, 'b')]\nTrue False",
+    "explanation": "enumerate(start=1) numbers items from 1, any() checks if at least one is truthy, and all() requires every item to be truthy.",
+    "sources": ["python-tutorial"],
+    "code": "print(list(enumerate(['a', 'b'], start=1)))\nprint(any([0, 5]), all([0, 5]))",
+    "expectedOutput": "[(1, 'a'), (2, 'b')]\nTrue False"
+  },
+  {
+    "id": "a7-l1-ex3",
+    "type": "fillblank",
+    "title": "Sort Records With lambda",
+    "prompt": "Fill in the blanks to sort rows by 'units' in descending order.",
+    "difficulty": "beginner",
+    "concepts": ["sorted", "lambda"],
+    "points": 15,
+    "hints": [
+      "Use sorted(..., key=..., reverse=True).",
+      "Lambda parameter r: r['units']."
+    ],
+    "solution": "rows = [{'item': 'A', 'units': 5}, {'item': 'B', 'units': 12}]\ntop = sorted(rows, key=lambda r: r['units'], reverse=True)",
+    "explanation": "sorted() with key=lambda and reverse=True sorts dictionaries by any field without mutating rows.",
+    "sources": ["python-tutorial"],
+    "codeWithBlanks": "rows = [{'item': 'A', 'units': 5}, {'item': 'B', 'units': 12}]\ntop = {{1}}(rows, key={{2}} r: r['units'], reverse=True)",
+    "answers": {
+      "1": ["sorted"],
+      "2": ["lambda"]
+    }
+  },
+  {
+    "id": "a7-l1-fc1",
+    "type": "flashcard",
+    "title": "list.sort() vs sorted()",
+    "prompt": "Contrast list.sort() and sorted().",
+    "difficulty": "beginner",
+    "concepts": ["sorted"],
+    "points": 5,
+    "hints": ["One mutates in place", "One returns a new list", "sort() returns None"],
+    "solution": "list.sort() mutates in place and returns None; sorted() returns a new sorted list.",
+    "explanation": "Sorting functions in Python.",
+    "sources": ["python-tutorial"],
+    "front": "What is the difference between `items.sort()` and `sorted(items)`?",
+    "back": "`items.sort()` sorts the list in place and returns `None`. `sorted(items)` works on any iterable and returns a **new** sorted list.",
+    "deckId": "a7-comprehensions"
+  },
+  {
+    "id": "a7-l1-fc2",
+    "type": "flashcard",
+    "title": "zip() behavior",
+    "prompt": "Recall what zip() does on unequal lengths.",
+    "difficulty": "beginner",
+    "concepts": ["zip"],
+    "points": 5,
+    "hints": ["Shortest sequence", "Stops early", "Stops at the shortest iterable"],
+    "solution": "Stops when the shortest input iterable is exhausted.",
+    "explanation": "zip() pairs elements.",
+    "sources": ["python-tutorial"],
+    "front": "What happens when you pass sequences of different lengths to `zip(a, b)`?",
+    "back": "`zip()` stops as soon as the **shortest** sequence is exhausted.",
+    "deckId": "a7-comprehensions"
+  }
+]

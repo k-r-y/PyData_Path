@@ -1,0 +1,72 @@
+[
+  {
+    "id": "b7-l1-ex1",
+    "type": "code",
+    "title": "Write Tests and Fix Edge Case",
+    "prompt": "Fix safe_mean(nums) so it returns 0.0 when nums is empty instead of raising ZeroDivisionError, and write at least 2 assert statements verifying normal and empty inputs.",
+    "difficulty": "intermediate",
+    "concepts": ["assert", "testing", "edge-cases"],
+    "points": 15,
+    "hints": [
+      "Check if not nums: return 0.0 at the start of safe_mean.",
+      "Add assert safe_mean([10, 20]) == 15.0 and assert safe_mean([]) == 0.0."
+    ],
+    "solution": "def safe_mean(nums):\n    if not nums:\n        return 0.0\n    return sum(nums) / len(nums)\n\nassert safe_mean([10, 20]) == 15.0\nassert safe_mean([]) == 0.0",
+    "explanation": "Guarding against empty input prevents ZeroDivisionError, and assertions verify both paths.",
+    "sources": ["python-tutorial"],
+    "starterCode": "def safe_mean(nums):\n    return sum(nums) / len(nums)\n\n# Fix safe_mean and add asserts\n",
+    "visibleTests": "assert safe_mean([10, 20]) == 15.0\nassert safe_mean([]) == 0.0",
+    "hiddenTests": "assert safe_mean([5]) == 5.0"
+  },
+  {
+    "id": "b7-l1-ex2",
+    "type": "debug",
+    "title": "Debug Off-by-One Grade Boundary",
+    "prompt": "The function grade_letter(score) should return 'A' for >= 90, 'B' for >= 80, and 'C' otherwise, but 90 currently returns 'B'. Fix the bug.",
+    "difficulty": "intermediate",
+    "concepts": ["debugging", "off-by-one"],
+    "points": 15,
+    "hints": [
+      "Check > vs >= on the 90 boundary."
+    ],
+    "solution": "def grade_letter(score):\n    if score >= 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    return 'C'",
+    "explanation": "Using >= 90 includes the boundary value 90 in 'A'.",
+    "sources": ["python-tutorial"],
+    "brokenCode": "def grade_letter(score):\n    if score > 90:\n        return 'A'\n    elif score >= 80:\n        return 'B'\n    return 'C'",
+    "visibleTests": "assert grade_letter(90) == 'A'\nassert grade_letter(80) == 'B'\nassert grade_letter(79) == 'C'",
+    "hiddenTests": "assert grade_letter(100) == 'A'",
+    "bugDescription": "Used strict > 90 instead of >= 90, misclassifying 90 as 'B'."
+  },
+  {
+    "id": "b7-l1-fc1",
+    "type": "flashcard",
+    "title": "assert vs raise ValueError",
+    "prompt": "Recall when to use raise vs assert.",
+    "difficulty": "intermediate",
+    "concepts": ["assert", "testing"],
+    "points": 5,
+    "hints": ["-O flag strips assert"],
+    "solution": "Use assert in tests; use if/raise for production input validation.",
+    "explanation": "assert can be disabled with python -O.",
+    "sources": ["python-tutorial"],
+    "front": "Why shouldn't you rely on `assert` for validating user input in production code?",
+    "back": "Running Python with `-O` disables `assert` statements; use `if ...: raise ValueError(...)` for production validation.",
+    "deckId": "b7-testing"
+  },
+  {
+    "id": "b7-l1-fc2",
+    "type": "flashcard",
+    "title": "What edge cases to test",
+    "prompt": "Recall common edge cases in data functions.",
+    "difficulty": "intermediate",
+    "concepts": ["testing"],
+    "points": 5,
+    "hints": ["Empty, zero, None, boundaries"],
+    "solution": "Empty collections, 0, None, negative numbers, and exact boundary values.",
+    "explanation": "Edge-case testing.",
+    "sources": ["python-tutorial"],
+    "front": "Name four common edge cases to include when testing a data function.",
+    "back": "Empty inputs (`[]`, `\"\"`), `0`, `None`, negative values, and exact boundary values (e.g., `90` for `>= 90`).",
+    "deckId": "b7-testing"
+  }
+]

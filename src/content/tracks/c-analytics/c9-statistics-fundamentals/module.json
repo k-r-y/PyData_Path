@@ -1,0 +1,10 @@
+{
+  "id": "c9-statistics-fundamentals",
+  "track": "c-analytics",
+  "title": "C9: Statistics Fundamentals",
+  "order": 9,
+  "summary": "Compute mean, median, mode, variance, standard deviation, quantiles, and distinguish correlation from causation.",
+  "prerequisites": ["c8-visualization"],
+  "lessons": ["c9-l1-descriptive-stats-correlation"],
+  "packages": ["numpy", "pandas"]
+}

@@ -1,0 +1,89 @@
+[
+  {
+    "id": "b2-l1-ex1",
+    "type": "code",
+    "title": "Model an IS Student Enrollment Class",
+    "prompt": "Create a class Student with __init__(self, name, credits=0), a method add_credits(self, n) that increases self.credits by n, and __repr__ returning f'Student({self.name}, {self.credits})'.",
+    "difficulty": "intermediate",
+    "concepts": ["class", "__init__", "methods", "__repr__"],
+    "points": 20,
+    "hints": [
+      "Store self.name = name and self.credits = credits in __init__.",
+      "add_credits updates self.credits += n."
+    ],
+    "solution": "class Student:\n    def __init__(self, name, credits=0):\n        self.name = name\n        self.credits = credits\n    def add_credits(self, n):\n        self.credits += n\n    def __repr__(self):\n        return f'Student({self.name}, {self.credits})'",
+    "explanation": "__init__ initializes instance state, methods mutate self, and __repr__ formats the object.",
+    "sources": ["python-tutorial"],
+    "starterCode": "class Student:\n    # implement __init__, add_credits, and __repr__\n    pass\n",
+    "visibleTests": "s = Student('Ana', 12)\ns.add_credits(3)\nassert s.credits == 15\nassert repr(s) == 'Student(Ana, 15)'",
+    "hiddenTests": "s2 = Student('Ben')\nassert s2.credits == 0"
+  },
+  {
+    "id": "b2-l1-ex2",
+    "type": "debug",
+    "title": "Fix Missing self Parameter",
+    "prompt": "Calling inv.value() raises a TypeError because self is missing from the method signature. Fix the Product class.",
+    "difficulty": "intermediate",
+    "concepts": ["self", "methods", "TypeError"],
+    "points": 15,
+    "hints": [
+      "Add self as the first parameter of value(self)."
+    ],
+    "solution": "class Product:\n    def __init__(self, price, qty):\n        self.price = price\n        self.qty = qty\n    def value(self):\n        return self.price * self.qty\n\ninv = Product(10, 4)\ntotal = inv.value()",
+    "explanation": "Instance methods always receive the instance as their first argument (self).",
+    "sources": ["python-tutorial"],
+    "brokenCode": "class Product:\n    def __init__(self, price, qty):\n        self.price = price\n        self.qty = qty\n    def value():\n        return self.price * self.qty\n\ninv = Product(10, 4)\ntotal = inv.value()",
+    "visibleTests": "assert total == 40",
+    "hiddenTests": "assert Product(5, 3).value() == 15",
+    "bugDescription": "value() was missing the self parameter."
+  },
+  {
+    "id": "b2-l1-ex3",
+    "type": "predict",
+    "title": "Predict @dataclass Equality",
+    "prompt": "Type the exact output printed when comparing two @dataclass instances.",
+    "difficulty": "intermediate",
+    "concepts": ["dataclass", "__eq__"],
+    "points": 10,
+    "hints": [
+      "@dataclass auto-generates __eq__ comparing field values."
+    ],
+    "solution": "True",
+    "explanation": "@dataclass compares fields by value in __eq__ rather than object identity.",
+    "sources": ["python-tutorial"],
+    "code": "from dataclasses import dataclass\n@dataclass\nclass Tag:\n    name: str\nprint(Tag('IS') == Tag('IS'))",
+    "expectedOutput": "True"
+  },
+  {
+    "id": "b2-l1-fc1",
+    "type": "flashcard",
+    "title": "Role of self",
+    "prompt": "Recall what self represents in a method.",
+    "difficulty": "intermediate",
+    "concepts": ["oop", "self"],
+    "points": 5,
+    "hints": ["Current instance", "Like 'this' in Java"],
+    "solution": "A reference to the current instance of the class.",
+    "explanation": "First parameter of instance methods.",
+    "sources": ["python-tutorial"],
+    "front": "What does `self` refer to inside a Python class method?",
+    "back": "The specific object instance on which the method was called (similar to `this` in Java/JS).",
+    "deckId": "b2-oop"
+  },
+  {
+    "id": "b2-l1-fc2",
+    "type": "flashcard",
+    "title": "@dataclass benefits",
+    "prompt": "Recall what @dataclass generates.",
+    "difficulty": "intermediate",
+    "concepts": ["dataclass"],
+    "points": 5,
+    "hints": ["init, repr, eq"],
+    "solution": "__init__, __repr__, and __eq__",
+    "explanation": "Reduces boilerplate in data classes.",
+    "sources": ["python-tutorial"],
+    "front": "Which dunder methods does `@dataclass` automatically generate?",
+    "back": "`__init__`, `__repr__`, and `__eq__` (by default).",
+    "deckId": "b2-oop"
+  }
+]

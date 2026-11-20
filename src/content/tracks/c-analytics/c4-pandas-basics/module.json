@@ -1,0 +1,10 @@
+{
+  "id": "c4-pandas-basics",
+  "track": "c-analytics",
+  "title": "C4: pandas Basics",
+  "order": 4,
+  "summary": "Work with Series and DataFrames, read CSVs, select rows/columns with loc and iloc, filter, sort, and summarize.",
+  "prerequisites": ["c3-numpy"],
+  "lessons": ["c4-l1-series-dataframe-selection"],
+  "packages": ["numpy", "pandas"]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "b1-modules-packages",
+  "track": "b-advanced",
+  "title": "B1: Modules, Packages, and Environments",
+  "order": 1,
+  "summary": "Understand Python's import system, __name__ == '__main__', standard library structure, and virtual environments (venv and pip).",
+  "prerequisites": ["a9-files-csv-json"],
+  "lessons": ["b1-l1-modules-and-environments"],
+  "packages": []
+}

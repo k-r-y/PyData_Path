@@ -1,0 +1,13 @@
+{
+  "id": "a3-strings-io",
+  "track": "a-foundations",
+  "title": "A3: Strings and Input/Output",
+  "order": 3,
+  "summary": "Index and slice strings, clean text with built-in string methods, format output with f-strings, and read user input with input().",
+  "prerequisites": ["a2-variables-types"],
+  "lessons": [
+    "a3-l1-indexing-slicing-methods",
+    "a3-l2-fstrings-and-input"
+  ],
+  "packages": []
+}

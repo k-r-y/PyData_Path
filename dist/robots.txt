@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pydata-path.vercel.app/sitemap.xml

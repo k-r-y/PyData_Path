@@ -1,0 +1,92 @@
+[
+  {
+    "id": "a5-l1-ex1",
+    "type": "code",
+    "title": "IS Invoice Total Function",
+    "prompt": "Write a function apply_discount(subtotal, rate=0.10) that returns round(subtotal * (1 - rate), 2).",
+    "difficulty": "beginner",
+    "concepts": ["functions", "default-arguments", "return"],
+    "points": 15,
+    "hints": [
+      "Start with: def apply_discount(subtotal, rate=0.10):",
+      "Compute subtotal * (1 - rate) and wrap with round(..., 2).",
+      "Use return, not print."
+    ],
+    "solution": "def apply_discount(subtotal, rate=0.10):\n    return round(subtotal * (1 - rate), 2)",
+    "explanation": "Default arguments let callers omit rate when the standard 10% discount applies.",
+    "sources": ["python-tutorial"],
+    "starterCode": "def apply_discount(subtotal, rate=0.10):\n    # return discounted total rounded to 2 decimals\n    pass\n",
+    "visibleTests": "assert apply_discount(100) == 90.0\nassert apply_discount(200, rate=0.25) == 150.0",
+    "hiddenTests": "assert apply_discount(99.99, 0.0) == 99.99"
+  },
+  {
+    "id": "a5-l1-ex2",
+    "type": "debug",
+    "title": "Fix Missing Return Statement",
+    "prompt": "The function below prints the area instead of returning it, causing result to be None. Fix it so result equals 50.",
+    "difficulty": "beginner",
+    "concepts": ["return", "None"],
+    "points": 10,
+    "hints": [
+      "Replace print(w * h) with return w * h.",
+      "Do not modify the call result = rect_area(5, 10)."
+    ],
+    "solution": "def rect_area(w, h):\n    return w * h\n\nresult = rect_area(5, 10)",
+    "explanation": "Functions without a return statement implicitly return None.",
+    "sources": ["python-tutorial"],
+    "brokenCode": "def rect_area(w, h):\n    print(w * h)\n\nresult = rect_area(5, 10)",
+    "visibleTests": "assert result == 50",
+    "hiddenTests": "assert rect_area(3, 4) == 12",
+    "bugDescription": "rect_area used print() instead of return, so result received None."
+  },
+  {
+    "id": "a5-l1-ex3",
+    "type": "predict",
+    "title": "Predict Local vs Global Scope",
+    "prompt": "Type the exact two lines printed by the code.",
+    "difficulty": "beginner",
+    "concepts": ["scope"],
+    "points": 10,
+    "hints": [
+      "Assigning x = 99 inside test() creates a local variable.",
+      "The global x outside test() stays 10."
+    ],
+    "solution": "99\n10",
+    "explanation": "Assigning to a name inside def creates a local binding that does not overwrite the global variable.",
+    "sources": ["python-lang-ref"],
+    "code": "x = 10\ndef test():\n    x = 99\n    print(x)\ntest()\nprint(x)",
+    "expectedOutput": "99\n10"
+  },
+  {
+    "id": "a5-l1-fc1",
+    "type": "flashcard",
+    "title": "Default return value",
+    "prompt": "Recall what a function without return gives back.",
+    "difficulty": "beginner",
+    "concepts": ["return", "None"],
+    "points": 5,
+    "hints": ["Null object", "Capital N", "None"],
+    "solution": "None",
+    "explanation": "Implicit return value in Python.",
+    "sources": ["python-tutorial"],
+    "front": "What does a Python function return if it reaches the end without a `return` statement?",
+    "back": "`None`",
+    "deckId": "a5-functions"
+  },
+  {
+    "id": "a5-l1-fc2",
+    "type": "flashcard",
+    "title": "Mutable default argument rule",
+    "prompt": "Recall why mutable defaults are dangerous.",
+    "difficulty": "beginner",
+    "concepts": ["default-arguments"],
+    "points": 5,
+    "hints": ["Evaluated once at def time", "Shared across calls", "Use None instead"],
+    "solution": "Default values are evaluated once when def runs, so a mutable default is shared across calls.",
+    "explanation": "Use None and initialize inside the function.",
+    "sources": ["python-tutorial"],
+    "front": "Why should you use `items=None` instead of `items=[]` as a default parameter?",
+    "back": "Default values are evaluated once at function definition time, so `[]` would be shared and mutated across every call.",
+    "deckId": "a5-functions"
+  }
+]

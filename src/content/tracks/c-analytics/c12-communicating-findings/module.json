@@ -1,0 +1,10 @@
+{
+  "id": "c12-communicating-findings",
+  "track": "c-analytics",
+  "title": "C12: Communicating Findings",
+  "order": 12,
+  "summary": "Translate technical outputs into plain-language summaries for non-technical readers, separating observations from insights.",
+  "prerequisites": ["c11-eda-workflow"],
+  "lessons": ["c12-l1-memos-and-insights"],
+  "packages": []
+}

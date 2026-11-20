@@ -1,0 +1,62 @@
+---
+id: "b5-l1-context-managers"
+moduleId: "b5-context-managers"
+title: "Context Managers (__enter__, __exit__, contextlib)"
+order: 1
+estimatedMinutes: 16
+difficulty: "intermediate"
+objectives:
+  - "Explain the context manager protocol (__enter__ and __exit__)"
+  - "Build a custom context manager using @contextlib.contextmanager"
+  - "Ensure cleanup runs even when exceptions occur inside with"
+prerequisites: ["b4-l1-closures-decorators"]
+packages: []
+sources: ["python-tutorial", "python-lang-ref"]
+tags: ["context-managers", "with", "contextlib"]
+---
+
+## Concept
+
+A **context manager** guarantees setup and teardown around a `with` block [src:python-lang-ref]. Python calls `__enter__()` when entering `with`, binds its return value to `as var`, and always calls `__exit__(exc_type, exc_val, exc_tb)` when leaving the block, even if an exception was raised [src:python-lang-ref].
+
+Instead of writing a full class, `contextlib.contextmanager` lets you write a generator function with a single `yield` wrapped in `try / finally` [src:python-tutorial].
+
+Explanation: Think of `try ... finally` inside `@contextmanager` as a hotel check-in and automatic checkout: whatever happens during the stay (before or during `yield`), the `finally` cleanup always runs on exit.
+
+Note: Behavior may differ between versions. Check the official docs for your installed version.
+
+## Why it matters
+
+Database connections, file handles, temporary state changes, and locks must always be released cleanly even when an analytics job fails partway through.
+
+## Worked example
+
+```python
+from contextlib import contextmanager
+
+@contextmanager
+def tag_block(name):
+    print(f"<{name}>")
+    try:
+        yield
+    finally:
+        print(f"</{name}>")
+
+with tag_block("report"):
+    print("Sales summary")
+```
+
+## Common mistakes
+
+- **Omitting `try / finally` around `yield` in `@contextmanager`**: Without `try / finally`, an exception inside the `with` block skips the cleanup lines after `yield` [src:python-tutorial].
+
+## Check your understanding
+
+1. Which two dunder methods define a class-based context manager?
+2. Why is `try / finally` important around `yield` in `@contextmanager`?
+3. Complete the exercises on the right.
+
+## Sources
+
+- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
+- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)

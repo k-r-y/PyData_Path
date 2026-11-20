@@ -1,0 +1,10 @@
+{
+  "id": "b9-stdlib-analysts",
+  "track": "b-advanced",
+  "title": "B9: Standard Library for Analysts",
+  "order": 9,
+  "summary": "Use datetime, collections (Counter, defaultdict), statistics, random, re, and pathlib for everyday data tasks.",
+  "prerequisites": ["b8-performance-algorithms"],
+  "lessons": ["b9-l1-stdlib-for-analysts"],
+  "packages": []
+}

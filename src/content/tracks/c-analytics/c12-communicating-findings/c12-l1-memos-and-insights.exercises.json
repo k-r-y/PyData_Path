@@ -1,0 +1,59 @@
+[
+  {
+    "id": "c12-l1-ex1",
+    "type": "quiz",
+    "title": "Observations vs Insights",
+    "prompt": "Identify strong analytical communication.",
+    "difficulty": "intermediate",
+    "concepts": ["communication"],
+    "points": 10,
+    "hints": ["BLUF puts the main answer first."],
+    "solution": "Q1: Insight; Q2: BLUF",
+    "explanation": "Insights connect observations to decisions, and BLUF leads with the conclusion.",
+    "sources": ["python-data-analysis"],
+    "questions": [
+      {
+        "question": "Which statement is an actionable insight rather than just a raw observation?",
+        "options": [
+          "The dataset has 1,240 rows and 6 columns.",
+          "Cart abandonment spikes on mobile checkout Step 2; simplifying the address form could recover lost orders.",
+          "Mean order value is 24.50."
+        ],
+        "correct": [1],
+        "explanation": "It pairs an observation with a specific cause/impact and a concrete recommendation."
+      }
+    ]
+  },
+  {
+    "id": "c12-l1-fc1",
+    "type": "flashcard",
+    "title": "BLUF structure",
+    "prompt": "Recall what BLUF stands for in memos.",
+    "difficulty": "intermediate",
+    "concepts": ["communication"],
+    "points": 5,
+    "hints": ["Bottom Line Up Front"],
+    "solution": "Bottom Line Up Front: state the main finding and recommendation first.",
+    "explanation": "Executive memo structure.",
+    "sources": ["python-data-analysis"],
+    "front": "What does BLUF mean when writing an analytics findings memo?",
+    "back": "**Bottom Line Up Front**: state the main conclusion and recommendation in the opening paragraph before supporting details.",
+    "deckId": "c12-comm"
+  },
+  {
+    "id": "c12-l1-fc2",
+    "type": "flashcard",
+    "title": "Observation vs Insight",
+    "prompt": "Contrast observation and insight.",
+    "difficulty": "intermediate",
+    "concepts": ["communication"],
+    "points": 5,
+    "hints": ["What happened vs so what / what next"],
+    "solution": "Observation states what the metric is; insight explains why it matters and what action follows.",
+    "explanation": "Analytical storytelling.",
+    "sources": ["python-data-analysis"],
+    "front": "How does an observation differ from an insight?",
+    "back": "An **observation** states what the data shows; an **insight** explains why it matters and what decision or action it informs.",
+    "deckId": "c12-comm"
+  }
+]

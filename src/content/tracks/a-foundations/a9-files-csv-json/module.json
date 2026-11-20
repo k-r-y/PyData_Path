@@ -1,0 +1,10 @@
+{
+  "id": "a9-files-csv-json",
+  "track": "a-foundations",
+  "title": "A9: Files, CSV, and JSON",
+  "order": 9,
+  "summary": "Read and write text, CSV, and JSON files safely using the with statement and Python's csv and json standard library modules.",
+  "prerequisites": ["a8-errors-exceptions"],
+  "lessons": ["a9-l1-files-csv-json"],
+  "packages": []
+}

@@ -1,0 +1,91 @@
+[
+  {
+    "id": "a8-l1-ex1",
+    "type": "code",
+    "title": "Safe Division Helper",
+    "prompt": "Write safe_divide(a, b) that returns a / b, or returns 0.0 if ZeroDivisionError occurs.",
+    "difficulty": "beginner",
+    "concepts": ["try", "except", "ZeroDivisionError"],
+    "points": 15,
+    "hints": [
+      "Put return a / b inside try:.",
+      "Catch except ZeroDivisionError: and return 0.0."
+    ],
+    "solution": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return 0.0",
+    "explanation": "Catching ZeroDivisionError specifically handles division by zero without masking other bugs.",
+    "sources": ["python-tutorial"],
+    "starterCode": "def safe_divide(a, b):\n    # return a / b or 0.0 on ZeroDivisionError\n    pass\n",
+    "visibleTests": "assert safe_divide(10, 2) == 5.0\nassert safe_divide(10, 0) == 0.0",
+    "hiddenTests": "assert safe_divide(0, 5) == 0.0"
+  },
+  {
+    "id": "a8-l1-ex2",
+    "type": "debug",
+    "title": "Fix Overly Broad Exception Handling",
+    "prompt": "The function below tries to convert raw to int and return None on ValueError, but it has a syntax/logic error in the except clause and raises no error on negative numbers. Fix it so parse_qty('10') == 10, parse_qty('abc') is None, and parse_qty('-1') raises ValueError.",
+    "difficulty": "beginner",
+    "concepts": ["ValueError", "raise", "try"],
+    "points": 15,
+    "hints": [
+      "Catch ValueError in except ValueError:.",
+      "Check if n < 0 after conversion and raise ValueError('Negative')."
+    ],
+    "solution": "def parse_qty(raw):\n    try:\n        n = int(raw)\n    except ValueError:\n        return None\n    if n < 0:\n        raise ValueError('Negative quantity')\n    return n",
+    "explanation": "Separating int(raw) inside try from the negative check lets ValueError from int() return None while negative numbers raise ValueError.",
+    "sources": ["python-tutorial"],
+    "brokenCode": "def parse_qty(raw):\n    try:\n        n = int(raw)\n        if n < 0:\n            raise ValueError('Negative')\n        return n\n    except:\n        return None",
+    "visibleTests": "assert parse_qty('10') == 10\nassert parse_qty('abc') is None\ntry:\n    parse_qty('-1')\n    assert False, 'Expected ValueError'\nexcept ValueError:\n    pass",
+    "hiddenTests": "assert parse_qty('0') == 0",
+    "bugDescription": "Putting the raise inside the try block with a bare except: caught its own ValueError and returned None."
+  },
+  {
+    "id": "a8-l1-ex3",
+    "type": "predict",
+    "title": "Predict try / except / else / finally",
+    "prompt": "Type the exact lines printed by the code.",
+    "difficulty": "beginner",
+    "concepts": ["try", "else", "finally"],
+    "points": 10,
+    "hints": [
+      "int('5') succeeds, so except is skipped and else runs.",
+      "finally always runs."
+    ],
+    "solution": "ok\ndone",
+    "explanation": "When try succeeds, else runs and then finally runs.",
+    "sources": ["python-tutorial"],
+    "code": "try:\n    x = int('5')\nexcept ValueError:\n    print('err')\nelse:\n    print('ok')\nfinally:\n    print('done')",
+    "expectedOutput": "ok\ndone"
+  },
+  {
+    "id": "a8-l1-fc1",
+    "type": "flashcard",
+    "title": "finally block guarantee",
+    "prompt": "Recall when finally executes.",
+    "difficulty": "beginner",
+    "concepts": ["finally"],
+    "points": 5,
+    "hints": ["Always", "Even on exception", "Cleanup"],
+    "solution": "Always, whether an exception occurred or not.",
+    "explanation": "finally guarantees cleanup.",
+    "sources": ["python-tutorial"],
+    "front": "When does the `finally` block in a `try` statement execute?",
+    "back": "**Always**, whether an exception was raised or not (commonly used to close files or connections).",
+    "deckId": "a8-exceptions"
+  },
+  {
+    "id": "a8-l1-fc2",
+    "type": "flashcard",
+    "title": "Why avoid bare except:",
+    "prompt": "Recall PEP 8 rule on except clauses.",
+    "difficulty": "beginner",
+    "concepts": ["except", "pep8"],
+    "points": 5,
+    "hints": ["Hides bugs", "Catches SystemExit/KeyboardInterrupt", "Name specific exceptions"],
+    "solution": "Bare except: catches system-exiting exceptions and hides unexpected bugs.",
+    "explanation": "Always specify exception types.",
+    "sources": ["pep8"],
+    "front": "Why should you write `except ValueError:` instead of a bare `except:`?",
+    "back": "A bare `except:` catches everything (including `NameError` typos and `KeyboardInterrupt`), hiding real bugs.",
+    "deckId": "a8-exceptions"
+  }
+]

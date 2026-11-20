@@ -1,0 +1,116 @@
+[
+  {
+    "id": "a2-l2-ex1",
+    "type": "debug",
+    "title": "Fix the TypeError in Order Total",
+    "prompt": "The code below tries to multiply a string quantity from a form by a float price, and uses && instead of 'and'. Fix both bugs so total_cost is 60.0 and eligible_discount is True.",
+    "difficulty": "beginner",
+    "concepts": ["type-conversion", "TypeError", "logical-operators"],
+    "points": 15,
+    "hints": [
+      "Convert raw_qty to an int or float before multiplying.",
+      "Replace && with Python's 'and' keyword.",
+      "Use int(raw_qty) * unit_price and (total_cost >= 50 and is_member)."
+    ],
+    "solution": "raw_qty = '4'\nunit_price = 15.0\nis_member = True\ntotal_cost = int(raw_qty) * unit_price\neligible_discount = total_cost >= 50 and is_member",
+    "explanation": "Multiplying a string by a float raises TypeError, and Python uses the keyword 'and' rather than '&&'.",
+    "sources": ["python-tutorial", "python-lang-ref"],
+    "brokenCode": "raw_qty = '4'\nunit_price = 15.0\nis_member = True\ntotal_cost = raw_qty * unit_price\neligible_discount = total_cost >= 50 && is_member",
+    "visibleTests": "assert total_cost == 60.0\nassert eligible_discount is True",
+    "hiddenTests": "assert isinstance(total_cost, float)",
+    "bugDescription": "raw_qty was a str (multiplying str by float raises TypeError) and && is invalid syntax in Python (use 'and')."
+  },
+  {
+    "id": "a2-l2-ex2",
+    "type": "predict",
+    "title": "Predict Floor Division, Modulo, and Truthiness",
+    "prompt": "Type the exact two lines of output printed by the code.",
+    "difficulty": "beginner",
+    "concepts": ["operators", "truthiness"],
+    "points": 10,
+    "hints": [
+      "17 // 5 is whole-number floor division, and 17 % 5 is the remainder.",
+      "bool('') is False, while bool('0') is True.",
+      "First line: 3 2. Second line: False True."
+    ],
+    "solution": "3 2\nFalse True",
+    "explanation": "17 // 5 equals 3 with remainder 2. An empty string is falsy, whereas a non-empty string '0' is truthy.",
+    "sources": ["python-tutorial", "python-lang-ref"],
+    "code": "print(17 // 5, 17 % 5)\nprint(bool(\"\"), bool(\"0\"))",
+    "expectedOutput": "3 2\nFalse True"
+  },
+  {
+    "id": "a2-l2-ex3",
+    "type": "fillblank",
+    "title": "Explicit Conversion and Exponentiation",
+    "prompt": "Fill in the blanks to convert text_rate to float and compute 2 raised to the power of 4.",
+    "difficulty": "beginner",
+    "concepts": ["float", "operators"],
+    "points": 10,
+    "hints": [
+      "Use float(...) to convert a decimal string.",
+      "Exponentiation in Python uses **.",
+      "Blank 1 is float, Blank 2 is **."
+    ],
+    "solution": "rate = float('0.12')\npower = 2 ** 4",
+    "explanation": "float() parses decimal strings and ** performs exponentiation.",
+    "sources": ["python-tutorial"],
+    "codeWithBlanks": "rate = {{1}}('0.12')\npower = 2 {{2}} 4",
+    "answers": {
+      "1": ["float"],
+      "2": ["**"]
+    }
+  },
+  {
+    "id": "a2-l2-ex4",
+    "type": "code",
+    "title": "IS Campus Store Bulk Packaging",
+    "prompt": "A campus store receives raw_items = '29' (str) notebooks and packs them into boxes of 6. Convert raw_items to an int named items, compute full_boxes using //, compute remaining using %, and set has_leftover using bool(remaining).",
+    "difficulty": "beginner",
+    "concepts": ["int", "floor-division", "modulo", "truthiness"],
+    "points": 15,
+    "hints": [
+      "Start with: items = int(raw_items)",
+      "Use items // 6 for full_boxes and items % 6 for remaining.",
+      "Set has_leftover = bool(remaining)."
+    ],
+    "solution": "raw_items = '29'\nitems = int(raw_items)\nfull_boxes = items // 6\nremaining = items % 6\nhas_leftover = bool(remaining)",
+    "explanation": "Floor division (//) gives 4 full boxes and modulo (%) gives 5 remaining items; bool(5) is True.",
+    "sources": ["python-tutorial", "python-lang-ref"],
+    "starterCode": "raw_items = '29'\n# Compute items, full_boxes, remaining, has_leftover\n",
+    "visibleTests": "assert items == 29\nassert full_boxes == 4\nassert remaining == 5\nassert has_leftover is True",
+    "hiddenTests": "assert isinstance(items, int) and isinstance(has_leftover, bool)"
+  },
+  {
+    "id": "a2-l2-fc1",
+    "type": "flashcard",
+    "title": "True division vs floor division",
+    "prompt": "Contrast / and // in Python 3.",
+    "difficulty": "beginner",
+    "concepts": ["operators"],
+    "points": 5,
+    "hints": ["One always returns float", "One rounds down", "/ vs //"],
+    "solution": "/ returns float; // returns floor quotient",
+    "explanation": "Division operators in Python 3.",
+    "sources": ["python-tutorial"],
+    "front": "What is the difference between `/` and `//` in Python 3?",
+    "back": "`/` is true division (always returns a `float`, e.g. `8 / 2 == 4.0`). `//` is floor division (rounds down to the nearest integer, e.g. `7 // 2 == 3`).",
+    "deckId": "a2-types"
+  },
+  {
+    "id": "a2-l2-fc2",
+    "type": "flashcard",
+    "title": "Falsy values in Python",
+    "prompt": "List the core falsy values.",
+    "difficulty": "beginner",
+    "concepts": ["truthiness"],
+    "points": 5,
+    "hints": ["None, False, zero, empty collections", "Think of emptiness or zero", "None, False, 0, 0.0, '', [], {}, set()"],
+    "solution": "None, False, 0, 0.0, '', [], {}, set()",
+    "explanation": "Falsy values evaluate to False in boolean contexts.",
+    "sources": ["python-lang-ref"],
+    "front": "Which built-in values are falsy in Python?",
+    "back": "`None`, `False`, `0`, `0.0`, and empty strings/collections (`\"\"`, `[]`, `{}`, `set()`, `()`).",
+    "deckId": "a2-types"
+  }
+]

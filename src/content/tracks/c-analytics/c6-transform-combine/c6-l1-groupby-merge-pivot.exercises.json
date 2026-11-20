@@ -1,0 +1,54 @@
+[
+  {
+    "id": "c6-l1-ex1",
+    "type": "code",
+    "title": "Mini-Project: Sales Performance by Category",
+    "prompt": "Merge orders and products on 'sku' (left join), compute revenue = units * price, and create cat_totals as a dict mapping each category to its total revenue using groupby('category')['revenue'].sum().to_dict().",
+    "difficulty": "intermediate",
+    "concepts": ["merge", "groupby", "pandas"],
+    "points": 20,
+    "hints": [
+      "merged = pd.merge(orders, products, on='sku', how='left')",
+      "merged['revenue'] = merged['units'] * merged['price']",
+      "cat_totals = merged.groupby('category')['revenue'].sum().to_dict()"
+    ],
+    "solution": "import pandas as pd\norders = pd.DataFrame({'sku': ['A1', 'B2', 'A1'], 'units': [2, 5, 3]})\nproducts = pd.DataFrame({'sku': ['A1', 'B2'], 'category': ['Tech', 'Office'], 'price': [20.0, 4.0]})\nmerged = pd.merge(orders, products, on='sku', how='left')\nmerged['revenue'] = merged['units'] * merged['price']\ncat_totals = merged.groupby('category')['revenue'].sum().to_dict()",
+    "explanation": "Merging enriches order rows with product prices/categories before aggregating revenue with groupby.",
+    "sources": ["pandas-docs"],
+    "starterCode": "import pandas as pd\norders = pd.DataFrame({'sku': ['A1', 'B2', 'A1'], 'units': [2, 5, 3]})\nproducts = pd.DataFrame({'sku': ['A1', 'B2'], 'category': ['Tech', 'Office'], 'price': [20.0, 4.0]})\n# Merge, compute revenue, and produce cat_totals dict\n",
+    "visibleTests": "assert cat_totals == {'Office': 20.0, 'Tech': 100.0}",
+    "hiddenTests": "assert len(cat_totals) == 2"
+  },
+  {
+    "id": "c6-l1-fc1",
+    "type": "flashcard",
+    "title": "pd.merge vs pd.concat",
+    "prompt": "Contrast pd.merge and pd.concat.",
+    "difficulty": "intermediate",
+    "concepts": ["merge", "concat"],
+    "points": 5,
+    "hints": ["Join by key vs stack tables"],
+    "solution": "merge joins on key columns (like SQL JOIN); concat stacks DataFrames along rows or columns.",
+    "explanation": "Combining DataFrames in pandas.",
+    "sources": ["pandas-docs"],
+    "front": "When do you use `pd.merge()` vs `pd.concat()`?",
+    "back": "`pd.merge()` joins tables on shared key columns (like SQL `JOIN`); `pd.concat()` stacks tables vertically or horizontally.",
+    "deckId": "c6-transform"
+  },
+  {
+    "id": "c6-l1-fc2",
+    "type": "flashcard",
+    "title": "Split-Apply-Combine",
+    "prompt": "Recall the pattern behind groupby().",
+    "difficulty": "intermediate",
+    "concepts": ["groupby"],
+    "points": 5,
+    "hints": ["Split, Apply, Combine"],
+    "solution": "Split data into groups, Apply an aggregation/transform, Combine results.",
+    "explanation": "groupby pattern.",
+    "sources": ["pandas-docs"],
+    "front": "What three steps describe how `df.groupby()` works?",
+    "back": "**Split** into groups, **Apply** a function (sum, mean, etc.), and **Combine** the results.",
+    "deckId": "c6-transform"
+  }
+]

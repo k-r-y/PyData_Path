@@ -1,0 +1,71 @@
+[
+  {
+    "id": "b6-l1-ex1",
+    "type": "code",
+    "title": "Refactor and Annotate a Messy Function",
+    "prompt": "Write a clean, type-annotated function filter_passing(scores: list[int], cutoff: int = 75) -> list[int] that returns a list of scores >= cutoff.",
+    "difficulty": "intermediate",
+    "concepts": ["type-hints", "pep8", "refactoring"],
+    "points": 15,
+    "hints": [
+      "Signature: def filter_passing(scores: list[int], cutoff: int = 75) -> list[int]:",
+      "Use a list comprehension: [s for s in scores if s >= cutoff]."
+    ],
+    "solution": "def filter_passing(scores: list[int], cutoff: int = 75) -> list[int]:\n    return [s for s in scores if s >= cutoff]",
+    "explanation": "Clean naming, type annotations, and a single list comprehension replace verbose boilerplate.",
+    "sources": ["python-tutorial", "pep8"],
+    "starterCode": "def filter_passing(scores: list[int], cutoff: int = 75) -> list[int]:\n    # return scores >= cutoff\n    pass\n",
+    "visibleTests": "assert filter_passing([60, 75, 90]) == [75, 90]\nassert filter_passing([60, 75, 90], cutoff=80) == [90]",
+    "hiddenTests": "assert filter_passing([]) == []"
+  },
+  {
+    "id": "b6-l1-ex2",
+    "type": "predict",
+    "title": "Predict Runtime Behavior of Type Hints",
+    "prompt": "Type the exact output printed when passing strings to an int-annotated function.",
+    "difficulty": "intermediate",
+    "concepts": ["type-hints"],
+    "points": 10,
+    "hints": [
+      "Python does NOT enforce type hints at runtime.",
+      "'a' + 'b' concatenates to 'ab'."
+    ],
+    "solution": "ab",
+    "explanation": "Type hints are metadata only; Python executes 'a' + 'b' normally.",
+    "sources": ["python-tutorial"],
+    "code": "def combine(a: int, b: int) -> int:\n    return a + b\nprint(combine('a', 'b'))",
+    "expectedOutput": "ab"
+  },
+  {
+    "id": "b6-l1-fc1",
+    "type": "flashcard",
+    "title": "Runtime enforcement of type hints",
+    "prompt": "Recall whether Python enforces type hints at runtime.",
+    "difficulty": "intermediate",
+    "concepts": ["type-hints"],
+    "points": 5,
+    "hints": ["No, static tools only"],
+    "solution": "No; they are checked by static tools like mypy/pyright, not Python's runtime.",
+    "explanation": "Python type annotations.",
+    "sources": ["python-tutorial"],
+    "front": "Does Python enforce function type annotations at runtime?",
+    "back": "No. Type hints are stored as metadata for IDEs and static checkers (`mypy`, `pyright`), not enforced at runtime.",
+    "deckId": "b6-typing"
+  },
+  {
+    "id": "b6-l1-fc2",
+    "type": "flashcard",
+    "title": "PEP 8 naming conventions",
+    "prompt": "Recall PEP 8 naming styles.",
+    "difficulty": "intermediate",
+    "concepts": ["pep8"],
+    "points": 5,
+    "hints": ["snake_case, PascalCase, UPPER_CASE"],
+    "solution": "Functions/vars: snake_case; Classes: PascalCase; Constants: UPPER_SNAKE_CASE.",
+    "explanation": "PEP 8 naming.",
+    "sources": ["pep8"],
+    "front": "What naming styles does PEP 8 recommend for functions, classes, and constants?",
+    "back": "Functions/variables: `snake_case`; Classes: `PascalCase`; Constants: `UPPER_SNAKE_CASE`.",
+    "deckId": "b6-typing"
+  }
+]

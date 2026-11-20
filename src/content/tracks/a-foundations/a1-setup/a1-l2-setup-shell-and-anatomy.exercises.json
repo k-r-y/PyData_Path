@@ -1,0 +1,42 @@
+[
+  {
+    "id": "a1-l2-ex1",
+    "type": "code",
+    "title": "Import and Use the Standard Library",
+    "prompt": "Import the math module and use math.sqrt() to compute the square root of 144. Store the result in a variable named root_val and print it.",
+    "difficulty": "beginner",
+    "concepts": ["imports", "math", "variables"],
+    "points": 10,
+    "hints": [
+      "Add: import math at the top.",
+      "Call math.sqrt(144) and assign it to root_val.",
+      "Print root_val."
+    ],
+    "solution": "import math\nroot_val = math.sqrt(144)\nprint(root_val)",
+    "explanation": "import math loads the standard library math module, making math.sqrt() available.",
+    "sources": ["python-tutorial"],
+    "starterCode": "# Import math and compute the square root of 144\n",
+    "visibleTests": "assert 'math' in globals(), 'Import the math module'\nassert root_val == 12.0, f'Expected 12.0, got {root_val}'",
+    "hiddenTests": "assert isinstance(root_val, float)"
+  },
+  {
+    "id": "a1-l2-ex2",
+    "type": "code",
+    "title": "Import Specific Function With from ... import",
+    "prompt": "Use 'from statistics import median' to import only the median function. Compute the median of [10, 40, 20, 50, 30] and store it in a variable named mid_val.",
+    "difficulty": "beginner",
+    "concepts": ["from-import", "statistics"],
+    "points": 15,
+    "hints": [
+      "Start with: from statistics import median",
+      "Pass the list [10, 40, 20, 50, 30] to median(...).",
+      "Assign the result to mid_val."
+    ],
+    "solution": "from statistics import median\nmid_val = median([10, 40, 20, 50, 30])\nprint(mid_val)",
+    "explanation": "from statistics import median binds median directly into your namespace so you can call it without a module prefix.",
+    "sources": ["python-tutorial"],
+    "starterCode": "# Import median from statistics and compute mid_val\n",
+    "visibleTests": "assert 'median' in globals(), 'Use from statistics import median'\nassert mid_val == 30, f'Expected 30, got {mid_val}'",
+    "hiddenTests": "assert callable(median)"
+  }
+]

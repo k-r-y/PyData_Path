@@ -1,0 +1,93 @@
+[
+  {
+    "id": "a6-l1-ex1",
+    "type": "code",
+    "title": "Mini-Project: IS Contact Book Lookup",
+    "prompt": "Given contacts = {'Ana': '555-0101', 'Ben': '555-0102'}, add 'Cara': '555-0103', safely look up 'Dan' with default 'Not Found' into dan_phone, and store a sorted list of all contact names in names.",
+    "difficulty": "beginner",
+    "concepts": ["dict", "get", "sorted"],
+    "points": 20,
+    "hints": [
+      "Assign contacts['Cara'] = '555-0103'.",
+      "Use contacts.get('Dan', 'Not Found').",
+      "Use sorted(contacts.keys())."
+    ],
+    "solution": "contacts = {'Ana': '555-0101', 'Ben': '555-0102'}\ncontacts['Cara'] = '555-0103'\ndan_phone = contacts.get('Dan', 'Not Found')\nnames = sorted(contacts.keys())",
+    "explanation": "dict assignment adds keys, .get() avoids KeyError, and sorted(contacts.keys()) returns an ordered list.",
+    "sources": ["python-tutorial"],
+    "starterCode": "contacts = {'Ana': '555-0101', 'Ben': '555-0102'}\n# Add Cara, look up Dan, and sort names\n",
+    "visibleTests": "assert contacts['Cara'] == '555-0103'\nassert dan_phone == 'Not Found'\nassert names == ['Ana', 'Ben', 'Cara']",
+    "hiddenTests": "assert len(contacts) == 3"
+  },
+  {
+    "id": "a6-l1-ex2",
+    "type": "predict",
+    "title": "Predict List Aliasing Behavior",
+    "prompt": "Type the exact output printed when b = a shares the same list.",
+    "difficulty": "beginner",
+    "concepts": ["list", "mutability"],
+    "points": 10,
+    "hints": [
+      "b = a does not copy the list.",
+      "b.append(3) mutates the shared list."
+    ],
+    "solution": "[1, 2, 3]",
+    "explanation": "Both a and b reference the same mutable list object.",
+    "sources": ["python-tutorial"],
+    "code": "a = [1, 2]\nb = a\nb.append(3)\nprint(a)",
+    "expectedOutput": "[1, 2, 3]"
+  },
+  {
+    "id": "a6-l1-ex3",
+    "type": "fillblank",
+    "title": "Deduplicate With set()",
+    "prompt": "Fill in the blanks to create an empty set and convert a list of duplicate SKUs into unique SKUs.",
+    "difficulty": "beginner",
+    "concepts": ["set"],
+    "points": 10,
+    "hints": [
+      "Empty set uses set(), not {}.",
+      "Pass the list to set(...)."
+    ],
+    "solution": "empty = set()\nunique_skus = set(['A1', 'A2', 'A1'])",
+    "explanation": "set() creates an empty set or deduplicates any iterable.",
+    "sources": ["python-tutorial"],
+    "codeWithBlanks": "empty = {{1}}()\nunique_skus = {{2}}(['A1', 'A2', 'A1'])",
+    "answers": {
+      "1": ["set"],
+      "2": ["set"]
+    }
+  },
+  {
+    "id": "a6-l1-fc1",
+    "type": "flashcard",
+    "title": "Empty set vs empty dict",
+    "prompt": "Recall how to create an empty set.",
+    "difficulty": "beginner",
+    "concepts": ["set", "dict"],
+    "points": 5,
+    "hints": ["{} is a dict", "Use constructor", "set()"],
+    "solution": "set()",
+    "explanation": "{} creates an empty dictionary.",
+    "sources": ["python-tutorial"],
+    "front": "What does `{}` create in Python, and how do you create an empty set?",
+    "back": "`{}` creates an empty `dict`. Use `set()` to create an empty `set`.",
+    "deckId": "a6-structures"
+  },
+  {
+    "id": "a6-l1-fc2",
+    "type": "flashcard",
+    "title": "Safe dictionary lookup",
+    "prompt": "Recall how to avoid KeyError on dicts.",
+    "difficulty": "beginner",
+    "concepts": ["dict"],
+    "points": 5,
+    "hints": ["Method on dict", "Takes key and default", "d.get(key, default)"],
+    "solution": "d.get(key, default)",
+    "explanation": "Safe dictionary lookup.",
+    "sources": ["python-tutorial"],
+    "front": "How do you look up a key in a dict `d` with a fallback value if the key is missing?",
+    "back": "`d.get(key, default)`",
+    "deckId": "a6-structures"
+  }
+]

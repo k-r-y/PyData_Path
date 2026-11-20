@@ -1,0 +1,129 @@
+[
+  {
+    "id": "a4-l2-ex1",
+    "type": "debug",
+    "title": "Fix the Off-by-One and Infinite Loop Risk",
+    "prompt": "The starter code is supposed to sum integers 1 through 5 (expected total = 15) using a while loop, but n never increments and the condition misses 5. Fix the loop so total equals 15.",
+    "difficulty": "beginner",
+    "concepts": ["while", "off-by-one", "debugging"],
+    "points": 15,
+    "hints": [
+      "Use while n <= 5: to include 5.",
+      "Increment n += 1 inside the loop body.",
+      "Make sure total += n runs before n += 1."
+    ],
+    "solution": "n = 1\ntotal = 0\nwhile n <= 5:\n    total += n\n    n += 1",
+    "explanation": "Using <= 5 includes 5, and n += 1 ensures the while condition eventually becomes False.",
+    "sources": ["python-tutorial"],
+    "brokenCode": "n = 1\ntotal = 0\nwhile n < 5:\n    total += n\n    # missing increment!\n",
+    "visibleTests": "assert total == 15\nassert n == 6",
+    "hiddenTests": "assert isinstance(total, int)",
+    "bugDescription": "n was never incremented (infinite loop) and < 5 excluded 5."
+  },
+  {
+    "id": "a4-l2-ex2",
+    "type": "predict",
+    "title": "Predict break and continue Output",
+    "prompt": "Type the exact numbers printed by this loop (one per line).",
+    "difficulty": "beginner",
+    "concepts": ["for", "range", "break", "continue"],
+    "points": 10,
+    "hints": [
+      "range(1, 7) produces 1, 2, 3, 4, 5, 6.",
+      "When i == 3, continue skips print(i).",
+      "When i == 5, break exits the loop before printing 5."
+    ],
+    "solution": "1\n2\n4",
+    "explanation": "1 and 2 print, 3 is skipped by continue, 4 prints, and 5 triggers break before printing.",
+    "sources": ["python-tutorial"],
+    "code": "for i in range(1, 7):\n    if i == 3:\n        continue\n    if i == 5:\n        break\n    print(i)",
+    "expectedOutput": "1\n2\n4"
+  },
+  {
+    "id": "a4-l2-ex3",
+    "type": "code",
+    "title": "FizzBuzz Variant: IS Audit Tagger",
+    "prompt": "Build a list named tags for numbers 1 to 15 (inclusive) using range(1, 16). For multiples of both 3 and 5 append 'FizzBuzz', for multiples of 3 append 'Fizz', for multiples of 5 append 'Buzz', otherwise append str(n).",
+    "difficulty": "beginner",
+    "concepts": ["for", "range", "if", "elif", "modulo"],
+    "points": 20,
+    "hints": [
+      "Initialize tags = [] before the loop.",
+      "Check n % 3 == 0 and n % 5 == 0 FIRST.",
+      "Use tags.append(...) in each branch."
+    ],
+    "solution": "tags = []\nfor n in range(1, 16):\n    if n % 3 == 0 and n % 5 == 0:\n        tags.append('FizzBuzz')\n    elif n % 3 == 0:\n        tags.append('Fizz')\n    elif n % 5 == 0:\n        tags.append('Buzz')\n    else:\n        tags.append(str(n))",
+    "explanation": "Checking divisibility by both 3 and 5 before individual checks ensures 15 gets 'FizzBuzz'.",
+    "sources": ["python-tutorial"],
+    "starterCode": "tags = []\n# Loop from 1 to 15 and append to tags\n",
+    "visibleTests": "assert len(tags) == 15\nassert tags[0] == '1'\nassert tags[2] == 'Fizz'\nassert tags[4] == 'Buzz'\nassert tags[14] == 'FizzBuzz'",
+    "hiddenTests": "assert tags[5] == 'Fizz' and tags[9] == 'Buzz'"
+  },
+  {
+    "id": "a4-l2-ex4",
+    "type": "quiz",
+    "title": "Loops and range() Check",
+    "prompt": "Test your understanding of range(), break, and continue.",
+    "difficulty": "beginner",
+    "concepts": ["range", "break", "continue"],
+    "points": 10,
+    "hints": [
+      "Remember range(start, stop) excludes stop.",
+      "continue skips the current iteration only."
+    ],
+    "solution": "Q1: [2, 4, 6]; Q2: Skips to the next iteration",
+    "explanation": "range(2, 8, 2) steps by 2 up to 6, and continue jumps to the next iteration.",
+    "sources": ["python-tutorial"],
+    "questions": [
+      {
+        "question": "Which sequence of numbers does list(range(2, 8, 2)) produce?",
+        "options": ["[2, 4, 6, 8]", "[2, 4, 6]", "[2, 3, 4, 5, 6, 7]", "[0, 2, 4, 6]"],
+        "correct": [1],
+        "explanation": "range(2, 8, 2) starts at 2, steps by 2, and stops before 8."
+      },
+      {
+        "question": "What does the continue statement do inside a loop?",
+        "options": [
+          "Exits the loop completely",
+          "Skips the rest of the current iteration and starts the next one",
+          "Restarts the program from line 1",
+          "Pauses the loop for 1 second"
+        ],
+        "correct": [1],
+        "explanation": "continue skips remaining statements in the current iteration and moves to the next iteration."
+      }
+    ]
+  },
+  {
+    "id": "a4-l2-fc1",
+    "type": "flashcard",
+    "title": "range(start, stop) upper bound",
+    "prompt": "Recall whether range() includes stop.",
+    "difficulty": "beginner",
+    "concepts": ["range"],
+    "points": 5,
+    "hints": ["Half-open interval", "Excludes stop", "stop - 1"],
+    "solution": "Excluded (stops at stop - 1)",
+    "explanation": "range(start, stop) excludes stop.",
+    "sources": ["python-tutorial"],
+    "front": "Does `range(1, 10)` include `10`?",
+    "back": "No. `range(start, stop)` is half-open: it includes `start` and stops **before** `stop` (`1` through `9`).",
+    "deckId": "a4-control-flow"
+  },
+  {
+    "id": "a4-l2-fc2",
+    "type": "flashcard",
+    "title": "break vs continue",
+    "prompt": "Contrast break and continue.",
+    "difficulty": "beginner",
+    "concepts": ["break", "continue"],
+    "points": 5,
+    "hints": ["One exits loop", "One skips one iteration", "break exits; continue skips"],
+    "solution": "break exits the loop; continue skips to the next iteration.",
+    "explanation": "Loop control keywords.",
+    "sources": ["python-tutorial"],
+    "front": "How do `break` and `continue` differ inside a loop?",
+    "back": "`break` exits the loop completely. `continue` skips the rest of the current iteration and moves to the next iteration.",
+    "deckId": "a4-control-flow"
+  }
+]

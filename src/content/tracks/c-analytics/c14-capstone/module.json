@@ -1,0 +1,10 @@
+{
+  "id": "c14-capstone",
+  "track": "c-analytics",
+  "title": "C14: Capstone Project",
+  "order": 14,
+  "summary": "Conduct an end-to-end data analysis from question framing to cleaning, visualization, and a written findings memo.",
+  "prerequisites": ["c13-intro-ml"],
+  "lessons": ["c14-l1-capstone-guide"],
+  "packages": ["numpy", "pandas"]
+}

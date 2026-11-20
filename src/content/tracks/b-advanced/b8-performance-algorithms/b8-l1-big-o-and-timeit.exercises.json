@@ -1,0 +1,74 @@
+[
+  {
+    "id": "b8-l1-ex1",
+    "type": "code",
+    "title": "Fast O(n) Common-ID Finder Using set",
+    "prompt": "Write find_common(list_a, list_b) that returns a sorted list of IDs present in both lists using set intersection (avoiding O(n^2) nested loops).",
+    "difficulty": "intermediate",
+    "concepts": ["set", "big-o"],
+    "points": 15,
+    "hints": [
+      "Convert both lists to sets and use & (intersection).",
+      "Wrap the result in sorted(...)."
+    ],
+    "solution": "def find_common(list_a, list_b):\n    return sorted(set(list_a) & set(list_b))",
+    "explanation": "Set intersection runs in O(len(a) + len(b)) average time instead of O(len(a) * len(b)).",
+    "sources": ["python-tutorial"],
+    "starterCode": "def find_common(list_a, list_b):\n    # return sorted list of common elements using sets\n    pass\n",
+    "visibleTests": "assert find_common([3, 1, 2, 2], [2, 4, 3]) == [2, 3]",
+    "hiddenTests": "assert find_common([1], [2]) == []"
+  },
+  {
+    "id": "b8-l1-ex2",
+    "type": "quiz",
+    "title": "Complexity & Data Structure Choice",
+    "prompt": "Choose the fastest approach for membership checks.",
+    "difficulty": "intermediate",
+    "concepts": ["big-o", "set", "list"],
+    "points": 10,
+    "hints": ["Hash tables give O(1) average lookup."],
+    "solution": "set or dict",
+    "explanation": "set and dict use hash tables for O(1) average-case membership testing.",
+    "sources": ["python-tutorial"],
+    "questions": [
+      {
+        "question": "You need to check 100,000 times whether an ID exists in a collection of 50,000 valid IDs. Which collection gives O(1) average lookup?",
+        "options": ["list", "tuple", "set", "str"],
+        "correct": [2],
+        "explanation": "set (and dict keys) use hash tables for O(1) average-case lookup, whereas list and tuple scan linearly in O(n)."
+      }
+    ]
+  },
+  {
+    "id": "b8-l1-fc1",
+    "type": "flashcard",
+    "title": "set vs list membership",
+    "prompt": "Recall Big-O of `x in collection`.",
+    "difficulty": "intermediate",
+    "concepts": ["big-o"],
+    "points": 5,
+    "hints": ["O(1) vs O(n)"],
+    "solution": "set/dict: O(1) average; list/tuple: O(n).",
+    "explanation": "Hash lookup vs linear scan.",
+    "sources": ["python-tutorial"],
+    "front": "What is the average time complexity of `x in c` for a `set` vs a `list`?",
+    "back": "`set`: O(1) average time (hash lookup). `list`: O(n) linear scan.",
+    "deckId": "b8-performance"
+  },
+  {
+    "id": "b8-l1-fc2",
+    "type": "flashcard",
+    "title": "timeit module",
+    "prompt": "Recall the stdlib module for micro-benchmarking.",
+    "difficulty": "intermediate",
+    "concepts": ["timeit"],
+    "points": 5,
+    "hints": ["Built-in timing module"],
+    "solution": "timeit",
+    "explanation": "Standard library benchmarking tool.",
+    "sources": ["python-tutorial"],
+    "front": "Which standard library module is designed to benchmark small Python code snippets?",
+    "back": "`timeit`",
+    "deckId": "b8-performance"
+  }
+]

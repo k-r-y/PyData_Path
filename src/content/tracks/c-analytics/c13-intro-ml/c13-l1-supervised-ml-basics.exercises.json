@@ -1,0 +1,54 @@
+[
+  {
+    "id": "c13-l1-ex1",
+    "type": "code",
+    "title": "Fit a Linear Regression Model in scikit-learn",
+    "prompt": "Using LinearRegression from sklearn.linear_model, fit a model on X = np.array([[10], [20], [30], [40]]) and y = np.array([25, 45, 65, 85]), then store the prediction for [[50]] as float in pred_50.",
+    "difficulty": "advanced",
+    "concepts": ["scikit-learn", "LinearRegression"],
+    "points": 20,
+    "hints": [
+      "from sklearn.linear_model import LinearRegression",
+      "model = LinearRegression().fit(X, y)",
+      "pred_50 = float(model.predict([[50]])[0])"
+    ],
+    "solution": "import numpy as np\nfrom sklearn.linear_model import LinearRegression\n\nX = np.array([[10], [20], [30], [40]])\ny = np.array([25, 45, 65, 85])\nmodel = LinearRegression().fit(X, y)\npred_50 = float(model.predict([[50]])[0])",
+    "explanation": "y = 2*x + 5, so predicting at x=50 gives 105.0.",
+    "sources": ["sklearn-docs"],
+    "starterCode": "import numpy as np\nfrom sklearn.linear_model import LinearRegression\n\nX = np.array([[10], [20], [30], [40]])\ny = np.array([25, 45, 65, 85])\n# Fit model and compute pred_50\n",
+    "visibleTests": "assert round(pred_50, 2) == 105.0",
+    "hiddenTests": "assert isinstance(pred_50, float)"
+  },
+  {
+    "id": "c13-l1-fc1",
+    "type": "flashcard",
+    "title": "What is overfitting?",
+    "prompt": "Recall the definition of overfitting.",
+    "difficulty": "advanced",
+    "concepts": ["overfitting", "machine-learning"],
+    "points": 5,
+    "hints": ["High train score, low test score"],
+    "solution": "When a model memorizes training data noise and generalizes poorly to unseen test data.",
+    "explanation": "Generalization vs memorization.",
+    "sources": ["sklearn-docs"],
+    "front": "What is overfitting in machine learning?",
+    "back": "When a model fits training data (and its noise) too closely, performing well on training data but poorly on unseen test data.",
+    "deckId": "c13-ml"
+  },
+  {
+    "id": "c13-l1-fc2",
+    "type": "flashcard",
+    "title": "Data leakage prevention",
+    "prompt": "Recall when to call train_test_split.",
+    "difficulty": "advanced",
+    "concepts": ["train_test_split"],
+    "points": 5,
+    "hints": ["Split BEFORE scaling/imputing"],
+    "solution": "Split into train and test BEFORE fitting scalers, encoders, or models.",
+    "explanation": "Preventing test data leakage.",
+    "sources": ["sklearn-docs"],
+    "front": "Why must you run `train_test_split` before fitting a scaler or imputer?",
+    "back": "To prevent **data leakage**: computing means or min/max across the whole dataset leaks test-set information into training.",
+    "deckId": "c13-ml"
+  }
+]

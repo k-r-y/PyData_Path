@@ -1,0 +1,72 @@
+[
+  {
+    "id": "c3-l1-ex1",
+    "type": "code",
+    "title": "Vectorized Revenue Calculation",
+    "prompt": "Given units = np.array([3, 10, 5]) and prices = np.array([24.5, 4.25, 18.0]), compute total_revenue (float) using vectorized multiplication and .sum() without any Python loop.",
+    "difficulty": "intermediate",
+    "concepts": ["numpy", "vectorization"],
+    "points": 15,
+    "hints": [
+      "Multiply units * prices element-wise.",
+      "Call .sum() on the product and wrap in float()."
+    ],
+    "solution": "import numpy as np\nunits = np.array([3, 10, 5])\nprices = np.array([24.5, 4.25, 18.0])\ntotal_revenue = float((units * prices).sum())",
+    "explanation": "Element-wise multiplication followed by .sum() computes the dot product cleanly.",
+    "sources": ["numpy-docs"],
+    "starterCode": "import numpy as np\nunits = np.array([3, 10, 5])\nprices = np.array([24.5, 4.25, 18.0])\n# Compute total_revenue\n",
+    "visibleTests": "assert total_revenue == 206.0",
+    "hiddenTests": "assert isinstance(total_revenue, float)"
+  },
+  {
+    "id": "c3-l1-ex2",
+    "type": "fillblank",
+    "title": "Boolean Masking With &",
+    "prompt": "Fill in the blanks to filter values strictly between 10 and 50 in NumPy.",
+    "difficulty": "intermediate",
+    "concepts": ["numpy", "boolean-mask"],
+    "points": 10,
+    "hints": [
+      "Use & (not 'and') for element-wise boolean combination."
+    ],
+    "solution": "import numpy as np\na = np.array([5, 20, 45, 60])\nfiltered = a[(a > 10) & (a < 50)]",
+    "explanation": "NumPy boolean masks combine conditions with & and | inside parentheses.",
+    "sources": ["numpy-docs"],
+    "codeWithBlanks": "import numpy as np\na = np.array([5, 20, 45, 60])\nfiltered = a[(a > 10) {{1}} (a < 50)]",
+    "answers": {
+      "1": ["&"]
+    }
+  },
+  {
+    "id": "c3-l1-fc1",
+    "type": "flashcard",
+    "title": "NumPy axis=0 vs axis=1",
+    "prompt": "Recall what axis=0 and axis=1 aggregate along.",
+    "difficulty": "intermediate",
+    "concepts": ["numpy"],
+    "points": 5,
+    "hints": ["axis=0 collapses rows (per column)"],
+    "solution": "axis=0 aggregates down rows (one result per column); axis=1 aggregates across columns (one result per row).",
+    "explanation": "NumPy axis convention.",
+    "sources": ["numpy-docs"],
+    "front": "In a 2D NumPy array, what does `arr.mean(axis=0)` compute vs `arr.mean(axis=1)`?",
+    "back": "`axis=0` computes the mean down rows (per column); `axis=1` computes the mean across columns (per row).",
+    "deckId": "c3-numpy"
+  },
+  {
+    "id": "c3-l1-fc2",
+    "type": "flashcard",
+    "title": "NumPy boolean operators",
+    "prompt": "Recall element-wise logical operators in NumPy.",
+    "difficulty": "intermediate",
+    "concepts": ["numpy"],
+    "points": 5,
+    "hints": ["Bitwise symbols with parentheses"],
+    "solution": "& (and), | (or), ~ (not)",
+    "explanation": "Boolean array masking.",
+    "sources": ["numpy-docs"],
+    "front": "Which operators combine boolean conditions on NumPy arrays?",
+    "back": "`&` (and), `|` (or), and `~` (not), with parentheses around each comparison.",
+    "deckId": "c3-numpy"
+  }
+]

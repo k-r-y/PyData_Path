@@ -1,0 +1,119 @@
+[
+  {
+    "id": "a3-l2-ex1",
+    "type": "debug",
+    "title": "Fix the input() String Multiplication Bug",
+    "prompt": "The starter code reads pre-supplied inputs ('4' and '12.50'), but because input() returns a str, total_str repeats the string instead of multiplying numbers. Fix the code so total is 50.0 and summary is 'Total: $50.00'.",
+    "difficulty": "beginner",
+    "concepts": ["input", "type-conversion", "f-strings"],
+    "points": 15,
+    "hints": [
+      "Convert input() results with int() and float().",
+      "Multiply qty * price to get a numeric total.",
+      "Use f\"Total: ${total:.2f}\" for summary."
+    ],
+    "solution": "qty = int(input())\nprice = float(input())\ntotal = qty * price\nsummary = f\"Total: ${total:.2f}\"",
+    "explanation": "input() always returns str. Converting qty with int() and price with float() enables numeric multiplication.",
+    "sources": ["python-tutorial"],
+    "inputs": ["4", "12.50"],
+    "brokenCode": "qty = input()\nprice = float(input())\ntotal = qty * price\nsummary = f\"Total: ${total}\"",
+    "visibleTests": "assert total == 50.0\nassert summary == 'Total: $50.00'",
+    "hiddenTests": "assert isinstance(total, float)",
+    "bugDescription": "qty was left as a str from input(), and multiplying a str by a float raises TypeError."
+  },
+  {
+    "id": "a3-l2-ex2",
+    "type": "predict",
+    "title": "Predict f-String Format Specifiers",
+    "prompt": "Type the exact line of output Python will print.",
+    "difficulty": "beginner",
+    "concepts": ["f-strings", "formatting"],
+    "points": 10,
+    "hints": [
+      ":, adds a thousands comma.",
+      ":.1f rounds to 1 decimal place.",
+      "Output: Users: 1,500 | Rate: 98.5%"
+    ],
+    "solution": "Users: 1,500 | Rate: 98.5%",
+    "explanation": ":, formats integers with thousands separators, and :.1f formats floats to one decimal place.",
+    "sources": ["python-tutorial"],
+    "code": "users = 1500\nrate = 98.46\nprint(f\"Users: {users:,} | Rate: {rate:.1f}%\")",
+    "expectedOutput": "Users: 1,500 | Rate: 98.5%"
+  },
+  {
+    "id": "a3-l2-ex3",
+    "type": "parsons",
+    "title": "Build an Enrollment Confirmation Line",
+    "prompt": "Reorder the lines to compute seats_left and format the confirmation message.",
+    "difficulty": "beginner",
+    "concepts": ["f-strings", "arithmetic"],
+    "points": 10,
+    "hints": [
+      "Define capacity and enrolled first.",
+      "Compute seats_left = capacity - enrolled.",
+      "Print the f-string last."
+    ],
+    "solution": "capacity = 40\nenrolled = 36\nseats_left = capacity - enrolled\nprint(f\"Seats remaining: {seats_left}\")",
+    "explanation": "Variables must be defined before they are referenced in an f-string.",
+    "sources": ["python-tutorial"],
+    "lines": [
+      "capacity = 40",
+      "enrolled = 36",
+      "seats_left = capacity - enrolled",
+      "print(f\"Seats remaining: {seats_left}\")"
+    ]
+  },
+  {
+    "id": "a3-l2-ex4",
+    "type": "code",
+    "title": "IS Store Receipt Formatter",
+    "prompt": "Read two pre-supplied inputs: item (str) and price (convert to float). Create a variable receipt formatted as '<item>: $<price with 2 decimals>' (for example, 'Notebook: $4.50') and print it.",
+    "difficulty": "beginner",
+    "concepts": ["input", "f-strings", "float"],
+    "points": 15,
+    "hints": [
+      "Read item = input() and price = float(input()).",
+      "Format with f\"{item}: ${price:.2f}\".",
+      "Assign to receipt and call print(receipt)."
+    ],
+    "solution": "item = input()\nprice = float(input())\nreceipt = f\"{item}: ${price:.2f}\"\nprint(receipt)",
+    "explanation": "Combining input() conversion with :.2f produces clean currency formatting.",
+    "sources": ["python-tutorial"],
+    "inputs": ["Notebook", "4.5"],
+    "starterCode": "# Read item and price from input(), format receipt, and print it\n",
+    "visibleTests": "assert receipt == 'Notebook: $4.50'",
+    "hiddenTests": "assert isinstance(price, float)"
+  },
+  {
+    "id": "a3-l2-fc1",
+    "type": "flashcard",
+    "title": "input() return type",
+    "prompt": "Recall what type input() returns.",
+    "difficulty": "beginner",
+    "concepts": ["input"],
+    "points": 5,
+    "hints": ["Always the same type", "Even if digits are typed", "str"],
+    "solution": "str",
+    "explanation": "input() always returns a string.",
+    "sources": ["python-tutorial"],
+    "front": "What data type does `input()` always return?",
+    "back": "`str` (even if the user types numbers like `42`, so convert with `int()` or `float()` for math).",
+    "deckId": "a3-strings"
+  },
+  {
+    "id": "a3-l2-fc2",
+    "type": "flashcard",
+    "title": "f-string 2 decimal places",
+    "prompt": "Recall the f-string specifier for 2 decimal places.",
+    "difficulty": "beginner",
+    "concepts": ["f-strings"],
+    "points": 5,
+    "hints": ["Uses a colon inside {}", ".2f", "f'{x:.2f}'"],
+    "solution": "f'{x:.2f}'",
+    "explanation": ":.2f formats a float to two decimal places.",
+    "sources": ["python-tutorial"],
+    "front": "How do you format float `x` to 2 decimal places inside an f-string?",
+    "back": "`f\"{x:.2f}\"`",
+    "deckId": "a3-strings"
+  }
+]

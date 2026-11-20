@@ -1,0 +1,117 @@
+[
+  {
+    "id": "a3-l1-ex1",
+    "type": "predict",
+    "title": "Predict String Slicing and Negative Indexing",
+    "prompt": "Read the code and type the exact two lines of output Python will print.",
+    "difficulty": "beginner",
+    "concepts": ["strings", "slicing", "indexing"],
+    "points": 10,
+    "hints": [
+      "code[0:3] takes indices 0, 1, 2 (stops before 3).",
+      "code[-2:] starts 2 characters from the end and goes to the end.",
+      "Line 1 is 'PYD' and line 2 is '26'."
+    ],
+    "solution": "PYD\n26",
+    "explanation": "Slices exclude the stop index, and negative indices count backward from the end of the string.",
+    "sources": ["python-tutorial"],
+    "code": "code = \"PYDATA26\"\nprint(code[0:3])\nprint(code[-2:])",
+    "expectedOutput": "PYD\n26"
+  },
+  {
+    "id": "a3-l1-ex2",
+    "type": "fillblank",
+    "title": "Split and Rejoin Tags",
+    "prompt": "Fill in the blanks to split raw_tags by comma and rejoin them with ' | '.",
+    "difficulty": "beginner",
+    "concepts": ["split", "join", "strings"],
+    "points": 10,
+    "hints": [
+      "Use .split(',') to break the string into a list.",
+      "Call .join(...) on the separator string ' | '.",
+      "Blank 1 is split, Blank 2 is join."
+    ],
+    "solution": "raw_tags = \"python,sql,pandas\"\ntag_list = raw_tags.split(\",\")\nformatted = \" | \".join(tag_list)",
+    "explanation": "str.split() produces a list of substrings, and sep.join(list) joins them back into one string.",
+    "sources": ["python-tutorial"],
+    "codeWithBlanks": "raw_tags = \"python,sql,pandas\"\ntag_list = raw_tags.{{1}}(\",\")\nformatted = \" | \".{{2}}(tag_list)",
+    "answers": {
+      "1": ["split"],
+      "2": ["join"]
+    }
+  },
+  {
+    "id": "a3-l1-ex3",
+    "type": "parsons",
+    "title": "Clean and Extract an IS Department Code",
+    "prompt": "Reorder the lines to strip whitespace from raw_dept, convert it to uppercase, and print the first 2 characters.",
+    "difficulty": "beginner",
+    "concepts": ["strip", "upper", "slicing"],
+    "points": 15,
+    "hints": [
+      "Start with the raw_dept variable assignment.",
+      "Clean and uppercase raw_dept before slicing.",
+      "Print dept_code[:2] at the end."
+    ],
+    "solution": "raw_dept = \"  is-analytics  \"\ndept_code = raw_dept.strip().upper()\nprint(dept_code[:2])",
+    "explanation": "Chaining .strip().upper() cleans whitespace and normalizes case before slicing the 2-letter prefix.",
+    "sources": ["python-tutorial"],
+    "lines": [
+      "raw_dept = \"  is-analytics  \"",
+      "dept_code = raw_dept.strip().upper()",
+      "print(dept_code[:2])"
+    ]
+  },
+  {
+    "id": "a3-l1-ex4",
+    "type": "code",
+    "title": "Normalize a Messy Customer Record",
+    "prompt": "Given raw_entry = '  ana.reyes@school.edu ,  is-301  ', strip whitespace, split by ',', and assign clean_email (lowercased and stripped) and clean_course (uppercased and stripped).",
+    "difficulty": "beginner",
+    "concepts": ["strip", "split", "lower", "upper"],
+    "points": 15,
+    "hints": [
+      "Split raw_entry on ',' into a list called parts.",
+      "Use parts[0].strip().lower() for clean_email.",
+      "Use parts[1].strip().upper() for clean_course."
+    ],
+    "solution": "raw_entry = '  ana.reyes@school.edu ,  is-301  '\nparts = raw_entry.split(',')\nclean_email = parts[0].strip().lower()\nclean_course = parts[1].strip().upper()",
+    "explanation": "Splitting on ',' and calling .strip() + case normalization on each field standardizes messy CSV-style text.",
+    "sources": ["python-tutorial"],
+    "starterCode": "raw_entry = '  ana.reyes@school.edu ,  is-301  '\n# Set clean_email and clean_course\n",
+    "visibleTests": "assert clean_email == 'ana.reyes@school.edu'\nassert clean_course == 'IS-301'",
+    "hiddenTests": "assert ' ' not in clean_email and ' ' not in clean_course"
+  },
+  {
+    "id": "a3-l1-fc1",
+    "type": "flashcard",
+    "title": "String immutability",
+    "prompt": "Recall what string immutability means.",
+    "difficulty": "beginner",
+    "concepts": ["strings", "immutability"],
+    "points": 5,
+    "hints": ["Can you edit s[0]?", "Returns a new string", "Strings cannot be modified in place"],
+    "solution": "Strings cannot be changed in place; methods return new strings.",
+    "explanation": "Strings are immutable sequences.",
+    "sources": ["python-tutorial"],
+    "front": "Why must you write `s = s.strip()` instead of just `s.strip()`?",
+    "back": "Strings are immutable in Python. `.strip()` returns a new string rather than modifying `s` in place.",
+    "deckId": "a3-strings"
+  },
+  {
+    "id": "a3-l1-fc2",
+    "type": "flashcard",
+    "title": "sep.join() syntax",
+    "prompt": "Recall how to join a list of strings.",
+    "difficulty": "beginner",
+    "concepts": ["join"],
+    "points": 5,
+    "hints": ["Method on the separator", "Pass the list as argument", "','.join(items)"],
+    "solution": "','.join(items)",
+    "explanation": "join() is a str method called on the separator.",
+    "sources": ["python-tutorial"],
+    "front": "How do you join `items = ['a', 'b', 'c']` with commas in Python?",
+    "back": "`','.join(items)` -> `'a,b,c'` (`join` is called on the separator string).",
+    "deckId": "a3-strings"
+  }
+]

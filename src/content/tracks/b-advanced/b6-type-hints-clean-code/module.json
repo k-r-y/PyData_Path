@@ -1,0 +1,10 @@
+{
+  "id": "b6-type-hints-clean-code",
+  "track": "b-advanced",
+  "title": "B6: Type Hints and Clean Code",
+  "order": 6,
+  "summary": "Document function signatures with type annotations, apply PEP 8 and PEP 20 principles, and refactor messy code safely.",
+  "prerequisites": ["b5-context-managers"],
+  "lessons": ["b6-l1-type-hints-and-pep8"],
+  "packages": []
+}

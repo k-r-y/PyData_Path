@@ -1,0 +1,126 @@
+[
+  {
+    "id": "a2-l1-ex1",
+    "type": "fillblank",
+    "title": "Complete the Type and None Checks",
+    "prompt": "Fill in the blanks to check that discount is None using PEP 8 style and verify that price is a float.",
+    "difficulty": "beginner",
+    "concepts": ["None", "isinstance", "float"],
+    "points": 10,
+    "hints": [
+      "PEP 8 recommends using the 'is' operator to check for None.",
+      "The built-in function to check an object's type is isinstance.",
+      "Blank 1 is 'is' and Blank 2 is 'isinstance'."
+    ],
+    "solution": "discount = None\nprice = 19.99\nprint(discount is None)\nprint(isinstance(price, float))",
+    "explanation": "Use 'is None' for identity comparison with None, and isinstance(obj, cls) to check types.",
+    "sources": ["pep8", "python-tutorial"],
+    "codeWithBlanks": "discount = None\nprice = 19.99\nprint(discount {{1}} None)\nprint({{2}}(price, float))",
+    "answers": {
+      "1": ["is"],
+      "2": ["isinstance"]
+    }
+  },
+  {
+    "id": "a2-l1-ex2",
+    "type": "predict",
+    "title": "Predict Type and Float Division Output",
+    "prompt": "Read the code carefully and type the exact two lines of output Python will print.",
+    "difficulty": "beginner",
+    "concepts": ["types", "int", "float", "bool"],
+    "points": 10,
+    "hints": [
+      "What type does 10 / 2 produce in Python 3?",
+      "In Python 3, / always produces a float.",
+      "type(x).__name__ returns 'float' and isinstance(True, int) is True."
+    ],
+    "solution": "float\nTrue",
+    "explanation": "Single-slash division (/) always returns a float in Python 3, and bool is a subclass of int.",
+    "sources": ["python-tutorial", "python-lang-ref"],
+    "code": "x = 10 / 2\nprint(type(x).__name__)\nprint(isinstance(True, int))",
+    "expectedOutput": "float\nTrue"
+  },
+  {
+    "id": "a2-l1-ex3",
+    "type": "code",
+    "title": "Define an IS Product Record",
+    "prompt": "Create four variables for an inventory item: sku = 'ITM-088' (str), quantity = 25 (int), unit_cost = 14.5 (float), and reorder_note = None (NoneType).",
+    "difficulty": "beginner",
+    "concepts": ["variables", "str", "int", "float", "None"],
+    "points": 10,
+    "hints": [
+      "Assign each variable using = with the exact names: sku, quantity, unit_cost, reorder_note.",
+      "Use quotes around 'ITM-088', no quotes around 25, 14.5, or None.",
+      "Check spelling: reorder_note = None"
+    ],
+    "solution": "sku = 'ITM-088'\nquantity = 25\nunit_cost = 14.5\nreorder_note = None",
+    "explanation": "Each variable binds to an object of the appropriate type for its role in the inventory record.",
+    "sources": ["python-tutorial"],
+    "starterCode": "# Define sku, quantity, unit_cost, and reorder_note\n",
+    "visibleTests": "assert sku == 'ITM-088' and isinstance(sku, str)\nassert quantity == 25 and isinstance(quantity, int)\nassert unit_cost == 14.5 and isinstance(unit_cost, float)\nassert reorder_note is None",
+    "hiddenTests": "assert type(quantity) is int"
+  },
+  {
+    "id": "a2-l1-ex4",
+    "type": "quiz",
+    "title": "Core Types Check",
+    "prompt": "Answer the following questions about Python's core types.",
+    "difficulty": "beginner",
+    "concepts": ["types", "pep8", "None"],
+    "points": 10,
+    "hints": [
+      "Review PEP 8 naming and None comparison rules.",
+      "Remember Python identifiers cannot start with a digit.",
+      "Check both options that are valid snake_case."
+    ],
+    "solution": "Q1: is None; Q2: total_sales, item_2",
+    "explanation": "PEP 8 recommends 'is None' and lowercase snake_case names that do not start with a digit.",
+    "sources": ["pep8", "python-lang-ref"],
+    "questions": [
+      {
+        "question": "Which expression is recommended by PEP 8 to check if a variable x has no value?",
+        "options": ["x == None", "x is None", "x === null", "isnull(x)"],
+        "correct": [1],
+        "explanation": "PEP 8 specifies using 'is None' or 'is not None' for singleton comparisons."
+      },
+      {
+        "question": "Which of these are valid Python variable names following PEP 8 snake_case?",
+        "options": ["total_sales", "2nd_item", "item_2", "TotalSales"],
+        "correct": [0, 2],
+        "explanation": "Variable names cannot start with a digit (2nd_item is invalid), and PEP 8 reserves PascalCase (TotalSales) for classes."
+      }
+    ]
+  },
+  {
+    "id": "a2-l1-fc1",
+    "type": "flashcard",
+    "title": "None check idiom",
+    "prompt": "Recall the PEP 8 idiom for checking None.",
+    "difficulty": "beginner",
+    "concepts": ["None", "pep8"],
+    "points": 5,
+    "hints": ["Uses identity operator", "Two words", "is None"],
+    "solution": "x is None",
+    "explanation": "Identity comparison with None.",
+    "sources": ["pep8"],
+    "front": "How should you check whether variable x is None in Python (per PEP 8)?",
+    "back": "Use `x is None` (or `x is not None`), not `== None`.",
+    "deckId": "a2-types"
+  },
+  {
+    "id": "a2-l1-fc2",
+    "type": "flashcard",
+    "title": "True/False capitalization",
+    "prompt": "Recall Python boolean literal spelling.",
+    "difficulty": "beginner",
+    "concepts": ["bool"],
+    "points": 5,
+    "hints": ["Capitalized", "T and F", "True / False"],
+    "solution": "True and False",
+    "explanation": "Boolean literals in Python are capitalized.",
+    "sources": ["python-lang-ref"],
+    "front": "How are boolean literals spelled in Python compared to JavaScript/PHP?",
+    "back": "Capitalized: `True` and `False` (not `true` / `false`).",
+    "deckId": "a2-types"
+  }
+]

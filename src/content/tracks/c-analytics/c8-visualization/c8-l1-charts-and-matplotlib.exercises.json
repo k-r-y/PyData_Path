@@ -1,0 +1,84 @@
+[
+  {
+    "id": "c8-l1-ex1",
+    "type": "quiz",
+    "title": "Chart Selection & Ethics",
+    "prompt": "Choose the best chart type and identify misleading practices.",
+    "difficulty": "intermediate",
+    "concepts": ["visualization", "charts"],
+    "points": 10,
+    "hints": ["Continuous time -> line chart; bar charts encode length from 0."],
+    "solution": "Q1: Line chart; Q2: Truncating bar-chart y-axis",
+    "explanation": "Line charts show trends over time, and bar charts require a zero baseline.",
+    "sources": ["matplotlib-docs"],
+    "questions": [
+      {
+        "question": "Which chart best displays monthly revenue over 24 months?",
+        "options": ["Pie chart", "Line chart", "Histogram"],
+        "correct": [1],
+        "explanation": "Line charts highlight continuity and trends across time."
+      },
+      {
+        "question": "Why is starting a bar chart's y-axis at 95 instead of 0 misleading?",
+        "options": [
+          "It makes a 2% difference look like a 200% difference in bar height",
+          "Matplotlib cannot plot numbers above 95",
+          "It hides the x-axis labels"
+        ],
+        "correct": [0],
+        "explanation": "Bar charts encode magnitude via bar length from zero."
+      }
+    ]
+  },
+  {
+    "id": "c8-l1-ex2",
+    "type": "code",
+    "title": "Build a Labeled Matplotlib Bar Chart",
+    "prompt": "Using matplotlib.pyplot as plt, create fig, ax = plt.subplots(), plot bars for ['Q1', 'Q2'] with values [100, 140], and set title to 'Quarterly Sales'.",
+    "difficulty": "intermediate",
+    "concepts": ["matplotlib"],
+    "points": 15,
+    "hints": [
+      "Include matplotlib.use('Agg') before importing pyplot.",
+      "Use ax.bar(['Q1', 'Q2'], [100, 140]) and ax.set_title('Quarterly Sales')."
+    ],
+    "solution": "import matplotlib\nmatplotlib.use('Agg')\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.bar(['Q1', 'Q2'], [100, 140])\nax.set_title('Quarterly Sales')",
+    "explanation": "fig, ax = plt.subplots() gives direct control over bars, titles, and axis labels.",
+    "sources": ["matplotlib-docs"],
+    "starterCode": "import matplotlib\nmatplotlib.use('Agg')\nimport matplotlib.pyplot as plt\n\n# Create fig, ax, plot bar chart, and set title\n",
+    "visibleTests": "assert ax.get_title() == 'Quarterly Sales'\nassert len(ax.patches) == 2",
+    "hiddenTests": "assert fig is not None"
+  },
+  {
+    "id": "c8-l1-fc1",
+    "type": "flashcard",
+    "title": "OO Matplotlib pattern",
+    "prompt": "Recall the explicit Matplotlib figure/axes setup.",
+    "difficulty": "intermediate",
+    "concepts": ["matplotlib"],
+    "points": 5,
+    "hints": ["plt.subplots()"],
+    "solution": "fig, ax = plt.subplots()",
+    "explanation": "Object-oriented Matplotlib API.",
+    "sources": ["matplotlib-docs"],
+    "front": "What is the recommended object-oriented way to create a figure and axes in Matplotlib?",
+    "back": "`fig, ax = plt.subplots()`",
+    "deckId": "c8-viz"
+  },
+  {
+    "id": "c8-l1-fc2",
+    "type": "flashcard",
+    "title": "Bar chart baseline rule",
+    "prompt": "Recall the y-axis rule for bar charts.",
+    "difficulty": "intermediate",
+    "concepts": ["visualization"],
+    "points": 5,
+    "hints": ["Zero baseline"],
+    "solution": "Start the y-axis at 0 so bar lengths are proportional to values.",
+    "explanation": "Honest data visualization.",
+    "sources": ["matplotlib-docs"],
+    "front": "Why should bar charts almost always start their value axis at 0?",
+    "back": "Because readers judge bar length proportionally; a non-zero baseline exaggerates small differences.",
+    "deckId": "c8-viz"
+  }
+]

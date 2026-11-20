@@ -1,0 +1,71 @@
+[
+  {
+    "id": "b9-l1-ex1",
+    "type": "code",
+    "title": "Log Parsing With re and Counter",
+    "prompt": "Write top_error_code(log_text) that finds all 3-digit HTTP codes using re.findall(r'\\b\\d{3}\\b', log_text) and returns the single most common code string using Counter(...).most_common(1)[0][0].",
+    "difficulty": "intermediate",
+    "concepts": ["re", "Counter"],
+    "points": 20,
+    "hints": [
+      "Import re and from collections import Counter.",
+      "codes = re.findall(r'\\b\\d{3}\\b', log_text)",
+      "Return Counter(codes).most_common(1)[0][0]."
+    ],
+    "solution": "import re\nfrom collections import Counter\n\ndef top_error_code(log_text):\n    codes = re.findall(r'\\b\\d{3}\\b', log_text)\n    return Counter(codes).most_common(1)[0][0]",
+    "explanation": "re.findall extracts matching tokens and Counter.most_common(1) returns [(item, count)].",
+    "sources": ["python-tutorial"],
+    "starterCode": "import re\nfrom collections import Counter\n\ndef top_error_code(log_text):\n    # return most common 3-digit code string\n    pass\n",
+    "visibleTests": "sample = 'ERR 404 | OK 200 | ERR 404 | ERR 500'\nassert top_error_code(sample) == '404'",
+    "hiddenTests": "assert top_error_code('500 500 200') == '500'"
+  },
+  {
+    "id": "b9-l1-ex2",
+    "type": "predict",
+    "title": "Predict datetime Parsing and Formatting",
+    "prompt": "Type the exact output printed by strftime.",
+    "difficulty": "intermediate",
+    "concepts": ["datetime"],
+    "points": 10,
+    "hints": [
+      "%Y is 4-digit year, %m is 2-digit month."
+    ],
+    "solution": "2026-11",
+    "explanation": "strptime parses a date string into a datetime object; strftime formats it.",
+    "sources": ["python-tutorial"],
+    "code": "from datetime import datetime\ndt = datetime.strptime('19/11/2026', '%d/%m/%Y')\nprint(dt.strftime('%Y-%m'))",
+    "expectedOutput": "2026-11"
+  },
+  {
+    "id": "b9-l1-fc1",
+    "type": "flashcard",
+    "title": "collections.Counter",
+    "prompt": "Recall how to get top N frequent items.",
+    "difficulty": "intermediate",
+    "concepts": ["Counter"],
+    "points": 5,
+    "hints": ["most_common(n)"],
+    "solution": "Counter(items).most_common(n)",
+    "explanation": "Frequency counting in stdlib.",
+    "sources": ["python-tutorial"],
+    "front": "How do you get the 3 most frequent elements from a list `items` using `collections.Counter`?",
+    "back": "`Counter(items).most_common(3)`",
+    "deckId": "b9-stdlib"
+  },
+  {
+    "id": "b9-l1-fc2",
+    "type": "flashcard",
+    "title": "Raw strings for regex",
+    "prompt": "Recall why regex patterns use r'...'.",
+    "difficulty": "intermediate",
+    "concepts": ["re"],
+    "points": 5,
+    "hints": ["Backslash escaping"],
+    "solution": "Prevents Python from interpreting backslashes like \\d or \\b as string escape sequences.",
+    "explanation": "Raw string literals.",
+    "sources": ["python-tutorial"],
+    "front": "Why should regular expressions in Python use raw strings like `r\"\\d+\"`?",
+    "back": "So backslashes are passed literally to the regex engine instead of being interpreted as Python string escapes.",
+    "deckId": "b9-stdlib"
+  }
+]

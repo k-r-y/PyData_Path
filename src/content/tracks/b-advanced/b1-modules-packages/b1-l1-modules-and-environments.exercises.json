@@ -1,0 +1,105 @@
+[
+  {
+    "id": "b1-l1-ex1",
+    "type": "code",
+    "title": "Create and Import a Simulated Module",
+    "prompt": "Write a module file named 'is_helpers.py' into the virtual filesystem containing a function format_sku(num) that returns f'SKU-{num:03d}'. Then import is_helpers and assign code = is_helpers.format_sku(7).",
+    "difficulty": "intermediate",
+    "concepts": ["modules", "import", "files"],
+    "points": 20,
+    "hints": [
+      "Use with open('is_helpers.py', 'w') as f: to write the function definition.",
+      "Call import is_helpers and is_helpers.format_sku(7)."
+    ],
+    "solution": "with open('is_helpers.py', 'w', encoding='utf-8') as f:\n    f.write(\"def format_sku(num):\\n    return f'SKU-{num:03d}'\\n\")\n\nimport importlib\nimport is_helpers\nimportlib.reload(is_helpers)\ncode = is_helpers.format_sku(7)",
+    "explanation": "Any .py file on sys.path (including the current directory in Pyodide) can be imported as a module.",
+    "sources": ["python-tutorial"],
+    "starterCode": "# Write is_helpers.py, import it, and set code = is_helpers.format_sku(7)\n",
+    "visibleTests": "assert code == 'SKU-007'",
+    "hiddenTests": "assert is_helpers.format_sku(42) == 'SKU-042'"
+  },
+  {
+    "id": "b1-l1-ex2",
+    "type": "predict",
+    "title": "Predict __name__ in Main Script",
+    "prompt": "Type the exact output printed when this code runs as the main script.",
+    "difficulty": "intermediate",
+    "concepts": ["__main__"],
+    "points": 10,
+    "hints": [
+      "Top-level execution sets __name__ to '__main__'."
+    ],
+    "solution": "__main__",
+    "explanation": "The entry-point script always has __name__ == '__main__'.",
+    "sources": ["python-tutorial"],
+    "code": "print(__name__)",
+    "expectedOutput": "__main__"
+  },
+  {
+    "id": "b1-l1-ex3",
+    "type": "quiz",
+    "title": "Modules and Environments Quiz",
+    "prompt": "Check your understanding of venv and module shadowing.",
+    "difficulty": "intermediate",
+    "concepts": ["venv", "modules"],
+    "points": 10,
+    "hints": ["Think about sys.path search order."],
+    "solution": "Q1: Isolate project dependencies; Q2: Shadows standard library",
+    "explanation": "Virtual environments isolate dependencies, and local filenames can shadow stdlib modules.",
+    "sources": ["python-tutorial"],
+    "questions": [
+      {
+        "question": "What is the primary purpose of python -m venv .venv?",
+        "options": [
+          "To compile Python to C++",
+          "To isolate a project's installed packages from other projects",
+          "To upload code to GitHub"
+        ],
+        "correct": [1],
+        "explanation": "venv creates an isolated Python environment per project."
+      },
+      {
+        "question": "What happens if you name your script math.py and write import math inside it?",
+        "options": [
+          "Python imports your own file instead of the standard library math module",
+          "Python raises a SyntaxError immediately",
+          "Python deletes your file"
+        ],
+        "correct": [0],
+        "explanation": "Because the current directory is first on sys.path, local files shadow stdlib modules with the same name."
+      }
+    ]
+  },
+  {
+    "id": "b1-l1-fc1",
+    "type": "flashcard",
+    "title": "__name__ == '__main__' guard",
+    "prompt": "Recall why scripts use if __name__ == '__main__':.",
+    "difficulty": "intermediate",
+    "concepts": ["__main__"],
+    "points": 5,
+    "hints": ["Direct run vs import", "Prevents side effects on import"],
+    "solution": "Runs code only when executed directly, not when imported.",
+    "explanation": "Standard Python entry-point guard.",
+    "sources": ["python-tutorial"],
+    "front": "Why do Python files use `if __name__ == \"__main__\":`?",
+    "back": "So the guarded block runs only when the file is executed directly, not when another file imports it.",
+    "deckId": "b1-modules"
+  },
+  {
+    "id": "b1-l1-fc2",
+    "type": "flashcard",
+    "title": "sys.path purpose",
+    "prompt": "Recall what sys.path controls.",
+    "difficulty": "intermediate",
+    "concepts": ["modules", "sys"],
+    "points": 5,
+    "hints": ["Import search order", "List of directories"],
+    "solution": "The list of directories Python searches when importing modules.",
+    "explanation": "Module search path.",
+    "sources": ["python-tutorial"],
+    "front": "What does `sys.path` contain?",
+    "back": "The list of directory paths Python searches in order when executing an `import` statement.",
+    "deckId": "b1-modules"
+  }
+]

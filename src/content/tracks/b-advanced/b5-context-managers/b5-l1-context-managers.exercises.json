@@ -1,0 +1,70 @@
+[
+  {
+    "id": "b5-l1-ex1",
+    "type": "code",
+    "title": "Build a Context Manager With contextlib",
+    "prompt": "Using @contextmanager, write managed_list(target) that appends 'START' to target on enter, yields target, and in finally appends 'END' to target.",
+    "difficulty": "intermediate",
+    "concepts": ["contextmanager", "try", "finally"],
+    "points": 15,
+    "hints": [
+      "Decorate with @contextmanager.",
+      "Append 'START', then try: yield target finally: target.append('END')."
+    ],
+    "solution": "from contextlib import contextmanager\n\n@contextmanager\ndef managed_list(target):\n    target.append('START')\n    try:\n        yield target\n    finally:\n        target.append('END')",
+    "explanation": "try/finally around yield guarantees 'END' is appended even if an exception occurs inside the with block.",
+    "sources": ["python-tutorial"],
+    "starterCode": "from contextlib import contextmanager\n\n@contextmanager\ndef managed_list(target):\n    # implement setup, yield, and finally cleanup\n    pass\n",
+    "visibleTests": "log = []\nwith managed_list(log) as l:\n    l.append('BODY')\nassert log == ['START', 'BODY', 'END']",
+    "hiddenTests": "log2 = []\ntry:\n    with managed_list(log2):\n        raise ValueError('boom')\nexcept ValueError:\n    pass\nassert log2 == ['START', 'END']"
+  },
+  {
+    "id": "b5-l1-ex2",
+    "type": "predict",
+    "title": "Predict Context Manager Execution Order",
+    "prompt": "Type the exact 3 lines printed by the code.",
+    "difficulty": "intermediate",
+    "concepts": ["with", "contextmanager"],
+    "points": 10,
+    "hints": [
+      "Before yield runs first, then the with body, then finally."
+    ],
+    "solution": "open\nwork\nclose",
+    "explanation": "Setup runs before the with body, and finally runs as the with block exits.",
+    "sources": ["python-tutorial"],
+    "code": "from contextlib import contextmanager\n@contextmanager\ndef res():\n    print('open')\n    try:\n        yield\n    finally:\n        print('close')\nwith res():\n    print('work')",
+    "expectedOutput": "open\nwork\nclose"
+  },
+  {
+    "id": "b5-l1-fc1",
+    "type": "flashcard",
+    "title": "Context manager dunder methods",
+    "prompt": "Recall the two methods of the context manager protocol.",
+    "difficulty": "intermediate",
+    "concepts": ["with"],
+    "points": 5,
+    "hints": ["Enter and Exit"],
+    "solution": "__enter__ and __exit__",
+    "explanation": "Context manager protocol.",
+    "sources": ["python-lang-ref"],
+    "front": "Which two dunder methods must a class implement to work with a `with` statement?",
+    "back": "`__enter__` and `__exit__`",
+    "deckId": "b5-context"
+  },
+  {
+    "id": "b5-l1-fc2",
+    "type": "flashcard",
+    "title": "@contextmanager cleanup",
+    "prompt": "Recall why try/finally is needed in @contextmanager.",
+    "difficulty": "intermediate",
+    "concepts": ["contextlib"],
+    "points": 5,
+    "hints": ["Exceptions inside with block"],
+    "solution": "Ensures cleanup runs even if an exception is raised inside the with block.",
+    "explanation": "Safe resource release.",
+    "sources": ["python-tutorial"],
+    "front": "Why should `yield` be wrapped in `try / finally` inside a `@contextmanager` function?",
+    "back": "So cleanup code in `finally` still runs even if an exception occurs inside the `with` block.",
+    "deckId": "b5-context"
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "c11-l1-ex1",
+    "type": "code",
+    "title": "Build a Compact DataFrame Profiler",
+    "prompt": "Write profile_df(df) returning {'rows': int, 'cols': int, 'nulls': int, 'dupes': int} using df.shape, int(df.isna().sum().sum()), and int(df.duplicated().sum()).",
+    "difficulty": "intermediate",
+    "concepts": ["eda", "pandas"],
+    "points": 15,
+    "hints": [
+      "rows, cols = df.shape",
+      "nulls = int(df.isna().sum().sum())",
+      "dupes = int(df.duplicated().sum())"
+    ],
+    "solution": "import pandas as pd\n\ndef profile_df(df):\n    rows, cols = df.shape\n    return {\n        'rows': rows,\n        'cols': cols,\n        'nulls': int(df.isna().sum().sum()),\n        'dupes': int(df.duplicated().sum()),\n    }",
+    "explanation": "A reusable profiler gives an instant health check on any DataFrame.",
+    "sources": ["pandas-docs"],
+    "starterCode": "import pandas as pd\n\ndef profile_df(df):\n    # return {'rows': ..., 'cols': ..., 'nulls': ..., 'dupes': ...}\n    pass\n",
+    "visibleTests": "df = pd.DataFrame({'a': [1, 1, None], 'b': ['x', 'x', 'y']})\nassert profile_df(df) == {'rows': 3, 'cols': 2, 'nulls': 1, 'dupes': 1}",
+    "hiddenTests": "assert profile_df(pd.DataFrame({'a': [1]})) == {'rows': 1, 'cols': 1, 'nulls': 0, 'dupes': 0}"
+  },
+  {
+    "id": "c11-l1-fc1",
+    "type": "flashcard",
+    "title": "Categorical frequency counts",
+    "prompt": "Recall the pandas method for category counts.",
+    "difficulty": "intermediate",
+    "concepts": ["eda", "pandas"],
+    "points": 5,
+    "hints": ["value_counts()"],
+    "solution": "df['col'].value_counts(dropna=False)",
+    "explanation": "Categorical profiling in pandas.",
+    "sources": ["pandas-docs"],
+    "front": "How do you count occurrences of each category (including missing values) in a pandas column?",
+    "back": "`df[\"col\"].value_counts(dropna=False)`",
+    "deckId": "c11-eda"
+  },
+  {
+    "id": "c11-l1-fc2",
+    "type": "flashcard",
+    "title": "Count duplicate rows",
+    "prompt": "Recall how to count duplicate rows in pandas.",
+    "difficulty": "intermediate",
+    "concepts": ["eda", "pandas"],
+    "points": 5,
+    "hints": ["duplicated().sum()"],
+    "solution": "df.duplicated().sum()",
+    "explanation": "Duplicate check in EDA.",
+    "sources": ["pandas-docs"],
+    "front": "How do you count duplicate rows in a DataFrame `df`?",
+    "back": "`df.duplicated().sum()`",
+    "deckId": "c11-eda"
+  }
+]

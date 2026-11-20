@@ -1,0 +1,14 @@
+{
+  "id": "a1-setup",
+  "track": "a-foundations",
+  "title": "A1: Setup, Anatomy, and First Program",
+  "order": 1,
+  "summary": "Understand what Python is, how the interpreter works, how it compares to Java/PHP/JS, shell commands, imports, and your first error-free scripts.",
+  "prerequisites": [],
+  "lessons": [
+    "a1-l1-what-is-python",
+    "a1-l2-setup-shell-and-anatomy",
+    "a1-l3-first-program-and-errors"
+  ],
+  "packages": []
+}

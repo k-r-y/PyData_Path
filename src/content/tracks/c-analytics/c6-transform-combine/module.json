@@ -1,0 +1,10 @@
+{
+  "id": "c6-transform-combine",
+  "track": "c-analytics",
+  "title": "C6: Transform and Combine",
+  "order": 6,
+  "summary": "Aggregate with groupby and pivot_table, and combine tables with merge and concat.",
+  "prerequisites": ["c5-data-cleaning"],
+  "lessons": ["c6-l1-groupby-merge-pivot"],
+  "packages": ["numpy", "pandas"]
+}

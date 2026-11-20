@@ -1,0 +1,81 @@
+[
+  {
+    "id": "c1-l1-ex1",
+    "type": "quiz",
+    "title": "Classify Data Types and Quality Issues",
+    "prompt": "Answer the following questions on data classification and privacy.",
+    "difficulty": "beginner",
+    "concepts": ["data-types", "data-quality", "ethics"],
+    "points": 15,
+    "hints": ["Ordinal has a natural order; nominal does not."],
+    "solution": "Q1: Ordinal; Q2: Completeness & Consistency",
+    "explanation": "Satisfaction ratings have an order (ordinal), and missing values affect completeness.",
+    "sources": ["openintro-stats"],
+    "questions": [
+      {
+        "question": "A survey records course satisfaction as 'Low', 'Medium', or 'High'. What type of variable is this?",
+        "options": ["Nominal categorical", "Ordinal categorical", "Continuous numerical"],
+        "correct": [1],
+        "explanation": "Categories with a meaningful order are ordinal."
+      },
+      {
+        "question": "A student table has 20% blank email cells and mixes '2026-01-05' with '05/01/2026'. Which two quality dimensions are affected?",
+        "options": ["Completeness", "Consistency", "Encryption"],
+        "correct": [0, 1],
+        "explanation": "Blank cells reduce completeness; mixed date formats reduce consistency."
+      }
+    ]
+  },
+  {
+    "id": "c1-l1-ex2",
+    "type": "code",
+    "title": "Data Quality Audit Script",
+    "prompt": "Write audit_rows(rows) that returns a dict {'total': int, 'missing_price': int, 'unique_skus': int} for a list of dicts like [{'sku': 'A1', 'price': 10}, {'sku': 'A1', 'price': None}].",
+    "difficulty": "beginner",
+    "concepts": ["data-quality", "dict", "set"],
+    "points": 15,
+    "hints": [
+      "Count rows with len(rows).",
+      "Count missing_price where r.get('price') is None.",
+      "Count unique_skus with len({r['sku'] for r in rows})."
+    ],
+    "solution": "def audit_rows(rows):\n    return {\n        'total': len(rows),\n        'missing_price': sum(1 for r in rows if r.get('price') is None),\n        'unique_skus': len({r['sku'] for r in rows}),\n    }",
+    "explanation": "Quick quality audits quantify missing values and duplicate keys before analysis.",
+    "sources": ["python-data-analysis"],
+    "starterCode": "def audit_rows(rows):\n    # return {'total': ..., 'missing_price': ..., 'unique_skus': ...}\n    pass\n",
+    "visibleTests": "data = [{'sku': 'A1', 'price': 10}, {'sku': 'A1', 'price': None}, {'sku': 'B2', 'price': 5}]\nassert audit_rows(data) == {'total': 3, 'missing_price': 1, 'unique_skus': 2}",
+    "hiddenTests": "assert audit_rows([]) == {'total': 0, 'missing_price': 0, 'unique_skus': 0}"
+  },
+  {
+    "id": "c1-l1-fc1",
+    "type": "flashcard",
+    "title": "5 stages of analytics",
+    "prompt": "Recall the 5 stages of the analytics workflow.",
+    "difficulty": "beginner",
+    "concepts": ["analytics-process"],
+    "points": 5,
+    "hints": ["Q-D-C-A-C"],
+    "solution": "Question, Data, Clean, Analyze, Communicate.",
+    "explanation": "End-to-end analytics lifecycle.",
+    "sources": ["python-data-analysis"],
+    "front": "What are the 5 stages of the analytics process?",
+    "back": "Question -> Data -> Clean -> Analyze -> Communicate.",
+    "deckId": "c1-analytics"
+  },
+  {
+    "id": "c1-l1-fc2",
+    "type": "flashcard",
+    "title": "Nominal vs Ordinal",
+    "prompt": "Contrast nominal and ordinal variables.",
+    "difficulty": "beginner",
+    "concepts": ["data-types"],
+    "points": 5,
+    "hints": ["Order vs no order"],
+    "solution": "Nominal has no natural order; ordinal has a meaningful rank order.",
+    "explanation": "Categorical variable subtypes.",
+    "sources": ["openintro-stats"],
+    "front": "How do nominal and ordinal categorical variables differ?",
+    "back": "Nominal categories have no intrinsic order (e.g., department); ordinal categories have a meaningful order (e.g., Low < Medium < High).",
+    "deckId": "c1-analytics"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "id": "c2-sql-sqlite",
+  "track": "c-analytics",
+  "title": "C2: SQL with SQLite",
+  "order": 2,
+  "summary": "Query relational tables with SELECT, WHERE, ORDER BY, GROUP BY, HAVING, JOINs, subqueries, and Python's sqlite3 module.",
+  "prerequisites": ["c1-analytics-process"],
+  "lessons": ["c2-l1-sql-and-sqlite3"],
+  "packages": []
+}

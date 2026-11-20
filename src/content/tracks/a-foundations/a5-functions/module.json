@@ -1,0 +1,10 @@
+{
+  "id": "a5-functions",
+  "track": "a-foundations",
+  "title": "A5: Functions",
+  "order": 5,
+  "summary": "Write reusable functions with parameters, return values, default and keyword arguments, local/global scope, and docstrings.",
+  "prerequisites": ["a4-control-flow"],
+  "lessons": ["a5-l1-functions-and-scope"],
+  "packages": []
+}

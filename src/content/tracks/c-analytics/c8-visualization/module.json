@@ -1,0 +1,10 @@
+{
+  "id": "c8-visualization",
+  "track": "c-analytics",
+  "title": "C8: Data Visualization",
+  "order": 8,
+  "summary": "Choose the right chart type, build labeled plots with Matplotlib, understand seaborn, and avoid misleading chart pitfalls.",
+  "prerequisites": ["c7-time-series"],
+  "lessons": ["c8-l1-charts-and-matplotlib"],
+  "packages": ["matplotlib"]
+}

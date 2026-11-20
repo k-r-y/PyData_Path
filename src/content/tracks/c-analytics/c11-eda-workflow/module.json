@@ -1,0 +1,10 @@
+{
+  "id": "c11-eda-workflow",
+  "track": "c-analytics",
+  "title": "C11: Exploratory Data Analysis Workflow",
+  "order": 11,
+  "summary": "Follow a structured EDA checklist: profiling shape/types/nulls, univariate & bivariate checks, and documenting decisions.",
+  "prerequisites": ["c10-statistical-inference"],
+  "lessons": ["c11-l1-structured-eda"],
+  "packages": ["numpy", "pandas"]
+}

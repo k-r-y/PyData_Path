@@ -1,0 +1,70 @@
+[
+  {
+    "id": "b4-l1-ex1",
+    "type": "code",
+    "title": "Mini-Project: Logging & Timing Decorator",
+    "prompt": "Write a decorator log_calls(func) using functools.wraps that appends func.__name__ to a global list call_log each time the decorated function runs, and returns the original function's return value.",
+    "difficulty": "intermediate",
+    "concepts": ["decorators", "functools", "args", "kwargs"],
+    "points": 20,
+    "hints": [
+      "Initialize call_log = [].",
+      "Inside wrapper(*args, **kwargs): call_log.append(func.__name__) and return func(*args, **kwargs)."
+    ],
+    "solution": "import functools\n\ncall_log = []\n\ndef log_calls(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        call_log.append(func.__name__)\n        return func(*args, **kwargs)\n    return wrapper",
+    "explanation": "functools.wraps preserves func.__name__, and *args/**kwargs forward all arguments.",
+    "sources": ["python-tutorial"],
+    "starterCode": "import functools\n\ncall_log = []\n\ndef log_calls(func):\n    # implement decorator\n    pass\n",
+    "visibleTests": "@log_calls\ndef double(x):\n    return x * 2\nassert double(5) == 10\nassert double.__name__ == 'double'\nassert call_log == ['double']",
+    "hiddenTests": "assert double(3) == 6 and len(call_log) == 2"
+  },
+  {
+    "id": "b4-l1-ex2",
+    "type": "predict",
+    "title": "Predict *args and **kwargs Types",
+    "prompt": "Type the exact output printed by the function call.",
+    "difficulty": "intermediate",
+    "concepts": ["args", "kwargs"],
+    "points": 10,
+    "hints": [
+      "*args becomes a tuple; **kwargs becomes a dict."
+    ],
+    "solution": "tuple dict",
+    "explanation": "*args packs positional args into a tuple, and **kwargs packs keyword args into a dict.",
+    "sources": ["python-tutorial"],
+    "code": "def inspect(*args, **kwargs):\n    print(type(args).__name__, type(kwargs).__name__)\ninspect(1, 2, a=3)",
+    "expectedOutput": "tuple dict"
+  },
+  {
+    "id": "b4-l1-fc1",
+    "type": "flashcard",
+    "title": "*args and **kwargs types",
+    "prompt": "Recall the container types of *args and **kwargs.",
+    "difficulty": "intermediate",
+    "concepts": ["args", "kwargs"],
+    "points": 5,
+    "hints": ["tuple and dict"],
+    "solution": "args is a tuple; kwargs is a dict.",
+    "explanation": "Variadic function parameters.",
+    "sources": ["python-tutorial"],
+    "front": "Inside `def f(*args, **kwargs):`, what types are `args` and `kwargs`?",
+    "back": "`args` is a `tuple` of positional arguments; `kwargs` is a `dict` of keyword arguments.",
+    "deckId": "b4-decorators"
+  },
+  {
+    "id": "b4-l1-fc2",
+    "type": "flashcard",
+    "title": "functools.wraps purpose",
+    "prompt": "Recall why @functools.wraps is used.",
+    "difficulty": "intermediate",
+    "concepts": ["decorators", "functools"],
+    "points": 5,
+    "hints": ["Preserves __name__ and __doc__"],
+    "solution": "Copies __name__, __doc__, and metadata from the wrapped function.",
+    "explanation": "Metadata preservation in decorators.",
+    "sources": ["python-tutorial"],
+    "front": "What does `@functools.wraps(func)` do inside a decorator?",
+    "back": "It copies the original function's metadata (`__name__`, `__doc__`, etc.) onto the wrapper function.",
+    "deckId": "b4-decorators"
+  }
+]

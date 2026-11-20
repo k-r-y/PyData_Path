@@ -1,0 +1,52 @@
+[
+  {
+    "id": "c9-l1-ex1",
+    "type": "code",
+    "title": "Compute Mean, Median, and IQR",
+    "prompt": "Given data = np.array([10, 12, 14, 15, 18, 20, 100]), compute med = float(np.median(data)) and iqr = float(np.percentile(data, 75) - np.percentile(data, 25)).",
+    "difficulty": "intermediate",
+    "concepts": ["median", "iqr", "numpy"],
+    "points": 15,
+    "hints": [
+      "Use np.median(data) and np.percentile(data, 75) - np.percentile(data, 25)."
+    ],
+    "solution": "import numpy as np\ndata = np.array([10, 12, 14, 15, 18, 20, 100])\nmed = float(np.median(data))\niqr = float(np.percentile(data, 75) - np.percentile(data, 25))",
+    "explanation": "Median and IQR resist the extreme outlier 100.",
+    "sources": ["openintro-stats", "numpy-docs"],
+    "starterCode": "import numpy as np\ndata = np.array([10, 12, 14, 15, 18, 20, 100])\n# Compute med and iqr\n",
+    "visibleTests": "assert med == 15.0\nassert iqr == 6.0",
+    "hiddenTests": "assert isinstance(med, float) and isinstance(iqr, float)"
+  },
+  {
+    "id": "c9-l1-fc1",
+    "type": "flashcard",
+    "title": "Mean vs Median on skewed data",
+    "prompt": "Recall which center metric is robust to outliers.",
+    "difficulty": "intermediate",
+    "concepts": ["statistics"],
+    "points": 5,
+    "hints": ["50th percentile"],
+    "solution": "The median (and IQR for spread) are robust to outliers and skew.",
+    "explanation": "Robust summary statistics.",
+    "sources": ["openintro-stats"],
+    "front": "Which measure of center is less affected by extreme outliers or skewed distributions?",
+    "back": "The **median** (paired with IQR for spread).",
+    "deckId": "c9-stats"
+  },
+  {
+    "id": "c9-l1-fc2",
+    "type": "flashcard",
+    "title": "Pearson r range",
+    "prompt": "Recall the range and meaning of Pearson r.",
+    "difficulty": "intermediate",
+    "concepts": ["correlation"],
+    "points": 5,
+    "hints": ["-1 to +1, linear only"],
+    "solution": "Between -1 and +1; measures linear association, not causation.",
+    "explanation": "Correlation coefficient properties.",
+    "sources": ["openintro-stats"],
+    "front": "What range of values can Pearson's `r` take, and what does it measure?",
+    "back": "`-1` to `+1`; it measures the strength and direction of a **linear** relationship (not causation).",
+    "deckId": "c9-stats"
+  }
+]

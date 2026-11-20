@@ -1,0 +1,74 @@
+[
+  {
+    "id": "c2-l1-ex1",
+    "type": "code",
+    "title": "Query IS Enrollments With sqlite3",
+    "prompt": "Using the pre-created sqlite3 cursor cur (table enrollments(student TEXT, dept TEXT, score REAL)), write a query and store in top_depts the list of (dept, avg_score) tuples for departments with AVG(score) >= 85, ordered by avg_score DESC.",
+    "difficulty": "intermediate",
+    "concepts": ["sql", "GROUP BY", "HAVING", "sqlite3"],
+    "points": 20,
+    "hints": [
+      "Use SELECT dept, AVG(score) FROM enrollments GROUP BY dept HAVING AVG(score) >= 85 ORDER BY AVG(score) DESC.",
+      "Call .fetchall() to get a list of tuples."
+    ],
+    "solution": "import sqlite3\nconn = sqlite3.connect(':memory:')\ncur = conn.cursor()\ncur.execute('CREATE TABLE enrollments (student TEXT, dept TEXT, score REAL)')\ncur.executemany('INSERT INTO enrollments VALUES (?, ?, ?)', [('Ana', 'IS', 90), ('Ben', 'IS', 86), ('Cara', 'CS', 78)])\ntop_depts = cur.execute('SELECT dept, AVG(score) FROM enrollments GROUP BY dept HAVING AVG(score) >= 85 ORDER BY AVG(score) DESC').fetchall()",
+    "explanation": "GROUP BY aggregates per department, HAVING filters aggregated averages, and ORDER BY sorts descending.",
+    "sources": ["sqlite-docs", "python-tutorial"],
+    "starterCode": "import sqlite3\nconn = sqlite3.connect(':memory:')\ncur = conn.cursor()\ncur.execute('CREATE TABLE enrollments (student TEXT, dept TEXT, score REAL)')\ncur.executemany('INSERT INTO enrollments VALUES (?, ?, ?)', [('Ana', 'IS', 90), ('Ben', 'IS', 86), ('Cara', 'CS', 78)])\n# Query top_depts using GROUP BY and HAVING\n",
+    "visibleTests": "assert top_depts == [('IS', 88.0)]",
+    "hiddenTests": "assert len(top_depts) == 1"
+  },
+  {
+    "id": "c2-l1-ex2",
+    "type": "fillblank",
+    "title": "Parameterized SQLite Query",
+    "prompt": "Fill in the blanks to filter by dept safely using a parameter placeholder.",
+    "difficulty": "intermediate",
+    "concepts": ["sqlite3", "sql"],
+    "points": 10,
+    "hints": [
+      "SQLite uses ? as the parameter placeholder.",
+      "Pass a 1-element tuple ('IS',)."
+    ],
+    "solution": "cur.execute('SELECT * FROM enrollments WHERE dept = ?', ('IS',))",
+    "explanation": "Passing parameters as a tuple with ? prevents SQL injection.",
+    "sources": ["python-tutorial"],
+    "codeWithBlanks": "cur.execute('SELECT * FROM enrollments {{1}} dept = {{2}}', ('IS',))",
+    "answers": {
+      "1": ["WHERE"],
+      "2": ["?"]
+    }
+  },
+  {
+    "id": "c2-l1-fc1",
+    "type": "flashcard",
+    "title": "WHERE vs HAVING",
+    "prompt": "Contrast WHERE and HAVING in SQL.",
+    "difficulty": "intermediate",
+    "concepts": ["sql"],
+    "points": 5,
+    "hints": ["Before vs after GROUP BY"],
+    "solution": "WHERE filters rows before GROUP BY; HAVING filters groups after GROUP BY.",
+    "explanation": "SQL execution order.",
+    "sources": ["sqlite-docs"],
+    "front": "What is the difference between `WHERE` and `HAVING` in SQL?",
+    "back": "`WHERE` filters individual rows before `GROUP BY`; `HAVING` filters aggregated groups after `GROUP BY`.",
+    "deckId": "c2-sql"
+  },
+  {
+    "id": "c2-l1-fc2",
+    "type": "flashcard",
+    "title": "INNER JOIN vs LEFT JOIN",
+    "prompt": "Contrast INNER JOIN and LEFT JOIN.",
+    "difficulty": "intermediate",
+    "concepts": ["sql", "join"],
+    "points": 5,
+    "hints": ["Unmatched left rows"],
+    "solution": "INNER JOIN keeps only matched rows; LEFT JOIN keeps all left-table rows (with NULLs if unmatched).",
+    "explanation": "SQL join semantics.",
+    "sources": ["sqlite-docs"],
+    "front": "How does `LEFT JOIN` differ from `INNER JOIN`?",
+    "back": "`INNER JOIN` returns only matching rows from both tables; `LEFT JOIN` keeps all rows from the left table, filling unmatched right columns with `NULL`.",
+    "deckId": "c2-sql"
+  }
+]

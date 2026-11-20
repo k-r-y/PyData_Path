@@ -1,0 +1,54 @@
+[
+  {
+    "id": "c14-l1-ex1",
+    "type": "code",
+    "title": "Capstone Pipeline Helper",
+    "prompt": "Write build_region_report(df) that adds revenue = df['units'] * df['price'] and returns a DataFrame grouped by 'region' with columns ['total_revenue', 'avg_units'] sorted by total_revenue descending.",
+    "difficulty": "advanced",
+    "concepts": ["pandas", "groupby", "capstone"],
+    "points": 25,
+    "hints": [
+      "Copy df first: out = df.copy()",
+      "out['revenue'] = out['units'] * out['price']",
+      "out.groupby('region').agg(total_revenue=('revenue', 'sum'), avg_units=('units', 'mean')).sort_values('total_revenue', ascending=False)"
+    ],
+    "solution": "import pandas as pd\n\ndef build_region_report(df):\n    out = df.copy()\n    out['revenue'] = out['units'] * out['price']\n    return out.groupby('region').agg(total_revenue=('revenue', 'sum'), avg_units=('units', 'mean')).sort_values('total_revenue', ascending=False)",
+    "explanation": "Named aggregations in groupby().agg() produce clean summary tables ready for reporting.",
+    "sources": ["pandas-docs"],
+    "starterCode": "import pandas as pd\n\ndef build_region_report(df):\n    # return summary DataFrame indexed by region\n    pass\n",
+    "visibleTests": "sample = pd.DataFrame({'region': ['North', 'South', 'North'], 'units': [3, 10, 5], 'price': [20.0, 4.0, 10.0]})\nrep = build_region_report(sample)\nassert list(rep.index) == ['North', 'South']\nassert rep.loc['North', 'total_revenue'] == 110.0\nassert rep.loc['North', 'avg_units'] == 4.0",
+    "hiddenTests": "assert rep.loc['South', 'total_revenue'] == 40.0"
+  },
+  {
+    "id": "c14-l1-fc1",
+    "type": "flashcard",
+    "title": "Capstone deliverables",
+    "prompt": "Recall the core stages of the capstone.",
+    "difficulty": "advanced",
+    "concepts": ["capstone"],
+    "points": 5,
+    "hints": ["Question -> Clean -> Analyze -> Visualize -> Memo"],
+    "solution": "Question, clean/validate, analyze, visualize, and communicate via a findings memo with limitations.",
+    "explanation": "End-to-end analytics portfolio workflow.",
+    "sources": ["python-data-analysis"],
+    "front": "What are the five key deliverables of an end-to-end analytics capstone?",
+    "back": "Clear question, documented data cleaning, grouped/statistical analysis, labeled charts, and a BLUF findings memo with limitations.",
+    "deckId": "c14-capstone"
+  },
+  {
+    "id": "c14-l1-fc2",
+    "type": "flashcard",
+    "title": "Why state limitations",
+    "prompt": "Recall why limitations belong in every analysis.",
+    "difficulty": "advanced",
+    "concepts": ["capstone", "ethics"],
+    "points": 5,
+    "hints": ["Credibility and scope"],
+    "solution": "Prevents overclaiming and documents sample/measurement boundaries honestly.",
+    "explanation": "Scientific & analytical integrity.",
+    "sources": ["openintro-stats"],
+    "front": "Why should every analytics memo include a Limitations section?",
+    "back": "It prevents stakeholders from over-generalizing results beyond what the data supports and builds trust.",
+    "deckId": "c14-capstone"
+  }
+]

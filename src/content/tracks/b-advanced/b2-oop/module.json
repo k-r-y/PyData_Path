@@ -1,0 +1,10 @@
+{
+  "id": "b2-oop",
+  "track": "b-advanced",
+  "title": "B2: Object-Oriented Programming",
+  "order": 2,
+  "summary": "Model entities with classes, __init__, methods, inheritance, composition, dunder methods, and @dataclass.",
+  "prerequisites": ["b1-modules-packages"],
+  "lessons": ["b2-l1-classes-and-dataclasses"],
+  "packages": []
+}

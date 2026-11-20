@@ -1,0 +1,10 @@
+{
+  "id": "a6-data-structures",
+  "track": "a-foundations",
+  "title": "A6: Data Structures",
+  "order": 6,
+  "summary": "Store and organize collections with lists, tuples, dictionaries, and sets, plus nested records and mutability.",
+  "prerequisites": ["a5-functions"],
+  "lessons": ["a6-l1-lists-tuples-dicts-sets"],
+  "packages": []
+}

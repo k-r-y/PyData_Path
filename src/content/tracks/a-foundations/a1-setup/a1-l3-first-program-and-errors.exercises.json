@@ -1,0 +1,42 @@
+[
+  {
+    "id": "a1-l3-ex1",
+    "type": "code",
+    "title": "IS Inventory Summary With print() and sep",
+    "prompt": "Print a formatted inventory line for item_id = 'SKU-104', item_name = 'Barcode Scanner', and stock = 12. First print 'SKU-104 | Barcode Scanner | 12' using print() with sep=' | '. Also store the integer 12 in stock.",
+    "difficulty": "beginner",
+    "concepts": ["print", "sep", "variables"],
+    "points": 10,
+    "hints": [
+      "Define item_id = 'SKU-104', item_name = 'Barcode Scanner', and stock = 12.",
+      "Call print(item_id, item_name, stock, sep=' | ').",
+      "Check that the separator has spaces around the pipe: ' | '."
+    ],
+    "solution": "item_id = 'SKU-104'\nitem_name = 'Barcode Scanner'\nstock = 12\nprint(item_id, item_name, stock, sep=' | ')",
+    "explanation": "Passing multiple arguments to print() with sep=' | ' joins them cleanly without manual string concatenation.",
+    "sources": ["python-tutorial"],
+    "starterCode": "item_id = 'SKU-104'\nitem_name = 'Barcode Scanner'\nstock = 12\n# Print them joined by ' | '\n",
+    "visibleTests": "assert item_id == 'SKU-104'\nassert stock == 12\nassert ' | ' in __pdp_stdout__.getvalue() if '__pdp_stdout__' in globals() else True",
+    "hiddenTests": "assert isinstance(stock, int)"
+  },
+  {
+    "id": "a1-l3-ex2",
+    "type": "code",
+    "title": "Fix the Broken Enrollment Script",
+    "prompt": "The starter code below has a TypeError and a NameError. Fix the code so that it defines total_students = 45 and prints 'Total enrolled: 45' without raising any error.",
+    "difficulty": "beginner",
+    "concepts": ["debugging", "TypeError", "NameError"],
+    "points": 15,
+    "hints": [
+      "Check the variable spelling: total_students vs total_student.",
+      "Do not add a string and an integer with + inside print().",
+      "Use print('Total enrolled:', total_students) or str(total_students)."
+    ],
+    "solution": "total_students = 45\nprint('Total enrolled:', total_students)",
+    "explanation": "Fixing the variable typo resolves NameError, and using a comma in print() (or str()) resolves TypeError.",
+    "sources": ["python-tutorial", "python-lang-ref"],
+    "starterCode": "total_students = 45\nprint('Total enrolled: ' + total_student)\n",
+    "visibleTests": "assert total_students == 45",
+    "hiddenTests": "assert isinstance(total_students, int)"
+  }
+]

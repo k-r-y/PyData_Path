@@ -1,0 +1,10 @@
+{
+  "id": "b3-iterators-generators",
+  "track": "b-advanced",
+  "title": "B3: Iterators and Generators",
+  "order": 3,
+  "summary": "Stream data lazily using the iteration protocol, yield, generator expressions, and itertools.",
+  "prerequisites": ["b2-oop"],
+  "lessons": ["b3-l1-iterators-generators"],
+  "packages": []
+}

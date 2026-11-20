@@ -1,0 +1,13 @@
+{
+  "id": "a4-control-flow",
+  "track": "a-foundations",
+  "title": "A4: Control Flow",
+  "order": 4,
+  "summary": "Direct program execution using if/elif/else conditionals, for and while loops, range(), break, and continue.",
+  "prerequisites": ["a3-strings-io"],
+  "lessons": [
+    "a4-l1-conditionals",
+    "a4-l2-loops-range-break-continue"
+  ],
+  "packages": []
+}

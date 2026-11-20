@@ -1,0 +1,10 @@
+{
+  "id": "c1-analytics-process",
+  "track": "c-analytics",
+  "title": "C1: The Analytics Process",
+  "order": 1,
+  "summary": "Frame analytical questions, classify data types, evaluate data quality dimensions, and apply data ethics and privacy principles.",
+  "prerequisites": ["b9-stdlib-analysts"],
+  "lessons": ["c1-l1-analytics-lifecycle"],
+  "packages": []
+}

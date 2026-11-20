@@ -1,0 +1,120 @@
+[
+  {
+    "id": "a4-l1-ex1",
+    "type": "predict",
+    "title": "Predict Branch Order",
+    "prompt": "Read the conditional chain carefully and type the exact output Python will print.",
+    "difficulty": "beginner",
+    "concepts": ["if", "elif", "branch-order"],
+    "points": 10,
+    "hints": [
+      "Python checks conditions from top to bottom.",
+      "Only the FIRST matching branch runs.",
+      "85 >= 70 is True, so it stops there."
+    ],
+    "solution": "Pass",
+    "explanation": "Because score >= 70 is checked before score >= 80, 85 matches the first branch and prints 'Pass'.",
+    "sources": ["python-tutorial"],
+    "code": "score = 85\nif score >= 70:\n    print(\"Pass\")\nelif score >= 80:\n    print(\"Merit\")\nelse:\n    print(\"Review\")",
+    "expectedOutput": "Pass"
+  },
+  {
+    "id": "a4-l1-ex2",
+    "type": "fillblank",
+    "title": "Complete the elif and Equality Check",
+    "prompt": "Fill in the blanks to check if tier equals 'gold' and add an else-if branch for 'silver'.",
+    "difficulty": "beginner",
+    "concepts": ["elif", "comparison"],
+    "points": 10,
+    "hints": [
+      "Equality comparison uses ==.",
+      "Python's else-if keyword is elif.",
+      "Blank 1 is ==, Blank 2 is elif."
+    ],
+    "solution": "tier = \"silver\"\nif tier == \"gold\":\n    discount = 0.20\nelif tier == \"silver\":\n    discount = 0.10\nelse:\n    discount = 0.0",
+    "explanation": "Use == for equality and elif for chained conditional branches.",
+    "sources": ["python-tutorial"],
+    "codeWithBlanks": "tier = \"silver\"\nif tier {{1}} \"gold\":\n    discount = 0.20\n{{2}} tier == \"silver\":\n    discount = 0.10\nelse:\n    discount = 0.0",
+    "answers": {
+      "1": ["=="],
+      "2": ["elif"]
+    }
+  },
+  {
+    "id": "a4-l1-ex3",
+    "type": "parsons",
+    "title": "Indent and Order an Attendance Check",
+    "prompt": "Reorder and indent the lines so that if attendance >= 80, status is 'Eligible', otherwise 'At Risk'.",
+    "difficulty": "beginner",
+    "concepts": ["if", "else", "indentation"],
+    "points": 15,
+    "hints": [
+      "Define attendance = 75 first.",
+      "Indent the two status = ... lines by 1 level (4 spaces).",
+      "Keep if, else, and print at indent level 0."
+    ],
+    "solution": "attendance = 75\nif attendance >= 80:\n    status = \"Eligible\"\nelse:\n    status = \"At Risk\"\nprint(status)",
+    "explanation": "Statements inside if and else blocks must be indented by 4 spaces, while the final print runs after the block.",
+    "sources": ["python-tutorial", "pep8"],
+    "lines": [
+      "attendance = 75",
+      "if attendance >= 80:",
+      "    status = \"Eligible\"",
+      "else:",
+      "    status = \"At Risk\"",
+      "print(status)"
+    ]
+  },
+  {
+    "id": "a4-l1-ex4",
+    "type": "code",
+    "title": "IS Inventory Alert Classifier",
+    "prompt": "Given stock = 0 (or any integer), set alert to 'OUT_OF_STOCK' if stock <= 0, 'LOW_STOCK' if 1 <= stock <= 5, and 'OK' otherwise. Test your logic with stock = 3.",
+    "difficulty": "beginner",
+    "concepts": ["if", "elif", "else"],
+    "points": 15,
+    "hints": [
+      "Start with stock = 3.",
+      "Use if stock <= 0: ... elif stock <= 5: ... else: ...",
+      "Assign the string to a variable named alert."
+    ],
+    "solution": "stock = 3\nif stock <= 0:\n    alert = 'OUT_OF_STOCK'\nelif stock <= 5:\n    alert = 'LOW_STOCK'\nelse:\n    alert = 'OK'",
+    "explanation": "Checking <= 0 first, then <= 5 in an elif, handles negative/zero, low, and healthy stock cleanly.",
+    "sources": ["python-tutorial"],
+    "starterCode": "stock = 3\n# Set alert using if / elif / else\n",
+    "visibleTests": "assert alert == 'LOW_STOCK'",
+    "hiddenTests": "assert isinstance(alert, str)"
+  },
+  {
+    "id": "a4-l1-fc1",
+    "type": "flashcard",
+    "title": "Python else-if keyword",
+    "prompt": "Recall Python's keyword for else-if.",
+    "difficulty": "beginner",
+    "concepts": ["elif"],
+    "points": 5,
+    "hints": ["Four letters", "Not else if", "elif"],
+    "solution": "elif",
+    "explanation": "Python uses elif instead of else if.",
+    "sources": ["python-tutorial"],
+    "front": "What keyword does Python use instead of `else if`?",
+    "back": "`elif`",
+    "deckId": "a4-control-flow"
+  },
+  {
+    "id": "a4-l1-fc2",
+    "type": "flashcard",
+    "title": "First matching branch",
+    "prompt": "Recall how if/elif/else evaluates.",
+    "difficulty": "beginner",
+    "concepts": ["if", "elif"],
+    "points": 5,
+    "hints": ["Top to bottom", "Stops after one match", "Only the first True branch runs"],
+    "solution": "Only the first True branch executes.",
+    "explanation": "Mutually exclusive execution in if/elif/else.",
+    "sources": ["python-tutorial"],
+    "front": "If multiple conditions in an `if / elif / elif` chain are True, which ones run?",
+    "back": "Only the **first** True branch executes; all remaining `elif` and `else` branches are skipped.",
+    "deckId": "a4-control-flow"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "id": "c10-statistical-inference",
+  "track": "c-analytics",
+  "title": "C10: Statistical Inference",
+  "order": 10,
+  "summary": "Understand sampling, the Central Limit Theorem, confidence intervals, hypothesis testing, p-values, effect size, and scipy.stats.",
+  "prerequisites": ["c9-statistics-fundamentals"],
+  "lessons": ["c10-l1-inference-and-hypothesis-tests"],
+  "packages": ["numpy", "scipy"]
+}

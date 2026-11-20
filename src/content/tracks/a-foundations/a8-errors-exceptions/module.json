@@ -1,0 +1,10 @@
+{
+  "id": "a8-errors-exceptions",
+  "track": "a-foundations",
+  "title": "A8: Errors and Exceptions",
+  "order": 8,
+  "summary": "Handle runtime errors gracefully with try, except, else, finally, raise, and specific exception types.",
+  "prerequisites": ["a7-comprehensions-builtins"],
+  "lessons": ["a8-l1-try-except-raise"],
+  "packages": []
+}

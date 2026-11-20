@@ -1,0 +1,52 @@
+[
+  {
+    "id": "c7-l1-ex1",
+    "type": "code",
+    "title": "Rolling Average on Daily Sales",
+    "prompt": "Given s = pd.Series([10, 20, 30, 40], index=pd.date_range('2026-01-01', periods=4, freq='D')), compute rolling_2 = s.rolling(2).mean().tolist()[1:] (the valid 2-day rolling averages).",
+    "difficulty": "intermediate",
+    "concepts": ["rolling", "time-series"],
+    "points": 15,
+    "hints": [
+      "Call s.rolling(2).mean().tolist()[1:]."
+    ],
+    "solution": "import pandas as pd\ns = pd.Series([10, 20, 30, 40], index=pd.date_range('2026-01-01', periods=4, freq='D'))\nrolling_2 = s.rolling(2).mean().tolist()[1:]",
+    "explanation": "The first rolling(2) entry is NaN because 2 observations are needed; slicing [1:] gives [15.0, 25.0, 35.0].",
+    "sources": ["pandas-docs"],
+    "starterCode": "import pandas as pd\ns = pd.Series([10, 20, 30, 40], index=pd.date_range('2026-01-01', periods=4, freq='D'))\n# Compute rolling_2\n",
+    "visibleTests": "assert rolling_2 == [15.0, 25.0, 35.0]",
+    "hiddenTests": "assert len(rolling_2) == 3"
+  },
+  {
+    "id": "c7-l1-fc1",
+    "type": "flashcard",
+    "title": "resample() vs rolling()",
+    "prompt": "Contrast resample() and rolling().",
+    "difficulty": "intermediate",
+    "concepts": ["time-series"],
+    "points": 5,
+    "hints": ["Calendar buckets vs sliding window"],
+    "solution": "resample() groups into calendar frequency buckets; rolling() computes a sliding window over consecutive points.",
+    "explanation": "Time series aggregations.",
+    "sources": ["pandas-docs"],
+    "front": "How does `.resample()` differ from `.rolling()`?",
+    "back": "`.resample()` aggregates into time-frequency buckets (e.g., daily to monthly); `.rolling()` computes a sliding window across consecutive rows.",
+    "deckId": "c7-timeseries"
+  },
+  {
+    "id": "c7-l1-fc2",
+    "type": "flashcard",
+    "title": "pd.to_datetime",
+    "prompt": "Recall how to parse date strings in pandas.",
+    "difficulty": "intermediate",
+    "concepts": ["datetime"],
+    "points": 5,
+    "hints": ["pd.to_datetime"],
+    "solution": "pd.to_datetime(series, errors='coerce')",
+    "explanation": "Parsing dates in pandas.",
+    "sources": ["pandas-docs"],
+    "front": "Which pandas function converts a string column of dates into `datetime64` values?",
+    "back": "`pd.to_datetime()` (use `errors=\"coerce\"` for invalid dates).",
+    "deckId": "c7-timeseries"
+  }
+]
