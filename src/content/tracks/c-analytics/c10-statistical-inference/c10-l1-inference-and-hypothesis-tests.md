@@ -3,7 +3,7 @@ id: "c10-l1-inference-and-hypothesis-tests"
 moduleId: "c10-statistical-inference"
 title: "Sampling, CLT, Confidence Intervals, and Hypothesis Testing"
 order: 1
-estimatedMinutes: 24
+estimatedMinutes: 25
 difficulty: "advanced"
 objectives:
   - "Explain the Central Limit Theorem (CLT) and sampling variability"
@@ -17,12 +17,45 @@ tags: ["inference", "clt", "confidence-interval", "p-value", "scipy"]
 
 ## Concept
 
-- **Central Limit Theorem (CLT)**: As sample size `n` grows, the distribution of sample means approaches a normal distribution centered on the population mean, even if the underlying population is skewed [src:openintro-stats].
-- **95% Confidence Interval**: A range constructed so that across repeated random samples, ~95% of intervals capture the true population parameter [src:openintro-stats].
-- **Hypothesis Testing & p-value**: Under a null hypothesis (`H0`, e.g., no difference between Group A and Group B), the **p-value** is the probability of observing data at least as extreme as yours *assuming H0 is true* [src:openintro-stats]. It is **not** the probability that H0 is true!
-- **Effect Size**: With huge sample sizes, tiny trivial differences can yield `p < 0.05`. Always report practical effect size (such as mean difference) alongside p-values [src:openintro-stats].
+### 1. Sampling and the Central Limit Theorem (CLT)
 
-In Python, `scipy.stats.ttest_ind(group_a, group_b, equal_var=False)` performs Welch's two-sample t-test [src:scipy-docs].
+Different random samples from the same population yield slightly different sample means (**sampling variability**) [src:openintro-stats]. By the **Central Limit Theorem**, as sample size `n` grows, the distribution of sample means approaches a normal distribution centered on the population mean, even if the underlying population is skewed [src:openintro-stats].
+
+```python
+import numpy as np
+
+rng = np.random.default_rng(42)
+sample_means = [rng.exponential(scale=10, size=40).mean() for _ in range(100)]
+print("Mean of sample means:", round(float(np.mean(sample_means)), 2))
+```
+
+### 2. Confidence Intervals
+
+A **95% Confidence Interval** is a range constructed so that across repeated random samples, ~95% of intervals capture the true population parameter [src:openintro-stats].
+
+```python
+import numpy as np
+
+sample = np.array([22, 24, 21, 23, 25, 26, 20, 24])
+se = np.std(sample, ddof=1) / np.sqrt(len(sample))
+ci_low, ci_high = np.mean(sample) - 1.96 * se, np.mean(sample) + 1.96 * se
+print(f"Approx 95% CI: [{ci_low:.2f}, {ci_high:.2f}]")
+```
+
+### 3. Hypothesis Testing, p-values, and Effect Size
+
+Under a null hypothesis (`H0`, e.g., no difference between Group A and Group B), the **p-value** is the probability of observing data at least as extreme as yours *assuming H0 is true* [src:openintro-stats]. It is **not** the probability that H0 is true!
+
+Always report practical **effect size** (such as the difference in means) alongside p-values, because large samples can yield `p < 0.05` for tiny, unimportant differences [src:openintro-stats].
+
+```python
+from scipy import stats
+
+a = [22, 24, 21, 23, 25]
+b = [28, 30, 27, 29, 31]
+t_stat, p_val = stats.ttest_ind(b, a, equal_var=False)
+print(f"Diff: {sum(b)/len(b) - sum(a)/len(a):.1f}, p={p_val:.4f}")
+```
 
 Explanation: Explore the **Central Limit Theorem**, **Confidence Intervals**, and **p-value** tabs in the **Stats Simulators** page to see these ideas move in real time.
 

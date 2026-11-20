@@ -109,7 +109,7 @@ export function LessonPage() {
       >
         {!ideExpanded && (
           <div
-            className={`lg:h-full overflow-y-auto px-6 lg:px-8 py-6 lg:border-r border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#09090b] ${
+            className={`lg:h-full overflow-y-auto px-6 sm:px-10 lg:px-12 py-8 lg:border-r border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#09090b] ${
               mobileTab === 'theory' ? 'block' : 'hidden lg:block'
             }`}
           >
@@ -123,7 +123,7 @@ export function LessonPage() {
         )}
 
         <div
-          className={`lg:h-full min-h-[600px] lg:min-h-0 flex flex-col p-3 lg:p-4 bg-neutral-50 dark:bg-[#0c0c0e] relative ${
+          className={`lg:h-full min-h-[600px] lg:min-h-0 flex flex-col p-4 lg:p-6 bg-neutral-50 dark:bg-[#0c0c0e] relative ${
             mobileTab === 'practice' ? 'flex' : 'hidden lg:flex'
           }`}
         >

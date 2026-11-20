@@ -3,7 +3,7 @@ id: "c1-l1-analytics-lifecycle"
 moduleId: "c1-analytics-process"
 title: "The Analytics Workflow, Data Quality, and Ethics"
 order: 1
-estimatedMinutes: 15
+estimatedMinutes: 16
 difficulty: "beginner"
 objectives:
   - "Sequence the 5 stages of the analytics process: question, data, clean, analyze, communicate"
@@ -18,20 +18,43 @@ tags: ["analytics-process", "data-quality", "ethics", "privacy"]
 
 ## Concept
 
+### 1. The 5-Stage Analytics Process
+
 Effective data analytics follows a repeatable 5-stage cycle [src:python-data-analysis]:
-1. **Question**: Define a specific, measurable decision or question before touching code.
+1. **Question**: Define a specific, measurable decision before touching code.
 2. **Data**: Gather relevant data and verify its license and provenance.
 3. **Clean**: Inspect missing values, duplicates, types, and formatting errors.
 4. **Analyze**: Summarize, segment, visualize, and test hypotheses.
 5. **Communicate**: Present clear findings, limitations, and recommendations.
 
-### Types of Data & Quality Dimensions
+Explanation: Starting with a vague goal like "analyze sales" leads to aimless charts. Framing a concrete question like "Which product category had the highest return rate in Q1?" immediately tells you which columns and cleaning steps matter.
+
+### 2. Types of Data
 
 In statistics, variables are classified as **categorical** (nominal without order like department, or ordinal with order like `"Low" < "Med" < "High"`) or **numerical** (discrete counts or continuous measurements) [src:openintro-stats].
 
-Data quality is assessed across **completeness** (missing values), **accuracy** (correct values), **consistency** (uniform units and formats), and **timeliness** (up-to-date records). Always remove or mask personally identifiable information (PII) such as emails or student IDs before sharing notebooks or datasets.
+```python
+# Nominal vs Ordinal vs Numerical
+department = "IS"        # nominal categorical
+rating = "High"          # ordinal categorical (Low < Med < High)
+enrolled = 42            # discrete numerical
+gpa = 3.75               # continuous numerical
+```
 
-Explanation: Starting with a vague goal like "analyze sales" leads to aimless charts. Framing a concrete question like "Which product category had the highest return rate in Q1?" immediately tells you which columns and cleaning steps matter.
+### 3. Data Quality Dimensions & Ethics
+
+Data quality is assessed across **completeness** (missing values), **accuracy** (correct values), **consistency** (uniform units and formats), and **timeliness** (up-to-date records). Always remove or mask personally identifiable information (PII) such as emails or student IDs before sharing datasets.
+
+```python
+records = [
+    {"id": 1, "dept": "IS", "gpa": 3.5},
+    {"id": 2, "dept": "is", "gpa": None},
+]
+missing_gpa = sum(1 for r in records if r["gpa"] is None)
+print("Missing GPA count:", missing_gpa)
+```
+
+Explanation: Inconsistent casing (`"IS"` vs `"is"`) splits one group into two separate bars on a chart, which is why consistency checks come before analysis.
 
 ## Why it matters
 
@@ -40,7 +63,6 @@ Technical Python skills only create value when they answer real questions accura
 ## Worked example
 
 ```python
-# Framing a data quality check on a synthetic IS table
 records = [
     {"id": 1, "dept": "IS", "gpa": 3.5},
     {"id": 2, "dept": "is", "gpa": None},

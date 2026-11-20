@@ -3,7 +3,7 @@ id: "c6-l1-groupby-merge-pivot"
 moduleId: "c6-transform-combine"
 title: "groupby, merge, concat, and pivot_table"
 order: 1
-estimatedMinutes: 22
+estimatedMinutes: 24
 difficulty: "intermediate"
 objectives:
   - "Summarize data by group using df.groupby(...).agg(...)"
@@ -18,13 +18,46 @@ tags: ["groupby", "merge", "concat", "pivot_table"]
 
 ## Concept
 
-Transforming and combining tables in `pandas` centers on four operations [src:pandas-docs]:
-- **Split-Apply-Combine (`groupby`)**: `df.groupby("region")["sales"].agg(["sum", "mean", "count"])` [src:pandas-docs].
-- **Relational Join (`pd.merge`)**: `pd.merge(orders, customers, on="cust_id", how="left")` works like SQL `LEFT JOIN` [src:pandas-docs].
-- **Stacking (`pd.concat`)**: `pd.concat([jan_df, feb_df], ignore_index=True)` stacks tables with matching columns [src:pandas-docs].
-- **Pivoting (`pivot_table`)**: `df.pivot_table(index="region", columns="category", values="sales", aggfunc="sum", fill_value=0)` [src:pandas-docs].
+### 1. Split-Apply-Combine (`groupby` and `agg`)
 
-Explanation: Think of `groupby` as sorting receipts into labeled folders (one per region) and computing totals for each folder. `pd.merge` is like looking up customer names from a separate directory using `cust_id`.
+`df.groupby("region")["sales"].agg(["sum", "mean", "count"])` splits rows into groups, applies aggregations, and combines results [src:pandas-docs].
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({"region": ["North", "North", "South"], "sales": [100, 50, 80]})
+print(df.groupby("region")["sales"].agg(["sum", "mean"]))
+```
+
+Explanation: Think of `groupby` as sorting receipts into labeled folders (one per region) and computing totals for each folder.
+
+### 2. Joining and Stacking (`pd.merge` and `pd.concat`)
+
+- `pd.merge(orders, customers, on="cust_id", how="left")` joins tables on key columns like SQL `LEFT JOIN` [src:pandas-docs].
+- `pd.concat([jan_df, feb_df], ignore_index=True)` stacks tables with matching columns vertically [src:pandas-docs].
+
+```python
+import pandas as pd
+
+a = pd.DataFrame({"id": [1, 2], "val": [10, 20]})
+b = pd.DataFrame({"id": [1], "tag": ["VIP"]})
+print(pd.merge(a, b, on="id", how="left"))
+```
+
+### 3. Cross-Tabulation (`pivot_table`)
+
+`df.pivot_table(index="region", columns="category", values="sales", aggfunc="sum", fill_value=0)` reshapes long data into a readable 2D summary matrix [src:pandas-docs].
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({
+    "region": ["North", "North", "South"],
+    "cat": ["Tech", "Office", "Tech"],
+    "sales": [100, 40, 80],
+})
+print(df.pivot_table(index="region", columns="cat", values="sales", aggfunc="sum", fill_value=0))
+```
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 

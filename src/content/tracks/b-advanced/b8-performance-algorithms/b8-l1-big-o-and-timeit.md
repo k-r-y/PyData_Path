@@ -3,7 +3,7 @@ id: "b8-l1-big-o-and-timeit"
 moduleId: "b8-performance-algorithms"
 title: "Big-O Intuition, Data Structure Choice, and timeit"
 order: 1
-estimatedMinutes: 16
+estimatedMinutes: 18
 difficulty: "intermediate"
 objectives:
   - "Compare O(1) hash lookup (set/dict) vs O(n) linear scan (list)"
@@ -11,11 +11,13 @@ objectives:
   - "Identify nested loops that cause O(n^2) slowdowns on large datasets"
 prerequisites: ["b7-l1-testing-and-debugging"]
 packages: []
-sources: ["python-tutorial", "python-lang-ref"]
+sources: ["python-tutorial", "python-lang-ref", "pep20"]
 tags: ["performance", "big-o", "timeit", "set", "dict"]
 ---
 
 ## Concept
+
+### 1. Big-O Intuition and Data Structure Choice
 
 Big-O notation describes how runtime grows as input size `n` increases [src:python-tutorial]:
 - **O(1) constant time**: `key in my_dict` or `item in my_set` uses a hash table, staying fast regardless of size.
@@ -23,9 +25,25 @@ Big-O notation describes how runtime grows as input size `n` increases [src:pyth
 - **O(n log n)**: `sorted(items)` (Timsort).
 - **O(n^2) quadratic time**: A loop inside a loop scanning a list for every row.
 
-You can time small Python expressions using the standard library's `timeit` module [src:python-tutorial].
+```python
+valid_ids = {"U01", "U02", "U03"}   # O(1) lookup via set
+print("U02" in valid_ids)           # True
+```
 
 Explanation: Looking up a student ID in a `list` is like reading every page of a phone book from page 1 (`O(n)`). Putting those IDs into a `set` or `dict` is like jumping straight to the exact tab (`O(1)`).
+
+### 2. Benchmarking With `timeit`
+
+You can time small Python expressions using the standard library's `timeit` module [src:python-tutorial].
+
+```python
+import timeit
+
+t = timeit.timeit("sum(range(1000))", number=100)
+print(f"100 runs took {t:.5f}s")
+```
+
+Explanation: `timeit` runs your snippet many times and disables background noise so you can compare two approaches fairly instead of guessing which one is faster.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 

@@ -1,15 +1,15 @@
 ---
 id: "a3-l1-indexing-slicing-methods"
 moduleId: "a3-strings-io"
-title: "String Indexing, Slicing, and Core Methods"
+title: "String Indexing, Slicing, Immutability, and Methods"
 order: 1
-estimatedMinutes: 16
+estimatedMinutes: 20
 difficulty: "beginner"
 objectives:
   - "Access individual characters using positive and negative indices"
   - "Extract substrings using slice syntax s[start:stop:step]"
   - "Explain why strings are immutable in Python"
-  - "Clean and transform text using strip(), lower(), upper(), replace(), split(), and join()"
+  - "Clean, search, and transform text using strip, lower/upper/title, replace, split, join, startswith/endswith, and in"
 prerequisites: ["a2-l2-operators-conversion-truthiness"]
 packages: []
 sources: ["python-tutorial", "python-lang-ref"]
@@ -18,23 +18,52 @@ tags: ["strings", "indexing", "slicing", "methods"]
 
 ## Concept
 
-A Python `str` is an ordered, **immutable** sequence of Unicode characters [src:python-tutorial]. Because it is immutable, you cannot modify a character in place (for example, `code[0] = "X"` raises a `TypeError`); instead, string operations return a new string [src:python-tutorial].
+### 1. Indexing and Immutability
 
-### Indexing and Slicing
+A Python `str` is an ordered, **immutable** sequence of Unicode characters [src:python-tutorial]. Positions start at `0` from the left (`s[0]`) and `-1` from the right (`s[-1]`) [src:python-tutorial]. Trying to index past the end raises `IndexError`, and trying `s[0] = "X"` raises `TypeError` because strings cannot be mutated in place.
 
-- **Indexing**: Positions start at `0` from the left (`s[0]` is the first character) and `-1` from the right (`s[-1]` is the last character) [src:python-tutorial].
-- **Slicing**: `s[start:stop]` extracts characters from index `start` up to, **but not including**, index `stop` [src:python-tutorial]. Omitting `start` defaults to `0`; omitting `stop` defaults to `len(s)`. An optional third value `step` controls stride (for example, `s[::-1]` reverses a string) [src:python-tutorial].
+```python
+code = "IS-301"
+print(code[0], code[-1], len(code))  # I 1 6
+```
 
-Explanation: Think of slice indices as sitting *between* characters rather than on them. For `"DATA"`, index `0` is before `D`, index `2` is between `A` and `T`, so `"DATA"[0:2]` gives `"DA"` (length `2 - 0 = 2`).
+Explanation: Because strings are immutable, string methods never edit the original string; they always return a *new* string that you must assign to a variable if you want to keep it.
 
-### Essential String Methods
+### 2. Slicing (`s[start:stop:step]`)
 
-- `.strip()`: Removes leading and trailing whitespace (or specified characters) [src:python-tutorial].
-- `.lower()` / `.upper()`: Returns a lowercase or uppercase copy [src:python-tutorial].
-- `.replace(old, new)`: Returns a copy with occurrences of `old` replaced by `new` [src:python-tutorial].
-- `.split(sep)`: Splits a string into a `list` of substrings (defaults to splitting on whitespace if `sep` is omitted) [src:python-tutorial].
+`s[start:stop:step]` extracts characters from `start` up to, **but not including**, `stop` [src:python-tutorial]. Omitting `start` defaults to `0`; omitting `stop` defaults to `len(s)`; `s[::-1]` reverses a string [src:python-tutorial]. Unlike single-index access, out-of-range slice bounds never raise `IndexError`.
+
+```python
+tag = "PYDATA26"
+print(tag[0:2], tag[2:6], tag[-2:], tag[::2], tag[::-1])
+```
+
+Explanation: Think of slice indices as sitting *between* characters rather than on them. For `"DATA"`, index `0` is before `D` and index `2` is between `A` and `T`, so `"DATA"[0:2]` gives `"DA"` (length `2 - 0 = 2`).
+
+### 3. Cleaning, Case, and Search Methods
+
+- `.strip()` / `.lstrip()` / `.rstrip()`: Remove leading/trailing whitespace or specified characters [src:python-tutorial].
+- `.lower()`, `.upper()`, `.title()`, `.capitalize()`: Normalize letter case [src:python-tutorial].
+- `.replace(old, new)`: Replaces occurrences of `old` with `new` [src:python-tutorial].
+- `.startswith(prefix)`, `.endswith(suffix)`, `sub in s`, `.find(sub)`, `.count(sub)`: Search and inspect substrings [src:python-tutorial].
+
+```python
+email = "  Ana.Reyes@School.EDU  ".strip().lower()
+print(email.endswith(".edu"), "ana" in email)  # True True
+```
+
+### 4. Splitting and Joining (`split` and `join`)
+
+- `.split(sep)`: Splits a string into a `list` of substrings (when `sep` is omitted, splits on any run of whitespace) [src:python-tutorial].
 - `sep.join(items)`: Joins a sequence of strings using `sep` as the separator [src:python-tutorial].
-- `sub in s`: Returns `True` if `sub` appears inside `s` [src:python-lang-ref].
+
+```python
+raw = "  ana , ben , cara  "
+names = [n.strip().title() for n in raw.split(",")]
+print(" | ".join(names))  # Ana | Ben | Cara
+```
+
+Explanation: Notice that `join` is called on the *separator string* (`" | ".join(names)`), not on the list itself.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -49,26 +78,23 @@ raw_record = "  is-301 | Business Analytics  "
 cleaned = raw_record.strip()
 parts = cleaned.split(" | ")
 
-course_code = parts[0].upper()      # "IS-301"
-dept = course_code[:2]              # "IS"
-title = parts[1]                    # "Business Analytics"
+course_code = parts[0].upper()
+dept = course_code[:2]
+title = parts[1]
 
 print(dept, course_code, title, sep=" -> ")
 ```
 
-Notice that `raw_record.strip()` does not change `raw_record`; it returns a new cleaned string that we assign to `cleaned` [src:python-tutorial].
-
 ## Common mistakes
 
-- **Expecting `s[0:3]` to include index 3**: Slices are half-open `[start, stop)`, so `s[0:3]` returns indices `0`, `1`, and `2` [src:python-tutorial].
 - **Forgetting to assign the result of `.strip()` or `.lower()`**: Calling `name.strip()` by itself discards the cleaned copy because strings are immutable [src:python-tutorial].
-- **Calling `items.join(",")` instead of `",".join(items)`**: In Python, `join` is a method on the *separator string*, not on the list [src:python-tutorial].
+- **Calling `items.join(",")` instead of `",".join(items)`**: In Python, `join` is a method on the separator string [src:python-tutorial].
 
 ## Check your understanding
 
 1. Given `sku = "SKU-2026-A"`, what do `sku[:3]` and `sku[-1]` evaluate to?
-2. Why does `text.lower()` not change `text` unless you write `text = text.lower()`?
-3. Complete the exercises on the right to practice slicing, Parsons reordering, and cleaning an IS record.
+2. Why does `s[0:100]` succeed without an error even when `len(s) == 5`?
+3. Complete the exercises on the right.
 
 ## Sources
 

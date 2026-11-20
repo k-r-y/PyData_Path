@@ -3,12 +3,12 @@ id: "a9-l1-files-csv-json"
 moduleId: "a9-files-csv-json"
 title: "Files, with Statement, CSV, and JSON"
 order: 1
-estimatedMinutes: 20
+estimatedMinutes: 22
 difficulty: "beginner"
 objectives:
   - "Open and close files safely using the with context manager"
   - "Choose file modes ('r', 'w', 'a') and specify encoding='utf-8'"
-  - "Parse tabular text using csv.DictReader"
+  - "Parse and write tabular text using csv.DictReader and csv.writer"
   - "Serialize and deserialize data using json.loads() and json.dumps()"
 prerequisites: ["a8-l1-try-except-raise"]
 packages: []
@@ -18,22 +18,52 @@ tags: ["files", "with", "csv", "json"]
 
 ## Concept
 
-### The `with` Statement and File Modes
+### 1. The `with` Statement and File Modes
 
 Always open files using `with open(path, mode, encoding="utf-8") as f:` so Python closes the file automatically even if an error occurs [src:python-tutorial]:
 - `"r"`: Read (default).
 - `"w"`: Write (creates or **overwrites** existing file).
 - `"a"`: Append to the end.
 
-Note: In PyData Path, file operations run against Pyodide's **in-memory virtual filesystem** rather than your computer's hard drive [src:pyodide-docs].
+```python
+with open("notes.txt", "w", encoding="utf-8") as f:
+    f.write("Line 1\n")
 
-### Standard Library `csv` and `json`
+with open("notes.txt", "r", encoding="utf-8") as f:
+    print(f.read().strip())
+```
 
-- `csv.DictReader(f)`: Reads each row of a CSV file as a `dict` keyed by the header column names (all values start as `str`) [src:python-tutorial].
-- `json.loads(text)` / `json.load(f)`: Parses JSON text/file into Python `dict` and `list` objects [src:python-tutorial].
-- `json.dumps(obj)` / `json.dump(obj, f)`: Converts Python objects into JSON [src:python-tutorial].
+Explanation: Think of `with open(...)` as a self-closing door: you never have to remember `f.close()`, and the file is closed cleanly even if an exception occurs mid-read. Note that in PyData Path, file operations run against Pyodide's **in-memory virtual filesystem** rather than your hard drive [src:pyodide-docs].
 
-Explanation: Think of `with open(...)` as a self-closing door. Using `csv.DictReader` turns each comma-separated line into a labeled dictionary so you can access `row["amount"]` by name instead of fragile column numbers.
+### 2. Standard Library `csv` (`csv.DictReader` and `csv.writer`)
+
+`csv.DictReader(f)` reads each row of a CSV file as a `dict` keyed by the header column names (all values start as `str`) [src:python-tutorial].
+
+```python
+import csv
+import io
+
+text = "sku,qty\nA1,5\nB2,12\n"
+for row in csv.DictReader(io.StringIO(text)):
+    print(row["sku"], int(row["qty"]))
+```
+
+Explanation: Using `csv.DictReader` lets you read `row["qty"]` by column name instead of fragile numeric column indices like `row[1]`. Remember to convert numeric strings with `int()` or `float()`.
+
+### 3. Standard Library `json` (`loads`, `dumps`, `load`, `dump`)
+
+- `json.loads(text)` / `json.load(f)`: Parses JSON into Python `dict` and `list` objects [src:python-tutorial].
+- `json.dumps(obj, indent=2)` / `json.dump(obj, f)`: Serializes Python objects into JSON [src:python-tutorial].
+
+```python
+import json
+
+payload = '{"course": "IS-301", "active": true, "waitlist": null}'
+parsed = json.loads(payload)
+print(parsed["course"], parsed["active"], parsed["waitlist"])
+```
+
+Explanation: Remember the trailing `s` in `loads` / `dumps` stands for **s**tring (`json.loads(str)`), while `load(f)` / `dump(obj, f)` work directly with open file objects.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 

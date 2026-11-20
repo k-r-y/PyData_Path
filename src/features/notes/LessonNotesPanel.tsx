@@ -32,7 +32,7 @@ export function LessonNotesPanel({ lessonId }: LessonNotesPanelProps) {
   };
 
   return (
-    <section className="mt-8 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0c0c0e] p-4 space-y-2.5">
+    <section className="mt-10 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0c0c0e] p-5 space-y-3">
       <div className="flex items-center justify-between gap-2">
         <h3 className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-400 flex items-center gap-1.5">
           <StickyNote className="w-3.5 h-3.5" aria-hidden="true" />

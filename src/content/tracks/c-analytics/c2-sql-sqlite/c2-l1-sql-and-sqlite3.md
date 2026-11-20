@@ -3,7 +3,7 @@ id: "c2-l1-sql-and-sqlite3"
 moduleId: "c2-sql-sqlite"
 title: "SQL Queries and sqlite3 in Python"
 order: 1
-estimatedMinutes: 22
+estimatedMinutes: 25
 difficulty: "intermediate"
 objectives:
   - "Filter and sort rows using SELECT, WHERE, and ORDER BY"
@@ -18,16 +18,59 @@ tags: ["sql", "sqlite3", "join", "groupby"]
 
 ## Concept
 
-SQL (Structured Query Language) retrieves and aggregates data from relational tables [src:sqlite-docs]. Core clauses execute logically in this order:
-1. `FROM` / `JOIN`: Identify and combine tables (`INNER JOIN` keeps matches in both; `LEFT JOIN` keeps all left rows).
-2. `WHERE`: Filter individual rows **before** grouping.
-3. `GROUP BY`: Group rows by column(s) and compute `COUNT()`, `SUM()`, `AVG()`.
-4. `HAVING`: Filter **grouped** results after aggregation.
-5. `SELECT` / `ORDER BY` / `LIMIT`: Choose output columns and sort.
+### 1. Filtering and Sorting (`SELECT`, `WHERE`, `ORDER BY`)
 
-In Python, the built-in `sqlite3` module runs SQLite databases in memory (`sqlite3.connect(":memory:")`) or from `.db` files [src:python-tutorial]. Always pass user values via `?` placeholders (`cur.execute("SELECT * FROM t WHERE id = ?", (val,))`) to prevent SQL injection [src:python-tutorial].
+SQL retrieves rows from relational tables [src:sqlite-docs]. `WHERE` filters individual rows before any grouping, and `ORDER BY col DESC` sorts the final output [src:sqlite-docs].
 
-Explanation: Remember `WHERE` vs `HAVING` by timing: `WHERE` filters raw rows *before* you group them into buckets; `HAVING` filters the *buckets themselves* after `GROUP BY`.
+```sql
+SELECT student, score
+FROM enrollments
+WHERE dept = 'IS' AND score >= 85
+ORDER BY score DESC;
+```
+
+Explanation: Think of `WHERE` as a row-by-row gatekeeper: only rows that satisfy the condition pass through to the next step.
+
+### 2. Grouping and Filtering Groups (`GROUP BY`, `HAVING`)
+
+`GROUP BY` collapses rows sharing the same key into summary rows using `COUNT()`, `SUM()`, `AVG()`, `MIN()`, or `MAX()` [src:sqlite-docs]. `HAVING` filters those **grouped** summaries afterward [src:sqlite-docs].
+
+```sql
+SELECT dept, COUNT(*) AS n, ROUND(AVG(score), 1) AS avg_score
+FROM enrollments
+GROUP BY dept
+HAVING AVG(score) >= 80;
+```
+
+Explanation: Remember `WHERE` vs `HAVING` by timing: `WHERE` filters raw rows *before* grouping; `HAVING` filters the *buckets themselves* after `GROUP BY`.
+
+### 3. Combining Tables (`INNER JOIN`, `LEFT JOIN`) and Subqueries
+
+- `INNER JOIN`: Returns only rows where the join key matches in both tables [src:sqlite-docs].
+- `LEFT JOIN`: Keeps **all** rows from the left table, filling unmatched right-table columns with `NULL` [src:sqlite-docs].
+- **Subquery**: A nested `SELECT` inside `WHERE` or `FROM` for multi-step filtering [src:sqlite-docs].
+
+```sql
+SELECT c.code, e.student
+FROM courses c
+LEFT JOIN enrollments e ON c.code = e.course_code;
+```
+
+Explanation: Use `LEFT JOIN` when you want to spot courses with *zero* enrollments (they would disappear under `INNER JOIN`).
+
+### 4. Calling SQLite From Python (`sqlite3`)
+
+Python's built-in `sqlite3` module runs SQLite databases in memory (`sqlite3.connect(":memory:")`) or from `.db` files [src:python-tutorial]. Always pass user values via `?` placeholders (`cur.execute("SELECT * FROM t WHERE id = ?", (val,))`) to prevent SQL injection [src:python-tutorial].
+
+```python
+import sqlite3
+
+conn = sqlite3.connect(":memory:")
+cur = conn.cursor()
+cur.execute("CREATE TABLE items (sku TEXT, stock INT)")
+cur.execute("INSERT INTO items VALUES (?, ?)", ("A1", 12))
+print(cur.execute("SELECT * FROM items WHERE sku = ?", ("A1",)).fetchall())
+```
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 

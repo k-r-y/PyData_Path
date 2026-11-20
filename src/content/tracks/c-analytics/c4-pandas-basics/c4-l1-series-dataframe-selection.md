@@ -3,7 +3,7 @@ id: "c4-l1-series-dataframe-selection"
 moduleId: "c4-pandas-basics"
 title: "Series, DataFrame, loc/iloc, Filtering, and Summaries"
 order: 1
-estimatedMinutes: 22
+estimatedMinutes: 24
 difficulty: "intermediate"
 objectives:
   - "Distinguish a 1D pandas Series from a 2D DataFrame"
@@ -18,19 +18,50 @@ tags: ["pandas", "dataframe", "series", "loc", "iloc"]
 
 ## Concept
 
+### 1. `Series` vs `DataFrame` and First Inspection
+
 `pandas` provides two core tabular structures [src:pandas-docs]:
 - `Series`: A 1D labeled array (like a single column).
 - `DataFrame`: A 2D labeled table with rows and named columns.
 
-### Inspection, Selection, and Filtering
+Inspect any new table immediately with `df.head()`, `df.info()`, `df.shape`, and `df.describe()` [src:pandas-docs].
 
-- `df.head()`, `df.info()`, `df.describe()`: Quick structure and summary checks [src:pandas-docs].
-- `df.loc[row_label, col_label]`: **Label-based** selection (inclusive of slice stop!) [src:pandas-docs].
-- `df.iloc[row_pos, col_pos]`: **Integer position-based** selection (exclusive of slice stop, like Python lists) [src:pandas-docs].
-- Filtering: `df[df["units"] >= 5]` or `df.loc[df["region"] == "North", ["item", "units"]]` [src:pandas-docs].
-- Sorting: `df.sort_values("units", ascending=False)` [src:pandas-docs].
+```python
+import pandas as pd
 
-Explanation: Remember `loc` = **L**abel, `iloc` = **I**nteger position. When assigning new values to a filtered subset, always use `df.loc[mask, "col"] = val` instead of `df[mask]["col"] = val` to avoid modifying a temporary copy.
+df = pd.DataFrame({"item": ["Hub", "Mouse"], "units": [3, 5]})
+print(df.shape)
+print(df.describe())
+```
+
+Explanation: Think of a `DataFrame` as a dictionary of aligned `Series` columns sharing the same row index.
+
+### 2. `loc` (Label-Based) vs `iloc` (Integer Position-Based)
+
+- `df.loc[row_label, col_label]`: **Label-based** selection (slice stop is inclusive!) [src:pandas-docs].
+- `df.iloc[row_pos, col_pos]`: **Integer position-based** selection (slice stop is exclusive, like Python lists) [src:pandas-docs].
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({"units": [3, 5, 12]}, index=["a", "b", "c"])
+print(df.loc["a":"b", "units"].tolist())  # [3, 5] (includes 'b')
+print(df.iloc[0:2, 0].tolist())           # [3, 5] (excludes position 2)
+```
+
+Explanation: Remember `loc` = **L**abel, `iloc` = **I**nteger position.
+
+### 3. Boolean Filtering and Sorting
+
+Filter rows with boolean masks (`df[df["units"] >= 5]`) and sort with `df.sort_values("units", ascending=False)` [src:pandas-docs]. When assigning values to a filtered subset, always use `df.loc[mask, "col"] = val` instead of `df[mask]["col"] = val`.
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({"item": ["Hub", "Mouse", "Pen"], "units": [3, 5, 12]})
+top = df[df["units"] >= 5].sort_values("units", ascending=False)
+print(top)
+```
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 

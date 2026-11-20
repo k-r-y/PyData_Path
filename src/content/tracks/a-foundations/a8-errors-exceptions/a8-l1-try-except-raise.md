@@ -3,10 +3,10 @@ id: "a8-l1-try-except-raise"
 moduleId: "a8-errors-exceptions"
 title: "Handling Exceptions (try, except, else, finally, raise)"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "beginner"
 objectives:
-  - "Catch specific exception types with try / except"
+  - "Catch specific exception types with try / except and inspect the error object"
   - "Use else and finally blocks appropriately"
   - "Raise explicit ValueError exceptions for invalid inputs"
   - "Avoid bare except clauses that hide real bugs"
@@ -18,14 +18,51 @@ tags: ["exceptions", "try", "except", "raise", "debugging"]
 
 ## Concept
 
-When an error occurs at runtime, Python raises an **exception** [src:python-tutorial]. You can handle expected failures with `try / except` [src:python-tutorial]:
-- `try`: Code that might raise an exception.
-- `except ValueError as err`: Runs only if a `ValueError` occurs. Always name specific exception types rather than using a bare `except:` [src:pep8].
-- `else`: Runs only if the `try` block succeeded with no exception [src:python-tutorial].
-- `finally`: Always runs afterward (whether an exception occurred or not), used for cleanup [src:python-tutorial].
-- `raise ValueError("message")`: Intentionally signals an invalid state or argument [src:python-tutorial].
+### 1. `try / except` With Specific Exception Types
 
-Explanation: Think of `try / except` as a safety net under a trapeze: you only put the specific risky step inside `try`, and you specify which kind of fall (`ValueError`, `ZeroDivisionError`) you know how to recover from.
+When an error occurs at runtime, Python raises an **exception** (such as `ValueError`, `ZeroDivisionError`, `KeyError`, or `FileNotFoundError`) [src:python-tutorial]. You catch expected errors by naming the specific exception type in `except` [src:pep8].
+
+```python
+raw = "N/A"
+try:
+    qty = int(raw)
+except ValueError as err:
+    print("Invalid number:", err)
+    qty = 0
+```
+
+Explanation: Think of `try / except` as a safety net targeted at one specific risk. Naming `ValueError` handles bad numeric text while still letting real bugs (like a `NameError` typo) surface immediately.
+
+### 2. `else` and `finally`
+
+- `else`: Runs **only if** the `try` block finished without raising an exception [src:python-tutorial].
+- `finally`: **Always** runs afterward (whether an exception occurred or not), used for cleanup [src:python-tutorial].
+
+```python
+try:
+    rate = float("0.12")
+except ValueError:
+    print("Bad rate")
+else:
+    print("Parsed rate:", rate)
+finally:
+    print("Validation finished")
+```
+
+Explanation: Keeping post-success code inside `else` rather than `try` ensures your `except` block only catches errors from the exact line you intended to guard.
+
+### 3. Raising Exceptions With `raise`
+
+Use `raise ValueError("message")` to reject invalid arguments early instead of letting bad data corrupt downstream calculations [src:python-tutorial].
+
+```python
+def set_discount(pct):
+    if not (0 <= pct <= 100):
+        raise ValueError("Discount must be between 0 and 100")
+    return pct / 100
+```
+
+Explanation: Failing fast with a clear `ValueError` makes debugging much easier than silently computing a negative price.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 

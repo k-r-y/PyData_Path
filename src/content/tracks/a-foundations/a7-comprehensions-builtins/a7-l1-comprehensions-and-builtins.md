@@ -3,34 +3,70 @@ id: "a7-l1-comprehensions-and-builtins"
 moduleId: "a7-comprehensions-builtins"
 title: "Comprehensions and Essential Built-in Functions"
 order: 1
-estimatedMinutes: 20
+estimatedMinutes: 22
 difficulty: "beginner"
 objectives:
   - "Transform and filter collections with list, dict, and set comprehensions"
   - "Iterate with indices and paired sequences using enumerate() and zip()"
   - "Sort records with sorted(..., key=lambda ...)"
-  - "Check sequence conditions using any() and all()"
+  - "Use map(), filter(), any(), and all() cleanly"
 prerequisites: ["a6-l1-lists-tuples-dicts-sets"]
 packages: []
-sources: ["python-tutorial", "python-lang-ref"]
+sources: ["python-tutorial", "python-lang-ref", "pep8"]
 tags: ["comprehensions", "enumerate", "zip", "sorted", "lambda", "any", "all"]
 ---
 
 ## Concept
 
-A **comprehension** builds a new list, dictionary, or set in a single readable expression [src:python-tutorial]:
-- List: `[x * 2 for x in nums if x > 0]`
-- Dict: `{k: v * 1.12 for k, v in prices.items()}`
-- Set: `{row["dept"] for row in records}`
+### 1. List, Dict, and Set Comprehensions
 
-Python also provides functional built-ins that eliminate manual index counters [src:python-tutorial]:
-- `enumerate(seq, start=0)`: Yields `(index, item)` pairs.
-- `zip(seq1, seq2)`: Pairs corresponding elements from two or more sequences (stops at the shortest).
-- `sorted(iterable, key=..., reverse=False)`: Returns a new sorted list; `key` accepts a function such as `lambda r: r["score"]`.
-- `any(iterable)` / `all(iterable)`: Return `True` if any (or all) elements are truthy.
-- `map(fn, seq)` / `filter(fn, seq)`: Lazily transform or filter items (often written as comprehensions in idiomatic Python) [src:python-tutorial].
+A **comprehension** builds a new collection in a single readable expression, optionally filtering with `if` [src:python-tutorial]:
 
-Explanation: Think of `enumerate` and `zip` as zippers that align items cleanly without `range(len(items))`, and a comprehension as a compact assembly line that filters and transforms in one pass.
+```python
+nums = [1, 2, 3, 4, 5]
+evens_sq = [n ** 2 for n in nums if n % 2 == 0]         # list: [4, 16]
+sq_map = {n: n ** 2 for n in nums if n <= 3}            # dict: {1: 1, 2: 4, 3: 9}
+unique_mod = {n % 2 for n in nums}                      # set: {0, 1}
+```
+
+Explanation: Think of a comprehension as a compact assembly line: `[output for item in source if keep_condition]`. It replaces 4 lines of `result = []; for ...: result.append(...)` with one clear expression.
+
+### 2. `enumerate()` and `zip()`
+
+- `enumerate(seq, start=0)` yields `(index, item)` pairs so you never need `range(len(seq))` [src:python-tutorial].
+- `zip(seq1, seq2)` pairs corresponding elements from multiple iterables, stopping at the shortest [src:python-tutorial].
+
+```python
+names = ["Ana", "Ben"]
+scores = [91, 84]
+for rank, (name, score) in enumerate(zip(names, scores), start=1):
+    print(f"{rank}. {name}: {score}")
+```
+
+Explanation: `enumerate` attaches a running counter to each item, while `zip` zips two parallel lists together like teeth on a zipper.
+
+### 3. `sorted()` and `lambda`
+
+`sorted(iterable, key=..., reverse=False)` returns a **new** sorted list without mutating the original [src:python-tutorial]. A `lambda` is a small anonymous one-line function often passed as `key=` [src:python-tutorial].
+
+```python
+rows = [{"item": "Pen", "qty": 12}, {"item": "Hub", "qty": 3}]
+by_qty = sorted(rows, key=lambda r: r["qty"], reverse=True)
+print(by_qty[0]["item"])  # Pen
+```
+
+Explanation: `lambda r: r["qty"]` is just a quick inline helper meaning "given a row `r`, sort by `r['qty']`."
+
+### 4. `any()`, `all()`, `map()`, and `filter()`
+
+- `any(iterable)` returns `True` if at least one item is truthy; `all(iterable)` returns `True` only if every item is truthy [src:python-tutorial].
+- `map(fn, seq)` and `filter(fn, seq)` lazily apply a function or predicate across an iterable (though comprehensions are often clearer in Python) [src:python-tutorial].
+
+```python
+scores = [85, 92, 78]
+print("All passed (>=75):", all(s >= 75 for s in scores))  # True
+print("Any 90+:", any(s >= 90 for s in scores))             # True
+```
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 

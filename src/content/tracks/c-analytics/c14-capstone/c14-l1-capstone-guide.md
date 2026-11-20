@@ -17,6 +17,8 @@ tags: ["capstone", "eda", "portfolio"]
 
 ## Concept
 
+### 1. End-to-End Capstone Workflow
+
 Your Capstone brings together every skill from Tracks A, B, and C into a portfolio-ready end-to-end analysis [src:python-data-analysis]:
 
 1. **Choose a dataset**: Start with `store_sales.csv` or `student_enrollments.csv` in the **DataFrame Lab**, or upload an openly licensed CSV you care about.
@@ -24,6 +26,18 @@ Your Capstone brings together every skill from Tracks A, B, and C into a portfol
 3. **Clean & Validate**: Check missing values, duplicates, dtypes, and outliers.
 4. **Analyze & Visualize**: Compute grouped summaries and build at least 2 clear charts in the **Chart Lab**.
 5. **Write Your Memo**: Open the **EDA & Capstone** page in the sidebar, check off the workflow steps, self-assess against the rubric, and write your BLUF findings memo.
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({
+    "region": ["North", "South", "North"],
+    "units": [3, 10, 5],
+    "price": [24.5, 4.25, 18.0],
+})
+df["revenue"] = df["units"] * df["price"]
+print(df.groupby("region")["revenue"].agg(["sum", "mean"]))
+```
 
 Explanation: A great portfolio project does not need a massive dataset or complex neural network. Employers and professors value clear thinking, clean reproducible code, honest limitations, and crisp communication.
 
@@ -36,7 +50,6 @@ Completing a full question-to-memo project turns isolated Python syntax into a d
 ```python
 import pandas as pd
 
-# Example capstone summary check
 df = pd.DataFrame({
     "region": ["North", "South", "North"],
     "units": [3, 10, 5],

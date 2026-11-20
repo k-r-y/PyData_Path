@@ -1,4 +1,4 @@
-import{F as e,O as t,R as n,d as r,h as i}from"./index-CPtcHmMJ.js";var a=n(e(),1),o=t(),s=[{module:`A1 Setup & Anatomy`,title:`Shell commands`,snippet:`python3 --version
+import{F as e,O as t,R as n,d as r,h as i}from"./index-BNzAI8JY.js";var a=n(e(),1),o=t(),s=[{module:`A1 Setup & Anatomy`,title:`Shell commands`,snippet:`python3 --version
 python3 script.py
 python3 -m pip install pandas
 python3 -m venv .venv`,note:`Run these in your OS terminal, not inside a .py file.`},{module:`A1 Setup & Anatomy`,title:`Imports`,snippet:`import math

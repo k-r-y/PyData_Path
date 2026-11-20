@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/LessonPage-B3vSRGyR.js","assets/check-hgndInD2.js","assets/circle-exclamation-point-DZwxb3FW.js","assets/trash-1lfNIgCr.js","assets/runner-D_tfcKVJ.js","assets/dist-Dy2ME_fX.js","assets/rotate-ccw-Di4BlGlb.js","assets/loader-circle-BRk6AMbj.js","assets/SourcesPage-DgRYKoOT.js","assets/StepVisualizer-BxgBgOjr.js","assets/DashboardPage-w5AlRDwE.js","assets/DataFrameLabPage-B1EOqWzE.js","assets/upload-Cj6jR48o.js","assets/SqlLabPage-CzV19CSX.js","assets/ChartLabPage-BPg2nJTl.js","assets/SimulatorsPage-C6FQyHm2.js","assets/ProjectsPage-DJgcvag2.js","assets/ExportImportPage-BUhWxnyV.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/LessonPage-B7AbPuRH.js","assets/check-MOknYHa8.js","assets/circle-exclamation-point-1tQssdbK.js","assets/trash-CWTrxunf.js","assets/runner-DEbTBrmG.js","assets/dist-BJeCOVuI.js","assets/rotate-ccw-DXEcMLSL.js","assets/loader-circle-DNv9gteP.js","assets/SourcesPage-DHAk24AE.js","assets/StepVisualizer-D7dgzpvZ.js","assets/DashboardPage-CkbxduHP.js","assets/DataFrameLabPage-SE9NAmlH.js","assets/upload-CcLtaL0z.js","assets/SqlLabPage-CR0rWIjj.js","assets/ChartLabPage-CCFFYxQJ.js","assets/SimulatorsPage-BfpDtMQb.js","assets/ProjectsPage-BNLyKQdW.js","assets/ExportImportPage-DBFJHXyG.js"])))=>i.map(i=>d[i]);
 var e=Object.create,t=Object.defineProperty,n=Object.getOwnPropertyDescriptor,r=Object.getOwnPropertyNames,i=Object.getPrototypeOf,a=Object.prototype.hasOwnProperty,o=(e,t)=>()=>(t||(e((t={exports:{}}).exports,t,t.exports),e=null),t.exports),s=(e,n)=>{let r={};for(var i in e)t(r,i,{get:e[i],enumerable:!0});return n||t(r,Symbol.toStringTag,{value:`Module`}),r},c=(e,i,o,s)=>{if(i&&typeof i==`object`||typeof i==`function`)for(var c=r(i),l=0,u=c.length,d;l<u;l++)d=c[l],!a.call(e,d)&&d!==o&&t(e,d,{get:(e=>i[e]).bind(null,d),enumerable:!(s=n(i,d))||s.enumerable});return e},l=(n,r,o)=>(o=n==null?{}:e(i(n)),c(r||!n||!n.__esModule||!a.call(n,`default`)?t(o,`default`,{value:n,enumerable:!0}):o,n));(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var u=o((e=>{var t=Symbol.for(`react.transitional.element`),n=Symbol.for(`react.portal`),r=Symbol.for(`react.fragment`),i=Symbol.for(`react.strict_mode`),a=Symbol.for(`react.profiler`),o=Symbol.for(`react.consumer`),s=Symbol.for(`react.context`),c=Symbol.for(`react.forward_ref`),l=Symbol.for(`react.suspense`),u=Symbol.for(`react.memo`),d=Symbol.for(`react.lazy`),f=Symbol.for(`react.activity`),p=Symbol.for(`react.view_transition`),m=Symbol.iterator;function h(e){return typeof e!=`object`||!e?null:(e=m&&e[m]||e[`@@iterator`],typeof e==`function`?e:null)}var g={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},_=Object.assign,v={};function y(e,t,n){this.props=e,this.context=t,this.refs=v,this.updater=n||g}y.prototype.isReactComponent={},y.prototype.setState=function(e,t){if(typeof e!=`object`&&typeof e!=`function`&&e!=null)throw Error(`takes an object of state variables to update or a function which returns an object of state variables.`);this.updater.enqueueSetState(this,e,t,`setState`)},y.prototype.forceUpdate=function(e){this.updater.enqueueForceUpdate(this,e,`forceUpdate`)};function b(){}b.prototype=y.prototype;function x(e,t,n){this.props=e,this.context=t,this.refs=v,this.updater=n||g}var S=x.prototype=new b;S.constructor=x,_(S,y.prototype),S.isPureReactComponent=!0;var C=Array.isArray;function ee(){}var w={H:null,A:null,T:null,S:null},T=Object.prototype.hasOwnProperty;function E(e,n,r){var i=r.ref;return{$$typeof:t,type:e,key:n,ref:i===void 0?null:i,props:r}}function te(e,t){return E(e.type,t,e.props)}function ne(e){return typeof e==`object`&&!!e&&e.$$typeof===t}function re(e){var t={"=":`=0`,":":`=2`};return`$`+e.replace(/[=:]/g,function(e){return t[e]})}var ie=/\/+/g;function ae(e,t){return typeof e==`object`&&e&&e.key!=null?re(``+e.key):t.toString(36)}function oe(e){switch(e.status){case`fulfilled`:return e.value;case`rejected`:throw e.reason;default:switch(typeof e.status==`string`?e.then(ee,ee):(e.status=`pending`,e.then(function(t){e.status===`pending`&&(e.status=`fulfilled`,e.value=t)},function(t){e.status===`pending`&&(e.status=`rejected`,e.reason=t)})),e.status){case`fulfilled`:return e.value;case`rejected`:throw e.reason}}throw e}function se(e,r,i,a,o){var s=typeof e;(s===`undefined`||s===`boolean`)&&(e=null);var c=!1;if(e===null)c=!0;else switch(s){case`bigint`:case`string`:case`number`:c=!0;break;case`object`:switch(e.$$typeof){case t:case n:c=!0;break;case d:return c=e._init,se(c(e._payload),r,i,a,o)}}if(c)return o=o(e),c=a===``?`.`+ae(e,0):a,C(o)?(i=``,c!=null&&(i=c.replace(ie,`$&/`)+`/`),se(o,r,i,``,function(e){return e})):o!=null&&(ne(o)&&(o=te(o,i+(o.key==null||e&&e.key===o.key?``:(``+o.key).replace(ie,`$&/`)+`/`)+c)),r.push(o)),1;c=0;var l=a===``?`.`:a+`:`;if(C(e))for(var u=0;u<e.length;u++)a=e[u],s=l+ae(a,u),c+=se(a,r,i,s,o);else if(u=h(e),typeof u==`function`)for(e=u.call(e),u=0;!(a=e.next()).done;)a=a.value,s=l+ae(a,u++),c+=se(a,r,i,s,o);else if(s===`object`){if(typeof e.then==`function`)return se(oe(e),r,i,a,o);throw r=String(e),Error(`Objects are not valid as a React child (found: `+(r===`[object Object]`?`object with keys {`+Object.keys(e).join(`, `)+`}`:r)+`). If you meant to render a collection of children, use an array instead.`)}return c}function ce(e,t,n){if(e==null)return e;var r=[],i=0;return se(e,r,``,``,function(e){return t.call(n,e,i++)}),r}function le(e){if(e._status===-1){var t=e._result,n=t();n.then(function(t){(e._status===0||e._status===-1)&&(e._status=1,e._result=t,n.status===void 0&&(n.status=`fulfilled`,n.value=t))},function(t){(e._status===0||e._status===-1)&&(e._status=2,e._result=t,n.status===void 0&&(n.status=`rejected`,n.reason=t))}),e._status===-1&&(e._status=0,e._result=n)}if(e._status===1)return e._result.default;throw e._result}var ue=typeof reportError==`function`?reportError:function(e){if(typeof window==`object`&&typeof window.ErrorEvent==`function`){var t=new window.ErrorEvent(`error`,{bubbles:!0,cancelable:!0,message:typeof e==`object`&&e&&typeof e.message==`string`?String(e.message):String(e),error:e});if(!window.dispatchEvent(t))return}else if(typeof process==`object`&&typeof process.emit==`function`){process.emit(`uncaughtException`,e);return}console.error(e)};function de(e){var t=w.T,n={};n.types=t===null?null:t.types,w.T=n;try{var r=e(),i=w.S;i!==null&&i(n,r),typeof r==`object`&&r&&typeof r.then==`function`&&r.then(ee,ue)}catch(e){ue(e)}finally{t!==null&&n.types!==null&&(t.types=n.types),w.T=t}}function fe(e){var t=w.T;if(t!==null){var n=t.types;n===null?t.types=[e]:n.indexOf(e)===-1&&n.push(e)}else de(fe.bind(null,e))}var pe={map:ce,forEach:function(e,t,n){ce(e,function(){t.apply(this,arguments)},n)},count:function(e){var t=0;return ce(e,function(){t++}),t},toArray:function(e){return ce(e,function(e){return e})||[]},only:function(e){if(!ne(e))throw Error(`React.Children.only expected to receive a single React element child.`);return e}};e.Activity=f,e.Children=pe,e.Component=y,e.Fragment=r,e.Profiler=a,e.PureComponent=x,e.StrictMode=i,e.Suspense=l,e.ViewTransition=p,e.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE=w,e.__COMPILER_RUNTIME={__proto__:null,c:function(e){return w.H.useMemoCache(e)}},e.addTransitionType=fe,e.cache=function(e){return function(){return e.apply(null,arguments)}},e.cacheSignal=function(){return null},e.cloneElement=function(e,t,n){if(e==null)throw Error(`The argument must be a React element, but you passed `+e+`.`);var r=_({},e.props),i=e.key;if(t!=null)for(a in t.key!==void 0&&(i=``+t.key),t)!T.call(t,a)||a===`key`||a===`__self`||a===`__source`||a===`ref`&&t.ref===void 0||(r[a]=t[a]);var a=arguments.length-2;if(a===1)r.children=n;else if(1<a){for(var o=Array(a),s=0;s<a;s++)o[s]=arguments[s+2];r.children=o}return E(e.type,i,r)},e.createContext=function(e){return e={$$typeof:s,_currentValue:e,_currentValue2:e,_threadCount:0,Provider:null,Consumer:null},e.Provider=e,e.Consumer={$$typeof:o,_context:e},e},e.createElement=function(e,t,n){var r,i={},a=null;if(t!=null)for(r in t.key!==void 0&&(a=``+t.key),t)T.call(t,r)&&r!==`key`&&r!==`__self`&&r!==`__source`&&(i[r]=t[r]);var o=arguments.length-2;if(o===1)i.children=n;else if(1<o){for(var s=Array(o),c=0;c<o;c++)s[c]=arguments[c+2];i.children=s}if(e&&e.defaultProps)for(r in o=e.defaultProps,o)i[r]===void 0&&(i[r]=o[r]);return E(e,a,i)},e.createRef=function(){return{current:null}},e.forwardRef=function(e){return{$$typeof:c,render:e}},e.isValidElement=ne,e.lazy=function(e){return{$$typeof:d,_payload:{_status:-1,_result:e},_init:le}},e.memo=function(e,t){return{$$typeof:u,type:e,compare:t===void 0?null:t}},e.startTransition=de,e.unstable_useCacheRefresh=function(){return w.H.useCacheRefresh()},e.use=function(e){return w.H.use(e)},e.useActionState=function(e,t,n){return w.H.useActionState(e,t,n)},e.useCallback=function(e,t){return w.H.useCallback(e,t)},e.useContext=function(e){return w.H.useContext(e)},e.useDebugValue=function(){},e.useDeferredValue=function(e,t){return w.H.useDeferredValue(e,t)},e.useEffect=function(e,t){return w.H.useEffect(e,t)},e.useEffectEvent=function(e){return w.H.useEffectEvent(e)},e.useId=function(){return w.H.useId()},e.useImperativeHandle=function(e,t,n){return w.H.useImperativeHandle(e,t,n)},e.useInsertionEffect=function(e,t){return w.H.useInsertionEffect(e,t)},e.useLayoutEffect=function(e,t){return w.H.useLayoutEffect(e,t)},e.useMemo=function(e,t){return w.H.useMemo(e,t)},e.useOptimistic=function(e,t){return w.H.useOptimistic(e,t)},e.useReducer=function(e,t,n){return w.H.useReducer(e,t,n)},e.useRef=function(e){return w.H.useRef(e)},e.useState=function(e){return w.H.useState(e)},e.useSyncExternalStore=function(e,t,n){return w.H.useSyncExternalStore(e,t,n)},e.useTransition=function(){return w.H.useTransition()},e.version=`19.3.1`})),d=o(((e,t)=>{t.exports=u()})),f=o((e=>{function t(e,t){var n=e.length;e.push(t);a:for(;0<n;){var r=n-1>>>1,a=e[r];if(0<i(a,t))e[r]=t,e[n]=a,n=r;else break a}}function n(e){return e.length===0?null:e[0]}function r(e){if(e.length===0)return null;var t=e[0],n=e.pop();if(n!==t){e[0]=n;a:for(var r=0,a=e.length,o=a>>>1;r<o;){var s=2*(r+1)-1,c=e[s],l=s+1,u=e[l];if(0>i(c,n))l<a&&0>i(u,c)?(e[r]=u,e[l]=n,r=l):(e[r]=c,e[s]=n,r=s);else if(l<a&&0>i(u,n))e[r]=u,e[l]=n,r=l;else break a}}return t}function i(e,t){var n=e.sortIndex-t.sortIndex;return n===0?e.id-t.id:n}if(e.unstable_now=void 0,typeof performance==`object`&&typeof performance.now==`function`){var a=performance;e.unstable_now=function(){return a.now()}}else{var o=Date,s=o.now();e.unstable_now=function(){return o.now()-s}}var c=[],l=[],u=1,d=null,f=3,p=!1,m=!1,h=!1,g=!1,_=typeof setTimeout==`function`?setTimeout:null,v=typeof clearTimeout==`function`?clearTimeout:null,y=typeof setImmediate<`u`?setImmediate:null;function b(e){for(var i=n(l);i!==null;){if(i.callback===null)r(l);else if(i.startTime<=e)r(l),i.sortIndex=i.expirationTime,t(c,i);else break;i=n(l)}}function x(e){if(h=!1,b(e),!m){if(n(c)!==null)m=!0,S||(S=!0,te());else{var t=n(l);t!==null&&ie(x,t.startTime-e)}}}var S=!1,C=-1,ee=5,w=-1;function T(){return g?!0:!(e.unstable_now()-w<ee)}function E(){if(g=!1,S){var t=e.unstable_now();w=t;var i=!0;try{a:{m=!1,h&&(h=!1,v(C),C=-1),p=!0;var a=f;try{b:{for(b(t),d=n(c);d!==null&&!(d.expirationTime>t&&T());){var o=d.callback;if(typeof o==`function`){d.callback=null,f=d.priorityLevel;var s=o(d.expirationTime<=t);if(t=e.unstable_now(),typeof s==`function`){d.callback=s,b(t),i=!0;break b}d===n(c)&&r(c),b(t)}else r(c);d=n(c)}if(d!==null)i=!0;else{var u=n(l);u!==null&&ie(x,u.startTime-t),i=!1}}break a}finally{d=null,f=a,p=!1}i=void 0}}finally{i?te():S=!1}}}var te;if(typeof y==`function`)te=function(){y(E)};else if(typeof MessageChannel<`u`){var ne=new MessageChannel,re=ne.port2;ne.port1.onmessage=E,te=function(){re.postMessage(null)}}else te=function(){_(E,0)};function ie(t,n){C=_(function(){t(e.unstable_now())},n)}e.unstable_IdlePriority=5,e.unstable_ImmediatePriority=1,e.unstable_LowPriority=4,e.unstable_NormalPriority=3,e.unstable_Profiling=null,e.unstable_UserBlockingPriority=2,e.unstable_cancelCallback=function(e){e.callback=null},e.unstable_forceFrameRate=function(e){0>e||125<e?console.error(`forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported`):ee=0<e?Math.floor(1e3/e):5},e.unstable_getCurrentPriorityLevel=function(){return f},e.unstable_next=function(e){switch(f){case 1:case 2:case 3:var t=3;break;default:t=f}var n=f;f=t;try{return e()}finally{f=n}},e.unstable_requestPaint=function(){g=!0},e.unstable_runWithPriority=function(e,t){switch(e){case 1:case 2:case 3:case 4:case 5:break;default:e=3}var n=f;f=e;try{return t()}finally{f=n}},e.unstable_scheduleCallback=function(r,i,a){var o=e.unstable_now();switch(typeof a==`object`&&a?(a=a.delay,a=typeof a==`number`&&0<a?o+a:o):a=o,r){case 1:var s=-1;break;case 2:s=250;break;case 5:s=1073741823;break;case 4:s=1e4;break;default:s=5e3}return s=a+s,r={id:u++,callback:i,priorityLevel:r,startTime:a,expirationTime:s,sortIndex:-1},a>o?(r.sortIndex=a,t(l,r),n(c)===null&&r===n(l)&&(h?(v(C),C=-1):h=!0,ie(x,a-o))):(r.sortIndex=s,t(c,r),m||p||(m=!0,S||(S=!0,te()))),r},e.unstable_shouldYield=T,e.unstable_wrapCallback=function(e){var t=f;return function(){var n=f;f=t;try{return e.apply(this,arguments)}finally{f=n}}}})),p=o(((e,t)=>{t.exports=f()})),m=o((e=>{var t=d();function n(e){var t=`https://react.dev/errors/`+e;if(1<arguments.length){t+=`?args[]=`+encodeURIComponent(arguments[1]);for(var n=2;n<arguments.length;n++)t+=`&args[]=`+encodeURIComponent(arguments[n])}return`Minified React error #`+e+`; visit `+t+` for the full message or use the non-minified dev environment for full errors and additional helpful warnings.`}function r(){}var i={d:{f:r,r:function(){throw Error(n(522))},D:r,C:r,L:r,m:r,X:r,S:r,M:r},p:0,findDOMNode:null},a=Symbol.for(`react.portal`),o=Symbol.for(`react.recoverable`),s=Symbol.for(`react.optimistic_key`);function c(e,t,n){var r=3<arguments.length&&arguments[3]!==void 0?arguments[3]:null;return{$$typeof:a,key:r==null?null:r===s?s:``+r,children:e,containerInfo:t,implementation:n}}var l=t.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;function u(e,t){if(e===`font`)return``;if(typeof t==`string`)return t===`use-credentials`?t:``}e.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE=i,e.browser=function(e){return{$$typeof:o,_reason:e}},e.createPortal=function(e,t){var r=2<arguments.length&&arguments[2]!==void 0?arguments[2]:null;if(!t||t.nodeType!==1&&t.nodeType!==9&&t.nodeType!==11)throw Error(n(299));return c(e,t,null,r)},e.flushSync=function(e){var t=l.T,n=i.p;try{if(l.T=null,i.p=2,e)return e()}finally{l.T=t,i.p=n,i.d.f()}},e.preconnect=function(e,t){typeof e==`string`&&(t?(t=t.crossOrigin,t=typeof t==`string`?t===`use-credentials`?t:``:void 0):t=null,i.d.C(e,t))},e.prefetchDNS=function(e){typeof e==`string`&&i.d.D(e)},e.preinit=function(e,t){if(typeof e==`string`&&t&&typeof t.as==`string`){var n=t.as,r=u(n,t.crossOrigin),a=typeof t.integrity==`string`?t.integrity:void 0,o=typeof t.fetchPriority==`string`?t.fetchPriority:void 0;n===`style`?i.d.S(e,typeof t.precedence==`string`?t.precedence:void 0,{crossOrigin:r,integrity:a,fetchPriority:o}):n===`script`&&i.d.X(e,{crossOrigin:r,integrity:a,fetchPriority:o,nonce:typeof t.nonce==`string`?t.nonce:void 0})}},e.preinitModule=function(e,t){if(typeof e==`string`){if(typeof t==`object`&&t){if(t.as==null||t.as===`script`){var n=u(t.as,t.crossOrigin);i.d.M(e,{crossOrigin:n,integrity:typeof t.integrity==`string`?t.integrity:void 0,nonce:typeof t.nonce==`string`?t.nonce:void 0,fetchPriority:typeof t.fetchPriority==`string`?t.fetchPriority:void 0})}}else t??i.d.M(e)}},e.preload=function(e,t){if(typeof e==`string`&&typeof t==`object`&&t&&typeof t.as==`string`){var n=t.as,r=u(n,t.crossOrigin);i.d.L(e,n,{crossOrigin:r,integrity:typeof t.integrity==`string`?t.integrity:void 0,nonce:typeof t.nonce==`string`?t.nonce:void 0,type:typeof t.type==`string`?t.type:void 0,fetchPriority:typeof t.fetchPriority==`string`?t.fetchPriority:void 0,referrerPolicy:typeof t.referrerPolicy==`string`?t.referrerPolicy:void 0,imageSrcSet:typeof t.imageSrcSet==`string`?t.imageSrcSet:void 0,imageSizes:typeof t.imageSizes==`string`?t.imageSizes:void 0,media:typeof t.media==`string`?t.media:void 0})}},e.preloadModule=function(e,t){if(typeof e==`string`){if(t){var n=u(t.as,t.crossOrigin);i.d.m(e,{as:typeof t.as==`string`&&t.as!==`script`?t.as:void 0,crossOrigin:n,integrity:typeof t.integrity==`string`?t.integrity:void 0,nonce:typeof t.nonce==`string`?t.nonce:void 0,fetchPriority:typeof t.fetchPriority==`string`?t.fetchPriority:void 0})}else i.d.m(e)}},e.requestFormReset=function(e){i.d.r(e)},e.unstable_batchedUpdates=function(e,t){return e(t)},e.useFormState=function(e,t,n){return l.H.useFormState(e,t,n)},e.useFormStatus=function(){return l.H.useHostTransitionStatus()},e.version=`19.3.1`})),h=o(((e,t)=>{function n(){if(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__<`u`&&typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE==`function`)try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(n)}catch(e){console.error(e)}}n(),t.exports=m()})),g=o((e=>{var t=p(),n=d(),r=h();function i(e){var t=`https://react.dev/errors/`+e;if(1<arguments.length){t+=`?args[]=`+encodeURIComponent(arguments[1]);for(var n=2;n<arguments.length;n++)t+=`&args[]=`+encodeURIComponent(arguments[n])}return`Minified React error #`+e+`; visit `+t+` for the full message or use the non-minified dev environment for full errors and additional helpful warnings.`}function a(e){return!(!e||e.nodeType!==1&&e.nodeType!==9&&e.nodeType!==11)}function o(e){for(var t=e,n=t;n&&!n.alternate;)t=n,t.flags&4098&&(e=t.return),n=t.return;for(;t.return;)t=t.return;return t.tag===3?e:null}function s(e){if(e.tag===13){var t=e.memoizedState;if(t===null&&(e=e.alternate,e!==null&&(t=e.memoizedState)),t!==null)return t.dehydrated}return null}function c(e){if(e.tag===31){var t=e.memoizedState;if(t===null&&(e=e.alternate,e!==null&&(t=e.memoizedState)),t!==null)return t.dehydrated}return null}function l(e){if(o(e)!==e)throw Error(i(188))}function u(e){var t=e.alternate;if(!t){if(t=o(e),t===null)throw Error(i(188));return t===e?e:null}for(var n=e,r=t;;){var a=n.return;if(a===null)break;var s=a.alternate;if(s===null){if(r=a.return,r!==null){n=r;continue}break}if(a.child===s.child){for(s=a.child;s;){if(s===n)return l(a),e;if(s===r)return l(a),t;s=s.sibling}throw Error(i(188))}if(n.return!==r.return)n=a,r=s;else{for(var c=!1,u=a.child;u;){if(u===n){c=!0,n=a,r=s;break}if(u===r){c=!0,r=a,n=s;break}u=u.sibling}if(!c){for(u=s.child;u;){if(u===n){c=!0,n=s,r=a;break}if(u===r){c=!0,r=s,n=a;break}u=u.sibling}if(!c)throw Error(i(189))}}if(n.alternate!==r)throw Error(i(190))}if(n.tag!==3)throw Error(i(188));return n.stateNode.current===n?e:t}function f(e){var t=e.tag;if(t===5||t===26||t===27||t===6)return e;for(e=e.child;e!==null;){if(t=f(e),t!==null)return t;e=e.sibling}return null}function m(e,t,n,r,i,a){for(;e!==null;){if((e.tag===5||e.tag===27||e.tag===6)&&n(e,r,i,a)||(e.tag!==22||e.memoizedState===null)&&(t||e.tag!==5&&e.tag!==27)&&m(e.child,t,n,r,i,a))return!0;e=e.sibling}return!1}function g(e){for(e=e.return;e!==null;){if(e.tag===3||e.tag===5||e.tag===27)return e;e=e.return}return null}function _(e){var t=!1;for(e=e.return;e!==null&&(e.tag===4&&(t=!0),e.tag!==3&&e.tag!==5&&e.tag!==27);)e=e.return;return t}function v(e){var t=[null,null],n=g(e);return n===null||y(t,e,n.child,{foundSelf:!1}),t}function y(e,t,n,r){for(;n!==null;){if(n===t)r.foundSelf=!0;else if(n.tag===5||n.tag===27||n.tag===6){if(r.foundSelf)return e[1]=n,!0;e[0]=n}else if((n.tag!==22||n.memoizedState===null)&&y(e,t,n.child,r))return!0;n=n.sibling}return!1}function b(e){switch(e.tag){case 5:case 27:case 6:return e.stateNode;case 3:return e.stateNode.containerInfo;default:throw Error(i(559))}}var x=null,S=null;function C(e,t,n){return e===n||e===t&&(x=e,!0)}function ee(e,t,n){return e===n?(S=e,!1):e===t&&(S!==null&&(x=e),!0)}function w(e){if(e===null)return null;do e=e===null?null:e.return;while(e&&e.tag!==5&&e.tag!==27&&e.tag!==3);return e||null}function T(e,t,n){for(var r=0,i=e;i;i=n(i))r++;i=0;for(var a=t;a;a=n(a))i++;for(;0<r-i;)e=n(e),r--;for(;0<i-r;)t=n(t),i--;for(;r--;){if(e===t||t!==null&&e===t.alternate)return e;e=n(e),t=n(t)}return null}var E=Object.assign,te=Symbol.for(`react.element`),ne=Symbol.for(`react.transitional.element`),re=Symbol.for(`react.portal`),ie=Symbol.for(`react.fragment`),ae=Symbol.for(`react.strict_mode`),oe=Symbol.for(`react.profiler`),se=Symbol.for(`react.consumer`),ce=Symbol.for(`react.context`),le=Symbol.for(`react.forward_ref`),ue=Symbol.for(`react.suspense`),de=Symbol.for(`react.suspense_list`),fe=Symbol.for(`react.memo`),pe=Symbol.for(`react.lazy`),me=Symbol.for(`react.activity`),he=Symbol.for(`react.legacy_hidden`),ge=Symbol.for(`react.memo_cache_sentinel`),_e=Symbol.for(`react.view_transition`),ve=Symbol.for(`react.recoverable`),ye=Symbol.iterator;function be(e){return typeof e!=`object`||!e?null:(e=ye&&e[ye]||e[`@@iterator`],typeof e==`function`?e:null)}var xe=Symbol.for(`react.client.reference`);function Se(e){if(e==null)return null;if(typeof e==`function`)return e.$$typeof===xe?null:e.displayName||e.name||null;if(typeof e==`string`)return e;switch(e){case ie:return`Fragment`;case oe:return`Profiler`;case ae:return`StrictMode`;case ue:return`Suspense`;case de:return`SuspenseList`;case me:return`Activity`;case _e:return`ViewTransition`}if(typeof e==`object`)switch(e.$$typeof){case re:return`Portal`;case ce:return e.displayName||`Context`;case se:return(e._context.displayName||`Context`)+`.Consumer`;case le:var t=e.render;return e=e.displayName,e||=(e=t.displayName||t.name||``,e===``?`ForwardRef`:`ForwardRef(`+e+`)`),e;case fe:return t=e.displayName||null,t===null?Se(e.type)||`Memo`:t;case pe:t=e._payload,e=e._init;try{return Se(e(t))}catch{}}return null}var Ce=Array.isArray,D=n.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,O=r.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE,k={pending:!1,data:null,method:null,action:null},we=[],Te=-1;function Ee(e){return{current:e}}function A(e){0>Te||(e.current=we[Te],we[Te]=null,Te--)}function j(e,t){Te++,we[Te]=e.current,e.current=t}var De=Ee(null),Oe=Ee(null),ke=Ee(null),Ae=Ee(null);function je(e,t){switch(j(ke,t),j(Oe,e),j(De,null),t.nodeType){case 9:case 11:e=(e=t.documentElement)&&(e=e.namespaceURI)?up(e):0;break;default:if(e=t.tagName,t=t.namespaceURI)t=up(t),e=dp(t,e);else switch(e){case`svg`:e=1;break;case`math`:e=2;break;default:e=0}}A(De),j(De,e)}function Me(){A(De),A(Oe),A(ke)}function Ne(e){var t=e.memoizedState;t!==null&&(sh._currentValue=t.memoizedState,j(Ae,e)),t=De.current;var n=dp(t,e.type);t!==n&&(j(Oe,e),j(De,n))}function Pe(e){Oe.current===e&&(A(De),A(Oe)),Ae.current===e&&(A(Ae),sh._currentValue=k)}var Fe,Ie;function Le(e){if(Fe===void 0)try{throw Error()}catch(e){var t=e.stack.trim().match(/\n( *(at )?)/);Fe=t&&t[1]||``,Ie=-1<e.stack.indexOf(`
     at`)?` (<anonymous>)`:-1<e.stack.indexOf(`@`)?`@unknown:0:0`:``}return`
 `+Fe+e+Ie}var Re=!1;function ze(e,t){if(!e||Re)return``;Re=!0;var n=Error.prepareStackTrace;Error.prepareStackTrace=void 0;try{var r={DetermineComponentFrameRoot:function(){try{if(t){var n=function(){throw Error()};if(Object.defineProperty(n.prototype,"props",{set:function(){throw Error()}}),typeof Reflect==`object`&&Reflect.construct){try{Reflect.construct(n,[])}catch(e){var r=e}Reflect.construct(e,[],n)}else{try{n.call()}catch(e){r=e}n=!1;try{var i=Object.getOwnPropertyDescriptor(e.prototype,`props`);Object.defineProperty(e.prototype,"props",{configurable:!0,set:function(){throw Error()}}),n=!0,new e}finally{n&&(i===void 0?delete e.prototype.props:Object.defineProperty(e.prototype,"props",i))}}}else{try{throw Error()}catch(e){r=e}(n=e())&&typeof n.catch==`function`&&n.catch(function(){})}}catch(e){if(e&&r&&typeof e.stack==`string`)return[e.stack,r.stack]}return[null,null]}};r.DetermineComponentFrameRoot.displayName=`DetermineComponentFrameRoot`;var i=Object.getOwnPropertyDescriptor(r.DetermineComponentFrameRoot,`name`);i&&i.configurable&&Object.defineProperty(r.DetermineComponentFrameRoot,"name",{value:`DetermineComponentFrameRoot`});var a=r.DetermineComponentFrameRoot(),o=a[0],s=a[1];if(o&&s){var c=o.split(`
@@ -16,30 +16,71 @@ id: "a1-l1-what-is-python"
 moduleId: "a1-setup"
 title: "What Is Python, How It Works, and Where It Fits"
 order: 1
-estimatedMinutes: 12
+estimatedMinutes: 20
 difficulty: "beginner"
 objectives:
-  - "Describe Python's background and core design philosophy"
-  - "Explain how CPython turns .py source code into bytecode and executes it"
-  - "Compare Python's typing and execution model to Java, PHP, and JavaScript"
-  - "Identify major real-world domains where Python is used"
+  - "Describe Python's background, creator, and PEP 20 design philosophy"
+  - "Explain CPython's execution pipeline from .py source to AST, bytecode, and PVM"
+  - "Compare Python's typing, memory model, and syntax to Java, PHP, and JavaScript"
+  - "Identify major real-world domains and implementations of Python"
 prerequisites: []
 packages: []
 sources: ["python-tutorial", "python-lang-ref", "pep20", "pyodide-docs"]
-tags: ["python-basics", "interpreter", "bytecode", "background"]
+tags: ["python-basics", "interpreter", "bytecode", "background", "cpython"]
 ---
 
 ## Concept
 
-Python is a high-level, general-purpose programming language created by Guido van Rossum in the late 1980s and first released in 1991 [src:python-tutorial]. Its name comes from the comedy group Monty Python rather than the snake [src:python-tutorial]. Today the language is stewarded by the Python Software Foundation [src:python-tutorial].
+### 1. Python's Background and Design Philosophy
 
-At its core, Python is an **interpreted, dynamically typed** language [src:python-tutorial]. When you run a \`.py\` file using the standard CPython implementation, Python does not compile directly to native machine code ahead of time like C or C++. Instead, CPython compiles your source code into an intermediate representation called **bytecode** (often cached in \`__pycache__\` as \`.pyc\` files) and executes that bytecode inside the Python Virtual Machine (PVM) [src:python-lang-ref].
+Python is a high-level, general-purpose programming language designed by Guido van Rossum at CWI in the Netherlands in the late 1980s and first released in 1991 [src:python-tutorial]. Its name honors the British comedy group *Monty Python's Flying Circus*, not the reptile [src:python-tutorial]. Today, Python is stewarded by the non-profit Python Software Foundation (PSF) and evolved through public design documents called **PEPs** (Python Enhancement Proposals) [src:python-tutorial].
 
-Explanation: Think of CPython like a kitchen translator. You write a recipe in clean English (\`.py\` source code). Before cooking, the translator quickly rewrites the recipe into short, standardized kitchen shorthand (\`.pyc\` bytecode) so the chef (the Python Virtual Machine) can execute each step line by line without re-reading the raw text every time.
+Its guiding design philosophy is captured in **PEP 20 ("The Zen of Python")**, which emphasizes readability, explicitness, and simplicity over cleverness [src:pep20].
 
-Because Python is dynamically typed, variables do not have fixed types declared in the code; instead, values carry their types at runtime [src:python-lang-ref]. Python also uses **indentation** (whitespace at the start of a line) rather than curly braces \`{}\` to define code blocks [src:python-tutorial]. Its guiding design principles, recorded in PEP 20 ("The Zen of Python"), emphasize readability and simplicity [src:pep20].
+\`\`\`python
+import this  # Prints the 19 aphorisms of PEP 20 (The Zen of Python)
+\`\`\`
 
-### How Python Relates to Java, PHP, and JavaScript
+Explanation: Python was built around the idea that code is read by humans far more often than it is written. By removing mandatory semicolons, type boilerplate, and curly braces, Python lets you express logic in a form close to structured English.
+
+### 2. How Python Works Under the Hood (CPython Execution Pipeline)
+
+When people say "Python," they usually mean **CPython**, the reference implementation written in C [src:python-lang-ref]. Unlike C or C++ (which compile ahead of time to CPU-specific machine code), CPython uses a two-step **compile-then-interpret** pipeline [src:python-lang-ref]:
+
+1. **Lexing & Parsing**: CPython reads your \`.py\` text file and builds an **Abstract Syntax Tree (AST)**. Any syntax error (\`SyntaxError\` or \`IndentationError\`) is caught here before a single line executes.
+2. **Bytecode Compilation**: The AST is compiled into platform-independent **bytecode** instructions (cached inside \`__pycache__/*.pyc\` files for imported modules so subsequent runs start faster).
+3. **Python Virtual Machine (PVM)**: CPython's bytecode interpreter loop fetches and executes each bytecode instruction one by one.
+4. **Memory Management**: CPython tracks how many variables point to each object (**reference counting**) and runs a cyclic **garbage collector** to reclaim unused memory automatically [src:python-lang-ref].
+
+\`\`\`python
+import dis
+
+def calc_tax(price):
+    return price * 1.12
+
+# Inspect the actual bytecode instructions generated for calc_tax
+dis.dis(calc_tax)
+\`\`\`
+
+Explanation: Think of CPython like a kitchen translator. You write a recipe in clean English (\`.py\` source code). Before cooking, the translator quickly rewrites the recipe into standardized kitchen shorthand (\`.pyc\` bytecode) so the chef (the Python Virtual Machine) can execute each step efficiently without re-reading the raw text every time.
+
+Other Python implementations exist for specialized environments: **PyPy** (adds a JIT compiler for speed), **MicroPython** (for microcontrollers), and **Pyodide** (CPython compiled to WebAssembly so Python runs inside a web browser, which powers this app) [src:pyodide-docs].
+
+### 3. Dynamic Strong Typing and Significant Indentation
+
+Python is **dynamically typed** (variables do not have fixed declared types; values carry their types at runtime) and **strongly typed** (Python refuses to silently coerce incompatible types such as \`"5" + 2\`) [src:python-lang-ref]. Code blocks are grouped by **indentation** (4 spaces per level per PEP 8) rather than \`{}\` braces [src:python-tutorial].
+
+\`\`\`python
+count = 5
+print(count, type(count))   # 5 <class 'int'>
+
+count = "five"              # Valid: variable name rebound to a str object
+print(count, type(count))   # five <class 'str'>
+\`\`\`
+
+Explanation: In Java, \`int count = 5;\` locks the box \`count\` to integers forever. In Python, \`count\` is just a name tag; you can move the tag from an \`int\` object to a \`str\` object at runtime, though Python still enforces type rules on operations (\`"5" + 2\` raises \`TypeError\`).
+
+### 4. How Python Relates to Java, PHP, and JavaScript
 
 | Feature | Python | Java | PHP | JavaScript |
 | --- | --- | --- | --- | --- |
@@ -47,34 +88,31 @@ Because Python is dynamically typed, variables do not have fixed types declared 
 | Execution | Source -> bytecode -> PVM | Source -> bytecode -> JVM | Interpreted/JIT (Zend) | JIT compiled (V8, etc.) |
 | Code blocks | Indentation (4 spaces) | Curly braces \`{}\` | Curly braces \`{}\` | Curly braces \`{}\` |
 | Semicolons | Optional, rarely used | Required | Required | Optional (ASI) |
+| Type coercion | \`"5" + 2\` -> \`TypeError\` | Compile-time error | \`"5" + 2\` -> \`7\` | \`"5" + 2\` -> \`"52"\` |
 | Primary strengths | Data analytics, AI, automation, backends | Enterprise backends, Android | Server-side web | Browser UI, Node.js backends |
 
-Explanation: If you have used Java, you are used to writing \`int count = 5;\` and wrapping blocks in \`{ }\`. In Python, you write \`count = 5\` and indent the next lines instead of using braces. Compared to PHP and JavaScript, Python is stricter about mixing incompatible types automatically (for example, \`"5" + 2\` raises an error in Python instead of silently converting types).
+### 5. Where Python Is Used
 
-### Where Python Is Used
-
-- **Data analytics and data science**: Cleaning tabular data, running statistical tests, and building charts with libraries such as pandas, NumPy, and Matplotlib [src:pandas-docs].
-- **Machine learning and AI**: Training predictive models and neural networks [src:sklearn-docs].
+- **Data analytics and data science**: Cleaning tabular data, running statistical tests, and building charts with \`pandas\`, \`NumPy\`, \`Matplotlib\`, and \`SciPy\` [src:pandas-docs].
+- **Machine learning and AI**: Training predictive models and neural networks with \`scikit-learn\` [src:sklearn-docs].
 - **Web backends and APIs**: Server-side applications and data pipelines [src:python-tutorial].
-- **Automation and scripting**: File processing, report generation, and system tasks [src:automate-boring-stuff].
+- **Automation and scripting**: File processing, report generation, and system administration [src:automate-boring-stuff].
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
 ## Why it matters
 
-Understanding how Python executes code helps you predict why errors happen when they do. In statically typed languages like Java, many type mismatches are caught before the program runs. In Python, syntax errors are caught when compiling to bytecode, while type errors and undefined names are caught only when that specific line executes [src:python-lang-ref].
+Understanding Python's compilation-to-bytecode step explains why \`SyntaxError\` prevents the entire script from starting, whereas \`NameError\` or \`TypeError\` only triggers when execution reaches that specific line [src:python-lang-ref].
 
 ## Worked example
-
-You can inspect Python's own design philosophy and runtime environment directly from Python code using built-in modules like \`sys\` [src:python-tutorial].
 
 \`\`\`python
 import sys
 
-# Print the Python version running in this browser sandbox
 print("Python version:", sys.version.split()[0])
+print("Platform:", sys.platform)
 
-# Dynamic typing: the same variable name can hold different types of values
+# Dynamic strong typing in action
 enrollment_count = 42
 print("Count:", enrollment_count, type(enrollment_count))
 
@@ -82,19 +120,16 @@ enrollment_count = "forty-two"
 print("Count:", enrollment_count, type(enrollment_count))
 \`\`\`
 
-Notice there are no semicolons, no type declarations, and \`import sys\` loads a built-in module from the Python Standard Library [src:python-tutorial].
-
 ## Common mistakes
 
 - **Mixing tabs and spaces**: Python relies on consistent indentation. Mixing tab characters and spaces in the same block raises a \`TabError\` [src:python-lang-ref].
-- **Expecting silent type coercion**: Coming from PHP or JavaScript, \`"10" + 5\` does not become \`"105"\` or \`15\` in Python; it raises a \`TypeError\` because Python does not implicitly convert between \`str\` and \`int\` [src:python-lang-ref].
-- **Forgetting that errors can hide in unexecuted branches**: Because Python checks types at runtime, a type bug inside an \`if\` branch will not trigger until that branch actually runs [src:python-lang-ref].
+- **Expecting silent type coercion**: Coming from PHP or JavaScript, \`"10" + 5\` raises a \`TypeError\` in Python because Python does not implicitly convert between \`str\` and \`int\` [src:python-lang-ref].
 
 ## Check your understanding
 
-1. In your own words, what is the difference between \`.py\` source code and \`.pyc\` bytecode?
+1. What are the three main stages CPython uses to run a \`.py\` file?
 2. Why does \`"5" + 3\` fail in Python when similar expressions work in JavaScript or PHP?
-3. Try the exercises on the right to inspect \`sys.platform\` and practice dynamic variable assignment.
+3. Complete the exercises on the right.
 
 ## Sources
 
@@ -105,17 +140,17 @@ Notice there are no semicolons, no type declarations, and \`import sys\` loads a
 - [src:pandas-docs] pandas Documentation
 - [src:sklearn-docs] scikit-learn User Guide
 - [src:automate-boring-stuff] Automate the Boring Stuff with Python (Al Sweigart)
-`,Rl='---\nid: "a1-l2-setup-shell-and-anatomy"\nmoduleId: "a1-setup"\ntitle: "Setup, Shell Commands, REPL, and Program Anatomy"\norder: 2\nestimatedMinutes: 15\ndifficulty: "beginner"\nobjectives:\n  - "Recognize standard Python shell commands for running scripts and managing packages"\n  - "Describe how the interactive REPL works compared to running a .py file"\n  - "Identify the core parts of a Python program: imports, comments, statements, and indentation"\n  - "Use import, from ... import, and import ... as to load standard library tools"\nprerequisites: ["a1-l1-what-is-python"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref", "pep8", "pyodide-docs"]\ntags: ["setup", "shell", "repl", "imports", "anatomy"]\n---\n\n## Concept\n\nWhen working outside this browser app on your own computer, you interact with Python through a terminal (shell) [src:python-tutorial].\n\n### Common Python Shell Commands\n\n- `python --version` or `python3 --version`: Checks the installed Python version (on macOS and Linux, the command is often `python3`; on Windows it is often `python` or `py`) [src:python-tutorial].\n- `python script.py`: Executes a Python source file from top to bottom [src:python-tutorial].\n- `python` (with no filename): Starts the **REPL** (Read-Eval-Print Loop), an interactive prompt marked by `>>>` where each line runs immediately and prints its result [src:python-tutorial].\n- `python -m pip install pandas`: Runs `pip` as a module to install third-party packages from PyPI [src:python-tutorial].\n- `python -m venv .venv`: Creates an isolated virtual environment folder so one project\'s package versions do not clash with another\'s [src:python-tutorial].\n\nNote: In PyData Path, your code runs inside **Pyodide** (Python compiled to WebAssembly inside a browser Web Worker) rather than your computer\'s OS shell, so `pip` and `venv` are not used directly here [src:pyodide-docs].\n\n### Anatomy of a Python Program\n\nA typical Python script is structured from top to bottom with four building blocks:\n\n1. **Imports**: Usually placed at the top of the file [src:pep8]. You can import an entire module (`import math`), a specific item (`from math import sqrt`), or assign an alias (`import math as m`) [src:python-tutorial].\n2. **Comments**: Anything after `#` on a line is ignored by Python and is written for humans [src:python-tutorial].\n3. **Statements and expressions**: An expression evaluates to a value (like `2 + 3`), while a statement performs an action (like `total = 2 + 3` or `print(total)`) [src:python-lang-ref].\n4. **Indentation**: PEP 8 recommends 4 spaces per indentation level to define blocks inside `if`, `for`, or `def` [src:pep8].\n\nExplanation: Think of `import` like opening a toolbox before starting a repair. The Python Standard Library comes with dozens of built-in toolboxes (`math`, `statistics`, `csv`, `json`, `datetime`), and external packages like `pandas` are extra toolboxes you install when doing analytics.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nKnowing the difference between shell commands (`python3 script.py`), the interactive REPL (`>>>`), and `.py` files prevents one of the most common beginner mistakes: typing shell commands like `pip install` inside a Python script or inside the `>>>` prompt.\n\n## Worked example\n\n```python\n# 1. Imports at the top of the script\nimport math\nfrom statistics import mean\n\n# 2. Variables and expressions\nscores = [84, 90, 78, 92]\naverage_score = mean(scores)\nrounded_up = math.ceil(average_score)\n\n# 3. Output statement\nprint("Average:", average_score)\nprint("Rounded up:", rounded_up)\n```\n\nNotice how `import math` requires `math.ceil(...)`, whereas `from statistics import mean` lets you call `mean(...)` directly [src:python-tutorial].\n\n## Common mistakes\n\n- **Running `pip install` inside Python code**: `pip` is a terminal command, not valid Python syntax. Running `pip install pandas` inside a `.py` file causes a `SyntaxError` [src:python-tutorial].\n- **Forgetting the module prefix**: If you write `import math`, calling `sqrt(16)` fails with a `NameError`; you must call `math.sqrt(16)` unless you used `from math import sqrt` [src:python-tutorial].\n- **Leading whitespace on top-level lines**: Starting a top-level line with an accidental space causes an `IndentationError` [src:python-lang-ref].\n\n## Check your understanding\n\n1. Which terminal command starts an interactive Python REPL, and which one runs a saved file?\n2. What is the difference between `import math` and `from math import sqrt`?\n3. Complete the two import and anatomy exercises on the right.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n- [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)\n- [src:pyodide-docs] Pyodide Documentation (Pyodide contributors)\n',zl=`---
+`,Rl='---\nid: "a1-l2-setup-shell-and-anatomy"\nmoduleId: "a1-setup"\ntitle: "Setup, Shell Commands, REPL, and Program Anatomy"\norder: 2\nestimatedMinutes: 20\ndifficulty: "beginner"\nobjectives:\n  - "Use standard Python shell commands for running scripts, modules, and managing packages"\n  - "Navigate the interactive REPL (>>>, ..., _) compared to running a .py file"\n  - "Identify every part of a Python program\'s anatomy: shebang, docstring, imports, comments, statements, and indentation"\n  - "Use import, from ... import, and import ... as to load standard library and third-party tools"\nprerequisites: ["a1-l1-what-is-python"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref", "pep8", "pyodide-docs"]\ntags: ["setup", "shell", "repl", "imports", "anatomy"]\n---\n\n## Concept\n\n### 1. Python Shell Commands and Local Setup\n\nOn your own computer, you interact with Python through a terminal (shell) [src:python-tutorial]. Common commands include:\n- `python3 --version` (or `python --version` / `py --version` on Windows): Prints the installed Python version [src:python-tutorial].\n- `python3 script.py`: Executes a saved `.py` file from top to bottom [src:python-tutorial].\n- `python3 -c "print(2 + 2)"`: Runs a short one-line command directly from the shell [src:python-tutorial].\n- `python3 -i script.py`: Runs `script.py` and then drops you into the interactive prompt so you can inspect variables [src:python-tutorial].\n- `python3 -m pip install pandas`: Runs `pip` as a module to install third-party packages from PyPI [src:python-tutorial].\n- `python3 -m venv .venv`: Creates an isolated virtual environment folder per project [src:python-tutorial].\n\n```text\n# Run these in your OS terminal (not inside a .py file):\npython3 --version\npython3 -m venv .venv\npython3 -m pip install pandas\npython3 analyze_sales.py\n```\n\nExplanation: In PyData Path, your code runs inside **Pyodide** (CPython in WebAssembly inside a browser Web Worker) rather than your computer\'s OS shell, so `pip` and `venv` are handled by the app\'s package loader instead [src:pyodide-docs].\n\n### 2. The Interactive REPL (`>>>`, `...`, and `_`)\n\nRunning `python3` with no filename starts the **REPL** (Read-Eval-Print Loop) [src:python-tutorial]:\n- `>>>` is the primary prompt waiting for a statement or expression.\n- `...` is the continuation prompt when writing multi-line blocks (like `if` or `for`).\n- `_` holds the result of the last evaluated expression in the REPL.\n- Type `exit()` or press `Ctrl+D` (macOS/Linux) or `Ctrl+Z` + Enter (Windows) to quit.\n\n```text\n>>> 15 * 1.12\n16.8\n>>> _ + 2\n18.8\n```\n\nExplanation: Notice that in the REPL, typing `15 * 1.12` prints `16.8` automatically, whereas in a `.py` script file you must call `print(15 * 1.12)` to see output.\n\n### 3. Anatomy of a Python Program\n\nA well-structured Python script follows a consistent top-to-bottom anatomy [src:pep8]:\n1. **Module docstring** (optional `"""..."""` at the top describing the script\'s purpose).\n2. **Imports** grouped at the top (standard library first, third-party second, local modules third) [src:pep8].\n3. **Constants** in `UPPER_SNAKE_CASE` (e.g., `TAX_RATE = 0.12`).\n4. **Comments** starting with `#` (ignored by Python, written for humans) [src:python-tutorial].\n5. **Expressions** (evaluate to a value, e.g., `2 + 3`) and **statements** (perform an action, e.g., `x = 2 + 3`) [src:python-lang-ref].\n6. **Indentation** (4 spaces per level) to define blocks [src:pep8].\n\n```python\n"""Compute campus store tax."""      # 1. Module docstring\nimport math                         # 2. Import\nTAX_RATE = 0.12                     # 3. Constant\n\n# Calculate total with ceiling      # 4. Comment\nraw_total = 100 * (1 + TAX_RATE)    # 5. Statement with expression\nif raw_total > 100:                 # 6. Indented block (4 spaces)\n    print(math.ceil(raw_total))\n```\n\n### 4. Three Ways to `import` Packages and Modules\n\nPython includes a rich **Standard Library** ("batteries included") and supports third-party packages [src:python-tutorial]:\n- `import math`: Loads the module; access items with `math.sqrt(16)`.\n- `from statistics import median`: Binds `median` directly into your namespace; call `median([1, 2, 3])`.\n- `import statistics as stats`: Binds a short alias (`import pandas as pd`, `import numpy as np`).\n\n```python\nimport math\nfrom statistics import median\nimport statistics as stats\n\nprint(math.sqrt(16), median([1, 5, 3]), stats.mean([2, 4]))\n```\n\nExplanation: Avoid `from math import *` (wildcard imports), because dumping every name from a module into your namespace makes it unclear where functions came from and risks overwriting existing names [src:pep8].\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nKnowing the difference between OS shell commands (`python3 script.py`), the interactive REPL (`>>>`), and `.py` files prevents one of the most common beginner mistakes: typing shell commands like `pip install` inside a Python script.\n\n## Worked example\n\n```python\nimport math\nfrom statistics import mean\n\nscores = [84, 90, 78, 92]\naverage_score = mean(scores)\nrounded_up = math.ceil(average_score)\n\nprint("Average:", average_score)\nprint("Rounded up:", rounded_up)\n```\n\n## Common mistakes\n\n- **Running `pip install` inside Python code**: `pip` is a terminal command, not valid Python syntax [src:python-tutorial].\n- **Forgetting the module prefix**: If you write `import math`, calling `sqrt(16)` fails with a `NameError`; call `math.sqrt(16)` unless you used `from math import sqrt` [src:python-tutorial].\n\n## Check your understanding\n\n1. Which terminal command starts an interactive Python REPL, and which one runs a saved file?\n2. Why does PEP 8 discourage `from module import *`?\n3. Complete the exercises on the right.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n- [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)\n- [src:pyodide-docs] Pyodide Documentation (Pyodide contributors)\n',zl=`---
 id: "a1-l3-first-program-and-errors"
 moduleId: "a1-setup"
 title: "First Program, print(), and Reading Error Messages"
 order: 3
-estimatedMinutes: 15
+estimatedMinutes: 18
 difficulty: "beginner"
 objectives:
   - "Use print() with multiple arguments, sep, and end"
   - "Read a Python traceback from bottom to top to locate errors"
-  - "Distinguish SyntaxError, NameError, and TypeError"
+  - "Distinguish SyntaxError, IndentationError, NameError, and TypeError"
 prerequisites: ["a1-l2-setup-shell-and-anatomy"]
 packages: []
 sources: ["python-tutorial", "python-lang-ref"]
@@ -124,23 +159,40 @@ tags: ["print", "errors", "traceback", "debugging"]
 
 ## Concept
 
-The built-in \`print()\` function writes text to standard output [src:python-tutorial]. You can pass one or more values separated by commas, and Python converts each value to text and joins them with a space by default [src:python-tutorial].
+### 1. Calling \`print()\` With Multiple Arguments, \`sep\`, and \`end\`
 
-Two optional keyword arguments control formatting [src:python-tutorial]:
-- \`sep\`: The separator placed between multiple arguments (default is \`" "\`).
-- \`end\`: The string printed at the end (default is \`"\\n"\`, a newline).
+The built-in \`print(*objects, sep=' ', end='\\n')\` function writes text to standard output [src:python-tutorial]:
+- Passing comma-separated arguments converts each value with \`str()\` and joins them with \`sep\` (default \`" "\`).
+- \`end\` controls what is printed after the last argument (default \`"\\n"\`, a newline).
 
-### Reading Python Error Messages (Tracebacks)
+\`\`\`python
+print("IS-301", "Analytics", "2026", sep=" | ")
+print("Step 1", end=" -> ")
+print("Done")
+\`\`\`
+
+Explanation: Passing comma-separated arguments to \`print()\` is safer than \`+\` because \`print()\` converts numbers and booleans to strings automatically for you.
+
+### 2. Reading Python Tracebacks From Bottom to Top
 
 When Python cannot parse or run your code, it prints a **traceback** [src:python-tutorial]. Always read a traceback from the **bottom line up**:
-1. **Last line**: Shows the exception type (such as \`SyntaxError\`, \`NameError\`, or \`TypeError\`) and a short description [src:python-tutorial].
-2. **Line above it**: Shows the file name and line number where Python detected the problem [src:python-tutorial].
+1. **Last line**: Shows the exception type (\`SyntaxError\`, \`NameError\`, \`TypeError\`) and a short description [src:python-tutorial].
+2. **Line above it**: Shows the file name, line number, and exact source line where Python detected the problem [src:python-tutorial].
 
-- \`SyntaxError\`: Python could not parse your code structure (for example, a missing quote or unclosed parenthesis) [src:python-tutorial].
-- \`NameError\`: You used a variable or function name that has not been defined in scope [src:python-lang-ref].
-- \`TypeError\`: You applied an operation to an incompatible type (for example, \`"Units: " + 15\`) [src:python-lang-ref].
+Four exceptions every beginner meets first:
+- \`SyntaxError\`: Code structure cannot be parsed (e.g., missing quote or unclosed parenthesis) [src:python-tutorial].
+- \`IndentationError\`: Unexpected leading spaces or missing indent after \`:\` [src:python-lang-ref].
+- \`NameError\`: Using a variable or function name that has not been defined [src:python-lang-ref].
+- \`TypeError\`: Applying an operation to an incompatible type (e.g., \`"Total: " + 5\`) [src:python-lang-ref].
 
-Explanation: Think of a traceback like a receipt from a failed delivery. The bottom line tells you *why* the package could not be delivered (\`NameError\`), and the line right above it tells you *which address* (line number) had the problem.
+\`\`\`python
+# SyntaxError example: print("Hello"
+# NameError example:   print(totl_students)
+# TypeError example:   print("Count: " + 45)
+print("Count:", 45)  # Correct!
+\`\`\`
+
+Explanation: Think of a traceback like a delivery failure receipt: the bottom line tells you *why* it failed (\`NameError\`), and the line right above it tells you *which address* (line number) had the problem.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -149,8 +201,6 @@ Note: Behavior may differ between versions. Check the official docs for your ins
 Every programmer encounters errors daily. Learning to read the bottom line of a traceback calmly turns cryptic red text into exact debugging instructions.
 
 ## Worked example
-
-Here is a small Information Systems enrollment summary script using \`print()\` with \`sep\` and \`end\`:
 
 \`\`\`python
 course_code = "IS-301"
@@ -162,36 +212,137 @@ print("Enrolled:", enrolled, "of", capacity)
 print("2026", "11", "19", sep="-")
 \`\`\`
 
-Notice that \`print("Course", course_code, sep=": ")\` outputs \`Course: IS-301\`, and \`print("2026", "11", "19", sep="-")\` outputs \`2026-11-19\`.
-
 ## Common mistakes
 
-- **Using \`+\` to join strings and numbers**: \`print("Enrolled: " + 38)\` raises a \`TypeError\`. Either pass them as separate comma-separated arguments \`print("Enrolled:", 38)\` or convert the number with \`str(38)\` [src:python-tutorial].
-- **Forgetting quotes around text**: \`print(Hello)\` treats \`Hello\` as a variable name and raises a \`NameError\` [src:python-tutorial].
-- **Misreading SyntaxError line numbers**: If you forget a closing parenthesis \`)\` on line 3, Python may report the \`SyntaxError\` on line 4 [src:python-tutorial].
+- **Using \`+\` to join strings and numbers**: \`print("Enrolled: " + 38)\` raises a \`TypeError\`. Pass them as separate comma-separated arguments \`print("Enrolled:", 38)\` instead [src:python-tutorial].
+- **Misreading \`SyntaxError\` line numbers**: If you forget a closing \`)\` on line 3, Python often reports the \`SyntaxError\` on line 4 [src:python-tutorial].
 
 ## Check your understanding
 
 1. What does \`print("A", "B", "C", sep="-")\` output?
 2. Which line of a Python traceback should you read first, and what two pieces of information does it give you?
-3. Complete the exercises on the right to format an IS inventory report and fix a buggy script.
+3. Complete the exercises on the right.
 
 ## Sources
 
 - [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
 - [src:python-lang-ref] The Python Language Reference (Python Software Foundation)
-`,Bl='---\nid: "a2-l1-variables-and-core-types"\nmoduleId: "a2-variables-types"\ntitle: "Variables and Core Data Types (int, float, str, bool, None)"\norder: 1\nestimatedMinutes: 15\ndifficulty: "beginner"\nobjectives:\n  - "Follow Python variable naming rules and PEP 8 snake_case conventions"\n  - "Distinguish int, float, str, bool, and None values"\n  - "Inspect types at runtime using type() and isinstance()"\n  - "Check for None safely using the is operator"\nprerequisites: ["a1-l3-first-program-and-errors"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref", "pep8"]\ntags: ["variables", "types", "int", "float", "str", "bool", "None"]\n---\n\n## Concept\n\nIn Python, a variable is a name bound to an object in memory [src:python-lang-ref]. Variable names may contain letters, digits, and underscores (`_`), cannot start with a digit, and are case-sensitive (`total` and `Total` are different names) [src:python-lang-ref]. PEP 8 recommends `snake_case` (lowercase words separated by underscores) for variable names [src:pep8].\n\nPython\'s five foundational built-in scalar/null types are [src:python-tutorial]:\n\n- `int`: Whole numbers of arbitrary precision (for example, `42`, `-7`, `0`, `1_000_000`) [src:python-tutorial].\n- `float`: Decimal numbers represented in binary floating-point (for example, `3.14`, `-0.5`, `2.0`) [src:python-tutorial]. Note that some base-10 decimals like `0.1 + 0.2` have tiny binary rounding differences (`0.30000000000000004`) [src:python-tutorial].\n- `str`: Immutable sequences of Unicode characters enclosed in single (`\'...\'`) or double (`"..."`) quotes [src:python-tutorial].\n- `bool`: Logical truth values `True` and `False` (note the capital `T` and `F`) [src:python-lang-ref].\n- `None`: The sole value of `NoneType`, used to represent the intentional absence of a value [src:python-lang-ref].\n\nYou can inspect an object\'s type with `type(value)` or test whether it belongs to a type with `isinstance(value, expected_type)` [src:python-tutorial]. To test whether a variable is `None`, PEP 8 specifies using `x is None` or `x is not None` rather than `==` [src:pep8].\n\nExplanation: Think of a variable like a sticky note attached to a box. The box itself has a type (such as `int` or `str`), while the sticky note is just the name pointing to it. Moving the sticky note to a different box changes what the name refers to.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nIn data analytics, misidentified column types are a top source of silent bugs: a ZIP code or student ID stored as an `int` loses leading zeros, while a price stored as a `str` cannot be summed until converted. Knowing the core types lets you spot and prevent these issues early.\n\n## Worked example\n\n```python\nstudent_id = "2026-00412"     # str: keeps leading zeros and hyphen\nunits_enrolled = 18            # int: whole number\ngpa = 3.75                     # float: decimal number\nis_full_time = True            # bool: True or False\ngraduation_date = None         # NoneType: not yet assigned\n\nprint(type(student_id), isinstance(units_enrolled, int))\nprint("Has graduation date:", graduation_date is not None)\n```\n\nNotice that `student_id` is stored as a `str` rather than an `int` because it is an identifier, not a quantity you do arithmetic on.\n\n## Common mistakes\n\n- **Using lowercase `true`, `false`, or `null`**: Python requires capitalized `True`, `False`, and `None` (unlike Java, PHP, or JavaScript) [src:python-lang-ref].\n- **Comparing `float` values with `==` after arithmetic**: `0.1 + 0.2 == 0.3` evaluates to `False` due to binary floating-point representation [src:python-tutorial].\n- **Using `== None` instead of `is None`**: While `==` often works, custom objects can override `==`, so PEP 8 recommends `is None` [src:pep8].\n\n## Check your understanding\n\n1. Why should a phone number or student ID with leading zeros be stored as `str` instead of `int`?\n2. What does `type(3.0)` return?\n3. Complete the exercises on the right to practice filling in type checks, predicting float behavior, and writing variable definitions.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n- [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)\n',Vl='---\nid: "a2-l2-operators-conversion-truthiness"\nmoduleId: "a2-variables-types"\ntitle: "Type Conversion, Operators, and Truthiness"\norder: 2\nestimatedMinutes: 18\ndifficulty: "beginner"\nobjectives:\n  - "Use arithmetic operators including /, //, %, and **"\n  - "Combine comparison and logical operators (and, or, not)"\n  - "Convert values explicitly with int(), float(), str(), and bool()"\n  - "Predict which values are truthy or falsy in Python"\nprerequisites: ["a2-l1-variables-and-core-types"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["operators", "type-conversion", "truthiness", "is-scenario"]\n---\n\n## Concept\n\n### Arithmetic, Comparison, and Logical Operators\n\nPython supports standard arithmetic operators [src:python-tutorial]:\n- `+`, `-`, `*`: Addition, subtraction, multiplication.\n- `/`: True division, which always returns a `float` (for example, `7 / 2` is `3.5`, and `8 / 2` is `4.0`) [src:python-tutorial].\n- `//`: Floor division, which discards the fractional part toward negative infinity (`7 // 2` is `3`) [src:python-tutorial].\n- `%`: Modulo (remainder after division, `7 % 2` is `1`) [src:python-tutorial].\n- `**`: Exponentiation (`2 ** 3` is `8`) [src:python-tutorial].\n\nComparison operators (`==`, `!=`, `<`, `<=`, `>`, `>=`) return a `bool` (`True` or `False`) and can even be chained, such as `0 <= score <= 100` [src:python-lang-ref]. Logical operators are written as English words: `and`, `or`, and `not` (not `&&`, `||`, `!`) [src:python-lang-ref].\n\n### Explicit Type Conversion\n\nBecause Python does not silently coerce strings to numbers in arithmetic, you convert types explicitly using built-in constructors [src:python-tutorial]:\n- `int("25")` -> `25` (raises `ValueError` if the string is not a valid integer; `int(3.9)` truncates toward zero to `3`) [src:python-tutorial].\n- `float("19.5")` -> `19.5` [src:python-tutorial].\n- `str(42)` -> `"42"` [src:python-tutorial].\n- `bool(val)` -> `True` or `False` [src:python-lang-ref].\n\n### Truthiness\n\nAny object in Python can be evaluated in a boolean context (`if`, `while`, `bool(x)`) [src:python-lang-ref]. By default, objects are considered **truthy**, except for a small set of **falsy** values [src:python-lang-ref]:\n- `None` and `False`\n- Zero of any numeric type: `0`, `0.0`\n- Empty sequences and collections: `""` (empty string), `[]` (empty list), `{}` (empty dict), `set()`\n\nExplanation: Notice that `"0"` (a string containing the character zero) is non-empty, so `bool("0")` is `True`, whereas `bool(0)` and `bool("")` are `False`. This catches many beginners off guard when reading text input or CSV fields.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nWhen reading data from forms, CSVs, or user input, numbers often arrive as strings (`"12"`), and missing fields arrive as `""` or `None`. Combining explicit conversion with truthiness checks lets you clean and validate records before calculating totals.\n\n## Worked example\n\nHere is a campus store order calculation handling string inputs, floor division for full boxes, and a truthiness check for a coupon code:\n\n```python\nraw_units = "14"\nunit_price = 12.50\ncoupon_code = ""\n\nunits = int(raw_units)\nfull_boxes = units // 6          # 2 full boxes of 6\nleftover = units % 6             # 2 leftover items\nsubtotal = units * unit_price\nhas_coupon = bool(coupon_code)   # False because "" is empty\n\nprint("Subtotal:", subtotal)\nprint("Boxes:", full_boxes, "Leftover:", leftover)\nprint("Coupon applied:", has_coupon)\n```\n\n## Common mistakes\n\n- **Using `&&` or `||` from Java/JS/PHP**: Python uses `and`, `or`, `not`; `&&` causes a `SyntaxError` [src:python-lang-ref].\n- **Calling `int("3.5")`**: Converting a decimal string directly with `int()` raises a `ValueError`. Convert with `float("3.5")` first if needed [src:python-tutorial].\n- **Assuming `"False"` is falsy**: Because `"False"` is a non-empty string, `bool("False")` evaluates to `True` [src:python-lang-ref].\n\n## Check your understanding\n\n1. What is the difference between `9 / 2` and `9 // 2`?\n2. Why is `bool("0")` equal to `True` while `bool(0)` is `False`?\n3. Complete the exercises on the right to debug a type error, predict operator results, and compute an IS order total.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Hl='---\nid: "a3-l1-indexing-slicing-methods"\nmoduleId: "a3-strings-io"\ntitle: "String Indexing, Slicing, and Core Methods"\norder: 1\nestimatedMinutes: 16\ndifficulty: "beginner"\nobjectives:\n  - "Access individual characters using positive and negative indices"\n  - "Extract substrings using slice syntax s[start:stop:step]"\n  - "Explain why strings are immutable in Python"\n  - "Clean and transform text using strip(), lower(), upper(), replace(), split(), and join()"\nprerequisites: ["a2-l2-operators-conversion-truthiness"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["strings", "indexing", "slicing", "methods"]\n---\n\n## Concept\n\nA Python `str` is an ordered, **immutable** sequence of Unicode characters [src:python-tutorial]. Because it is immutable, you cannot modify a character in place (for example, `code[0] = "X"` raises a `TypeError`); instead, string operations return a new string [src:python-tutorial].\n\n### Indexing and Slicing\n\n- **Indexing**: Positions start at `0` from the left (`s[0]` is the first character) and `-1` from the right (`s[-1]` is the last character) [src:python-tutorial].\n- **Slicing**: `s[start:stop]` extracts characters from index `start` up to, **but not including**, index `stop` [src:python-tutorial]. Omitting `start` defaults to `0`; omitting `stop` defaults to `len(s)`. An optional third value `step` controls stride (for example, `s[::-1]` reverses a string) [src:python-tutorial].\n\nExplanation: Think of slice indices as sitting *between* characters rather than on them. For `"DATA"`, index `0` is before `D`, index `2` is between `A` and `T`, so `"DATA"[0:2]` gives `"DA"` (length `2 - 0 = 2`).\n\n### Essential String Methods\n\n- `.strip()`: Removes leading and trailing whitespace (or specified characters) [src:python-tutorial].\n- `.lower()` / `.upper()`: Returns a lowercase or uppercase copy [src:python-tutorial].\n- `.replace(old, new)`: Returns a copy with occurrences of `old` replaced by `new` [src:python-tutorial].\n- `.split(sep)`: Splits a string into a `list` of substrings (defaults to splitting on whitespace if `sep` is omitted) [src:python-tutorial].\n- `sep.join(items)`: Joins a sequence of strings using `sep` as the separator [src:python-tutorial].\n- `sub in s`: Returns `True` if `sub` appears inside `s` [src:python-lang-ref].\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nReal-world IS and analytics data is messy: product SKUs have extra spaces, city names have inconsistent capitalization, and CSV lines arrive as raw text. String methods and slicing are the first tools you use to standardize text before analysis.\n\n## Worked example\n\n```python\nraw_record = "  is-301 | Business Analytics  "\ncleaned = raw_record.strip()\nparts = cleaned.split(" | ")\n\ncourse_code = parts[0].upper()      # "IS-301"\ndept = course_code[:2]              # "IS"\ntitle = parts[1]                    # "Business Analytics"\n\nprint(dept, course_code, title, sep=" -> ")\n```\n\nNotice that `raw_record.strip()` does not change `raw_record`; it returns a new cleaned string that we assign to `cleaned` [src:python-tutorial].\n\n## Common mistakes\n\n- **Expecting `s[0:3]` to include index 3**: Slices are half-open `[start, stop)`, so `s[0:3]` returns indices `0`, `1`, and `2` [src:python-tutorial].\n- **Forgetting to assign the result of `.strip()` or `.lower()`**: Calling `name.strip()` by itself discards the cleaned copy because strings are immutable [src:python-tutorial].\n- **Calling `items.join(",")` instead of `",".join(items)`**: In Python, `join` is a method on the *separator string*, not on the list [src:python-tutorial].\n\n## Check your understanding\n\n1. Given `sku = "SKU-2026-A"`, what do `sku[:3]` and `sku[-1]` evaluate to?\n2. Why does `text.lower()` not change `text` unless you write `text = text.lower()`?\n3. Complete the exercises on the right to practice slicing, Parsons reordering, and cleaning an IS record.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Ul='---\nid: "a3-l2-fstrings-and-input"\nmoduleId: "a3-strings-io"\ntitle: "f-Strings, Formatting, and input()"\norder: 2\nestimatedMinutes: 16\ndifficulty: "beginner"\nobjectives:\n  - "Format strings cleanly using f-strings (f\\"...\\")"\n  - "Apply numeric format specifiers such as :.2f and :,"\n  - "Read user input with input() and convert it to int or float when needed"\nprerequisites: ["a3-l1-indexing-slicing-methods"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["f-strings", "formatting", "input", "io"]\n---\n\n## Concept\n\n### Formatted String Literals (f-strings)\n\nAn **f-string** starts with `f` (or `F`) before the opening quote and lets you embed Python expressions inside curly braces `{}` [src:python-tutorial]. You can also add a colon `:` followed by a format specifier inside `{}` to control decimals, commas, or alignment [src:python-tutorial]:\n\n- `f"{price:.2f}"`: Formats a number with exactly 2 decimal places (for example, `19.5` -> `"19.50"`).\n- `f"{revenue:,}"`: Inserts thousands separators (`12500` -> `"12,500"`).\n- `f"{label:<12}"`: Left-aligns `label` in a 12-character field.\n\n### Reading User Input with `input()`\n\nThe built-in `input(prompt)` function displays an optional prompt, waits for a line of text, and **always returns a `str`** [src:python-tutorial]. Even if the user types `42`, `input()` returns `"42"`, so you must wrap it in `int()` or `float()` before doing arithmetic [src:python-tutorial].\n\nNote: In PyData Path\'s browser sandbox, exercises that use `input()` supply test values automatically rather than popping up a terminal prompt. In a local terminal, `input()` pauses and waits for you to type and press Enter.\n\nExplanation: Think of `input()` as a microphone that always records text. If someone speaks a number into it, Python still hands you a `str`, and it is your job to convert it with `int()` or `float()` before calculating.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nCleanly formatted reports (currency to 2 decimal places, aligned columns, readable summaries) are how analytics scripts communicate results to stakeholders.\n\n## Worked example\n\n```python\nitem_name = "USB-C Hub"\nqty = int(input("Quantity: "))\nunit_price = float(input("Unit price: "))\n\ntotal = qty * unit_price\nprint(f"Item: {item_name} | Qty: {qty} | Total: ${total:,.2f}")\n```\n\nIf the inputs are `"3"` and `"24.5"`, the output is `Item: USB-C Hub | Qty: 3 | Total: $73.50`.\n\n## Common mistakes\n\n- **Forgetting the `f` prefix**: Writing `"Total: {total}"` without `f` prints the literal braces `{total}` instead of the variable\'s value [src:python-tutorial].\n- **Doing math directly on `input()`**: `qty = input("Qty: "); total = qty * 10` repeats the string 10 times (for example, `"3333333333"`) instead of multiplying numbers! Always convert with `int()` or `float()` [src:python-tutorial].\n- **Using quotes inside f-strings that match the outer quotes (older Python)**: In Python 3.12+, reusing the same quote type inside `{...}` is allowed, whereas older Python versions require alternating single and double quotes [src:python-lang-ref].\n\n## Check your understanding\n\n1. What does `f"{45.5:.2f}"` produce?\n2. What data type does `input("Enter age: ")` return if the user types `21`?\n3. Complete the exercises on the right to debug an `input()` bug, reorder a Parsons problem, and build a formatted IS receipt.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Wl='---\nid: "a4-l1-conditionals"\nmoduleId: "a4-control-flow"\ntitle: "Conditionals (if, elif, else)"\norder: 1\nestimatedMinutes: 15\ndifficulty: "beginner"\nobjectives:\n  - "Write mutually exclusive branches using if, elif, and else"\n  - "Predict which branch executes based on condition order"\n  - "Avoid common syntax and logic bugs in conditional chains"\nprerequisites: ["a3-l2-fstrings-and-input"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref", "pep8"]\ntags: ["control-flow", "if", "elif", "else", "conditionals"]\n---\n\n## Concept\n\nAn `if` statement evaluates a condition and runs its indented block only when that condition is truthy [src:python-tutorial]. You can chain zero or more `elif` ("else if") branches and an optional `else` fallback [src:python-tutorial].\n\nKey rules of `if / elif / else` [src:python-lang-ref]:\n- Every `if`, `elif`, and `else` header ends with a colon `:`.\n- The body of each branch is indented by 4 spaces (per PEP 8) [src:pep8].\n- Python checks conditions from top to bottom and executes **only the first matching branch**, skipping the rest [src:python-tutorial].\n\nPython also supports a one-line conditional expression (`value_if_true if condition else value_if_false`) for simple assignments [src:python-lang-ref].\n\nExplanation: Think of an `if / elif / else` chain like a series of sieves stacked vertically. Once a value passes through the first matching sieve, it leaves the chain and never reaches the `elif` or `else` sieves below it. That is why ordering conditions from most specific to most general matters.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nBusiness rules in Information Systems (discount tiers, credit approval, inventory reorder alerts, grading scales) are expressed as conditional logic. Getting branch order wrong can silently misclassify records.\n\n## Worked example\n\nHere is an IS inventory reorder classifier that checks from most urgent (`<= 0`) to normal stock:\n\n```python\nstock = 4\n\nif stock <= 0:\n    status = "OUT_OF_STOCK"\nelif stock < 10:\n    status = "LOW_STOCK"\nelse:\n    status = "OK"\n\nprint(f"Stock: {stock} -> {status}")\n```\n\nBecause `4 <= 0` is `False` and `4 < 10` is `True`, `status` becomes `"LOW_STOCK"` and the `else` branch is skipped.\n\n## Common mistakes\n\n- **Using `=` instead of `==` in a condition**: `if stock = 0:` is a `SyntaxError` in Python; equality comparison uses `==` [src:python-tutorial].\n- **Writing `else if` instead of `elif`**: Unlike Java, PHP, and JavaScript, Python requires the single keyword `elif` [src:python-tutorial].\n- **Checking a broader condition before a stricter one**: If you check `if score >= 60` before `if score >= 90`, a score of `95` matches the first branch and never reaches the `90` branch.\n- **Using independent `if` statements when you meant `elif`**: Two separate `if` statements can *both* run, whereas `if / elif` guarantees at most one branch runs [src:python-tutorial].\n\n## Check your understanding\n\n1. In an `if / elif / else` chain, how many branches can execute on a single pass?\n2. Why does `if x > 5:` followed by `elif x > 10:` never reach the `elif` branch?\n3. Complete the exercises on the right to practice predicting branches, ordering a Parsons conditional, and building an IS stock classifier.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n- [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)\n',Gl='---\nid: "a4-l2-loops-range-break-continue"\nmoduleId: "a4-control-flow"\ntitle: "Loops (for, while, range, break, continue)"\norder: 2\nestimatedMinutes: 18\ndifficulty: "beginner"\nobjectives:\n  - "Iterate over sequences and number ranges using for and range()"\n  - "Write condition-controlled loops using while without creating infinite loops"\n  - "Control loop flow using break and continue"\nprerequisites: ["a4-l1-conditionals"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["loops", "for", "while", "range", "break", "continue"]\n---\n\n## Concept\n\n### `for` Loops and `range()`\n\nA `for` loop iterates over the items of any sequence (such as a `str` or `list`) in order [src:python-tutorial]. When you need to loop a specific number of times, use the built-in `range()` function [src:python-tutorial]:\n- `range(5)` yields `0, 1, 2, 3, 4` (stops **before** `5`).\n- `range(1, 6)` yields `1, 2, 3, 4, 5` (includes `1`, excludes `6`).\n- `range(0, 10, 2)` yields `0, 2, 4, 6, 8` (step of `2`).\n\n### `while` Loops\n\nA `while` loop repeats as long as its condition remains truthy [src:python-tutorial]. You must update a variable inside the loop body so the condition eventually becomes `False`; otherwise the loop runs forever (an infinite loop).\n\n### `break` and `continue`\n\n- `break`: Exits the innermost `for` or `while` loop immediately [src:python-tutorial].\n- `continue`: Skips the rest of the current iteration and jumps straight to the next iteration [src:python-tutorial].\n\nExplanation: Think of `for` as walking through every item on a checklist, `while` as waiting at a traffic light until it turns green, `break` as walking out of the store early once you find what you need, and `continue` as skipping one damaged item on a conveyor belt and moving to the next.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nLoops let you process hundreds of rows, scan records until a match is found (`break`), skip invalid entries (`continue`), and automate repetitive calculations.\n\n## Worked example\n\nHere is a FizzBuzz-style IS audit tagger for transaction IDs `1` through `10` (checking divisibility by both `3` and `5` first):\n\n```python\nfor tx_id in range(1, 11):\n    if tx_id % 3 == 0 and tx_id % 5 == 0:\n        tag = "Audit+Alert"\n    elif tx_id % 3 == 0:\n        tag = "Audit"\n    elif tx_id % 5 == 0:\n        tag = "Alert"\n    else:\n        tag = str(tx_id)\n    print(tag)\n```\n\n## Common mistakes\n\n- **Off-by-one with `range(1, 10)`**: `range(1, 10)` stops at `9`, not `10`. Use `range(1, 11)` to include `10` [src:python-tutorial].\n- **Checking `% 3` before `% 3 and % 5` in FizzBuzz**: Just like in Lesson 1, the combined condition (`% 15 == 0`) must come first, or multiples of 15 will be caught by `% 3`!\n- **Infinite `while` loop**: Forgetting `count += 1` inside `while count < 5:` causes the loop to run until the 10-second worker timeout stops it.\n\n## Check your understanding\n\n1. What numbers does `range(2, 10, 3)` generate?\n2. What is the difference between `break` and `continue`?\n3. Complete the exercises on the right to debug a `while` loop, predict `break`/`continue`, and implement a FizzBuzz variant.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Kl=`---
+`,Bl='---\nid: "a2-l1-variables-and-core-types"\nmoduleId: "a2-variables-types"\ntitle: "Variables and Core Data Types (int, float, str, bool, None)"\norder: 1\nestimatedMinutes: 20\ndifficulty: "beginner"\nobjectives:\n  - "Follow Python variable naming rules, reserved keywords, and PEP 8 snake_case"\n  - "Distinguish int, float, str, bool, and None values"\n  - "Inspect types and identity using type(), isinstance(), and is"\n  - "Check for None safely using is None"\nprerequisites: ["a1-l3-first-program-and-errors"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref", "pep8"]\ntags: ["variables", "types", "int", "float", "str", "bool", "None"]\n---\n\n## Concept\n\n### 1. Variable Binding, Naming Rules, and Reserved Keywords\n\nIn Python, a variable is a name bound to an object in memory (`=` is binding, not a fixed memory box) [src:python-lang-ref]. Variable names may contain letters, digits, and underscores (`_`), cannot start with a digit, cannot be a reserved keyword (`if`, `for`, `class`, `None`), and are case-sensitive [src:python-lang-ref]. PEP 8 recommends `snake_case` for variable names [src:pep8].\n\n```python\ntotal_units = 12\nunit_price = 4.50\na = b = 0  # Multiple assignment\nx, y = 10, 20  # Tuple unpacking assignment\nprint(total_units, unit_price, x, y)\n```\n\nExplanation: Think of a variable like a sticky note attached to an object. The object has a type (`int`, `str`), while the sticky note is just the name pointing to it.\n\n### 2. Numeric Types: `int` and `float`\n\n- `int`: Whole numbers of **arbitrary precision** (Python integers never overflow; underscores like `1_000_000` improve readability) [src:python-tutorial].\n- `float`: IEEE 754 binary floating-point decimals (`3.14`, `2.0`, `1e-3`) [src:python-tutorial]. Because base-10 decimals like `0.1` cannot be represented exactly in binary, `0.1 + 0.2` equals `0.30000000000000004`; use `round()` or `math.isclose()` for comparisons [src:python-tutorial].\n\n```python\nimport math\nqty = 1_000_000\nprint(math.isclose(0.1 + 0.2, 0.3))  # True\n```\n\n### 3. Text (`str`), Booleans (`bool`), and `None`\n\n- `str`: Immutable Unicode text (`\'IS-301\'` or `"IS-301"`, or triple-quoted `"""..."""` for multi-line) [src:python-tutorial].\n- `bool`: Logical `True` and `False` (capitalized; `bool` is a subclass of `int`, where `True == 1` and `False == 0`) [src:python-lang-ref].\n- `None`: The sole value of `NoneType`, representing the intentional absence of a value. Always check with `x is None` or `x is not None` per PEP 8 [src:pep8].\n\n```python\ndiscount = None\nis_active = True\nprint(discount is None, isinstance(is_active, bool), isinstance(is_active, int))  # True True True\n```\n\nExplanation: Use `type(val)` to inspect the exact class and `isinstance(val, expected_type)` to check type compatibility (including subclasses).\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nIn data analytics, misidentified column types are a top source of silent bugs: a ZIP code or student ID stored as an `int` loses leading zeros, while a price stored as a `str` cannot be summed until converted.\n\n## Worked example\n\n```python\nstudent_id = "2026-00412"     # str: keeps leading zeros and hyphen\nunits_enrolled = 18            # int: whole number\ngpa = 3.75                     # float: decimal number\nis_full_time = True            # bool: True or False\ngraduation_date = None         # NoneType: not yet assigned\n\nprint(type(student_id), isinstance(units_enrolled, int))\nprint("Has graduation date:", graduation_date is not None)\n```\n\n## Common mistakes\n\n- **Using lowercase `true`, `false`, or `null`**: Python requires capitalized `True`, `False`, and `None` [src:python-lang-ref].\n- **Comparing `float` values with `==` after arithmetic**: `0.1 + 0.2 == 0.3` evaluates to `False`; use `math.isclose()` [src:python-tutorial].\n\n## Check your understanding\n\n1. Why should a phone number or student ID with leading zeros be stored as `str` instead of `int`?\n2. What does `type(3.0)` return?\n3. Complete the exercises on the right.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n- [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)\n',Vl='---\nid: "a2-l2-operators-conversion-truthiness"\nmoduleId: "a2-variables-types"\ntitle: "Type Conversion, Operators, Precedence, and Truthiness"\norder: 2\nestimatedMinutes: 20\ndifficulty: "beginner"\nobjectives:\n  - "Use arithmetic operators (/, //, %, **) and augmented assignment (+=, *=)"\n  - "Combine comparison and logical operators (and, or, not) with short-circuiting"\n  - "Convert values explicitly with int(), float(), str(), and bool()"\n  - "Predict which values are truthy or falsy in Python"\nprerequisites: ["a2-l1-variables-and-core-types"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["operators", "type-conversion", "truthiness", "is-scenario"]\n---\n\n## Concept\n\n### 1. Arithmetic, Augmented Assignment, and Precedence\n\nPython supports `+`, `-`, `*`, plus four essential operators [src:python-tutorial]:\n- `/`: True division, always returning a `float` (`8 / 2` -> `4.0`).\n- `//`: Floor division, returning the whole quotient rounded down (`7 // 2` -> `3`).\n- `%`: Modulo (remainder, `7 % 2` -> `1`).\n- `**`: Exponentiation (`2 ** 3` -> `8`).\n\nPrecedence follows PEMDAS (`**` before `* / // %` before `+ -`), and augmented assignments (`count += 1`, `total *= 1.12`) update a variable concisely [src:python-lang-ref].\n\n```python\ntotal = 100\ntotal *= 1.12\nprint(total, 29 // 6, 29 % 6)  # 112.0 4 5\n```\n\nExplanation: Use `//` and `%` together whenever splitting items into fixed-size packs (`29 // 6` full boxes, `29 % 6` leftover items).\n\n### 2. Comparison, Logical (`and`, `or`, `not`), and Identity (`is`)\n\nComparison operators (`==`, `!=`, `<`, `<=`, `>`, `>=`) return a `bool` and can be chained (`0 <= score <= 100`) [src:python-lang-ref]. Logical operators (`and`, `or`, `not`) **short-circuit**, stopping as soon as the outcome is known [src:python-lang-ref]. Use `==` for value equality and `is` for object identity (chiefly `is None`).\n\n```python\nscore = 85\nprint(0 <= score <= 100 and score >= 75)  # True\n```\n\n### 3. Explicit Type Conversion\n\nConvert types explicitly using `int()`, `float()`, `str()`, and `bool()` [src:python-tutorial]. Note that `int(3.9)` truncates toward zero (`3`), whereas `int("3.9")` raises `ValueError`.\n\n```python\nraw_qty = "14"\ntotal = int(raw_qty) * float("12.50")\nprint("Total: $" + str(total))  # Total: $175.0\n```\n\n### 4. Truthiness\n\nAny object can be tested in a boolean context (`if`, `while`, `bool(x)`) [src:python-lang-ref]. Falsy values are `None`, `False`, `0`, `0.0`, `""`, `[]`, `{}`, `set()`, `()`; everything else is truthy [src:python-lang-ref].\n\n```python\nprint(bool(0), bool(""), bool("0"), bool([1]))  # False False True True\n```\n\nExplanation: `"0"` (a string containing the character zero) is non-empty, so `bool("0")` is `True`, whereas `bool(0)` and `bool("")` are `False`.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nWhen reading data from forms, CSVs, or user input, numbers often arrive as strings (`"12"`), and missing fields arrive as `""` or `None`. Combining explicit conversion with truthiness checks lets you clean and validate records before calculating totals.\n\n## Worked example\n\n```python\nraw_units = "14"\nunit_price = 12.50\ncoupon_code = ""\n\nunits = int(raw_units)\nfull_boxes = units // 6\nleftover = units % 6\nsubtotal = units * unit_price\nhas_coupon = bool(coupon_code)\n\nprint("Subtotal:", subtotal, "| Boxes:", full_boxes, "| Leftover:", leftover, "| Coupon:", has_coupon)\n```\n\n## Common mistakes\n\n- **Using `&&` or `||` from Java/JS/PHP**: Python uses `and`, `or`, `not`; `&&` causes a `SyntaxError` [src:python-lang-ref].\n- **Calling `int("3.5")`**: Converting a decimal string directly with `int()` raises a `ValueError`; use `float("3.5")` [src:python-tutorial].\n\n## Check your understanding\n\n1. What is the difference between `9 / 2` and `9 // 2`?\n2. Why is `bool("0")` equal to `True` while `bool(0)` is `False`?\n3. Complete the exercises on the right.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Hl='---\nid: "a3-l1-indexing-slicing-methods"\nmoduleId: "a3-strings-io"\ntitle: "String Indexing, Slicing, Immutability, and Methods"\norder: 1\nestimatedMinutes: 20\ndifficulty: "beginner"\nobjectives:\n  - "Access individual characters using positive and negative indices"\n  - "Extract substrings using slice syntax s[start:stop:step]"\n  - "Explain why strings are immutable in Python"\n  - "Clean, search, and transform text using strip, lower/upper/title, replace, split, join, startswith/endswith, and in"\nprerequisites: ["a2-l2-operators-conversion-truthiness"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["strings", "indexing", "slicing", "methods"]\n---\n\n## Concept\n\n### 1. Indexing and Immutability\n\nA Python `str` is an ordered, **immutable** sequence of Unicode characters [src:python-tutorial]. Positions start at `0` from the left (`s[0]`) and `-1` from the right (`s[-1]`) [src:python-tutorial]. Trying to index past the end raises `IndexError`, and trying `s[0] = "X"` raises `TypeError` because strings cannot be mutated in place.\n\n```python\ncode = "IS-301"\nprint(code[0], code[-1], len(code))  # I 1 6\n```\n\nExplanation: Because strings are immutable, string methods never edit the original string; they always return a *new* string that you must assign to a variable if you want to keep it.\n\n### 2. Slicing (`s[start:stop:step]`)\n\n`s[start:stop:step]` extracts characters from `start` up to, **but not including**, `stop` [src:python-tutorial]. Omitting `start` defaults to `0`; omitting `stop` defaults to `len(s)`; `s[::-1]` reverses a string [src:python-tutorial]. Unlike single-index access, out-of-range slice bounds never raise `IndexError`.\n\n```python\ntag = "PYDATA26"\nprint(tag[0:2], tag[2:6], tag[-2:], tag[::2], tag[::-1])\n```\n\nExplanation: Think of slice indices as sitting *between* characters rather than on them. For `"DATA"`, index `0` is before `D` and index `2` is between `A` and `T`, so `"DATA"[0:2]` gives `"DA"` (length `2 - 0 = 2`).\n\n### 3. Cleaning, Case, and Search Methods\n\n- `.strip()` / `.lstrip()` / `.rstrip()`: Remove leading/trailing whitespace or specified characters [src:python-tutorial].\n- `.lower()`, `.upper()`, `.title()`, `.capitalize()`: Normalize letter case [src:python-tutorial].\n- `.replace(old, new)`: Replaces occurrences of `old` with `new` [src:python-tutorial].\n- `.startswith(prefix)`, `.endswith(suffix)`, `sub in s`, `.find(sub)`, `.count(sub)`: Search and inspect substrings [src:python-tutorial].\n\n```python\nemail = "  Ana.Reyes@School.EDU  ".strip().lower()\nprint(email.endswith(".edu"), "ana" in email)  # True True\n```\n\n### 4. Splitting and Joining (`split` and `join`)\n\n- `.split(sep)`: Splits a string into a `list` of substrings (when `sep` is omitted, splits on any run of whitespace) [src:python-tutorial].\n- `sep.join(items)`: Joins a sequence of strings using `sep` as the separator [src:python-tutorial].\n\n```python\nraw = "  ana , ben , cara  "\nnames = [n.strip().title() for n in raw.split(",")]\nprint(" | ".join(names))  # Ana | Ben | Cara\n```\n\nExplanation: Notice that `join` is called on the *separator string* (`" | ".join(names)`), not on the list itself.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nReal-world IS and analytics data is messy: product SKUs have extra spaces, city names have inconsistent capitalization, and CSV lines arrive as raw text. String methods and slicing are the first tools you use to standardize text before analysis.\n\n## Worked example\n\n```python\nraw_record = "  is-301 | Business Analytics  "\ncleaned = raw_record.strip()\nparts = cleaned.split(" | ")\n\ncourse_code = parts[0].upper()\ndept = course_code[:2]\ntitle = parts[1]\n\nprint(dept, course_code, title, sep=" -> ")\n```\n\n## Common mistakes\n\n- **Forgetting to assign the result of `.strip()` or `.lower()`**: Calling `name.strip()` by itself discards the cleaned copy because strings are immutable [src:python-tutorial].\n- **Calling `items.join(",")` instead of `",".join(items)`**: In Python, `join` is a method on the separator string [src:python-tutorial].\n\n## Check your understanding\n\n1. Given `sku = "SKU-2026-A"`, what do `sku[:3]` and `sku[-1]` evaluate to?\n2. Why does `s[0:100]` succeed without an error even when `len(s) == 5`?\n3. Complete the exercises on the right.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Ul='---\nid: "a3-l2-fstrings-and-input"\nmoduleId: "a3-strings-io"\ntitle: "f-Strings, Format Mini-Language, and input()"\norder: 2\nestimatedMinutes: 18\ndifficulty: "beginner"\nobjectives:\n  - "Format strings cleanly using f-strings (f\\"...\\") and debug expressions (f\\"{x=}\\")"\n  - "Apply numeric and alignment specifiers such as :.2f, :,, :.1%, :<10, and :>8"\n  - "Read user input with input() and convert it to int or float when needed"\nprerequisites: ["a3-l1-indexing-slicing-methods"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["f-strings", "formatting", "input", "io"]\n---\n\n## Concept\n\n### 1. Formatted String Literals (f-strings) and Format Specifiers\n\nAn **f-string** starts with `f` (or `F`) before the opening quote and embeds Python expressions inside `{}` [src:python-tutorial]. Add a colon `:` followed by a format specifier to control decimals, thousands separators, percentages, and column alignment [src:python-tutorial]:\n- `f"{val:.2f}"`: Fixed 2 decimal places (`19.5` -> `"19.50"`).\n- `f"{val:,}"`: Thousands separator (`12500` -> `"12,500"`).\n- `f"{ratio:.1%}"`: Multiplies by 100 and appends `%` (`0.845` -> `"84.5%"`).\n- `f"{label:<10}"` / `f"{num:>8}"`: Left- or right-aligns in a fixed width.\n- `f"{total=}"`: Debug shorthand printing `total=123`.\n\n```python\nitem, revenue, margin = "USB-C Hub", 12500.5, 0.245\nprint(f"{item:<12} | ${revenue:>10,.2f} | {margin:.1%}")\n```\n\nExplanation: `:,.2f` combines `,` (thousands separator) with `.2f` (fixed 2 decimal places), while `<12` and `>10` align text and numbers into neat table columns.\n\n### 2. Reading User Input With `input()`\n\nThe built-in `input(prompt)` function displays an optional prompt, waits for a line of text, and **always returns a `str`** [src:python-tutorial]. Convert with `int()` or `float()` before doing arithmetic [src:python-tutorial].\n\n```python\n# In a local terminal, input() waits for the user to type.\n# In PyData Path exercises, test inputs are supplied automatically.\nraw = "4"\nqty = int(raw)\nprint(qty * 12.50)  # 50.0\n```\n\nExplanation: Think of `input()` as a microphone that always records text: even if someone types `42`, Python hands you `"42"` (`str`), so convert it before multiplying or adding.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nCleanly formatted reports (currency to 2 decimal places, aligned columns, readable summaries) are how analytics scripts communicate results to stakeholders.\n\n## Worked example\n\n```python\nitem_name = "USB-C Hub"\nqty = 3\nunit_price = 24.50\n\ntotal = qty * unit_price\nprint(f"Item: {item_name} | Qty: {qty} | Total: ${total:,.2f}")\n```\n\n## Common mistakes\n\n- **Forgetting the `f` prefix**: Writing `"Total: {total}"` without `f` prints the literal braces `{total}` [src:python-tutorial].\n- **Doing math directly on `input()`**: `qty = input(); qty * 10` repeats the string 10 times (`"4444..."`) instead of multiplying numbers [src:python-tutorial].\n\n## Check your understanding\n\n1. What does `f"{0.256:.1%}"` produce?\n2. What data type does `input("Enter age: ")` return if the user types `21`?\n3. Complete the exercises on the right.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Wl=`---
+id: "a4-l1-conditionals"
+moduleId: "a4-control-flow"
+title: "Conditionals (if, elif, else, Nested, Ternary)"
+order: 1
+estimatedMinutes: 18
+difficulty: "beginner"
+objectives:
+  - "Write mutually exclusive branches using if, elif, and else"
+  - "Predict which branch executes based on condition order"
+  - "Use nested conditionals and one-line conditional expressions cleanly"
+  - "Avoid common syntax and logic bugs in conditional chains"
+prerequisites: ["a3-l2-fstrings-and-input"]
+packages: []
+sources: ["python-tutorial", "python-lang-ref", "pep8"]
+tags: ["control-flow", "if", "elif", "else", "conditionals"]
+---
+
+## Concept
+
+### 1. Basic \`if\`, \`elif\`, and \`else\`
+
+An \`if\` statement evaluates a condition and runs its indented block only when that condition is truthy [src:python-tutorial]. You can chain zero or more \`elif\` ("else if") branches and an optional \`else\` fallback [src:python-tutorial].
+
+\`\`\`python
+score = 82
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+else:
+    grade = "C"
+print(grade)  # B
+\`\`\`
+
+Explanation: Think of an \`if / elif / else\` chain like a stack of sieves. Python checks conditions from top to bottom and executes **only the first matching branch**, skipping the rest [src:python-tutorial]. That is why stricter or more specific conditions must come before broader ones.
+
+### 2. Nested Conditionals vs Compound Conditions
+
+You can place an \`if\` inside another \`if\` (nested conditional) when a second check only makes sense after the first passes, or combine conditions with \`and\` / \`or\` to keep nesting shallow [src:python-lang-ref].
+
+\`\`\`python
+is_member = True
+order_total = 65.0
+
+if is_member:
+    if order_total >= 50:
+        print("Free shipping unlocked")
+\`\`\`
+
+Explanation: Deeply nested \`if\` blocks are harder to read. Whenever two checks are independent, \`if is_member and order_total >= 50:\` is flatter and clearer.
+
+### 3. Conditional Expression (Ternary Operator)
+
+For simple two-way assignments, Python offers a one-line conditional expression: \`value_if_true if condition else value_if_false\` [src:python-lang-ref].
+
+\`\`\`python
+stock = 0
+label = "In Stock" if stock > 0 else "Out of Stock"
+print(label)  # Out of Stock
+\`\`\`
+
+Explanation: Unlike Java/JS (\`cond ? a : b\`), Python puts the true value *first* so it reads like English: \`"In Stock" if stock > 0 else "Out of Stock"\`.
+
+Note: Behavior may differ between versions. Check the official docs for your installed version.
+
+## Why it matters
+
+Business rules in Information Systems (discount tiers, credit approval, inventory reorder alerts, grading scales) are expressed as conditional logic. Getting branch order wrong can silently misclassify records.
+
+## Worked example
+
+Here is an IS inventory reorder classifier that checks from most urgent (\`<= 0\`) to normal stock:
+
+\`\`\`python
+stock = 4
+
+if stock <= 0:
+    status = "OUT_OF_STOCK"
+elif stock < 10:
+    status = "LOW_STOCK"
+else:
+    status = "OK"
+
+print(f"Stock: {stock} -> {status}")
+\`\`\`
+
+## Common mistakes
+
+- **Using \`=\` instead of \`==\` in a condition**: \`if stock = 0:\` is a \`SyntaxError\` in Python; equality comparison uses \`==\` [src:python-tutorial].
+- **Writing \`else if\` instead of \`elif\`**: Unlike Java, PHP, and JavaScript, Python requires the single keyword \`elif\` [src:python-tutorial].
+- **Checking a broader condition before a stricter one**: \`if score >= 60:\` before \`elif score >= 90:\` catches \`95\` in the first branch so \`>= 90\` never runs.
+
+## Check your understanding
+
+1. In an \`if / elif / else\` chain, how many branches can execute on a single pass?
+2. How is Python's one-line conditional expression ordered compared to JavaScript's \`? :\`?
+3. Complete the exercises on the right.
+
+## Sources
+
+- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
+- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)
+- [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)
+`,Gl='---\nid: "a4-l2-loops-range-break-continue"\nmoduleId: "a4-control-flow"\ntitle: "All Loops (for, while, range, nested, loop-else, break, continue)"\norder: 2\nestimatedMinutes: 24\ndifficulty: "beginner"\nobjectives:\n  - "Iterate over sequences (lists, strings, dicts) using for loops"\n  - "Generate numeric sequences with range(stop), range(start, stop), and range(start, stop, step)"\n  - "Write condition-controlled while loops without creating infinite loops"\n  - "Use nested loops, break, continue, pass, and loop else clauses appropriately"\nprerequisites: ["a4-l1-conditionals"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["loops", "for", "while", "range", "nested-loops", "break", "continue"]\n---\n\n## Concept\n\nPython has two primary loop statements (`for` and `while`), plus loop-control keywords (`break`, `continue`, `pass`) and an optional `else` clause [src:python-tutorial].\n\n### 1. `for` Loops Over Sequences\n\nA `for` loop steps through every item in an iterable (such as a `list`, `str`, `tuple`, or `dict`) in order [src:python-tutorial].\n\n```python\ncourses = ["IS-101", "IS-204", "IS-301"]\nfor code in courses:\n    print("Course:", code)\n```\n\nExplanation: Unlike C or Java\'s index-based `for (int i = 0; i < n; i++)`, Python\'s `for` loop directly hands you each element one by one, making code cleaner and preventing off-by-one index bugs.\n\n### 2. `for` Loops With `range()`\n\nWhen you need to repeat an action a fixed number of times or step through numbers, use `range()` [src:python-tutorial]:\n- `range(5)` yields `0, 1, 2, 3, 4` (starts at `0`, stops **before** `5`).\n- `range(1, 6)` yields `1, 2, 3, 4, 5` (includes `1`, excludes `6`).\n- `range(10, 0, -2)` yields `10, 8, 6, 4, 2` (negative step counts down).\n\n```python\nfor step in range(1, 4):\n    print(f"Batch {step}")\n```\n\nExplanation: Think of `range(start, stop, step)` as a lazy number generator: it remembers only where it starts, where it stops, and how big each step is, without building a giant list in memory.\n\n### 3. `while` Loops\n\nA `while` loop repeats as long as its condition remains truthy [src:python-tutorial]. Use `while` when you do not know ahead of time how many iterations are needed (for example, halving a value until it drops below a threshold, or retrying until valid input arrives).\n\n```python\nstock = 20\ndays = 0\nwhile stock > 5:\n    stock -= 4\n    days += 1\nprint(f"Reached low stock in {days} days (remaining: {stock})")\n```\n\nExplanation: Always ask "what inside the `while` body moves the condition closer to `False`?" If nothing changes the condition variable, the loop runs forever (an infinite loop).\n\n### 4. Nested Loops\n\nPlacing one loop inside another lets you process 2D grids, combinations, or grouped records [src:python-tutorial]. The inner loop completes all its iterations for *each* single iteration of the outer loop.\n\n```python\nregions = ["North", "South"]\nquarters = ["Q1", "Q2"]\nfor r in regions:\n    for q in quarters:\n        print(f"{r}-{q}")\n```\n\nExplanation: Think of a clock\'s hour and minute hands: for every 1 step of the outer loop (hour), the inner loop (minute) completes a full cycle.\n\n### 5. `break`, `continue`, `pass`, and Loop `else`\n\n- `break`: Exits the innermost loop immediately [src:python-tutorial].\n- `continue`: Skips the rest of the current iteration and jumps to the next iteration [src:python-tutorial].\n- `pass`: A no-op placeholder when syntax requires an indented block [src:python-tutorial].\n- `for ... else:` / `while ... else:`: The `else` block runs **only if the loop finished normally without hitting `break`** [src:python-tutorial].\n\n```python\ntarget = 42\nfor num in [10, 25, 30]:\n    if num == target:\n        print("Found!")\n        break\nelse:\n    print("Not found in list")\n```\n\nExplanation: The `else` on a loop is really "no-break": it is handy for search loops so you do not need a separate `found = False` flag variable.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nLoops automate repetitive work across rows of data, search for anomalies (`break`), skip invalid records (`continue`), and build summary tables across multiple dimensions (nested loops).\n\n## Worked example\n\nHere is a FizzBuzz-style IS audit tagger for transaction IDs `1` through `10`:\n\n```python\nfor tx_id in range(1, 11):\n    if tx_id % 3 == 0 and tx_id % 5 == 0:\n        tag = "Audit+Alert"\n    elif tx_id % 3 == 0:\n        tag = "Audit"\n    elif tx_id % 5 == 0:\n        tag = "Alert"\n    else:\n        tag = str(tx_id)\n    print(tag)\n```\n\n## Common mistakes\n\n- **Off-by-one with `range(1, 10)`**: `range(1, 10)` stops at `9`, not `10` [src:python-tutorial].\n- **Infinite `while` loop**: Forgetting to update the loop variable inside `while` freezes execution until the worker timeout stops it.\n- **Modifying a list while looping over it**: Adding or removing items from the same list you are iterating over skips elements; iterate over a copy or build a new list [src:python-tutorial].\n\n## Check your understanding\n\n1. When should you use a `for` loop vs a `while` loop?\n2. When does the `else` block of a `for ... else` loop execute?\n3. Complete the exercises on the right covering `while`, `for`/`range`, nested loops, `break`/`continue`, and FizzBuzz.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Kl=`---
 id: "a5-l1-functions-and-scope"
 moduleId: "a5-functions"
-title: "Defining Functions, Arguments, Return Values, and Scope"
+title: "Defining Functions, Arguments, Return Values, and LEGB Scope"
 order: 1
-estimatedMinutes: 20
+estimatedMinutes: 25
 difficulty: "beginner"
 objectives:
   - "Define functions with def, parameters, and return statements"
-  - "Use positional, keyword, and default arguments safely"
-  - "Distinguish local vs global variable scope"
-  - "Document functions using PEP 8 / PEP 257 docstrings"
+  - "Use positional, keyword, and default arguments safely (avoiding mutable defaults)"
+  - "Return and unpack multiple values from a function"
+  - "Explain Python's LEGB scope resolution rule and write PEP 257 docstrings"
 prerequisites: ["a4-l2-loops-range-break-continue"]
 packages: []
 sources: ["python-tutorial", "python-lang-ref", "pep8"]
@@ -200,17 +351,68 @@ tags: ["functions", "def", "return", "scope", "docstrings"]
 
 ## Concept
 
-A function is a reusable named block defined with \`def\` [src:python-tutorial]. Functions accept inputs through **parameters**, optionally send a result back with \`return\`, and return \`None\` by default if no \`return\` statement executes [src:python-tutorial].
+### 1. Defining Functions and \`return\` vs \`print()\`
 
-### Arguments and Defaults
+A function is a reusable named block defined with \`def\` [src:python-tutorial]. Functions accept inputs through **parameters**, send a result back with \`return\`, and implicitly return \`None\` if no \`return\` executes [src:python-tutorial]. Calling \`return\` exits the function immediately.
 
-When calling a function, you can pass **positional arguments** (matched by order) or **keyword arguments** (matched by parameter name, such as \`tax_rate=0.12\`) [src:python-tutorial]. Parameters can also define **default values** (\`def calc_total(price, tax_rate=0.12):\`) [src:python-tutorial]. Always use immutable defaults like \`None\` or numbers rather than mutable objects like \`[]\`, because default values are evaluated once when \`def\` runs [src:python-tutorial].
+\`\`\`python
+def add_tax(price):
+    return round(price * 1.12, 2)
 
-### Scope and Docstrings
+final_price = add_tax(100)
+print(final_price)  # 112.0
+\`\`\`
 
-Variables assigned inside a function belong to its **local scope** and disappear when the function finishes; variables defined at the top level belong to **global scope** [src:python-lang-ref]. A string literal as the first statement inside \`def\` is a **docstring**, describing what the function does [src:python-tutorial].
+Explanation: Think of a function like a coffee machine: parameters are the ingredients you put in, and \`return\` is the cup that comes out. Using \`print()\` inside a function only displays text on the screen; \`return\` hands the value back so your program can store or test it.
 
-Explanation: Think of a function like a coffee machine: parameters are the ingredients you put in, local variables are the internal gears, and \`return\` is the cup that comes out. Printing inside a function only shows text on a screen; \`return\` actually hands the value back to the caller so it can be stored or tested.
+### 2. Positional, Keyword, and Default Arguments
+
+When calling a function, pass **positional arguments** (matched by order) before **keyword arguments** (matched by name) [src:python-tutorial]. Parameters can define **default values**, which Python evaluates **once** at \`def\` time [src:python-tutorial].
+
+\`\`\`python
+def calc_total(price, qty=1, tax_rate=0.12):
+    return round(price * qty * (1 + tax_rate), 2)
+
+print(calc_total(50))                    # uses qty=1, tax_rate=0.12
+print(calc_total(50, 3, tax_rate=0.0))   # positional + keyword
+\`\`\`
+
+Explanation: Never use a mutable object like \`[]\` or \`{}\` as a default parameter (\`def add(x, items=[])\`), because all calls would share the exact same list! Use \`items=None\` and initialize \`if items is None: items = []\` inside the function.
+
+### 3. Returning Multiple Values
+
+A function can return multiple values separated by commas, which Python packs into a \`tuple\` that the caller can unpack [src:python-tutorial].
+
+\`\`\`python
+def min_max(nums):
+    return min(nums), max(nums)
+
+low, high = min_max([12, 45, 7, 30])
+print(f"Low: {low}, High: {high}")
+\`\`\`
+
+### 4. Scope (LEGB Rule) and Docstrings
+
+Python resolves variable names using the **LEGB** rule [src:python-lang-ref]:
+1. **L**ocal (inside the current \`def\`)
+2. **E**nclosing (outer \`def\` in nested functions)
+3. **G**lobal (module top-level)
+4. **B**uilt-in (\`len\`, \`print\`, \`sum\`)
+
+A string literal as the first statement inside \`def\` is a **docstring**, accessible via \`func.__doc__\` or \`help(func)\` [src:python-tutorial].
+
+\`\`\`python
+rate = 0.10  # Global
+
+def compute_fee(amount):
+    """Return the service fee for a given amount."""
+    fee = amount * rate  # Reads Global 'rate'; 'fee' is Local
+    return fee
+
+print(compute_fee(200), "|", compute_fee.__doc__)
+\`\`\`
+
+Explanation: Functions can *read* global variables, but assigning \`rate = 0.20\` inside a function creates a separate local variable \`rate\` rather than changing the global one. Avoid mutating globals from inside functions; pass values in as parameters and \`return\` results instead.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -232,12 +434,12 @@ print(calculate_net_pay(8, tax_rate=0.05))
 
 ## Common mistakes
 
-- **Using \`print()\` instead of \`return\`**: Calling \`total = my_func()\` when \`my_func\` only prints results sets \`total\` to \`None\` [src:python-tutorial].
-- **Mutable default arguments**: Writing \`def add_item(item, items=[]):\` shares the same list across calls; use \`items=None\` and create \`[]\` inside the function instead [src:python-tutorial].
+- **Using \`print()\` instead of \`return\`**: Calling \`total = my_func()\` when \`my_func\` only prints sets \`total\` to \`None\` [src:python-tutorial].
+- **Mutable default arguments**: \`def add_item(item, items=[]):\` shares one list across calls; use \`items=None\` instead [src:python-tutorial].
 
 ## Check your understanding
 
-1. What does a function return if it has no \`return\` statement?
+1. What does LEGB stand for when Python looks up a variable name?
 2. Why should you avoid \`items=[]\` as a default parameter?
 3. Complete the exercises on the right.
 
@@ -246,84 +448,15 @@ print(calculate_net_pay(8, tax_rate=0.05))
 - [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
 - [src:python-lang-ref] The Python Language Reference (Python Software Foundation)
 - [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)
-`,ql='---\nid: "a6-l1-lists-tuples-dicts-sets"\nmoduleId: "a6-data-structures"\ntitle: "Lists, Tuples, Dictionaries, Sets, and Mutability"\norder: 1\nestimatedMinutes: 22\ndifficulty: "beginner"\nobjectives:\n  - "Choose appropriately between list, tuple, dict, and set"\n  - "Perform common operations: append, pop, get, keys/values/items, set membership"\n  - "Work with nested structures such as a list of dictionaries"\n  - "Distinguish mutable vs immutable collections"\nprerequisites: ["a5-l1-functions-and-scope"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["lists", "tuples", "dicts", "sets", "mutability"]\n---\n\n## Concept\n\nPython provides four built-in collection types [src:python-tutorial]:\n- `list` (`[1, 2, 3]`): Ordered, **mutable** sequence. Supports `.append()`, `.extend()`, `.pop()`, indexing, and slicing [src:python-tutorial].\n- `tuple` (`(1, 2)`): Ordered, **immutable** sequence, often used for fixed records or returning multiple values [src:python-tutorial].\n- `dict` (`{"sku": "A1", "qty": 5}`): Key-value mapping where keys are unique and hashable. Use `d.get(key, default)` to look up keys safely without raising `KeyError` [src:python-tutorial].\n- `set` (`{"a", "b"}`): Unordered collection of unique elements, ideal for deduplication and fast `in` membership tests [src:python-tutorial].\n\nExplanation: Think of a `list` as a numbered shopping cart you can add/remove items from, a `tuple` as a sealed receipt, a `dict` as a contact book mapping names to details, and a `set` as a guest list where duplicates are automatically removed.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nBefore loading data into pandas, APIs and JSON files represent records as lists of dictionaries (`[{"id": 1, "score": 90}, ...]`). Mastering these four structures makes data wrangling natural.\n\n## Worked example\n\n```python\ncontacts = [\n    {"name": "Ana", "dept": "IS"},\n    {"name": "Ben", "dept": "CS"},\n    {"name": "Cara", "dept": "IS"},\n]\n\ndepts = {c["dept"] for c in contacts}\nprint("Unique departments:", depts)\nprint("First contact:", contacts[0].get("name"))\n```\n\n## Common mistakes\n\n- **Using `{}` for an empty set**: `{}` creates an empty `dict`; use `set()` for an empty set [src:python-tutorial].\n- **Aliasing a mutable list with `b = a`**: Both `a` and `b` point to the same list in memory. Modifying `b` mutates `a`; use `b = a.copy()` when you need an independent copy [src:python-tutorial].\n\n## Check your understanding\n\n1. How do you create an empty set vs an empty dictionary?\n2. Why is `d.get("missing", 0)` safer than `d["missing"]`?\n3. Complete the exercises on the right, including the Contact Book mini-project task.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Jl=`---
-id: "a7-l1-comprehensions-and-builtins"
-moduleId: "a7-comprehensions-builtins"
-title: "Comprehensions and Essential Built-in Functions"
-order: 1
-estimatedMinutes: 20
-difficulty: "beginner"
-objectives:
-  - "Transform and filter collections with list, dict, and set comprehensions"
-  - "Iterate with indices and paired sequences using enumerate() and zip()"
-  - "Sort records with sorted(..., key=lambda ...)"
-  - "Check sequence conditions using any() and all()"
-prerequisites: ["a6-l1-lists-tuples-dicts-sets"]
-packages: []
-sources: ["python-tutorial", "python-lang-ref"]
-tags: ["comprehensions", "enumerate", "zip", "sorted", "lambda", "any", "all"]
----
-
-## Concept
-
-A **comprehension** builds a new list, dictionary, or set in a single readable expression [src:python-tutorial]:
-- List: \`[x * 2 for x in nums if x > 0]\`
-- Dict: \`{k: v * 1.12 for k, v in prices.items()}\`
-- Set: \`{row["dept"] for row in records}\`
-
-Python also provides functional built-ins that eliminate manual index counters [src:python-tutorial]:
-- \`enumerate(seq, start=0)\`: Yields \`(index, item)\` pairs.
-- \`zip(seq1, seq2)\`: Pairs corresponding elements from two or more sequences (stops at the shortest).
-- \`sorted(iterable, key=..., reverse=False)\`: Returns a new sorted list; \`key\` accepts a function such as \`lambda r: r["score"]\`.
-- \`any(iterable)\` / \`all(iterable)\`: Return \`True\` if any (or all) elements are truthy.
-- \`map(fn, seq)\` / \`filter(fn, seq)\`: Lazily transform or filter items (often written as comprehensions in idiomatic Python) [src:python-tutorial].
-
-Explanation: Think of \`enumerate\` and \`zip\` as zippers that align items cleanly without \`range(len(items))\`, and a comprehension as a compact assembly line that filters and transforms in one pass.
-
-Note: Behavior may differ between versions. Check the official docs for your installed version.
-
-## Why it matters
-
-Data cleaning scripts constantly pair column names with row values (\`zip\`), rank records by a metric (\`sorted\` with \`lambda\`), and filter valid entries with comprehensions.
-
-## Worked example
-
-\`\`\`python
-names = ["Ana", "Ben", "Cara"]
-scores = [91, 78, 95]
-
-passed = [name for name, s in zip(names, scores) if s >= 80]
-ranked = sorted(zip(names, scores), key=lambda pair: pair[1], reverse=True)
-
-print("Passed:", passed)
-print("Top student:", ranked[0][0])
-\`\`\`
-
-## Common mistakes
-
-- **Using \`list.sort()\` when you needed \`sorted()\`**: \`items.sort()\` mutates the list in place and returns \`None\`; \`sorted(items)\` returns a new sorted list [src:python-tutorial].
-- **Over-nesting comprehensions**: If a comprehension needs more than two \`for\` clauses or complex logic, a standard \`for\` loop is easier to read [src:pep8].
-
-## Check your understanding
-
-1. What is the difference between \`items.sort()\` and \`sorted(items)\`?
-2. How does \`zip(["a", "b"], [1, 2, 3])\` behave when lengths differ?
-3. Complete the exercises on the right.
-
-## Sources
-
-- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
-- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)
-- [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)
-`,Yl=`---
+`,ql='---\nid: "a6-l1-lists-tuples-dicts-sets"\nmoduleId: "a6-data-structures"\ntitle: "Lists, Tuples, Dictionaries, Sets, and Mutability"\norder: 1\nestimatedMinutes: 28\ndifficulty: "beginner"\nobjectives:\n  - "Choose appropriately between list, tuple, dict, and set"\n  - "Use core methods: append, extend, pop, copy, get, items, setdefault, add, discard"\n  - "Work with nested structures such as a list of dictionaries"\n  - "Distinguish mutable vs immutable collections and shallow copy vs aliasing"\nprerequisites: ["a5-l1-functions-and-scope"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref"]\ntags: ["lists", "tuples", "dicts", "sets", "mutability"]\n---\n\n## Concept\n\n### 1. Lists (`list`): Ordered, Mutable, and Aliasing vs Copying\n\nA `list` (`[1, 2, 3]`) is an ordered, **mutable** sequence [src:python-tutorial]. Key methods: `.append(x)` (add 1 item), `.extend(seq)` (add multiple items), `.insert(i, x)`, `.pop(i)` (remove and return), `.remove(val)`, and `.copy()` [src:python-tutorial].\n\n```python\na = [10, 20]\nb = a           # Aliasing: b points to the SAME list\nc = a.copy()    # Shallow copy: c is a separate list\nb.append(30)\nprint("a:", a, "c:", c)  # a: [10, 20, 30] c: [10, 20]\n```\n\nExplanation: Because lists are mutable, `b = a` creates two names for the *same* list in memory. Use `.copy()` (or `copy.deepcopy()` for nested lists) when you need an independent copy.\n\n### 2. Tuples (`tuple`): Ordered, Immutable, and Unpacking\n\nA `tuple` (`(1, 2)`) is an ordered, **immutable** sequence [src:python-tutorial]. Note that a 1-element tuple requires a trailing comma: `(42,)`. Tuples can be unpacked (including `*rest` for remaining items) and can serve as `dict` keys because they are hashable [src:python-tutorial].\n\n```python\nrecord = ("IS-301", 38, 40, "Active")\ncode, enrolled, *rest = record\nprint(code, enrolled, rest)  # IS-301 38 [40, \'Active\']\n```\n\nExplanation: Use a `tuple` for fixed records (coordinates, RGB colors, database rows) where accidental modification should be prevented.\n\n### 3. Dictionaries (`dict`): Key-Value Mappings\n\nA `dict` (`{"sku": "A1", "qty": 5}`) maps unique, hashable keys to values and preserves insertion order [src:python-tutorial]. Key methods: `.get(k, default)`, `.setdefault(k, default)`, `.update(other)`, `.pop(k)`, `.keys()`, `.values()`, and `.items()` [src:python-tutorial].\n\n```python\nstock = {"SKU-1": 12, "SKU-2": 0}\nprint(stock.get("SKU-3", 0))  # 0 (no KeyError)\nfor sku, qty in stock.items():\n    print(sku, "->", qty)\n```\n\nExplanation: Think of a `dict` like a contact book or lookup index: instead of searching by numeric position `0, 1, 2`, you jump straight to a record by its key name in `O(1)` average time.\n\n### 4. Sets (`set`): Unique Elements & Set Algebra\n\nA `set` (`{"IS", "CS"}`) stores unique, hashable elements and supports fast `in` membership tests plus union (`|`), intersection (`&`), difference (`-`), and symmetric difference (`^`) [src:python-tutorial]. Use `set()` (not `{}`) for an empty set, `.add(x)`, and `.discard(x)` (safe remove without `KeyError`) [src:python-tutorial].\n\n```python\nenrolled = {"Ana", "Ben", "Cara"}\nsubmitted = {"Ana", "Cara", "Dan"}\nprint("Missing:", enrolled - submitted)      # {\'Ben\'}\nprint("Both:", enrolled & submitted)         # {\'Ana\', \'Cara\'}\n```\n\nExplanation: Think of a `set` as a guest list where duplicates are automatically removed and comparing two groups takes a single `-` or `&` operator.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nBefore loading data into pandas, APIs and JSON files represent records as lists of dictionaries (`[{"id": 1, "score": 90}, ...]`). Mastering these four structures makes data wrangling natural.\n\n## Worked example\n\n```python\ncontacts = [\n    {"name": "Ana", "dept": "IS"},\n    {"name": "Ben", "dept": "CS"},\n    {"name": "Cara", "dept": "IS"},\n]\n\ndepts = {c["dept"] for c in contacts}\nprint("Unique departments:", depts)\nprint("First contact:", contacts[0].get("name"))\n```\n\n## Common mistakes\n\n- **Using `{}` for an empty set**: `{}` creates an empty `dict`; use `set()` for an empty set [src:python-tutorial].\n- **Aliasing a mutable list with `b = a`**: Modifying `b` mutates `a`; use `b = a.copy()` [src:python-tutorial].\n\n## Check your understanding\n\n1. How do you create a 1-element tuple and an empty set?\n2. Why is `d.get("missing", 0)` safer than `d["missing"]`?\n3. Complete the exercises on the right, including the Contact Book mini-project task.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n',Jl='---\nid: "a7-l1-comprehensions-and-builtins"\nmoduleId: "a7-comprehensions-builtins"\ntitle: "Comprehensions and Essential Built-in Functions"\norder: 1\nestimatedMinutes: 22\ndifficulty: "beginner"\nobjectives:\n  - "Transform and filter collections with list, dict, and set comprehensions"\n  - "Iterate with indices and paired sequences using enumerate() and zip()"\n  - "Sort records with sorted(..., key=lambda ...)"\n  - "Use map(), filter(), any(), and all() cleanly"\nprerequisites: ["a6-l1-lists-tuples-dicts-sets"]\npackages: []\nsources: ["python-tutorial", "python-lang-ref", "pep8"]\ntags: ["comprehensions", "enumerate", "zip", "sorted", "lambda", "any", "all"]\n---\n\n## Concept\n\n### 1. List, Dict, and Set Comprehensions\n\nA **comprehension** builds a new collection in a single readable expression, optionally filtering with `if` [src:python-tutorial]:\n\n```python\nnums = [1, 2, 3, 4, 5]\nevens_sq = [n ** 2 for n in nums if n % 2 == 0]         # list: [4, 16]\nsq_map = {n: n ** 2 for n in nums if n <= 3}            # dict: {1: 1, 2: 4, 3: 9}\nunique_mod = {n % 2 for n in nums}                      # set: {0, 1}\n```\n\nExplanation: Think of a comprehension as a compact assembly line: `[output for item in source if keep_condition]`. It replaces 4 lines of `result = []; for ...: result.append(...)` with one clear expression.\n\n### 2. `enumerate()` and `zip()`\n\n- `enumerate(seq, start=0)` yields `(index, item)` pairs so you never need `range(len(seq))` [src:python-tutorial].\n- `zip(seq1, seq2)` pairs corresponding elements from multiple iterables, stopping at the shortest [src:python-tutorial].\n\n```python\nnames = ["Ana", "Ben"]\nscores = [91, 84]\nfor rank, (name, score) in enumerate(zip(names, scores), start=1):\n    print(f"{rank}. {name}: {score}")\n```\n\nExplanation: `enumerate` attaches a running counter to each item, while `zip` zips two parallel lists together like teeth on a zipper.\n\n### 3. `sorted()` and `lambda`\n\n`sorted(iterable, key=..., reverse=False)` returns a **new** sorted list without mutating the original [src:python-tutorial]. A `lambda` is a small anonymous one-line function often passed as `key=` [src:python-tutorial].\n\n```python\nrows = [{"item": "Pen", "qty": 12}, {"item": "Hub", "qty": 3}]\nby_qty = sorted(rows, key=lambda r: r["qty"], reverse=True)\nprint(by_qty[0]["item"])  # Pen\n```\n\nExplanation: `lambda r: r["qty"]` is just a quick inline helper meaning "given a row `r`, sort by `r[\'qty\']`."\n\n### 4. `any()`, `all()`, `map()`, and `filter()`\n\n- `any(iterable)` returns `True` if at least one item is truthy; `all(iterable)` returns `True` only if every item is truthy [src:python-tutorial].\n- `map(fn, seq)` and `filter(fn, seq)` lazily apply a function or predicate across an iterable (though comprehensions are often clearer in Python) [src:python-tutorial].\n\n```python\nscores = [85, 92, 78]\nprint("All passed (>=75):", all(s >= 75 for s in scores))  # True\nprint("Any 90+:", any(s >= 90 for s in scores))             # True\n```\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nData cleaning scripts constantly pair column names with row values (`zip`), rank records by a metric (`sorted` with `lambda`), and filter valid entries with comprehensions.\n\n## Worked example\n\n```python\nnames = ["Ana", "Ben", "Cara"]\nscores = [91, 78, 95]\n\npassed = [name for name, s in zip(names, scores) if s >= 80]\nranked = sorted(zip(names, scores), key=lambda pair: pair[1], reverse=True)\n\nprint("Passed:", passed)\nprint("Top student:", ranked[0][0])\n```\n\n## Common mistakes\n\n- **Using `list.sort()` when you needed `sorted()`**: `items.sort()` mutates the list in place and returns `None`; `sorted(items)` returns a new sorted list [src:python-tutorial].\n- **Over-nesting comprehensions**: If a comprehension needs more than two `for` clauses or complex logic, a standard `for` loop is easier to read [src:pep8].\n\n## Check your understanding\n\n1. What is the difference between `items.sort()` and `sorted(items)`?\n2. How does `zip(["a", "b"], [1, 2, 3])` behave when lengths differ?\n3. Complete the exercises on the right.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:python-lang-ref] The Python Language Reference (Python Software Foundation)\n- [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)\n',Yl=`---
 id: "a8-l1-try-except-raise"
 moduleId: "a8-errors-exceptions"
 title: "Handling Exceptions (try, except, else, finally, raise)"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "beginner"
 objectives:
-  - "Catch specific exception types with try / except"
+  - "Catch specific exception types with try / except and inspect the error object"
   - "Use else and finally blocks appropriately"
   - "Raise explicit ValueError exceptions for invalid inputs"
   - "Avoid bare except clauses that hide real bugs"
@@ -335,14 +468,51 @@ tags: ["exceptions", "try", "except", "raise", "debugging"]
 
 ## Concept
 
-When an error occurs at runtime, Python raises an **exception** [src:python-tutorial]. You can handle expected failures with \`try / except\` [src:python-tutorial]:
-- \`try\`: Code that might raise an exception.
-- \`except ValueError as err\`: Runs only if a \`ValueError\` occurs. Always name specific exception types rather than using a bare \`except:\` [src:pep8].
-- \`else\`: Runs only if the \`try\` block succeeded with no exception [src:python-tutorial].
-- \`finally\`: Always runs afterward (whether an exception occurred or not), used for cleanup [src:python-tutorial].
-- \`raise ValueError("message")\`: Intentionally signals an invalid state or argument [src:python-tutorial].
+### 1. \`try / except\` With Specific Exception Types
 
-Explanation: Think of \`try / except\` as a safety net under a trapeze: you only put the specific risky step inside \`try\`, and you specify which kind of fall (\`ValueError\`, \`ZeroDivisionError\`) you know how to recover from.
+When an error occurs at runtime, Python raises an **exception** (such as \`ValueError\`, \`ZeroDivisionError\`, \`KeyError\`, or \`FileNotFoundError\`) [src:python-tutorial]. You catch expected errors by naming the specific exception type in \`except\` [src:pep8].
+
+\`\`\`python
+raw = "N/A"
+try:
+    qty = int(raw)
+except ValueError as err:
+    print("Invalid number:", err)
+    qty = 0
+\`\`\`
+
+Explanation: Think of \`try / except\` as a safety net targeted at one specific risk. Naming \`ValueError\` handles bad numeric text while still letting real bugs (like a \`NameError\` typo) surface immediately.
+
+### 2. \`else\` and \`finally\`
+
+- \`else\`: Runs **only if** the \`try\` block finished without raising an exception [src:python-tutorial].
+- \`finally\`: **Always** runs afterward (whether an exception occurred or not), used for cleanup [src:python-tutorial].
+
+\`\`\`python
+try:
+    rate = float("0.12")
+except ValueError:
+    print("Bad rate")
+else:
+    print("Parsed rate:", rate)
+finally:
+    print("Validation finished")
+\`\`\`
+
+Explanation: Keeping post-success code inside \`else\` rather than \`try\` ensures your \`except\` block only catches errors from the exact line you intended to guard.
+
+### 3. Raising Exceptions With \`raise\`
+
+Use \`raise ValueError("message")\` to reject invalid arguments early instead of letting bad data corrupt downstream calculations [src:python-tutorial].
+
+\`\`\`python
+def set_discount(pct):
+    if not (0 <= pct <= 100):
+        raise ValueError("Discount must be between 0 and 100")
+    return pct / 100
+\`\`\`
+
+Explanation: Failing fast with a clear \`ValueError\` makes debugging much easier than silently computing a negative price.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -382,85 +552,15 @@ print(parse_positive_int("N/A"))
 - [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
 - [src:python-lang-ref] The Python Language Reference (Python Software Foundation)
 - [src:pep8] PEP 8 - Style Guide for Python Code (Guido van Rossum et al.)
-`,Xl=`---
-id: "a9-l1-files-csv-json"
-moduleId: "a9-files-csv-json"
-title: "Files, with Statement, CSV, and JSON"
-order: 1
-estimatedMinutes: 20
-difficulty: "beginner"
-objectives:
-  - "Open and close files safely using the with context manager"
-  - "Choose file modes ('r', 'w', 'a') and specify encoding='utf-8'"
-  - "Parse tabular text using csv.DictReader"
-  - "Serialize and deserialize data using json.loads() and json.dumps()"
-prerequisites: ["a8-l1-try-except-raise"]
-packages: []
-sources: ["python-tutorial", "pyodide-docs"]
-tags: ["files", "with", "csv", "json"]
----
-
-## Concept
-
-### The \`with\` Statement and File Modes
-
-Always open files using \`with open(path, mode, encoding="utf-8") as f:\` so Python closes the file automatically even if an error occurs [src:python-tutorial]:
-- \`"r"\`: Read (default).
-- \`"w"\`: Write (creates or **overwrites** existing file).
-- \`"a"\`: Append to the end.
-
-Note: In PyData Path, file operations run against Pyodide's **in-memory virtual filesystem** rather than your computer's hard drive [src:pyodide-docs].
-
-### Standard Library \`csv\` and \`json\`
-
-- \`csv.DictReader(f)\`: Reads each row of a CSV file as a \`dict\` keyed by the header column names (all values start as \`str\`) [src:python-tutorial].
-- \`json.loads(text)\` / \`json.load(f)\`: Parses JSON text/file into Python \`dict\` and \`list\` objects [src:python-tutorial].
-- \`json.dumps(obj)\` / \`json.dump(obj, f)\`: Converts Python objects into JSON [src:python-tutorial].
-
-Explanation: Think of \`with open(...)\` as a self-closing door. Using \`csv.DictReader\` turns each comma-separated line into a labeled dictionary so you can access \`row["amount"]\` by name instead of fragile column numbers.
-
-Note: Behavior may differ between versions. Check the official docs for your installed version.
-
-## Why it matters
-
-Before using pandas, knowing \`csv\` and \`json\` lets you inspect raw files, parse API responses, and write lightweight data scripts using only the Python Standard Library.
-
-## Worked example
-
-\`\`\`python
-import csv
-import io
-
-sample_csv = "item,cost\\nNotebook,4.50\\nPen,1.50\\n"
-reader = csv.DictReader(io.StringIO(sample_csv))
-total = sum(float(row["cost"]) for row in reader)
-print(f"Total expense: \${total:.2f}")
-\`\`\`
-
-## Common mistakes
-
-- **Forgetting \`float()\` on \`csv.DictReader\` values**: CSV files are plain text, so \`row["cost"]\` is \`"4.50"\` (\`str\`), not \`4.5\` (\`float\`) [src:python-tutorial].
-- **Opening with \`"w"\` when you meant \`"a"\`**: \`"w"\` erases existing file contents immediately upon opening [src:python-tutorial].
-
-## Check your understanding
-
-1. Why is \`with open(...)\` preferred over calling \`f = open(...)\` and \`f.close()\` manually?
-2. What type are the values in each \`row\` returned by \`csv.DictReader\`?
-3. Complete the exercises on the right, including the Expense Summary from CSV mini-project.
-
-## Sources
-
-- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
-- [src:pyodide-docs] Pyodide Documentation (Pyodide contributors)
-`,Zl=`---
+`,Xl='---\nid: "a9-l1-files-csv-json"\nmoduleId: "a9-files-csv-json"\ntitle: "Files, with Statement, CSV, and JSON"\norder: 1\nestimatedMinutes: 22\ndifficulty: "beginner"\nobjectives:\n  - "Open and close files safely using the with context manager"\n  - "Choose file modes (\'r\', \'w\', \'a\') and specify encoding=\'utf-8\'"\n  - "Parse and write tabular text using csv.DictReader and csv.writer"\n  - "Serialize and deserialize data using json.loads() and json.dumps()"\nprerequisites: ["a8-l1-try-except-raise"]\npackages: []\nsources: ["python-tutorial", "pyodide-docs"]\ntags: ["files", "with", "csv", "json"]\n---\n\n## Concept\n\n### 1. The `with` Statement and File Modes\n\nAlways open files using `with open(path, mode, encoding="utf-8") as f:` so Python closes the file automatically even if an error occurs [src:python-tutorial]:\n- `"r"`: Read (default).\n- `"w"`: Write (creates or **overwrites** existing file).\n- `"a"`: Append to the end.\n\n```python\nwith open("notes.txt", "w", encoding="utf-8") as f:\n    f.write("Line 1\\n")\n\nwith open("notes.txt", "r", encoding="utf-8") as f:\n    print(f.read().strip())\n```\n\nExplanation: Think of `with open(...)` as a self-closing door: you never have to remember `f.close()`, and the file is closed cleanly even if an exception occurs mid-read. Note that in PyData Path, file operations run against Pyodide\'s **in-memory virtual filesystem** rather than your hard drive [src:pyodide-docs].\n\n### 2. Standard Library `csv` (`csv.DictReader` and `csv.writer`)\n\n`csv.DictReader(f)` reads each row of a CSV file as a `dict` keyed by the header column names (all values start as `str`) [src:python-tutorial].\n\n```python\nimport csv\nimport io\n\ntext = "sku,qty\\nA1,5\\nB2,12\\n"\nfor row in csv.DictReader(io.StringIO(text)):\n    print(row["sku"], int(row["qty"]))\n```\n\nExplanation: Using `csv.DictReader` lets you read `row["qty"]` by column name instead of fragile numeric column indices like `row[1]`. Remember to convert numeric strings with `int()` or `float()`.\n\n### 3. Standard Library `json` (`loads`, `dumps`, `load`, `dump`)\n\n- `json.loads(text)` / `json.load(f)`: Parses JSON into Python `dict` and `list` objects [src:python-tutorial].\n- `json.dumps(obj, indent=2)` / `json.dump(obj, f)`: Serializes Python objects into JSON [src:python-tutorial].\n\n```python\nimport json\n\npayload = \'{"course": "IS-301", "active": true, "waitlist": null}\'\nparsed = json.loads(payload)\nprint(parsed["course"], parsed["active"], parsed["waitlist"])\n```\n\nExplanation: Remember the trailing `s` in `loads` / `dumps` stands for **s**tring (`json.loads(str)`), while `load(f)` / `dump(obj, f)` work directly with open file objects.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nBefore using pandas, knowing `csv` and `json` lets you inspect raw files, parse API responses, and write lightweight data scripts using only the Python Standard Library.\n\n## Worked example\n\n```python\nimport csv\nimport io\n\nsample_csv = "item,cost\\nNotebook,4.50\\nPen,1.50\\n"\nreader = csv.DictReader(io.StringIO(sample_csv))\ntotal = sum(float(row["cost"]) for row in reader)\nprint(f"Total expense: ${total:.2f}")\n```\n\n## Common mistakes\n\n- **Forgetting `float()` on `csv.DictReader` values**: CSV files are plain text, so `row["cost"]` is `"4.50"` (`str`), not `4.5` (`float`) [src:python-tutorial].\n- **Opening with `"w"` when you meant `"a"`**: `"w"` erases existing file contents immediately upon opening [src:python-tutorial].\n\n## Check your understanding\n\n1. Why is `with open(...)` preferred over calling `f = open(...)` and `f.close()` manually?\n2. What type are the values in each `row` returned by `csv.DictReader`?\n3. Complete the exercises on the right, including the Expense Summary from CSV mini-project.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n- [src:pyodide-docs] Pyodide Documentation (Pyodide contributors)\n',Zl=`---
 id: "b1-l1-modules-and-environments"
 moduleId: "b1-modules-packages"
 title: "Modules, Packages, __main__, and Virtual Environments"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "intermediate"
 objectives:
-  - "Explain how Python locates modules via sys.path"
+  - "Explain how Python locates modules via sys.path and caches them in sys.modules"
   - "Use if __name__ == '__main__': to separate reusable code from script entry points"
   - "Explain the purpose of packages (__init__.py), pip, and venv"
 prerequisites: ["a9-l1-files-csv-json"]
@@ -471,15 +571,45 @@ tags: ["modules", "packages", "venv", "pip", "__main__"]
 
 ## Concept
 
-Any \`.py\` file is a **module**, and a directory containing modules (often with an \`__init__.py\` file) is a **package** [src:python-tutorial]. When you run \`import my_mod\`, Python searches \`sys.path\` (starting with the script's directory and standard library) and caches the loaded module in \`sys.modules\` [src:python-tutorial].
+### 1. Modules and \`sys.path\`
 
-Every module has a built-in \`__name__\` attribute. When a file is run directly (\`python my_mod.py\`), \`__name__\` is \`"__main__"\`; when imported by another file, \`__name__\` is the module's name [src:python-tutorial]. Wrapping test or CLI code in \`if __name__ == "__main__":\` prevents it from running on import [src:python-tutorial].
+Any \`.py\` file is a **module**, and a directory containing modules (often with an \`__init__.py\` file) is a **package** [src:python-tutorial]. When you run \`import my_mod\`, Python searches \`sys.path\` (starting with the script's directory, then standard library, then installed \`site-packages\`) and caches the loaded module in \`sys.modules\` [src:python-tutorial].
 
-### Virtual Environments (\`venv\`) and \`pip\`
+\`\`\`python
+import sys
+print("First search path:", repr(sys.path[0]))
+print("math cached?", "math" in sys.modules)
+\`\`\`
+
+Explanation: Because Python caches imported modules in \`sys.modules\`, importing the same module in three different files only executes its top-level code once.
+
+### 2. The \`if __name__ == "__main__":\` Guard
+
+Every module has a built-in \`__name__\` attribute. When a file is run directly (\`python my_mod.py\`), \`__name__\` is \`"__main__"\`; when imported by another file, \`__name__\` is the module's name [src:python-tutorial].
+
+\`\`\`python
+def add_vat(amount, rate=0.12):
+    return round(amount * (1 + rate), 2)
+
+if __name__ == "__main__":
+    # Runs only when executed directly, not on import
+    print(add_vat(100))
+\`\`\`
+
+Explanation: Think of \`if __name__ == "__main__":\` as a "front door" switch: if you run the file yourself, the test/demo runs; if another script imports \`add_vat\`, it gets only the function without unwanted print output.
+
+### 3. Virtual Environments (\`venv\`) and \`pip\`
 
 On your local machine, different projects may need different versions of \`pandas\` or \`scikit-learn\`. A **virtual environment** (\`python -m venv .venv\`) creates an isolated folder of packages per project, and \`pip\` installs packages into that active environment [src:python-tutorial]. Note that in this browser workspace (Pyodide), packages are loaded into the browser runtime rather than a local \`venv\` [src:pyodide-docs].
 
-Explanation: Think of \`venv\` like giving each project its own kitchen pantry so upgrading a spice in Project A never breaks a recipe in Project B.
+\`\`\`text
+# Local terminal workflow (run in OS shell, not in Python):
+python3 -m venv .venv
+source .venv/bin/activate     # macOS/Linux (Windows: .venv\\Scripts\\activate)
+python -m pip install pandas
+\`\`\`
+
+Explanation: Think of \`venv\` like giving each project its own kitchen pantry so upgrading a package in Project A never breaks Project B.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -519,7 +649,7 @@ id: "b2-l1-classes-and-dataclasses"
 moduleId: "b2-oop"
 title: "Classes, Methods, Inheritance, and Dataclasses"
 order: 1
-estimatedMinutes: 22
+estimatedMinutes: 24
 difficulty: "intermediate"
 objectives:
   - "Define classes with __init__, instance attributes, and methods"
@@ -534,15 +664,84 @@ tags: ["oop", "class", "dataclass", "dunder", "inheritance"]
 
 ## Concept
 
-A \`class\` bundles data (attributes) and behavior (methods) into a blueprint [src:python-tutorial]. Every instance method receives the instance itself as its first parameter, conventionally named \`self\` [src:python-tutorial]. The \`__init__\` method initializes new instances, and \`__repr__\` defines a developer-friendly string representation [src:python-lang-ref].
+### 1. Classes, \`__init__\`, \`self\`, and Methods
 
-### Inheritance vs Composition and \`@dataclass\`
+A \`class\` bundles data (attributes) and behavior (methods) into a blueprint [src:python-tutorial]. Every instance method receives the instance itself as its first parameter, conventionally named \`self\` [src:python-tutorial]. The \`__init__\` method initializes new instances.
 
-- **Inheritance** (\`class GradStudent(Student):\`) lets a subclass reuse and override parent behavior [src:python-tutorial].
-- **Composition** stores another object as an attribute (for example, an \`Order\` has a list of \`OrderItem\` objects) and is often simpler and more flexible than deep inheritance trees.
-- **\`@dataclass\`** (from \`dataclasses\`) automatically generates \`__init__\`, \`__repr__\`, and \`__eq__\` for classes whose main job is holding data [src:python-tutorial].
+\`\`\`python
+class Course:
+    def __init__(self, code, capacity):
+        self.code = code
+        self.capacity = capacity
+        self.enrolled = 0
 
-Explanation: If you know Java classes, Python's \`self\` is like Java's \`this\`, except Python passes \`self\` explicitly in the method signature \`def enroll(self, course):\`.
+    def enroll_one(self):
+        if self.enrolled < self.capacity:
+            self.enrolled += 1
+
+c = Course("IS-301", 40)
+c.enroll_one()
+print(c.code, c.enrolled)  # IS-301 1
+\`\`\`
+
+Explanation: If you know Java classes, Python's \`self\` is like Java's \`this\`, except Python lists \`self\` explicitly as the first parameter in every instance method definition.
+
+### 2. Dunder Methods (\`__repr__\`, \`__eq__\`)
+
+Special methods with double underscores ("dunder" methods) customize how objects behave with built-in functions like \`repr()\`, \`print()\`, and \`==\` [src:python-lang-ref].
+
+\`\`\`python
+class Tag:
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return f"Tag({self.name!r})"
+
+print(Tag("IS"))  # Tag('IS')
+\`\`\`
+
+Explanation: Without \`__repr__\`, printing an object shows an unhelpful memory address like \`<Tag object at 0x...>\`. Defining \`__repr__\` makes debugging and logs readable.
+
+### 3. Inheritance vs Composition
+
+- **Inheritance** (\`class GradStudent(Student):\`) lets a subclass reuse and extend a parent class using \`super()\` [src:python-tutorial].
+- **Composition** stores another object as an attribute (for example, an \`Order\` *has* a list of \`OrderItem\` objects) [src:python-tutorial].
+
+\`\`\`python
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+class Student(Person):
+    def __init__(self, name, major):
+        super().__init__(name)
+        self.major = major
+
+s = Student("Ana", "IS")
+print(s.name, s.major)
+\`\`\`
+
+Explanation: Prefer composition ("has-a") when combining independent parts, and inheritance ("is-a") when a specialized type genuinely extends a base type.
+
+### 4. \`@dataclass\`
+
+\`@dataclass\` (from \`dataclasses\`) automatically generates \`__init__\`, \`__repr__\`, and \`__eq__\` from type-annotated fields [src:python-tutorial].
+
+\`\`\`python
+from dataclasses import dataclass
+
+@dataclass
+class Product:
+    sku: str
+    name: str
+    stock: int = 0
+
+p = Product("SKU-10", "Mouse", 5)
+print(p)  # Product(sku='SKU-10', name='Mouse', stock=5)
+\`\`\`
+
+Explanation: \`@dataclass\` removes repetitive \`self.x = x\` boilerplate when a class's main job is holding structured data.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -556,7 +755,7 @@ Modeling IS entities (\`Student\`, \`Course\`, \`Product\`, \`Invoice\`) with cl
 from dataclasses import dataclass
 
 @dataclass
-class Product:
+class ProductItem:
     sku: str
     name: str
     stock: int
@@ -564,7 +763,7 @@ class Product:
     def restock(self, qty: int) -> None:
         self.stock += qty
 
-item = Product("SKU-10", "Mouse", 5)
+item = ProductItem("SKU-10", "Mouse", 5)
 item.restock(10)
 print(item)
 \`\`\`
@@ -578,7 +777,7 @@ print(item)
 
 1. What is the role of \`self\` in a Python class method?
 2. Which three methods does \`@dataclass\` generate automatically?
-3. Complete the exercises on the right to model an IS \`Enrollment\` entity.
+3. Complete the exercises on the right to model an IS \`Student\` entity.
 
 ## Sources
 
@@ -590,7 +789,7 @@ id: "b3-l1-iterators-generators"
 moduleId: "b3-iterators-generators"
 title: "Iteration Protocol, yield, Generators, and itertools"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "intermediate"
 objectives:
   - "Explain the difference between an iterable and an iterator (iter() and next())"
@@ -604,13 +803,46 @@ tags: ["iterators", "generators", "yield", "itertools"]
 
 ## Concept
 
-An **iterable** (like a \`list\` or \`str\`) can produce an **iterator** via \`iter(obj)\`, and an iterator produces one item at a time via \`next(it)\` until it raises \`StopIteration\` [src:python-tutorial].
+### 1. Iterables, Iterators, \`iter()\`, and \`next()\`
 
-A **generator function** uses \`yield\` instead of \`return\` [src:python-tutorial]. Each time \`next()\` is called, execution resumes right after the previous \`yield\`, computing values **lazily** on demand without storing the entire sequence in memory [src:python-tutorial]. A **generator expression** uses parentheses \`(x * 2 for x in nums)\` instead of brackets \`[...]\` [src:python-tutorial].
+An **iterable** (like a \`list\`, \`str\`, or \`dict\`) can produce an **iterator** via \`iter(obj)\`, and an iterator produces one item at a time via \`next(it)\` until it raises \`StopIteration\` [src:python-tutorial].
 
-The \`itertools\` module provides fast C-implemented building blocks such as \`islice\`, \`chain\`, and \`groupby\` [src:python-tutorial].
+\`\`\`python
+it = iter(["A", "B"])
+print(next(it))  # A
+print(next(it))  # B
+# Calling next(it) again raises StopIteration
+\`\`\`
+
+Explanation: Think of an iterable as a book, and an iterator as a bookmark moving forward one page at a time. \`for\` loops call \`iter()\` and \`next()\` automatically behind the scenes until \`StopIteration\`.
+
+### 2. Generator Functions (\`yield\`)
+
+A **generator function** uses \`yield\` instead of \`return\` [src:python-tutorial]. Each time \`next()\` is called, execution resumes right after the previous \`yield\`, computing values **lazily** on demand without storing the entire sequence in memory [src:python-tutorial].
+
+\`\`\`python
+def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+
+print(list(countdown(3)))  # [3, 2, 1]
+\`\`\`
 
 Explanation: Think of a \`list\` like downloading an entire movie before pressing play, whereas a generator (\`yield\`) is like streaming it one frame at a time.
+
+### 3. Generator Expressions and \`itertools\`
+
+A **generator expression** uses parentheses \`(x * 2 for x in nums)\` instead of brackets \`[...]\` [src:python-tutorial]. The \`itertools\` module provides fast building blocks such as \`islice\`, \`chain\`, and \`groupby\` [src:python-tutorial].
+
+\`\`\`python
+from itertools import islice
+
+squares = (x * x for x in range(1_000_000))  # uses almost zero memory
+print(list(islice(squares, 4)))              # [0, 1, 4, 9]
+\`\`\`
+
+Explanation: \`islice(squares, 4)\` pulls only the first 4 items from a million-item generator without computing the remaining 999,996.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -652,7 +884,7 @@ id: "b4-l1-closures-decorators"
 moduleId: "b4-functions-deeper"
 title: "Closures, *args/**kwargs, and Decorators"
 order: 1
-estimatedMinutes: 20
+estimatedMinutes: 22
 difficulty: "intermediate"
 objectives:
   - "Accept variable numbers of arguments using *args and **kwargs"
@@ -666,13 +898,57 @@ tags: ["decorators", "closures", "args", "kwargs", "functools"]
 
 ## Concept
 
-Functions in Python are first-class objects: they can be passed as arguments, returned from other functions, and assigned to variables [src:python-tutorial].
+### 1. Variadic Arguments: \`*args\` and \`**kwargs\`
 
-- \`*args\` collects extra positional arguments into a \`tuple\`, while \`**kwargs\` collects extra keyword arguments into a \`dict\` [src:python-tutorial].
-- A **closure** is a nested function that remembers values from its enclosing function's scope even after the outer function returns [src:python-lang-ref].
-- A **decorator** (\`@my_decorator\`) is a higher-order function that wraps another function to add behavior (such as logging or timing) without modifying its core code [src:python-lang-ref]. Always decorate the inner wrapper with \`@functools.wraps(func)\` so \`__name__\` and \`__doc__\` are preserved [src:python-tutorial].
+Functions in Python can accept any number of positional arguments into a \`tuple\` (\`*args\`) and any number of keyword arguments into a \`dict\` (\`**kwargs\`) [src:python-tutorial].
 
-Explanation: Think of a decorator as gift-wrapping a function: the wrapped function still does the exact same job inside, while the wrapper adds a ribbon (like timing or logging) before and after it runs.
+\`\`\`python
+def summarize(*args, **kwargs):
+    print("Positional:", args)
+    print("Keyword:", kwargs)
+
+summarize(10, 20, currency="USD", round_to=2)
+\`\`\`
+
+Explanation: \`*args\` collects unnamed extra values into a tuple; \`**kwargs\` collects \`name=value\` pairs into a dictionary.
+
+### 2. Closures and Higher-Order Functions
+
+Functions are first-class objects: they can be passed as arguments and returned from other functions [src:python-tutorial]. A **closure** is a nested function that remembers variables from its enclosing function's scope even after the outer function finishes [src:python-lang-ref].
+
+\`\`\`python
+def make_multiplier(factor):
+    def multiply(x):
+        return x * factor  # remembers 'factor'
+    return multiply
+
+times_3 = make_multiplier(3)
+print(times_3(10))  # 30
+\`\`\`
+
+Explanation: When \`make_multiplier(3)\` returns \`multiply\`, Python attaches the remembered \`factor = 3\` to \`multiply\` like a backpack.
+
+### 3. Decorators and \`@functools.wraps\`
+
+A **decorator** (\`@my_decorator\`) is a higher-order function that wraps another function to add behavior (such as logging or timing) without modifying its core code [src:python-lang-ref]. Always decorate the inner wrapper with \`@functools.wraps(func)\` so \`__name__\` and \`__doc__\` are preserved [src:python-tutorial].
+
+\`\`\`python
+import functools
+
+def shout(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        return str(func(*args, **kwargs)).upper()
+    return wrapper
+
+@shout
+def greet(name):
+    return f"hello {name}"
+
+print(greet("ana"), greet.__name__)  # HELLO ANA greet
+\`\`\`
+
+Explanation: \`@shout\` above \`def greet\` is syntactic sugar for \`greet = shout(greet)\`. Using \`*args, **kwargs\` inside \`wrapper\` lets the decorator wrap functions with *any* signature.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -719,7 +995,7 @@ id: "b5-l1-context-managers"
 moduleId: "b5-context-managers"
 title: "Context Managers (__enter__, __exit__, contextlib)"
 order: 1
-estimatedMinutes: 16
+estimatedMinutes: 18
 difficulty: "intermediate"
 objectives:
   - "Explain the context manager protocol (__enter__ and __exit__)"
@@ -733,11 +1009,46 @@ tags: ["context-managers", "with", "contextlib"]
 
 ## Concept
 
-A **context manager** guarantees setup and teardown around a \`with\` block [src:python-lang-ref]. Python calls \`__enter__()\` when entering \`with\`, binds its return value to \`as var\`, and always calls \`__exit__(exc_type, exc_val, exc_tb)\` when leaving the block, even if an exception was raised [src:python-lang-ref].
+### 1. The Context Manager Protocol (\`__enter__\` and \`__exit__\`)
+
+A **context manager** guarantees setup and teardown around a \`with\` block [src:python-lang-ref]. Python calls \`__enter__()\` when entering \`with\`, binds its return value to \`as var\`, and always calls \`__exit__(exc_type, exc_val, exc_tb)\` when leaving the block, even if an exception occurred [src:python-lang-ref].
+
+\`\`\`python
+class TimerSession:
+    def __enter__(self):
+        print("Session started")
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("Session closed")
+        return False  # propagate any exception
+
+with TimerSession():
+    print("Running query")
+\`\`\`
+
+Explanation: Returning \`False\` (or \`None\`) from \`__exit__\` ensures real exceptions are not silently swallowed; cleanup still runs, and then the exception continues normally.
+
+### 2. Generator-Based Context Managers (\`@contextlib.contextmanager\`)
 
 Instead of writing a full class, \`contextlib.contextmanager\` lets you write a generator function with a single \`yield\` wrapped in \`try / finally\` [src:python-tutorial].
 
-Explanation: Think of \`try ... finally\` inside \`@contextmanager\` as a hotel check-in and automatic checkout: whatever happens during the stay (before or during \`yield\`), the \`finally\` cleanup always runs on exit.
+\`\`\`python
+from contextlib import contextmanager
+
+@contextmanager
+def open_section(title):
+    print(f"=== {title} ===")
+    try:
+        yield
+    finally:
+        print(f"=== END {title} ===")
+
+with open_section("Summary"):
+    print("Revenue: $1,200")
+\`\`\`
+
+Explanation: Think of \`try ... finally\` inside \`@contextmanager\` as hotel check-in and automatic checkout: whatever happens during the stay (inside \`yield\`), the \`finally\` cleanup always runs on exit.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -778,15 +1089,15 @@ with tag_block("report"):
 - [src:python-lang-ref] The Python Language Reference (Python Software Foundation)
 `,nu=`---
 id: "b6-l1-type-hints-and-pep8"
-moduleId: "b6-type-hints-and-pep8"
-title: "Type Hints, PEP 8, and Refactoring"
+moduleId: "b6-type-hints-clean-code"
+title: "Type Hints, PEP 8, PEP 20, and Refactoring"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "intermediate"
 objectives:
   - "Annotate functions and variables using Python type hints (int, str, list[int], dict[str, float], int | None)"
   - "Explain that type hints are not enforced at runtime by default"
-  - "Apply PEP 8 naming and formatting conventions when refactoring"
+  - "Apply PEP 8 naming and PEP 20 readability principles when refactoring"
 prerequisites: ["b5-l1-context-managers"]
 packages: []
 sources: ["python-tutorial", "pep8", "pep20"]
@@ -795,22 +1106,40 @@ tags: ["typing", "type-hints", "pep8", "pep20", "refactoring"]
 
 ## Concept
 
-Type hints annotate expected types on parameters, return values, and variables [src:python-tutorial]:
+### 1. Function & Variable Type Annotations
+
+Type hints annotate expected types on parameters, return values, and variables [src:python-tutorial]. Note that Python's runtime **does not enforce** type hints automatically [src:python-tutorial]; they exist for human readability, IDE autocomplete, and static type checkers like \`mypy\` or \`pyright\`.
 
 \`\`\`python
 def mean_score(scores: list[int]) -> float | None:
     if not scores:
         return None
     return sum(scores) / len(scores)
+
+print(mean_score([80, 90]))  # 85.0
 \`\`\`
 
-Python's runtime **does not enforce** type hints automatically [src:python-tutorial]; they exist for human readability, IDE autocomplete, and static type checkers like \`mypy\` or \`pyright\`.
-
-PEP 8 recommends [src:pep8]:
-- \`snake_case\` for functions and variables, \`PascalCase\` for classes, \`UPPER_CASE\` for constants.
-- 4 spaces per indent, max line length around 79-99 characters, and clear spacing around operators.
-
 Explanation: Think of type hints as nutrition labels on food packages: they do not stop you from eating something unexpected, but they tell everyone reading the code (and your editor) exactly what goes in and what comes out.
+
+### 2. PEP 8 Naming and PEP 20 ("The Zen of Python")
+
+PEP 8 standardizes Python style [src:pep8]:
+- \`snake_case\` for functions and variables
+- \`PascalCase\` for classes
+- \`UPPER_SNAKE_CASE\` for constants
+- 4 spaces per indent, clear whitespace around operators
+
+PEP 20 summarizes Python's philosophy: *"Readability counts"*, *"Simple is better than complex"*, and *"Explicit is better than implicit"* [src:pep20].
+
+\`\`\`python
+MAX_RETRIES = 3  # UPPER_SNAKE_CASE constant
+
+class OrderSummary:  # PascalCase class
+    def __init__(self, total_items: int) -> None:
+        self.total_items = total_items
+\`\`\`
+
+Explanation: Following PEP 8 means any Python developer can read your code effortlessly without fighting inconsistent naming or formatting.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version (for example, \`list[int]\` and \`int | None\` require Python 3.9+ / 3.10+).
 
@@ -848,7 +1177,7 @@ id: "b7-l1-testing-and-debugging"
 moduleId: "b7-testing-debugging"
 title: "Automated Testing, assert, pytest/unittest, and Debugging"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "intermediate"
 objectives:
   - "Write behavior-focused assert tests covering normal and edge cases"
@@ -862,11 +1191,44 @@ tags: ["testing", "assert", "pytest", "unittest", "debugging"]
 
 ## Concept
 
-An \`assert condition, "message"\` statement raises \`AssertionError\` if \`condition\` is falsy [src:python-tutorial]. In local Python projects, you organize assertions into test functions using either the standard library's \`unittest\` module or the popular third-party \`pytest\` framework [src:python-tutorial]. (In PyData Path's browser runtime, our grader runs \`assert\`-based tests directly inside Pyodide [src:pyodide-docs].)
+### 1. \`assert\`-Based Testing and Edge Cases
 
-Good tests check **edge cases** (empty lists, zero, negative numbers, ties), not just the happy path.
+An \`assert condition, "message"\` statement raises \`AssertionError\` if \`condition\` is falsy [src:python-tutorial]. Good tests check **edge cases** (empty lists, zero, negative numbers, exact boundaries), not just the happy path.
 
-Explanation: Think of \`assert\` tests as automated smoke detectors. Instead of re-typing manual print checks every time you edit a function, you run your tests once and immediately know if a change broke an old requirement.
+\`\`\`python
+def apply_cap(val, max_val=100):
+    return min(val, max_val)
+
+assert apply_cap(80) == 80
+assert apply_cap(100) == 100   # boundary
+assert apply_cap(150) == 100   # capped
+\`\`\`
+
+Explanation: Think of \`assert\` tests as automated smoke detectors: instead of re-typing manual \`print\` checks after every edit, you run your assertions once and know immediately if a change broke an old requirement.
+
+### 2. Local Test Runners: \`unittest\` and \`pytest\`
+
+In local Python projects, you organize assertions into \`test_*.py\` files using either the standard library's \`unittest\` module or the popular third-party \`pytest\` framework [src:python-tutorial]. (In PyData Path's browser runtime, our grader runs \`assert\`-based tests directly inside Pyodide [src:pyodide-docs].)
+
+\`\`\`python
+import unittest
+
+def add(a, b):
+    return a + b
+
+class TestMath(unittest.TestCase):
+    def test_add(self):
+        self.assertEqual(add(2, 3), 5)
+\`\`\`
+
+Explanation: \`pytest\` lets you write plain \`def test_add(): assert add(2, 3) == 5\` functions without class boilerplate, while \`unittest\` comes built into Python with zero extra installs.
+
+### 3. Systematic Debugging
+
+When a bug appears:
+1. Read the traceback from bottom to top.
+2. Shrink the failing input to the smallest case that still reproduces the bug.
+3. Inspect intermediate values (or use the **Step Visualizer** in the sidebar!).
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -906,7 +1268,7 @@ id: "b8-l1-big-o-and-timeit"
 moduleId: "b8-performance-algorithms"
 title: "Big-O Intuition, Data Structure Choice, and timeit"
 order: 1
-estimatedMinutes: 16
+estimatedMinutes: 18
 difficulty: "intermediate"
 objectives:
   - "Compare O(1) hash lookup (set/dict) vs O(n) linear scan (list)"
@@ -914,11 +1276,13 @@ objectives:
   - "Identify nested loops that cause O(n^2) slowdowns on large datasets"
 prerequisites: ["b7-l1-testing-and-debugging"]
 packages: []
-sources: ["python-tutorial", "python-lang-ref"]
+sources: ["python-tutorial", "python-lang-ref", "pep20"]
 tags: ["performance", "big-o", "timeit", "set", "dict"]
 ---
 
 ## Concept
+
+### 1. Big-O Intuition and Data Structure Choice
 
 Big-O notation describes how runtime grows as input size \`n\` increases [src:python-tutorial]:
 - **O(1) constant time**: \`key in my_dict\` or \`item in my_set\` uses a hash table, staying fast regardless of size.
@@ -926,9 +1290,25 @@ Big-O notation describes how runtime grows as input size \`n\` increases [src:py
 - **O(n log n)**: \`sorted(items)\` (Timsort).
 - **O(n^2) quadratic time**: A loop inside a loop scanning a list for every row.
 
-You can time small Python expressions using the standard library's \`timeit\` module [src:python-tutorial].
+\`\`\`python
+valid_ids = {"U01", "U02", "U03"}   # O(1) lookup via set
+print("U02" in valid_ids)           # True
+\`\`\`
 
 Explanation: Looking up a student ID in a \`list\` is like reading every page of a phone book from page 1 (\`O(n)\`). Putting those IDs into a \`set\` or \`dict\` is like jumping straight to the exact tab (\`O(1)\`).
+
+### 2. Benchmarking With \`timeit\`
+
+You can time small Python expressions using the standard library's \`timeit\` module [src:python-tutorial].
+
+\`\`\`python
+import timeit
+
+t = timeit.timeit("sum(range(1000))", number=100)
+print(f"100 runs took {t:.5f}s")
+\`\`\`
+
+Explanation: \`timeit\` runs your snippet many times and disables background noise so you can compare two approaches fairly instead of guessing which one is faster.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -964,12 +1344,118 @@ print(f"list: {t_list:.5f}s | set: {t_set:.5f}s")
 - [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
 - [src:python-lang-ref] The Python Language Reference (Python Software Foundation)
 - [src:pep20] PEP 20 - The Zen of Python (Tim Peters)
-`,G='---\nid: "b9-l1-stdlib-for-analysts"\nmoduleId: "b9-stdlib-analysts"\ntitle: "datetime, collections, statistics, random, re, and pathlib"\norder: 1\nestimatedMinutes: 20\ndifficulty: "intermediate"\nobjectives:\n  - "Parse and format dates using datetime.strptime() and strftime()"\n  - "Count frequencies and group items with collections.Counter and defaultdict"\n  - "Extract patterns with re.findall() and build paths with pathlib.Path"\nprerequisites: ["b8-l1-big-o-and-timeit"]\npackages: []\nsources: ["python-tutorial"]\ntags: ["datetime", "collections", "Counter", "re", "pathlib"]\n---\n\n## Concept\n\nPython\'s Standard Library includes several high-value modules for analysts [src:python-tutorial]:\n- `datetime`: `datetime.strptime("2026-11-19", "%Y-%m-%d")` parses date strings; `.strftime(...)` formats dates back to text [src:python-tutorial].\n- `collections.Counter`: Counts occurrences in any iterable (`Counter(["a", "b", "a"]).most_common(1)`) [src:python-tutorial].\n- `collections.defaultdict(list)`: Automatically initializes missing keys with a default factory (such as `list` or `int`) [src:python-tutorial].\n- `statistics`: `mean()`, `median()`, `stdev()` for quick numeric summaries without external packages [src:python-tutorial].\n- `random`: `random.seed(42)`, `random.choice()`, `random.sample()` for reproducible synthetic sampling [src:python-tutorial].\n- `re`: Regular expressions (`re.findall(r"\\d+", text)`) for extracting structured tokens from messy strings [src:python-tutorial].\n- `pathlib.Path`: Object-oriented filesystem paths (`Path("data") / "sales.csv"`) [src:python-tutorial].\n\nExplanation: Think of `Counter` as an instant tally sheet: instead of writing a 5-line `if key in counts:` loop, `Counter(items)` counts everything in one call.\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nLog parsing, date normalization, frequency counts, and clean file paths show up in nearly every analytics script before you even reach pandas.\n\n## Worked example\n\n```python\nfrom collections import Counter\nimport re\n\nlog = "ERR 404 /home | OK 200 /api | ERR 500 /api | ERR 404 /login"\ncodes = re.findall(r"\\b\\d{3}\\b", log)\nprint("Top status:", Counter(codes).most_common(1))\n```\n\n## Common mistakes\n\n- **Using `re` without raw strings (`r"..."`)**: Backslashes like `\\d` or `\\b` should always be written in raw strings (`r"\\d+"`) so Python does not interpret them as string escapes [src:python-tutorial].\n\n## Check your understanding\n\n1. Which `collections` class counts frequencies in one line?\n2. Why should regex patterns use raw strings like `r"\\d+"`?\n3. Complete the exercises on the right.\n\n## Sources\n\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n',au=`---
+`,G=`---
+id: "b9-l1-stdlib-for-analysts"
+moduleId: "b9-stdlib-analysts"
+title: "datetime, collections, statistics, random, re, and pathlib"
+order: 1
+estimatedMinutes: 24
+difficulty: "intermediate"
+objectives:
+  - "Parse and format dates using datetime.strptime() and strftime()"
+  - "Count frequencies and group items with collections.Counter and defaultdict"
+  - "Compute quick summaries with statistics and reproducible samples with random"
+  - "Extract patterns with re.findall() and build paths with pathlib.Path"
+prerequisites: ["b8-l1-big-o-and-timeit"]
+packages: []
+sources: ["python-tutorial"]
+tags: ["datetime", "collections", "Counter", "re", "pathlib"]
+---
+
+## Concept
+
+### 1. \`datetime\`: Parsing and Formatting Dates
+
+\`datetime.strptime(text, fmt)\` parses date strings into \`datetime\` objects, and \`.strftime(fmt)\` formats them back to text [src:python-tutorial].
+
+\`\`\`python
+from datetime import datetime
+
+dt = datetime.strptime("2026-11-19", "%Y-%m-%d")
+print(dt.strftime("%b %d, %Y"))  # Nov 19, 2026
+\`\`\`
+
+Explanation: Remember \`strptime\` = **p**arse from string, \`strftime\` = **f**ormat to string.
+
+### 2. \`collections\`: \`Counter\` and \`defaultdict\`
+
+- \`Counter(iterable)\`: Counts occurrences and provides \`.most_common(n)\` [src:python-tutorial].
+- \`defaultdict(list)\`: Automatically initializes missing keys with a default factory (such as \`list\` or \`int\`) [src:python-tutorial].
+
+\`\`\`python
+from collections import Counter, defaultdict
+
+counts = Counter(["IS", "CS", "IS"])
+print(counts.most_common(1))  # [('IS', 2)]
+
+groups = defaultdict(list)
+groups["North"].append(100)
+print(dict(groups))           # {'North': [100]}
+\`\`\`
+
+Explanation: \`Counter\` replaces manual counting loops, and \`defaultdict(list)\` avoids writing \`if key not in groups: groups[key] = []\` before appending.
+
+### 3. \`statistics\` and \`random\`
+
+\`statistics\` provides \`mean()\`, \`median()\`, and \`stdev()\` for quick numeric summaries without installing third-party libraries [src:python-tutorial]. \`random\` provides \`seed()\`, \`choice()\`, and \`sample()\` for reproducible synthetic data [src:python-tutorial].
+
+\`\`\`python
+import statistics, random
+
+random.seed(42)
+sample = random.sample(range(1, 100), 5)
+print("Sample:", sample, "Mean:", statistics.mean(sample))
+\`\`\`
+
+### 4. \`re\` (Regular Expressions) and \`pathlib.Path\`
+
+\`re.findall(r"\\d+", text)\` extracts matching substrings using raw strings (\`r"..."\`), and \`pathlib.Path\` builds cross-platform file paths cleanly with \`/\` [src:python-tutorial].
+
+\`\`\`python
+import re
+from pathlib import Path
+
+nums = re.findall(r"\\d+", "Order #104: 3 items")
+p = Path("data") / "sales.csv"
+print(nums, p.name)  # ['104', '3'] sales.csv
+\`\`\`
+
+Note: Behavior may differ between versions. Check the official docs for your installed version.
+
+## Why it matters
+
+Log parsing, date normalization, frequency counts, and clean file paths show up in nearly every analytics script before you even reach pandas.
+
+## Worked example
+
+\`\`\`python
+from collections import Counter
+import re
+
+log = "ERR 404 /home | OK 200 /api | ERR 500 /api | ERR 404 /login"
+codes = re.findall(r"\\b\\d{3}\\b", log)
+print("Top status:", Counter(codes).most_common(1))
+\`\`\`
+
+## Common mistakes
+
+- **Using \`re\` without raw strings (\`r"..."\`)**: Backslashes like \`\\d\` or \`\\b\` should always be written in raw strings (\`r"\\d+"\`) so Python does not interpret them as string escapes [src:python-tutorial].
+
+## Check your understanding
+
+1. Which \`collections\` class counts frequencies in one line?
+2. Why should regex patterns use raw strings like \`r"\\d+"\`?
+3. Complete the exercises on the right.
+
+## Sources
+
+- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
+`,au=`---
 id: "c1-l1-analytics-lifecycle"
 moduleId: "c1-analytics-process"
 title: "The Analytics Workflow, Data Quality, and Ethics"
 order: 1
-estimatedMinutes: 15
+estimatedMinutes: 16
 difficulty: "beginner"
 objectives:
   - "Sequence the 5 stages of the analytics process: question, data, clean, analyze, communicate"
@@ -984,20 +1470,43 @@ tags: ["analytics-process", "data-quality", "ethics", "privacy"]
 
 ## Concept
 
+### 1. The 5-Stage Analytics Process
+
 Effective data analytics follows a repeatable 5-stage cycle [src:python-data-analysis]:
-1. **Question**: Define a specific, measurable decision or question before touching code.
+1. **Question**: Define a specific, measurable decision before touching code.
 2. **Data**: Gather relevant data and verify its license and provenance.
 3. **Clean**: Inspect missing values, duplicates, types, and formatting errors.
 4. **Analyze**: Summarize, segment, visualize, and test hypotheses.
 5. **Communicate**: Present clear findings, limitations, and recommendations.
 
-### Types of Data & Quality Dimensions
+Explanation: Starting with a vague goal like "analyze sales" leads to aimless charts. Framing a concrete question like "Which product category had the highest return rate in Q1?" immediately tells you which columns and cleaning steps matter.
+
+### 2. Types of Data
 
 In statistics, variables are classified as **categorical** (nominal without order like department, or ordinal with order like \`"Low" < "Med" < "High"\`) or **numerical** (discrete counts or continuous measurements) [src:openintro-stats].
 
-Data quality is assessed across **completeness** (missing values), **accuracy** (correct values), **consistency** (uniform units and formats), and **timeliness** (up-to-date records). Always remove or mask personally identifiable information (PII) such as emails or student IDs before sharing notebooks or datasets.
+\`\`\`python
+# Nominal vs Ordinal vs Numerical
+department = "IS"        # nominal categorical
+rating = "High"          # ordinal categorical (Low < Med < High)
+enrolled = 42            # discrete numerical
+gpa = 3.75               # continuous numerical
+\`\`\`
 
-Explanation: Starting with a vague goal like "analyze sales" leads to aimless charts. Framing a concrete question like "Which product category had the highest return rate in Q1?" immediately tells you which columns and cleaning steps matter.
+### 3. Data Quality Dimensions & Ethics
+
+Data quality is assessed across **completeness** (missing values), **accuracy** (correct values), **consistency** (uniform units and formats), and **timeliness** (up-to-date records). Always remove or mask personally identifiable information (PII) such as emails or student IDs before sharing datasets.
+
+\`\`\`python
+records = [
+    {"id": 1, "dept": "IS", "gpa": 3.5},
+    {"id": 2, "dept": "is", "gpa": None},
+]
+missing_gpa = sum(1 for r in records if r["gpa"] is None)
+print("Missing GPA count:", missing_gpa)
+\`\`\`
+
+Explanation: Inconsistent casing (\`"IS"\` vs \`"is"\`) splits one group into two separate bars on a chart, which is why consistency checks come before analysis.
 
 ## Why it matters
 
@@ -1006,7 +1515,6 @@ Technical Python skills only create value when they answer real questions accura
 ## Worked example
 
 \`\`\`python
-# Framing a data quality check on a synthetic IS table
 records = [
     {"id": 1, "dept": "IS", "gpa": 3.5},
     {"id": 2, "dept": "is", "gpa": None},
@@ -1037,7 +1545,7 @@ id: "c10-l1-inference-and-hypothesis-tests"
 moduleId: "c10-statistical-inference"
 title: "Sampling, CLT, Confidence Intervals, and Hypothesis Testing"
 order: 1
-estimatedMinutes: 24
+estimatedMinutes: 25
 difficulty: "advanced"
 objectives:
   - "Explain the Central Limit Theorem (CLT) and sampling variability"
@@ -1051,12 +1559,45 @@ tags: ["inference", "clt", "confidence-interval", "p-value", "scipy"]
 
 ## Concept
 
-- **Central Limit Theorem (CLT)**: As sample size \`n\` grows, the distribution of sample means approaches a normal distribution centered on the population mean, even if the underlying population is skewed [src:openintro-stats].
-- **95% Confidence Interval**: A range constructed so that across repeated random samples, ~95% of intervals capture the true population parameter [src:openintro-stats].
-- **Hypothesis Testing & p-value**: Under a null hypothesis (\`H0\`, e.g., no difference between Group A and Group B), the **p-value** is the probability of observing data at least as extreme as yours *assuming H0 is true* [src:openintro-stats]. It is **not** the probability that H0 is true!
-- **Effect Size**: With huge sample sizes, tiny trivial differences can yield \`p < 0.05\`. Always report practical effect size (such as mean difference) alongside p-values [src:openintro-stats].
+### 1. Sampling and the Central Limit Theorem (CLT)
 
-In Python, \`scipy.stats.ttest_ind(group_a, group_b, equal_var=False)\` performs Welch's two-sample t-test [src:scipy-docs].
+Different random samples from the same population yield slightly different sample means (**sampling variability**) [src:openintro-stats]. By the **Central Limit Theorem**, as sample size \`n\` grows, the distribution of sample means approaches a normal distribution centered on the population mean, even if the underlying population is skewed [src:openintro-stats].
+
+\`\`\`python
+import numpy as np
+
+rng = np.random.default_rng(42)
+sample_means = [rng.exponential(scale=10, size=40).mean() for _ in range(100)]
+print("Mean of sample means:", round(float(np.mean(sample_means)), 2))
+\`\`\`
+
+### 2. Confidence Intervals
+
+A **95% Confidence Interval** is a range constructed so that across repeated random samples, ~95% of intervals capture the true population parameter [src:openintro-stats].
+
+\`\`\`python
+import numpy as np
+
+sample = np.array([22, 24, 21, 23, 25, 26, 20, 24])
+se = np.std(sample, ddof=1) / np.sqrt(len(sample))
+ci_low, ci_high = np.mean(sample) - 1.96 * se, np.mean(sample) + 1.96 * se
+print(f"Approx 95% CI: [{ci_low:.2f}, {ci_high:.2f}]")
+\`\`\`
+
+### 3. Hypothesis Testing, p-values, and Effect Size
+
+Under a null hypothesis (\`H0\`, e.g., no difference between Group A and Group B), the **p-value** is the probability of observing data at least as extreme as yours *assuming H0 is true* [src:openintro-stats]. It is **not** the probability that H0 is true!
+
+Always report practical **effect size** (such as the difference in means) alongside p-values, because large samples can yield \`p < 0.05\` for tiny, unimportant differences [src:openintro-stats].
+
+\`\`\`python
+from scipy import stats
+
+a = [22, 24, 21, 23, 25]
+b = [28, 30, 27, 29, 31]
+t_stat, p_val = stats.ttest_ind(b, a, equal_var=False)
+print(f"Diff: {sum(b)/len(b) - sum(a)/len(a):.1f}, p={p_val:.4f}")
+\`\`\`
 
 Explanation: Explore the **Central Limit Theorem**, **Confidence Intervals**, and **p-value** tabs in the **Stats Simulators** page to see these ideas move in real time.
 
@@ -1097,7 +1638,7 @@ id: "c11-l1-structured-eda"
 moduleId: "c11-eda-workflow"
 title: "Structured EDA Checklist and Profiling"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "intermediate"
 objectives:
   - "Execute a repeatable EDA checklist on a new dataset"
@@ -1111,14 +1652,37 @@ tags: ["eda", "profiling", "workflow"]
 
 ## Concept
 
-Exploratory Data Analysis (EDA) is a structured investigation before modeling or reporting [src:python-data-analysis]:
-1. **Shape & Schema**: \`df.shape\`, \`df.dtypes\`, \`df.head()\`.
-2. **Missingness & Duplicates**: \`df.isna().sum()\`, \`df.duplicated().sum()\`.
-3. **Univariate Checks**: \`df.describe()\` for numeric columns; \`df[col].value_counts()\` for categorical columns [src:pandas-docs].
-4. **Bivariate Checks**: Group summaries (\`groupby\`) and scatter/box plots across segments.
-5. **Decision Log**: Record why rows were filtered or imputed so results are reproducible.
+### 1. Shape, Schema, and Missingness Audit
+
+Start every Exploratory Data Analysis (EDA) by checking dimensions, column types, nulls, and duplicate rows [src:python-data-analysis]:
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({"region": ["North", "South", "North"], "units": [5, None, 8]})
+print("Shape:", df.shape)
+print("Nulls:\\n", df.isna().sum())
+\`\`\`
 
 Explanation: Think of EDA like inspecting a used car before a road trip: you check the tires, oil, and brakes systematically before driving onto the highway.
+
+### 2. Univariate & Bivariate Profiling
+
+Profile numeric columns with \`df.describe()\` and categorical columns with \`df[col].value_counts(dropna=False)\` [src:pandas-docs]. Then examine relationships across segments with \`groupby()\` or scatter/box plots.
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({"region": ["North", "South", "North"], "units": [5, 10, 8]})
+print(df["region"].value_counts(dropna=False))
+print(df.groupby("region")["units"].mean())
+\`\`\`
+
+Explanation: Always pass \`dropna=False\` to \`value_counts()\` during EDA so missing categories are visible rather than silently hidden.
+
+### 3. Decision Log
+
+Record why rows were filtered or imputed so your team (and future you) can reproduce every number.
 
 ## Why it matters
 
@@ -1155,7 +1719,7 @@ id: "c12-l1-memos-and-insights"
 moduleId: "c12-communicating-findings"
 title: "Observations vs Insights and One-Page Findings Memos"
 order: 1
-estimatedMinutes: 15
+estimatedMinutes: 16
 difficulty: "intermediate"
 objectives:
   - "Distinguish a raw observation from an actionable insight"
@@ -1169,12 +1733,26 @@ tags: ["communication", "memos", "insights"]
 
 ## Concept
 
+### 1. Observations vs Insights
+
 Numbers alone rarely drive decisions [src:python-data-analysis]:
 - **Observation**: What the data literally shows ("North region revenue rose 18% in Q1").
 - **Insight**: *Why* it matters and what decision it informs ("Bundling USB-C Hubs with Laptops drove 60% of North region's growth; consider expanding that bundle to South").
-- **Limitations**: What the data does *not* prove (small sample size, missing weeks, observational correlation).
 
-A strong one-page memo follows: **Bottom Line Up Front (BLUF)** -> **Key Evidence (2-3 metrics/charts)** -> **Limitations** -> **Recommended Next Step**.
+\`\`\`python
+# Turning metrics into a plain-language insight line
+region, growth_pct, top_driver = "North", 18.4, "USB-C Hub bundles"
+print(f"Insight: {region} grew {growth_pct:.1f}%, driven by {top_driver}; test this bundle in South.")
+\`\`\`
+
+Explanation: An observation answers "What happened?", while an insight answers "So what, and what should we do next?"
+
+### 2. One-Page BLUF Memo Structure & Limitations
+
+A strong one-page memo follows **BLUF**:
+1. **Bottom Line Up Front (BLUF)**: State the main conclusion and recommendation first.
+2. **Key Evidence**: 2 to 3 clear metrics or labeled charts.
+3. **Limitations**: What the data does *not* prove (small sample size, missing weeks, observational correlation).
 
 Explanation: Executives and instructors read the first paragraph first. Putting your main answer at the top (BLUF) respects their time, while keeping technical code and raw tables in an appendix.
 
@@ -1185,7 +1763,6 @@ An analyst who can explain findings clearly to non-technical teammates multiplie
 ## Worked example
 
 \`\`\`python
-# Generating a clean, plain-language executive summary line from metrics
 region = "North"
 growth_pct = 18.4
 print(f"Key Finding: {region} revenue grew {growth_pct:.1f}% vs last quarter, led by Electronics.")
@@ -1208,12 +1785,12 @@ id: "c13-l1-supervised-ml-basics"
 moduleId: "c13-intro-ml"
 title: "Train/Test Split, Regression, Classification, and Overfitting"
 order: 1
-estimatedMinutes: 24
+estimatedMinutes: 25
 difficulty: "advanced"
 objectives:
   - "Split data into training and test sets using train_test_split"
   - "Fit and evaluate a LinearRegression and LogisticRegression model in scikit-learn"
-  - "Explain overfitting and why test-set metrics matter"
+  - "Explain overfitting, data leakage, and why test-set metrics matter"
 prerequisites: ["c12-l1-memos-and-insights"]
 packages: ["numpy", "scikit-learn"]
 sources: ["sklearn-docs", "python-ds-handbook"]
@@ -1222,13 +1799,40 @@ tags: ["machine-learning", "scikit-learn", "regression", "classification", "over
 
 ## Concept
 
-Supervised machine learning learns a mapping from input features \`X\` (2D) to a target \`y\` (1D) [src:sklearn-docs]:
-- **Regression** (predicting a continuous number, e.g., sales) using \`LinearRegression\` evaluated with RMSE or \`R^2\` [src:sklearn-docs].
-- **Classification** (predicting a category, e.g., churn yes/no) using \`LogisticRegression\` evaluated with accuracy, precision, and recall [src:sklearn-docs].
+### 1. Train/Test Split and Data Leakage
 
-Always split data with \`train_test_split(X, y, test_size=0.2, random_state=42)\` **before** fitting [src:sklearn-docs]. A model that memorizes training noise scores high on training data but fails on unseen test data: this is **overfitting** [src:sklearn-docs].
+Supervised machine learning learns a mapping from input features \`X\` (2D) to a target \`y\` (1D) [src:sklearn-docs]. Always split data with \`train_test_split(X, y, test_size=0.2, random_state=42)\` **before** fitting scalers or models to prevent data leakage [src:sklearn-docs].
+
+\`\`\`python
+import numpy as np
+from sklearn.model_selection import train_test_split
+
+X = np.arange(20).reshape(-1, 1)
+y = np.arange(20) * 2
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+print("Train size:", len(X_train), "Test size:", len(X_test))
+\`\`\`
 
 Explanation: Testing a model on the exact same data it trained on is like grading a student with the exact practice questions they memorized. Holding out a test set measures true generalization.
+
+### 2. Regression (\`LinearRegression\`) vs Classification (\`LogisticRegression\`)
+
+- **Regression** predicts continuous numbers (evaluated with RMSE or \`R^2\`) [src:sklearn-docs].
+- **Classification** predicts discrete categories (evaluated with accuracy, precision, and recall) [src:sklearn-docs].
+
+\`\`\`python
+import numpy as np
+from sklearn.linear_model import LogisticRegression
+
+X = np.array([[1], [2], [8], [9]])
+y = np.array([0, 0, 1, 1])
+clf = LogisticRegression().fit(X, y)
+print("Pred for 7:", clf.predict([[7]])[0])  # 1
+\`\`\`
+
+### 3. Overfitting
+
+A model that memorizes noise in the training set achieves high training accuracy but performs poorly on unseen test data: this is **overfitting** [src:sklearn-docs].
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -1284,6 +1888,8 @@ tags: ["capstone", "eda", "portfolio"]
 
 ## Concept
 
+### 1. End-to-End Capstone Workflow
+
 Your Capstone brings together every skill from Tracks A, B, and C into a portfolio-ready end-to-end analysis [src:python-data-analysis]:
 
 1. **Choose a dataset**: Start with \`store_sales.csv\` or \`student_enrollments.csv\` in the **DataFrame Lab**, or upload an openly licensed CSV you care about.
@@ -1291,6 +1897,18 @@ Your Capstone brings together every skill from Tracks A, B, and C into a portfol
 3. **Clean & Validate**: Check missing values, duplicates, dtypes, and outliers.
 4. **Analyze & Visualize**: Compute grouped summaries and build at least 2 clear charts in the **Chart Lab**.
 5. **Write Your Memo**: Open the **EDA & Capstone** page in the sidebar, check off the workflow steps, self-assess against the rubric, and write your BLUF findings memo.
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({
+    "region": ["North", "South", "North"],
+    "units": [3, 10, 5],
+    "price": [24.5, 4.25, 18.0],
+})
+df["revenue"] = df["units"] * df["price"]
+print(df.groupby("region")["revenue"].agg(["sum", "mean"]))
+\`\`\`
 
 Explanation: A great portfolio project does not need a massive dataset or complex neural network. Employers and professors value clear thinking, clean reproducible code, honest limitations, and crisp communication.
 
@@ -1303,7 +1921,6 @@ Completing a full question-to-memo project turns isolated Python syntax into a d
 \`\`\`python
 import pandas as pd
 
-# Example capstone summary check
 df = pd.DataFrame({
     "region": ["North", "South", "North"],
     "units": [3, 10, 5],
@@ -1325,80 +1942,12 @@ print(df.groupby("region")["revenue"].agg(["sum", "mean"]))
 
 - [src:python-data-analysis] Python for Data Analysis (Wes McKinney)
 - [src:openintro-stats] OpenIntro Statistics (Diez, Cetinkaya-Rundel, Barr)
-`,du=`---
-id: "c2-l1-sql-and-sqlite3"
-moduleId: "c2-sql-sqlite"
-title: "SQL Queries and sqlite3 in Python"
-order: 1
-estimatedMinutes: 22
-difficulty: "intermediate"
-objectives:
-  - "Filter and sort rows using SELECT, WHERE, and ORDER BY"
-  - "Aggregate groups using GROUP BY, COUNT/SUM/AVG, and HAVING"
-  - "Combine tables using INNER JOIN and LEFT JOIN"
-  - "Run parameterized SQLite queries safely from Python using sqlite3"
-prerequisites: ["c1-l1-analytics-lifecycle"]
-packages: []
-sources: ["sqlite-docs", "python-tutorial"]
-tags: ["sql", "sqlite3", "join", "groupby"]
----
-
-## Concept
-
-SQL (Structured Query Language) retrieves and aggregates data from relational tables [src:sqlite-docs]. Core clauses execute logically in this order:
-1. \`FROM\` / \`JOIN\`: Identify and combine tables (\`INNER JOIN\` keeps matches in both; \`LEFT JOIN\` keeps all left rows).
-2. \`WHERE\`: Filter individual rows **before** grouping.
-3. \`GROUP BY\`: Group rows by column(s) and compute \`COUNT()\`, \`SUM()\`, \`AVG()\`.
-4. \`HAVING\`: Filter **grouped** results after aggregation.
-5. \`SELECT\` / \`ORDER BY\` / \`LIMIT\`: Choose output columns and sort.
-
-In Python, the built-in \`sqlite3\` module runs SQLite databases in memory (\`sqlite3.connect(":memory:")\`) or from \`.db\` files [src:python-tutorial]. Always pass user values via \`?\` placeholders (\`cur.execute("SELECT * FROM t WHERE id = ?", (val,))\`) to prevent SQL injection [src:python-tutorial].
-
-Explanation: Remember \`WHERE\` vs \`HAVING\` by timing: \`WHERE\` filters raw rows *before* you group them into buckets; \`HAVING\` filters the *buckets themselves* after \`GROUP BY\`.
-
-Note: Behavior may differ between versions. Check the official docs for your installed version.
-
-## Why it matters
-
-Most enterprise IS data lives in relational databases. Extracting clean aggregated tables with SQL before loading into pandas saves memory and time.
-
-## Worked example
-
-\`\`\`python
-import sqlite3
-
-conn = sqlite3.connect(":memory:")
-cur = conn.cursor()
-cur.execute("CREATE TABLE sales (region TEXT, amount REAL)")
-cur.executemany("INSERT INTO sales VALUES (?, ?)", [("North", 100), ("North", 50), ("South", 40)])
-
-rows = cur.execute(
-    "SELECT region, SUM(amount) FROM sales GROUP BY region HAVING SUM(amount) > 60"
-).fetchall()
-print(rows)  # [('North', 150.0)]
-\`\`\`
-
-## Common mistakes
-
-- **Formatting SQL strings with f-strings**: \`f"WHERE name = '{user}'"\` risks SQL injection and syntax errors on quotes; always use \`?\` placeholders [src:python-tutorial].
-- **Filtering aggregates in \`WHERE\`**: \`WHERE SUM(amount) > 100\` is invalid SQL; use \`HAVING SUM(amount) > 100\` [src:sqlite-docs].
-
-## Check your understanding
-
-1. When do you use \`HAVING\` instead of \`WHERE\`?
-2. Why should \`sqlite3\` queries use \`?\` parameter placeholders?
-3. Complete the exercises on the right and try the **SQL Playground** in the sidebar.
-
-## Sources
-
-- [src:sqlite-docs] SQLite Documentation (SQLite Consortium)
-- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)
-`,fu=`---
+`,du='---\nid: "c2-l1-sql-and-sqlite3"\nmoduleId: "c2-sql-sqlite"\ntitle: "SQL Queries and sqlite3 in Python"\norder: 1\nestimatedMinutes: 25\ndifficulty: "intermediate"\nobjectives:\n  - "Filter and sort rows using SELECT, WHERE, and ORDER BY"\n  - "Aggregate groups using GROUP BY, COUNT/SUM/AVG, and HAVING"\n  - "Combine tables using INNER JOIN and LEFT JOIN"\n  - "Run parameterized SQLite queries safely from Python using sqlite3"\nprerequisites: ["c1-l1-analytics-lifecycle"]\npackages: []\nsources: ["sqlite-docs", "python-tutorial"]\ntags: ["sql", "sqlite3", "join", "groupby"]\n---\n\n## Concept\n\n### 1. Filtering and Sorting (`SELECT`, `WHERE`, `ORDER BY`)\n\nSQL retrieves rows from relational tables [src:sqlite-docs]. `WHERE` filters individual rows before any grouping, and `ORDER BY col DESC` sorts the final output [src:sqlite-docs].\n\n```sql\nSELECT student, score\nFROM enrollments\nWHERE dept = \'IS\' AND score >= 85\nORDER BY score DESC;\n```\n\nExplanation: Think of `WHERE` as a row-by-row gatekeeper: only rows that satisfy the condition pass through to the next step.\n\n### 2. Grouping and Filtering Groups (`GROUP BY`, `HAVING`)\n\n`GROUP BY` collapses rows sharing the same key into summary rows using `COUNT()`, `SUM()`, `AVG()`, `MIN()`, or `MAX()` [src:sqlite-docs]. `HAVING` filters those **grouped** summaries afterward [src:sqlite-docs].\n\n```sql\nSELECT dept, COUNT(*) AS n, ROUND(AVG(score), 1) AS avg_score\nFROM enrollments\nGROUP BY dept\nHAVING AVG(score) >= 80;\n```\n\nExplanation: Remember `WHERE` vs `HAVING` by timing: `WHERE` filters raw rows *before* grouping; `HAVING` filters the *buckets themselves* after `GROUP BY`.\n\n### 3. Combining Tables (`INNER JOIN`, `LEFT JOIN`) and Subqueries\n\n- `INNER JOIN`: Returns only rows where the join key matches in both tables [src:sqlite-docs].\n- `LEFT JOIN`: Keeps **all** rows from the left table, filling unmatched right-table columns with `NULL` [src:sqlite-docs].\n- **Subquery**: A nested `SELECT` inside `WHERE` or `FROM` for multi-step filtering [src:sqlite-docs].\n\n```sql\nSELECT c.code, e.student\nFROM courses c\nLEFT JOIN enrollments e ON c.code = e.course_code;\n```\n\nExplanation: Use `LEFT JOIN` when you want to spot courses with *zero* enrollments (they would disappear under `INNER JOIN`).\n\n### 4. Calling SQLite From Python (`sqlite3`)\n\nPython\'s built-in `sqlite3` module runs SQLite databases in memory (`sqlite3.connect(":memory:")`) or from `.db` files [src:python-tutorial]. Always pass user values via `?` placeholders (`cur.execute("SELECT * FROM t WHERE id = ?", (val,))`) to prevent SQL injection [src:python-tutorial].\n\n```python\nimport sqlite3\n\nconn = sqlite3.connect(":memory:")\ncur = conn.cursor()\ncur.execute("CREATE TABLE items (sku TEXT, stock INT)")\ncur.execute("INSERT INTO items VALUES (?, ?)", ("A1", 12))\nprint(cur.execute("SELECT * FROM items WHERE sku = ?", ("A1",)).fetchall())\n```\n\nNote: Behavior may differ between versions. Check the official docs for your installed version.\n\n## Why it matters\n\nMost enterprise IS data lives in relational databases. Extracting clean aggregated tables with SQL before loading into pandas saves memory and time.\n\n## Worked example\n\n```python\nimport sqlite3\n\nconn = sqlite3.connect(":memory:")\ncur = conn.cursor()\ncur.execute("CREATE TABLE sales (region TEXT, amount REAL)")\ncur.executemany("INSERT INTO sales VALUES (?, ?)", [("North", 100), ("North", 50), ("South", 40)])\n\nrows = cur.execute(\n    "SELECT region, SUM(amount) FROM sales GROUP BY region HAVING SUM(amount) > 60"\n).fetchall()\nprint(rows)  # [(\'North\', 150.0)]\n```\n\n## Common mistakes\n\n- **Formatting SQL strings with f-strings**: `f"WHERE name = \'{user}\'"` risks SQL injection and syntax errors on quotes; always use `?` placeholders [src:python-tutorial].\n- **Filtering aggregates in `WHERE`**: `WHERE SUM(amount) > 100` is invalid SQL; use `HAVING SUM(amount) > 100` [src:sqlite-docs].\n\n## Check your understanding\n\n1. When do you use `HAVING` instead of `WHERE`?\n2. Why should `sqlite3` queries use `?` parameter placeholders?\n3. Complete the exercises on the right and try the **SQL Playground** in the sidebar.\n\n## Sources\n\n- [src:sqlite-docs] SQLite Documentation (SQLite Consortium)\n- [src:python-tutorial] The Python Tutorial and Standard Library Reference (Python Software Foundation)\n',fu=`---
 id: "c3-l1-numpy-arrays-vectorization"
 moduleId: "c3-numpy"
 title: "NumPy Arrays, Broadcasting, and Vectorization"
 order: 1
-estimatedMinutes: 20
+estimatedMinutes: 22
 difficulty: "intermediate"
 objectives:
   - "Create NumPy ndarrays and inspect .shape and .dtype"
@@ -1413,15 +1962,46 @@ tags: ["numpy", "ndarray", "vectorization", "broadcasting"]
 
 ## Concept
 
-NumPy's \`ndarray\` stores homogeneous numeric data in contiguous memory, making element-wise math orders of magnitude faster than Python \`for\` loops [src:numpy-docs].
+### 1. Creating Arrays, \`.shape\`, and \`.dtype\`
 
-- **Attributes**: \`arr.shape\` (dimensions tuple), \`arr.dtype\` (element type like \`int64\` or \`float64\`) [src:numpy-docs].
-- **Vectorization**: \`prices * 1.12\` multiplies every element in C without writing a Python loop [src:numpy-docs].
-- **Broadcasting**: Operating on arrays of compatible shapes (such as adding a 1D array of column offsets to a 2D matrix) [src:numpy-docs].
-- **Boolean masking**: \`arr[arr > 10]\` selects only elements matching the condition [src:numpy-docs].
-- **Aggregations**: \`arr.mean()\`, \`arr.sum()\`, \`arr.std()\`, and \`axis=0\` (down rows, per column) vs \`axis=1\` (across columns, per row) [src:numpy-docs].
+NumPy's \`ndarray\` stores homogeneous numeric data in contiguous memory [src:numpy-docs]. Every array has a \`.shape\` (dimensions tuple) and \`.dtype\` (element type like \`int64\` or \`float64\`) [src:numpy-docs].
 
-Explanation: Think of a Python \`list\` as a row of separate gift boxes scattered around a room, whereas a NumPy \`ndarray\` is a tightly packed egg carton of identical slots. Vectorization lets the CPU process the whole carton at once.
+\`\`\`python
+import numpy as np
+
+grid = np.array([[10, 20, 30], [40, 50, 60]])
+print("Shape:", grid.shape, "Dtype:", grid.dtype)  # (2, 3) int64
+\`\`\`
+
+Explanation: Think of a Python \`list\` as a row of separate gift boxes scattered around a room, whereas a NumPy \`ndarray\` is a tightly packed egg carton of identical slots.
+
+### 2. Indexing, Slicing, and Boolean Masking
+
+You can slice 1D and 2D arrays (\`grid[:, 1]\` for column 1) or filter with boolean masks (\`arr[(arr > 10) & (arr < 50)]\`) [src:numpy-docs].
+
+\`\`\`python
+import numpy as np
+
+scores = np.array([65, 82, 91, 74, 88])
+passing = scores[scores >= 75]
+print("Passing:", passing)  # [82 91 88]
+\`\`\`
+
+Explanation: Use \`&\` (and), \`|\` (or), and \`~\` (not) with parentheses when combining NumPy masks, because Python's \`and\` keyword expects a single boolean, not an array of booleans.
+
+### 3. Vectorization, Broadcasting, and Axis Aggregations
+
+- **Vectorization**: \`prices * 1.12\` multiplies every element in C without writing a Python \`for\` loop [src:numpy-docs].
+- **Broadcasting**: NumPy automatically stretches smaller compatible shapes (e.g., adding a 1D array of 3 bonuses to a \`(2, 3)\` matrix) [src:numpy-docs].
+- **Aggregations**: \`arr.mean()\`, \`arr.sum()\`, \`arr.std()\`, using \`axis=0\` (down rows, per column) or \`axis=1\` (across columns, per row) [src:numpy-docs].
+
+\`\`\`python
+import numpy as np
+
+matrix = np.array([[10, 20], [30, 40]])
+print("Col means (axis=0):", matrix.mean(axis=0))  # [20. 30.]
+print("Row means (axis=1):", matrix.mean(axis=1))  # [15. 35.]
+\`\`\`
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -1442,7 +2022,7 @@ print("High discounted:", high, "Mean:", high.mean())
 
 ## Common mistakes
 
-- **Using Python \`and\`/\`or\` on NumPy boolean arrays**: Use bitwise \`&\`, \`|\`, and \`~\` with parentheses (for example, \`(arr > 10) & (arr < 50)\`), because Python's \`and\` tries to evaluate the whole array as one boolean [src:numpy-docs].
+- **Using Python \`and\`/\`or\` on NumPy boolean arrays**: Use bitwise \`&\`, \`|\`, and \`~\` with parentheses (for example, \`(arr > 10) & (arr < 50)\`) [src:numpy-docs].
 
 ## Check your understanding
 
@@ -1459,7 +2039,7 @@ id: "c4-l1-series-dataframe-selection"
 moduleId: "c4-pandas-basics"
 title: "Series, DataFrame, loc/iloc, Filtering, and Summaries"
 order: 1
-estimatedMinutes: 22
+estimatedMinutes: 24
 difficulty: "intermediate"
 objectives:
   - "Distinguish a 1D pandas Series from a 2D DataFrame"
@@ -1474,19 +2054,50 @@ tags: ["pandas", "dataframe", "series", "loc", "iloc"]
 
 ## Concept
 
+### 1. \`Series\` vs \`DataFrame\` and First Inspection
+
 \`pandas\` provides two core tabular structures [src:pandas-docs]:
 - \`Series\`: A 1D labeled array (like a single column).
 - \`DataFrame\`: A 2D labeled table with rows and named columns.
 
-### Inspection, Selection, and Filtering
+Inspect any new table immediately with \`df.head()\`, \`df.info()\`, \`df.shape\`, and \`df.describe()\` [src:pandas-docs].
 
-- \`df.head()\`, \`df.info()\`, \`df.describe()\`: Quick structure and summary checks [src:pandas-docs].
-- \`df.loc[row_label, col_label]\`: **Label-based** selection (inclusive of slice stop!) [src:pandas-docs].
-- \`df.iloc[row_pos, col_pos]\`: **Integer position-based** selection (exclusive of slice stop, like Python lists) [src:pandas-docs].
-- Filtering: \`df[df["units"] >= 5]\` or \`df.loc[df["region"] == "North", ["item", "units"]]\` [src:pandas-docs].
-- Sorting: \`df.sort_values("units", ascending=False)\` [src:pandas-docs].
+\`\`\`python
+import pandas as pd
 
-Explanation: Remember \`loc\` = **L**abel, \`iloc\` = **I**nteger position. When assigning new values to a filtered subset, always use \`df.loc[mask, "col"] = val\` instead of \`df[mask]["col"] = val\` to avoid modifying a temporary copy.
+df = pd.DataFrame({"item": ["Hub", "Mouse"], "units": [3, 5]})
+print(df.shape)
+print(df.describe())
+\`\`\`
+
+Explanation: Think of a \`DataFrame\` as a dictionary of aligned \`Series\` columns sharing the same row index.
+
+### 2. \`loc\` (Label-Based) vs \`iloc\` (Integer Position-Based)
+
+- \`df.loc[row_label, col_label]\`: **Label-based** selection (slice stop is inclusive!) [src:pandas-docs].
+- \`df.iloc[row_pos, col_pos]\`: **Integer position-based** selection (slice stop is exclusive, like Python lists) [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({"units": [3, 5, 12]}, index=["a", "b", "c"])
+print(df.loc["a":"b", "units"].tolist())  # [3, 5] (includes 'b')
+print(df.iloc[0:2, 0].tolist())           # [3, 5] (excludes position 2)
+\`\`\`
+
+Explanation: Remember \`loc\` = **L**abel, \`iloc\` = **I**nteger position.
+
+### 3. Boolean Filtering and Sorting
+
+Filter rows with boolean masks (\`df[df["units"] >= 5]\`) and sort with \`df.sort_values("units", ascending=False)\` [src:pandas-docs]. When assigning values to a filtered subset, always use \`df.loc[mask, "col"] = val\` instead of \`df[mask]["col"] = val\`.
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({"item": ["Hub", "Mouse", "Pen"], "units": [3, 5, 12]})
+top = df[df["units"] >= 5].sort_values("units", ascending=False)
+print(top)
+\`\`\`
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -1528,7 +2139,7 @@ id: "c5-l1-cleaning-messy-data"
 moduleId: "c5-data-cleaning"
 title: "Missing Values, Duplicates, Strings, and Type Cleaning"
 order: 1
-estimatedMinutes: 22
+estimatedMinutes: 24
 difficulty: "intermediate"
 objectives:
   - "Detect and handle missing values with isna(), dropna(), and fillna()"
@@ -1542,13 +2153,43 @@ tags: ["data-cleaning", "missing-values", "duplicates", "str-accessor"]
 
 ## Concept
 
-Real-world tables rarely arrive clean. \`pandas\` provides dedicated tools for each cleaning step [src:pandas-docs]:
-- **Missing values**: \`df.isna().sum()\` counts nulls per column; \`df.dropna(subset=["col"])\` drops rows missing critical fields; \`df["col"].fillna(0)\` imputes defaults [src:pandas-docs].
-- **Duplicates**: \`df.duplicated().sum()\` counts exact duplicates; \`df.drop_duplicates(subset=["order_id"])\` keeps unique records [src:pandas-docs].
-- **Strings**: \`df["dept"].str.strip().str.upper()\` standardizes messy text across a whole column [src:pandas-docs].
-- **Types**: \`pd.to_numeric(df["price"], errors="coerce")\` turns unparseable strings like \`"N/A"\` into \`NaN\`; \`pd.to_datetime(df["date"], errors="coerce")\` parses dates [src:pandas-docs].
+### 1. Missing Values (\`isna\`, \`dropna\`, \`fillna\`)
 
-Explanation: Never drop missing rows blindly! First ask *why* a value is missing: a missing \`coupon_code\` usually means "no coupon" (\`fillna("")\`), whereas a missing \`order_total\` might require dropping or investigating the row.
+\`df.isna().sum()\` counts nulls per column; \`df.dropna(subset=["col"])\` drops rows missing critical fields; \`df["col"].fillna(0)\` imputes defaults [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({"price": [10.0, None, 25.0]})
+print("Null count:", int(df["price"].isna().sum()))
+print("Filled:", df["price"].fillna(df["price"].median()).tolist())
+\`\`\`
+
+Explanation: Never drop missing rows blindly! First ask *why* a value is missing: a missing \`coupon_code\` means "no coupon" (\`fillna("")\`), whereas a missing \`order_total\` might need dropping or investigation.
+
+### 2. Duplicates (\`duplicated\`, \`drop_duplicates\`)
+
+\`df.duplicated().sum()\` counts exact duplicate rows; \`df.drop_duplicates(subset=["order_id"])\` keeps unique records [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({"order_id": [1, 1, 2], "amount": [50, 50, 80]})
+print("Unique orders:", len(df.drop_duplicates(subset=["order_id"])))
+\`\`\`
+
+### 3. String Cleaning (\`.str\`) and Safe Type Parsing
+
+Use \`df["dept"].str.strip().str.upper()\` to standardize text across a column, and \`pd.to_numeric(df["price"], errors="coerce")\` / \`pd.to_datetime(..., errors="coerce")\` to turn unparseable strings like \`"N/A"\` into \`NaN\` / \`NaT\` [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+s = pd.Series(["10", "N/A", "25"])
+print(pd.to_numeric(s, errors="coerce").tolist())  # [10.0, nan, 25.0]
+\`\`\`
+
+Explanation: Standardize strings *before* calling \`drop_duplicates\`, otherwise \`" is "\` and \`"IS"\` will be treated as two different values.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -1589,7 +2230,7 @@ id: "c6-l1-groupby-merge-pivot"
 moduleId: "c6-transform-combine"
 title: "groupby, merge, concat, and pivot_table"
 order: 1
-estimatedMinutes: 22
+estimatedMinutes: 24
 difficulty: "intermediate"
 objectives:
   - "Summarize data by group using df.groupby(...).agg(...)"
@@ -1604,13 +2245,46 @@ tags: ["groupby", "merge", "concat", "pivot_table"]
 
 ## Concept
 
-Transforming and combining tables in \`pandas\` centers on four operations [src:pandas-docs]:
-- **Split-Apply-Combine (\`groupby\`)**: \`df.groupby("region")["sales"].agg(["sum", "mean", "count"])\` [src:pandas-docs].
-- **Relational Join (\`pd.merge\`)**: \`pd.merge(orders, customers, on="cust_id", how="left")\` works like SQL \`LEFT JOIN\` [src:pandas-docs].
-- **Stacking (\`pd.concat\`)**: \`pd.concat([jan_df, feb_df], ignore_index=True)\` stacks tables with matching columns [src:pandas-docs].
-- **Pivoting (\`pivot_table\`)**: \`df.pivot_table(index="region", columns="category", values="sales", aggfunc="sum", fill_value=0)\` [src:pandas-docs].
+### 1. Split-Apply-Combine (\`groupby\` and \`agg\`)
 
-Explanation: Think of \`groupby\` as sorting receipts into labeled folders (one per region) and computing totals for each folder. \`pd.merge\` is like looking up customer names from a separate directory using \`cust_id\`.
+\`df.groupby("region")["sales"].agg(["sum", "mean", "count"])\` splits rows into groups, applies aggregations, and combines results [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({"region": ["North", "North", "South"], "sales": [100, 50, 80]})
+print(df.groupby("region")["sales"].agg(["sum", "mean"]))
+\`\`\`
+
+Explanation: Think of \`groupby\` as sorting receipts into labeled folders (one per region) and computing totals for each folder.
+
+### 2. Joining and Stacking (\`pd.merge\` and \`pd.concat\`)
+
+- \`pd.merge(orders, customers, on="cust_id", how="left")\` joins tables on key columns like SQL \`LEFT JOIN\` [src:pandas-docs].
+- \`pd.concat([jan_df, feb_df], ignore_index=True)\` stacks tables with matching columns vertically [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+a = pd.DataFrame({"id": [1, 2], "val": [10, 20]})
+b = pd.DataFrame({"id": [1], "tag": ["VIP"]})
+print(pd.merge(a, b, on="id", how="left"))
+\`\`\`
+
+### 3. Cross-Tabulation (\`pivot_table\`)
+
+\`df.pivot_table(index="region", columns="category", values="sales", aggfunc="sum", fill_value=0)\` reshapes long data into a readable 2D summary matrix [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({
+    "region": ["North", "North", "South"],
+    "cat": ["Tech", "Office", "Tech"],
+    "sales": [100, 40, 80],
+})
+print(df.pivot_table(index="region", columns="cat", values="sales", aggfunc="sum", fill_value=0))
+\`\`\`
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -1650,7 +2324,7 @@ id: "c7-l1-datetime-resampling-rolling"
 moduleId: "c7-time-series"
 title: "DatetimeIndex, Resampling, and Rolling Windows"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "intermediate"
 objectives:
   - "Convert date strings to datetime64 and set a DatetimeIndex"
@@ -1664,15 +2338,49 @@ tags: ["time-series", "datetime", "resample", "rolling"]
 
 ## Concept
 
-To analyze trends over time in \`pandas\` [src:pandas-docs]:
-1. Convert strings with \`df["date"] = pd.to_datetime(df["date"])\` and sort by date.
-2. Set the index: \`ts = df.set_index("date")["sales"]\`.
-3. **Resample** to a coarser frequency: \`ts.resample("ME").sum()\` sums sales per month-end (\`"ME"\` in pandas 2.2+; \`"M"\` in older versions) [src:pandas-docs].
-4. **Rolling window**: \`ts.rolling(window=7).mean()\` computes a 7-day moving average to smooth daily spikes [src:pandas-docs].
+### 1. Parsing Dates and \`DatetimeIndex\`
+
+Convert string columns with \`pd.to_datetime(df["date"])\`, sort chronologically, and set the date column as the index [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+df = pd.DataFrame({"date": ["2026-01-01", "2026-01-02"], "sales": [100, 120]})
+df["date"] = pd.to_datetime(df["date"])
+ts = df.set_index("date")["sales"]
+print(ts.index.dtype)  # datetime64[ns]
+\`\`\`
+
+Explanation: Once a \`DatetimeIndex\` is set, pandas unlocks calendar-aware slicing (like \`ts["2026-01"]\`) and resampling.
+
+### 2. Resampling (\`.resample()\`)
+
+\`ts.resample("ME").sum()\` groups daily observations into monthly buckets (\`"ME"\` = month-end in pandas 2.2+; \`"W"\` = weekly) [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+dates = pd.date_range("2026-01-01", periods=40, freq="D")
+ts = pd.Series(range(40), index=dates)
+print(ts.resample("ME").sum())
+\`\`\`
+
+Explanation: Think of \`resample()\` as \`groupby()\` specifically for calendar time buckets.
+
+### 3. Rolling Windows (\`.rolling()\`)
+
+\`ts.rolling(window=7).mean()\` computes a 7-day moving average to smooth out daily spikes [src:pandas-docs].
+
+\`\`\`python
+import pandas as pd
+
+s = pd.Series([10, 12, 14, 16])
+print(s.rolling(2).mean().tolist())  # [nan, 11.0, 13.0, 15.0]
+\`\`\`
+
+Explanation: The first \`window - 1\` rows are \`NaN\` because there are not enough prior points yet to fill the window.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version (note \`"ME"\` vs \`"M"\` in \`resample\`).
-
-Explanation: Think of \`resample\` as grouping by calendar buckets (days -> months), while \`rolling\` slides a fixed-width window across the timeline to show the underlying trend.
 
 ## Why it matters
 
@@ -1706,7 +2414,7 @@ id: "c8-l1-charts-and-matplotlib"
 moduleId: "c8-visualization"
 title: "Chart Selection, Matplotlib Basics, and Honest Scales"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "intermediate"
 objectives:
   - "Select an appropriate chart type (bar, line, histogram, scatter, box)"
@@ -1720,20 +2428,37 @@ tags: ["visualization", "matplotlib", "seaborn", "charts"]
 
 ## Concept
 
-Choosing the right chart depends on the relationship you want to show [src:matplotlib-docs]:
-- **Bar chart**: Compare quantities across discrete categories.
-- **Line chart**: Show trends over continuous time.
-- **Histogram / Box plot**: Show the distribution and spread of a numeric variable.
-- **Scatter plot**: Show the relationship between two numeric variables.
+### 1. Choosing the Right Chart
 
-In Matplotlib, prefer the explicit object-oriented interface: \`fig, ax = plt.subplots()\`, then \`ax.bar(...)\`, \`ax.set_title(...)\`, \`ax.set_xlabel(...)\`, \`ax.set_ylabel(...)\` [src:matplotlib-docs]. \`seaborn\` builds on Matplotlib with concise statistical defaults (\`sns.histplot\`, \`sns.boxplot\`) [src:seaborn-docs].
+Select the chart that matches your data's structure [src:matplotlib-docs]:
+- **Bar chart**: Compare quantities across discrete categories (\`ax.bar\`).
+- **Line chart**: Show trends over continuous time (\`ax.plot\`).
+- **Histogram / Box plot**: Show the distribution and spread of a numeric variable (\`ax.hist\`, \`ax.boxplot\`).
+- **Scatter plot**: Show the relationship between two numeric variables (\`ax.scatter\`).
 
-### Avoiding Misleading Charts
+Explanation: Choosing the wrong chart hides the story (for example, using a line chart for unordered categories implies a non-existent trend between them).
+
+### 2. Matplotlib Object-Oriented API (\`fig, ax\`) and \`seaborn\`
+
+Prefer the explicit object-oriented interface: \`fig, ax = plt.subplots()\`, then \`ax.bar(...)\`, \`ax.set_title(...)\`, \`ax.set_xlabel(...)\`, \`ax.set_ylabel(...)\` [src:matplotlib-docs]. \`seaborn\` builds on Matplotlib with concise statistical defaults (\`sns.histplot\`, \`sns.boxplot\`) [src:seaborn-docs].
+
+\`\`\`python
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.plot(["Jan", "Feb", "Mar"], [100, 125, 140], marker="o")
+ax.set_title("Monthly Orders")
+ax.set_ylabel("Count")
+\`\`\`
+
+Explanation: Using \`fig, ax = plt.subplots()\` gives you direct handles to the figure (\`fig\`) and axes (\`ax\`), which scales cleanly when you put multiple subplots side by side.
+
+### 3. Avoiding Misleading Charts
 
 - **Start bar charts at 0**: Truncating the y-axis on a bar chart exaggerates small differences because readers judge bar length visually.
 - **Always label axes and units**: Unlabeled numbers invite misinterpretation.
-
-Explanation: A chart is an argument made visual. Clear titles, units, and honest zero baselines let readers verify your claim in seconds.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -1774,7 +2499,7 @@ id: "c9-l1-descriptive-stats-correlation"
 moduleId: "c9-statistics-fundamentals"
 title: "Center, Spread, Distributions, and Correlation vs Causation"
 order: 1
-estimatedMinutes: 20
+estimatedMinutes: 22
 difficulty: "intermediate"
 objectives:
   - "Choose between mean and median based on skewness and outliers"
@@ -1788,12 +2513,45 @@ tags: ["statistics", "mean", "median", "std", "correlation"]
 
 ## Concept
 
-Descriptive statistics summarize center and spread [src:openintro-stats]:
-- **Mean vs Median**: The mean is sensitive to extreme outliers; the **median** (50th percentile) is robust on skewed data such as income or order values [src:openintro-stats].
-- **Spread**: Variance and standard deviation (\`std\`) measure typical distance from the mean; the **interquartile range (IQR = Q3 - Q1)** measures the middle 50% robustly [src:openintro-stats].
-- **Correlation (\`r\`)**: Measures the strength and direction of a **linear** relationship between \`-1\` and \`+1\` [src:openintro-stats]. A single extreme outlier can distort \`r\`, and two variables can correlate due to a **confounding variable** rather than direct causation [src:openintro-stats].
+### 1. Measures of Center: Mean, Median, Mode
 
-Explanation: If 9 people in a room earn \\$30k and 1 billionaire walks in, the *mean* jumps above \\$100M while the *median* stays at \\$30k. Always check both!
+- **Mean**: Arithmetic average (\`np.mean(x)\`), sensitive to extreme outliers [src:openintro-stats].
+- **Median**: Middle value / 50th percentile (\`np.median(x)\`), robust on skewed data [src:openintro-stats].
+- **Mode**: Most frequent value, useful for categorical data.
+
+\`\`\`python
+import numpy as np
+
+salaries = np.array([30, 32, 35, 38, 500])
+print("Mean:", np.mean(salaries), "Median:", np.median(salaries))  # 127.0 vs 35.0
+\`\`\`
+
+Explanation: If 4 people earn \\$35k and 1 executive earns \\$500k, the *mean* jumps to \\$127k while the *median* stays at \\$35k. Always check both!
+
+### 2. Measures of Spread: Variance, Standard Deviation, and IQR
+
+- **Variance & Standard Deviation (\`np.std\`)**: Typical distance from the mean [src:openintro-stats].
+- **Interquartile Range (\`IQR = Q3 - Q1\`)**: Width of the middle 50% of observations, robust to outliers [src:openintro-stats].
+
+\`\`\`python
+import numpy as np
+
+x = np.array([10, 12, 14, 16, 18])
+q75, q25 = np.percentile(x, [75, 25])
+print("Std:", round(float(np.std(x)), 2), "IQR:", q75 - q25)
+\`\`\`
+
+### 3. Correlation (\`r\`) vs Causation
+
+Pearson correlation \`r\` ranges from \`-1\` to \`+1\` and measures the strength and direction of a **linear** relationship [src:openintro-stats]. Two variables can correlate strongly due to a **confounding variable** rather than direct causation, and a single outlier can distort \`r\` [src:openintro-stats].
+
+\`\`\`python
+import numpy as np
+
+hours = np.array([1, 2, 3, 4, 5])
+scores = np.array([65, 72, 78, 85, 92])
+print("Pearson r:", round(float(np.corrcoef(hours, scores)[0, 1]), 3))
+\`\`\`
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
@@ -1957,7 +2715,7 @@ elif stock <= 5:
 else:
     alert = 'OK'`,explanation:`Checking <= 0 first, then <= 5 in an elif, handles negative/zero, low, and healthy stock cleanly.`,sources:[`python-tutorial`],starterCode:`stock = 3
 # Set alert using if / elif / else
-`,visibleTests:`assert alert == 'LOW_STOCK'`,hiddenTests:`assert isinstance(alert, str)`},{id:`a4-l1-fc1`,type:`flashcard`,title:`Python else-if keyword`,prompt:`Recall Python's keyword for else-if.`,difficulty:`beginner`,concepts:[`elif`],points:5,hints:[`Four letters`,`Not else if`,`elif`],solution:`elif`,explanation:`Python uses elif instead of else if.`,sources:[`python-tutorial`],front:"What keyword does Python use instead of `else if`?",back:"`elif`",deckId:`a4-control-flow`},{id:`a4-l1-fc2`,type:`flashcard`,title:`First matching branch`,prompt:`Recall how if/elif/else evaluates.`,difficulty:`beginner`,concepts:[`if`,`elif`],points:5,hints:[`Top to bottom`,`Stops after one match`,`Only the first True branch runs`],solution:`Only the first True branch executes.`,explanation:`Mutually exclusive execution in if/elif/else.`,sources:[`python-tutorial`],front:"If multiple conditions in an `if / elif / elif` chain are True, which ones run?",back:"Only the **first** True branch executes; all remaining `elif` and `else` branches are skipped.",deckId:`a4-control-flow`}],Fu=s({default:()=>Iu}),Iu=[{id:`a4-l2-ex1`,type:`debug`,title:`Fix the Off-by-One and Infinite Loop Risk`,prompt:`The starter code is supposed to sum integers 1 through 5 (expected total = 15) using a while loop, but n never increments and the condition misses 5. Fix the loop so total equals 15.`,difficulty:`beginner`,concepts:[`while`,`off-by-one`,`debugging`],points:15,hints:[`Use while n <= 5: to include 5.`,`Increment n += 1 inside the loop body.`,`Make sure total += n runs before n += 1.`],solution:`n = 1
+`,visibleTests:`assert alert == 'LOW_STOCK'`,hiddenTests:`assert isinstance(alert, str)`},{id:`a4-l1-fc1`,type:`flashcard`,title:`Python else-if keyword`,prompt:`Recall Python's keyword for else-if.`,difficulty:`beginner`,concepts:[`elif`],points:5,hints:[`Four letters`,`Not else if`,`elif`],solution:`elif`,explanation:`Python uses elif instead of else if.`,sources:[`python-tutorial`],front:"What keyword does Python use instead of `else if`?",back:"`elif`",deckId:`a4-control-flow`},{id:`a4-l1-fc2`,type:`flashcard`,title:`First matching branch`,prompt:`Recall how if/elif/else evaluates.`,difficulty:`beginner`,concepts:[`if`,`elif`],points:5,hints:[`Top to bottom`,`Stops after one match`,`Only the first True branch runs`],solution:`Only the first True branch executes.`,explanation:`Mutually exclusive execution in if/elif/else.`,sources:[`python-tutorial`],front:"If multiple conditions in an `if / elif / elif` chain are True, which ones run?",back:"Only the **first** True branch executes; all remaining `elif` and `else` branches are skipped.",deckId:`a4-control-flow`}],Fu=s({default:()=>Iu}),Iu=[{id:`a4-l2-ex1`,type:`debug`,title:`Fix the Off-by-One and Infinite while Loop`,prompt:`The starter code is supposed to sum integers 1 through 5 (expected total = 15) using a while loop, but n never increments and the condition misses 5. Fix the loop so total equals 15.`,difficulty:`beginner`,concepts:[`while`,`off-by-one`,`debugging`],points:15,hints:[`Use while n <= 5: to include 5.`,`Increment n += 1 inside the loop body.`,`Make sure total += n runs before n += 1.`],solution:`n = 1
 total = 0
 while n <= 5:
     total += n
@@ -1967,16 +2725,27 @@ while n < 5:
     total += n
     # missing increment!
 `,visibleTests:`assert total == 15
-assert n == 6`,hiddenTests:`assert isinstance(total, int)`,bugDescription:`n was never incremented (infinite loop) and < 5 excluded 5.`},{id:`a4-l2-ex2`,type:`predict`,title:`Predict break and continue Output`,prompt:`Type the exact numbers printed by this loop (one per line).`,difficulty:`beginner`,concepts:[`for`,`range`,`break`,`continue`],points:10,hints:[`range(1, 7) produces 1, 2, 3, 4, 5, 6.`,`When i == 3, continue skips print(i).`,`When i == 5, break exits the loop before printing 5.`],solution:`1
-2
-4`,explanation:`1 and 2 print, 3 is skipped by continue, 4 prints, and 5 triggers break before printing.`,sources:[`python-tutorial`],code:`for i in range(1, 7):
-    if i == 3:
+assert n == 6`,hiddenTests:`assert isinstance(total, int)`,bugDescription:`n was never incremented (infinite loop) and < 5 excluded 5.`},{id:`a4-l2-ex2`,type:`predict`,title:`Predict break, continue, and loop-else`,prompt:`Type the exact lines printed by this loop (one per line).`,difficulty:`beginner`,concepts:[`for`,`range`,`break`,`continue`,`loop-else`],points:10,hints:[`range(1, 5) produces 1, 2, 3, 4.`,`When i == 2, continue skips print(i).`,`Because no break executes, the else block runs at the end!`],solution:`1
+3
+4
+done`,explanation:`2 is skipped by continue, and since break never ran, the loop's else clause executes after 4.`,sources:[`python-tutorial`],code:`for i in range(1, 5):
+    if i == 2:
         continue
-    if i == 5:
-        break
-    print(i)`,expectedOutput:`1
-2
-4`},{id:`a4-l2-ex3`,type:`code`,title:`FizzBuzz Variant: IS Audit Tagger`,prompt:`Build a list named tags for numbers 1 to 15 (inclusive) using range(1, 16). For multiples of both 3 and 5 append 'FizzBuzz', for multiples of 3 append 'Fizz', for multiples of 5 append 'Buzz', otherwise append str(n).`,difficulty:`beginner`,concepts:[`for`,`range`,`if`,`elif`,`modulo`],points:20,hints:[`Initialize tags = [] before the loop.`,`Check n % 3 == 0 and n % 5 == 0 FIRST.`,`Use tags.append(...) in each branch.`],solution:`tags = []
+    print(i)
+else:
+    print("done")`,expectedOutput:`1
+3
+4
+done`},{id:`a4-l2-ex3`,type:`code`,title:`Nested Loops: Region-Quarter Matrix`,prompt:`Using nested for loops over regions = ['North', 'South'] and quarters = ['Q1', 'Q2', 'Q3'], build a list named labels containing ['North-Q1', 'North-Q2', 'North-Q3', 'South-Q1', 'South-Q2', 'South-Q3'].`,difficulty:`beginner`,concepts:[`nested-loops`,`for`],points:15,hints:[`Initialize labels = [].`,`Outer loop: for r in regions:, inner loop: for q in quarters:.`,`Append f'{r}-{q}' to labels.`],solution:`regions = ['North', 'South']
+quarters = ['Q1', 'Q2', 'Q3']
+labels = []
+for r in regions:
+    for q in quarters:
+        labels.append(f'{r}-{q}')`,explanation:`Nested loops pair each outer region with every inner quarter in order.`,sources:[`python-tutorial`],starterCode:`regions = ['North', 'South']
+quarters = ['Q1', 'Q2', 'Q3']
+labels = []
+# Use nested loops to populate labels
+`,visibleTests:`assert labels == ['North-Q1', 'North-Q2', 'North-Q3', 'South-Q1', 'South-Q2', 'South-Q3']`,hiddenTests:`assert len(labels) == 6`},{id:`a4-l2-ex4`,type:`code`,title:`FizzBuzz Variant: IS Audit Tagger`,prompt:`Build a list named tags for numbers 1 to 15 (inclusive) using range(1, 16). For multiples of both 3 and 5 append 'FizzBuzz', for multiples of 3 append 'Fizz', for multiples of 5 append 'Buzz', otherwise append str(n).`,difficulty:`beginner`,concepts:[`for`,`range`,`if`,`elif`,`modulo`],points:20,hints:[`Initialize tags = [] before the loop.`,`Check n % 3 == 0 and n % 5 == 0 FIRST.`,`Use tags.append(...) in each branch.`],solution:`tags = []
 for n in range(1, 16):
     if n % 3 == 0 and n % 5 == 0:
         tags.append('FizzBuzz')
@@ -1991,7 +2760,7 @@ for n in range(1, 16):
 assert tags[0] == '1'
 assert tags[2] == 'Fizz'
 assert tags[4] == 'Buzz'
-assert tags[14] == 'FizzBuzz'`,hiddenTests:`assert tags[5] == 'Fizz' and tags[9] == 'Buzz'`},{id:`a4-l2-ex4`,type:`quiz`,title:`Loops and range() Check`,prompt:`Test your understanding of range(), break, and continue.`,difficulty:`beginner`,concepts:[`range`,`break`,`continue`],points:10,hints:[`Remember range(start, stop) excludes stop.`,`continue skips the current iteration only.`],solution:`Q1: [2, 4, 6]; Q2: Skips to the next iteration`,explanation:`range(2, 8, 2) steps by 2 up to 6, and continue jumps to the next iteration.`,sources:[`python-tutorial`],questions:[{question:`Which sequence of numbers does list(range(2, 8, 2)) produce?`,options:[`[2, 4, 6, 8]`,`[2, 4, 6]`,`[2, 3, 4, 5, 6, 7]`,`[0, 2, 4, 6]`],correct:[1],explanation:`range(2, 8, 2) starts at 2, steps by 2, and stops before 8.`},{question:`What does the continue statement do inside a loop?`,options:[`Exits the loop completely`,`Skips the rest of the current iteration and starts the next one`,`Restarts the program from line 1`,`Pauses the loop for 1 second`],correct:[1],explanation:`continue skips remaining statements in the current iteration and moves to the next iteration.`}]},{id:`a4-l2-fc1`,type:`flashcard`,title:`range(start, stop) upper bound`,prompt:`Recall whether range() includes stop.`,difficulty:`beginner`,concepts:[`range`],points:5,hints:[`Half-open interval`,`Excludes stop`,`stop - 1`],solution:`Excluded (stops at stop - 1)`,explanation:`range(start, stop) excludes stop.`,sources:[`python-tutorial`],front:"Does `range(1, 10)` include `10`?",back:"No. `range(start, stop)` is half-open: it includes `start` and stops **before** `stop` (`1` through `9`).",deckId:`a4-control-flow`},{id:`a4-l2-fc2`,type:`flashcard`,title:`break vs continue`,prompt:`Contrast break and continue.`,difficulty:`beginner`,concepts:[`break`,`continue`],points:5,hints:[`One exits loop`,`One skips one iteration`,`break exits; continue skips`],solution:`break exits the loop; continue skips to the next iteration.`,explanation:`Loop control keywords.`,sources:[`python-tutorial`],front:"How do `break` and `continue` differ inside a loop?",back:"`break` exits the loop completely. `continue` skips the rest of the current iteration and moves to the next iteration.",deckId:`a4-control-flow`}],Lu=s({default:()=>Ru}),Ru=[{id:`a5-l1-ex1`,type:`code`,title:`IS Invoice Total Function`,prompt:`Write a function apply_discount(subtotal, rate=0.10) that returns round(subtotal * (1 - rate), 2).`,difficulty:`beginner`,concepts:[`functions`,`default-arguments`,`return`],points:15,hints:[`Start with: def apply_discount(subtotal, rate=0.10):`,`Compute subtotal * (1 - rate) and wrap with round(..., 2).`,`Use return, not print.`],solution:`def apply_discount(subtotal, rate=0.10):
+assert tags[14] == 'FizzBuzz'`,hiddenTests:`assert tags[5] == 'Fizz' and tags[9] == 'Buzz'`},{id:`a4-l2-ex5`,type:`quiz`,title:`Loops, range(), and loop-else Check`,prompt:`Test your understanding of all Python loop concepts.`,difficulty:`beginner`,concepts:[`range`,`break`,`continue`,`while`],points:10,hints:[`Remember range(start, stop) excludes stop.`,`loop-else runs only when break did not execute.`],solution:`Q1: [2, 4, 6]; Q2: When the loop finishes without break`,explanation:`range(2, 8, 2) steps by 2 up to 6, and loop-else runs when no break occurred.`,sources:[`python-tutorial`],questions:[{question:`Which sequence of numbers does list(range(2, 8, 2)) produce?`,options:[`[2, 4, 6, 8]`,`[2, 4, 6]`,`[2, 3, 4, 5, 6, 7]`,`[0, 2, 4, 6]`],correct:[1],explanation:`range(2, 8, 2) starts at 2, steps by 2, and stops before 8.`},{question:`When does the else clause of a for ... else or while ... else loop execute?`,options:[`Only when break was executed`,`When the loop finishes normally without hitting break`,`Never; it is a syntax error`],correct:[1],explanation:`A loop's else block runs after the loop finishes normally (no break).`}]},{id:`a4-l2-fc1`,type:`flashcard`,title:`range(start, stop) upper bound`,prompt:`Recall whether range() includes stop.`,difficulty:`beginner`,concepts:[`range`],points:5,hints:[`Half-open interval`,`Excludes stop`,`stop - 1`],solution:`Excluded (stops at stop - 1)`,explanation:`range(start, stop) excludes stop.`,sources:[`python-tutorial`],front:"Does `range(1, 10)` include `10`?",back:"No. `range(start, stop)` is half-open: it includes `start` and stops **before** `stop` (`1` through `9`).",deckId:`a4-control-flow`},{id:`a4-l2-fc2`,type:`flashcard`,title:`break vs continue vs loop-else`,prompt:`Contrast break, continue, and loop-else.`,difficulty:`beginner`,concepts:[`break`,`continue`],points:5,hints:[`One exits loop`,`One skips one iteration`,`else runs if no break`],solution:`break exits; continue skips one iteration; else runs if no break occurred.`,explanation:`Loop control keywords.`,sources:[`python-tutorial`],front:"How do `break`, `continue`, and `loop ... else` behave?",back:"`break` exits the loop; `continue` skips to the next iteration; `else` runs only if the loop finished without `break`.",deckId:`a4-control-flow`}],Lu=s({default:()=>Ru}),Ru=[{id:`a5-l1-ex1`,type:`code`,title:`IS Invoice Total Function`,prompt:`Write a function apply_discount(subtotal, rate=0.10) that returns round(subtotal * (1 - rate), 2).`,difficulty:`beginner`,concepts:[`functions`,`default-arguments`,`return`],points:15,hints:[`Start with: def apply_discount(subtotal, rate=0.10):`,`Compute subtotal * (1 - rate) and wrap with round(..., 2).`,`Use return, not print.`],solution:`def apply_discount(subtotal, rate=0.10):
     return round(subtotal * (1 - rate), 2)`,explanation:`Default arguments let callers omit rate when the standard 10% discount applies.`,sources:[`python-tutorial`],starterCode:`def apply_discount(subtotal, rate=0.10):
     # return discounted total rounded to 2 decimals
     pass
@@ -2384,4 +3153,4 @@ assert iqr == 6.0`,hiddenTests:`assert isinstance(med, float) and isinstance(iqr
 `))return{data:{},body:t};let n=t.indexOf(`
 ---
 `,4);if(n===-1)return{data:{},body:t};let r=t.slice(4,n),i=t.slice(n+5).trimStart(),a={},o=null;for(let e of r.split(`
-`)){let t=e.trim();if(!t||t.startsWith(`#`))continue;if(t.startsWith(`- `)&&o){a[o].push(zd(t.slice(2).trim()));continue}o=null;let n=t.indexOf(`:`);if(n===-1)continue;let r=t.slice(0,n).trim(),i=t.slice(n+1).trim();if(i===``)a[r]=[],o=r;else if(i.startsWith(`[`)&&i.endsWith(`]`)){let e=i.slice(1,-1).trim();a[r]=e?e.split(`,`).map(e=>zd(e.trim())):[]}else a[r]=/^\d+$/.test(i)?Number(i):zd(i)}return{data:a,body:i}}function zd(e){return e.startsWith(`"`)&&e.endsWith(`"`)||e.startsWith(`'`)&&e.endsWith(`'`)?e.slice(1,-1):e}function Bd(){return Pd}function Vd(){let e=new Map;for(let t of Bd())e.set(t.id,t);return e}function Hd(){return Object.values(Fd).map(e=>e.default).sort((e,t)=>e.order-t.order)}function Ud(e){let t=[];for(let[n,r]of Object.entries(Id)){if(!n.includes(`/${e}/`))continue;let{data:i,body:a}=Rd(r),o=i;o.moduleId===e&&t.push({frontmatter:o,body:a})}return t.sort((e,t)=>e.frontmatter.order-t.frontmatter.order)}function Wd(e){for(let t of Object.values(Id)){let{data:n,body:r}=Rd(t),i=n;if(i.id===e)return{frontmatter:i,body:r}}}function Gd(e){for(let[t,n]of Object.entries(Ld))if(t.endsWith(`/${e}.exercises.json`))return n.default;return[]}function Kd({open:e,onClose:t}){let n=(0,v.useRef)(null),r=(0,v.useRef)(null),[i,a]=(0,v.useState)(``),[o,s]=(0,v.useState)(0),c=gt(),{resolvedTheme:l,toggleTheme:u}=cr(),d=(0,v.useMemo)(()=>{let e=[],t=Hd();for(let n of t){let t=Ud(n.id);for(let r of t)e.push({id:`lesson-${r.frontmatter.id}`,label:r.frontmatter.title,category:n.title,keywords:`${n.id} ${r.frontmatter.id}`,icon:(0,R.jsx)(Nr,{className:`w-3.5 h-3.5 text-neutral-400`,"aria-hidden":`true`}),action:()=>c(`/lesson/${r.frontmatter.id}`)})}let n=[{to:`/`,label:`Home Workspace`,Icon:xi},{to:`/dashboard`,label:`Learning Dashboard`,Icon:Fr},{to:`/visualizer`,label:`Step Visualizer`,Icon:Zr},{to:`/flashcards`,label:`Flashcards (SM-2)`,Icon:ai},{to:`/dataframe-lab`,label:`DataFrame Lab`,Icon:yi},{to:`/sql-lab`,label:`SQL Playground`,Icon:Yr},{to:`/chart-lab`,label:`Chart Lab`,Icon:Lr},{to:`/simulators`,label:`Stats Simulators`,Icon:Cr},{to:`/projects`,label:`EDA & Capstone Projects`,Icon:ri},{to:`/cheatsheets`,label:`Cheat Sheets`,Icon:$r},{to:`/glossary`,label:`Glossary`,Icon:kr},{to:`/sources`,label:`Cited Sources`,Icon:jr},{to:`/settings`,label:`Settings & Backup`,Icon:hi}];for(let t of n){let n=t.Icon;e.push({id:`page-${t.to}`,label:t.label,category:`Workspace`,icon:(0,R.jsx)(n,{className:`w-3.5 h-3.5 text-neutral-400`,"aria-hidden":`true`}),action:()=>c(t.to)})}return e.push({id:`action-theme`,label:`Switch to ${l===`dark`?`Light`:`Dark`} Mode`,category:`Preference`,keywords:`theme dark light mode appearance`,icon:l===`dark`?(0,R.jsx)(_i,{className:`w-3.5 h-3.5 text-neutral-400`,"aria-hidden":`true`}):(0,R.jsx)(si,{className:`w-3.5 h-3.5 text-neutral-400`,"aria-hidden":`true`}),action:()=>u()}),e},[c,l,u]),f=(0,v.useMemo)(()=>{let e=i.trim().toLowerCase();return e?d.filter(t=>t.label.toLowerCase().includes(e)||t.category.toLowerCase().includes(e)||t.keywords&&t.keywords.toLowerCase().includes(e)).slice(0,14):d.slice(0,14)},[d,i]);(0,v.useEffect)(()=>{let t=n.current;t&&(e&&!t.open?(a(``),s(0),t.showModal(),requestAnimationFrame(()=>r.current?.focus())):!e&&t.open&&t.close())},[e]),(0,v.useEffect)(()=>{s(0)},[i]);let p=e=>{e.action(),t()};return(0,R.jsxs)(`dialog`,{ref:n,"aria-label":`Command palette`,onCancel:e=>{e.preventDefault(),t()},onClick:e=>{e.target===n.current&&t()},className:`cmd-dialog m-auto mt-[12vh] w-[min(92vw,36rem)] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111113] text-neutral-950 dark:text-neutral-50 shadow-2xl p-0 overflow-hidden`,children:[(0,R.jsxs)(`div`,{className:`flex items-center gap-3 px-4 py-3 border-b border-neutral-200 dark:border-neutral-800`,children:[(0,R.jsx)(pi,{className:`w-4 h-4 text-neutral-400 shrink-0`,"aria-hidden":`true`}),(0,R.jsx)(`input`,{ref:r,type:`text`,value:i,onChange:e=>a(e.target.value),onKeyDown:e=>{e.key===`ArrowDown`?(e.preventDefault(),s(e=>f.length?(e+1)%f.length:0)):e.key===`ArrowUp`?(e.preventDefault(),s(e=>f.length?(e-1+f.length)%f.length:0)):e.key===`Enter`&&f[o]&&(e.preventDefault(),p(f[o]))},placeholder:`Jump to lesson, lab, or command…`,"aria-label":`Search lessons, labs, and commands`,className:`w-full bg-transparent text-sm placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:outline-none`}),(0,R.jsx)(`kbd`,{className:`hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-neutral-400 border border-neutral-200 dark:border-neutral-800 rounded`,children:`ESC`})]}),(0,R.jsx)(`div`,{className:`max-h-80 overflow-y-auto py-1.5`,children:f.length===0?(0,R.jsx)(`p`,{className:`px-4 py-8 text-center text-xs font-mono uppercase tracking-wider text-neutral-400`,children:`No matching commands`}):(0,R.jsx)(`ul`,{role:`listbox`,"aria-label":`Search results`,children:f.map((e,t)=>{let n=t===o;return(0,R.jsx)(`li`,{role:`option`,"aria-selected":n,children:(0,R.jsxs)(`button`,{type:`button`,onMouseEnter:()=>s(t),onClick:()=>p(e),className:`w-full flex items-center justify-between gap-3 px-4 py-2 text-left text-xs transition-colors ${n?`bg-neutral-100 dark:bg-neutral-800/80 text-neutral-950 dark:text-white`:`text-neutral-600 dark:text-neutral-400`}`,children:[(0,R.jsxs)(`span`,{className:`flex items-center gap-2.5 min-w-0`,children:[e.icon,(0,R.jsx)(`span`,{className:`font-medium truncate`,children:e.label})]}),(0,R.jsxs)(`span`,{className:`flex items-center gap-2 shrink-0`,children:[(0,R.jsx)(`span`,{className:`font-mono text-[10px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500`,children:e.category}),n&&(0,R.jsx)(qr,{className:`w-3 h-3 text-neutral-400`,"aria-hidden":`true`})]})]})},e.id)})})}),(0,R.jsxs)(`div`,{className:`flex items-center justify-between px-4 py-2 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0c0c0e] font-mono text-[10px] uppercase tracking-wider text-neutral-400`,children:[(0,R.jsx)(`span`,{children:`↑↓ Navigate`}),(0,R.jsx)(`span`,{children:`↵ Open`})]})]})}var qd={"a-foundations":`Track A // Foundations`,"b-advanced":`Track B // Advanced`,"c-analytics":`Track C // Analytics`};function Jd(){return(0,R.jsxs)(`svg`,{width:`16`,height:`16`,viewBox:`0 0 16 16`,fill:`currentColor`,"aria-hidden":`true`,className:`text-neutral-950 dark:text-white shrink-0`,children:[(0,R.jsx)(`circle`,{cx:`2.5`,cy:`2.5`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`8`,cy:`2.5`,r:`1.4`,opacity:`0.35`}),(0,R.jsx)(`circle`,{cx:`13.5`,cy:`2.5`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`2.5`,cy:`8`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`8`,cy:`8`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`13.5`,cy:`8`,r:`1.4`,opacity:`0.35`}),(0,R.jsx)(`circle`,{cx:`2.5`,cy:`13.5`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`8`,cy:`13.5`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`13.5`,cy:`13.5`,r:`1.4`})]})}function Yd(){let{resolvedTheme:e,toggleTheme:t}=cr(),n=pt(),[r,i]=(0,v.useState)(()=>typeof window<`u`&&window.innerWidth>=1024&&window.location.pathname!==`/`),[a,o]=(0,v.useState)(!1),[s,c]=(0,v.useState)(new Map),[l,u]=(0,v.useState)(0),d=(0,v.useMemo)(()=>Hd(),[]),[f,p]=(0,v.useState)(()=>{let e={};return d[0]&&(e[d[0].id]=!0),e}),m=()=>{$n.progress.toArray().then(e=>{let t=new Map;for(let n of e)t.set(n.lessonId,n);c(t)}).catch(()=>{}),$n.streaks.toArray().then(e=>{u(e.filter(e=>e.exercisesCompleted>0||e.minutes>0).length)}).catch(()=>{})};(0,v.useEffect)(()=>{m();let e=()=>m();return window.addEventListener(`pdp-progress-updated`,e),()=>window.removeEventListener(`pdp-progress-updated`,e)},[n.pathname]),(0,v.useEffect)(()=>{let e=e=>{(e.metaKey||e.ctrlKey)&&e.key.toLowerCase()===`k`&&(e.preventDefault(),o(e=>!e))};return window.addEventListener(`keydown`,e),()=>window.removeEventListener(`keydown`,e)},[]),(0,v.useEffect)(()=>{let e=n.pathname.match(/^\/lesson\/([^/]+)/);if(e){let t=e[1];for(let e of d)if(Ud(e.id).some(e=>e.frontmatter.id===t)){p(t=>({...t,[e.id]:!0}));break}}typeof window<`u`&&window.innerWidth<1024&&i(!1)},[n.pathname,d]);let h=e=>{p(t=>({...t,[e]:!t[e]}))},g=[`a-foundations`,`b-advanced`,`c-analytics`],_=d.flatMap(e=>Ud(e.id)),y=_.find(e=>s.get(e.frontmatter.id)?.status!==`completed`)??_[0];return(0,R.jsxs)(`div`,{className:`min-h-screen flex flex-col bg-white dark:bg-[#09090b] text-neutral-950 dark:text-neutral-50`,children:[(0,R.jsx)(`a`,{href:`#main-content`,className:`skip-link visually-hidden`,children:`Skip to main content`}),(0,R.jsxs)(`header`,{className:`h-14 shrink-0 border-b border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#09090b]/90 backdrop-blur-md px-4 lg:px-6 flex items-center justify-between gap-4 sticky top-0 z-30`,children:[(0,R.jsxs)(`div`,{className:`flex items-center gap-3`,children:[(0,R.jsx)(`button`,{type:`button`,onClick:()=>i(e=>!e),"aria-label":r?`Close navigation sidebar`:`Open navigation sidebar`,"aria-expanded":r,className:`tactile inline-flex items-center justify-center w-8 h-8 rounded-md text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/70`,children:r?(0,R.jsx)(di,{className:`w-4 h-4`,"aria-hidden":`true`}):(0,R.jsx)(li,{className:`w-4 h-4`,"aria-hidden":`true`})}),(0,R.jsxs)(On,{to:`/`,className:`flex items-center gap-2.5 font-mono text-xs font-semibold tracking-[0.16em] uppercase text-neutral-950 dark:text-white rounded px-1 py-1`,children:[(0,R.jsx)(Jd,{}),(0,R.jsx)(`span`,{children:`PYDATA`})]})]}),(0,R.jsx)(`nav`,{"aria-label":`Primary`,className:`hidden md:flex items-center gap-1`,children:[{to:`/`,label:`Curriculum`,end:!0},{to:`/dashboard`,label:`Dashboard`},{to:`/dataframe-lab`,label:`DataFrame Lab`},{to:`/sql-lab`,label:`SQL`},{to:`/sources`,label:`Sources`}].map(e=>(0,R.jsx)(kn,{to:e.to,end:e.end,className:({isActive:e})=>`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${e?`text-neutral-950 dark:text-white bg-neutral-100 dark:bg-neutral-800/80`:`text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white`}`,children:e.label},e.to))}),(0,R.jsxs)(`div`,{className:`flex items-center gap-2`,children:[(0,R.jsxs)(`button`,{type:`button`,onClick:()=>o(!0),"aria-label":`Open command palette`,className:`tactile hidden sm:inline-flex items-center gap-2 h-8 px-2.5 rounded-md border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#111113] text-xs text-neutral-500 dark:text-neutral-400 hover:border-neutral-300 dark:hover:border-neutral-700 hover:text-neutral-900 dark:hover:text-neutral-200`,children:[(0,R.jsx)(pi,{className:`w-3.5 h-3.5`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{className:`hidden lg:inline`,children:`Search`}),(0,R.jsx)(`kbd`,{className:`font-mono text-[10px] px-1 py-0.5 rounded bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-400`,children:`⌘K`})]}),(0,R.jsxs)(`span`,{className:`inline-flex items-center gap-1.5 h-8 px-2.5 rounded-md border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111113] font-mono text-[11px] tabular-nums text-neutral-700 dark:text-neutral-300`,title:`Active learning days`,children:[(0,R.jsx)(ti,{className:`w-3.5 h-3.5 text-amber-500`,"aria-hidden":`true`}),l,`d`]}),(0,R.jsx)(kn,{to:`/settings`,"aria-label":`Settings and Backup`,className:({isActive:e})=>`tactile inline-flex items-center justify-center w-8 h-8 rounded-md transition-colors ${e?`bg-neutral-100 dark:bg-neutral-800 text-neutral-950 dark:text-white`:`text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/70`}`,children:(0,R.jsx)(hi,{className:`w-4 h-4`,"aria-hidden":`true`})}),(0,R.jsx)(`button`,{type:`button`,onClick:t,"aria-label":`Switch to ${e===`dark`?`light`:`dark`} mode`,className:`tactile inline-flex items-center justify-center w-8 h-8 rounded-md text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/70`,children:e===`dark`?(0,R.jsx)(_i,{className:`w-4 h-4`,"aria-hidden":`true`}):(0,R.jsx)(si,{className:`w-4 h-4`,"aria-hidden":`true`})}),y&&(0,R.jsxs)(On,{to:`/lesson/${y.frontmatter.id}`,className:`tactile group hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 text-xs font-medium hover:bg-neutral-800 dark:hover:bg-neutral-200`,children:[(0,R.jsx)(`span`,{children:`Continue`}),(0,R.jsx)(Dr,{className:`w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5`,"aria-hidden":`true`})]})]})]}),(0,R.jsxs)(`div`,{className:`flex-1 flex min-h-0 relative`,children:[r&&(0,R.jsxs)(R.Fragment,{children:[(0,R.jsx)(`div`,{className:`fixed inset-0 top-14 z-20 bg-black/25 backdrop-blur-[2px] lg:hidden`,onClick:()=>i(!1),"aria-hidden":`true`}),(0,R.jsxs)(`aside`,{"aria-label":`Curriculum navigation`,className:`fixed lg:sticky top-14 left-0 z-30 lg:z-20 w-72 shrink-0 h-[calc(100vh-3.5rem)] border-r border-neutral-200 dark:border-neutral-800 bg-neutral-50/95 dark:bg-[#0c0c0e]/95 backdrop-blur-md lg:backdrop-blur-none overflow-y-auto p-3.5 space-y-5`,children:[g.map(e=>{let t=d.filter(t=>t.track===e);return(0,R.jsxs)(`div`,{children:[(0,R.jsx)(`h2`,{className:`font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500 mb-2 px-2`,children:qd[e]}),t.length===0?(0,R.jsx)(`p`,{className:`text-xs text-neutral-400 dark:text-neutral-600 px-2 font-mono`,children:`Coming soon`}):(0,R.jsx)(`div`,{className:`space-y-1.5`,children:t.map(e=>{let t=Ud(e.id),n=t.filter(e=>s.get(e.frontmatter.id)?.status===`completed`).length,r=!!f[e.id];return(0,R.jsxs)(`div`,{className:`space-y-1`,children:[(0,R.jsx)(`h3`,{children:(0,R.jsxs)(`button`,{type:`button`,"aria-expanded":r,onClick:()=>h(e.id),className:`w-full flex items-center justify-between gap-2 px-2 py-1.5 rounded-md text-left text-xs font-semibold text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors`,children:[(0,R.jsxs)(`span`,{className:`flex items-center gap-1.5 min-w-0`,children:[(0,R.jsx)(zr,{className:`w-3.5 h-3.5 shrink-0 text-neutral-400 transition-transform duration-150 ${r?`rotate-90 text-neutral-900 dark:text-white`:``}`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{className:`truncate`,children:e.title})]}),(0,R.jsxs)(`span`,{className:`flex items-center gap-1.5 shrink-0`,children:[(0,R.jsxs)(`span`,{className:`font-mono text-[10px] tabular-nums text-neutral-400`,children:[n,`/`,t.length]}),(0,R.jsx)(Si,{completed:n,total:t.length,size:16})]})]})}),r&&(0,R.jsx)(`ul`,{className:`space-y-0.5 pl-3 border-l border-neutral-200 dark:border-neutral-800 ml-3.5`,children:t.map(e=>{let t=e.frontmatter.id,n=s.get(t)?.status??`not_started`;return(0,R.jsx)(`li`,{children:(0,R.jsxs)(kn,{to:`/lesson/${t}`,className:({isActive:e})=>`flex items-center gap-2 px-2.5 py-1.5 rounded-md text-xs transition-colors ${e?`bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 font-medium`:`text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 hover:text-neutral-950 dark:hover:text-neutral-100`}`,children:[n===`completed`?(0,R.jsx)(Vr,{className:`w-3.5 h-3.5 shrink-0 text-emerald-500`,"aria-hidden":`true`}):(0,R.jsx)(Ur,{className:`w-3.5 h-3.5 shrink-0 opacity-40`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{className:`truncate`,children:e.frontmatter.title})]})},t)})})]},e.id)})})]},e)}),(0,R.jsxs)(`div`,{className:`pt-4 border-t border-neutral-200 dark:border-neutral-800 space-y-1`,children:[(0,R.jsx)(`h2`,{className:`font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500 mb-2 px-2`,children:`Labs // Workspace`}),[{to:`/visualizer`,label:`Step Visualizer`,Icon:Zr},{to:`/flashcards`,label:`Flashcards (SM-2)`,Icon:ai},{to:`/dataframe-lab`,label:`DataFrame Lab`,Icon:yi},{to:`/sql-lab`,label:`SQL Playground`,Icon:Yr},{to:`/chart-lab`,label:`Chart Lab`,Icon:Lr},{to:`/simulators`,label:`Stats Simulators`,Icon:Cr},{to:`/projects`,label:`EDA & Capstone`,Icon:ri},{to:`/cheatsheets`,label:`Cheat Sheets`,Icon:$r},{to:`/glossary`,label:`Glossary`,Icon:kr}].map(({to:e,label:t,Icon:n})=>(0,R.jsxs)(kn,{to:e,className:({isActive:e})=>`flex items-center gap-2 px-2.5 py-1.5 rounded-md text-xs transition-colors ${e?`bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 font-medium`:`text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 hover:text-neutral-950 dark:hover:text-neutral-100`}`,children:[(0,R.jsx)(n,{className:`w-3.5 h-3.5 shrink-0`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{children:t})]},e))]})]})]}),(0,R.jsx)(`main`,{id:`main-content`,tabIndex:-1,className:`flex-1 min-w-0 focus:outline-none`,children:(0,R.jsx)(Vt,{})})]}),(0,R.jsx)(Kd,{open:a,onClose:()=>o(!1)})]})}var Xd={0:{fig:`FIG. 01`,title:`TORUS KNOT (2,3) / CLICK TO MORPH`,mode:`MODE 01 / PARTICLE GEOMETRY`},1:{fig:`FIG. 02`,title:`LORENZ ATTRACTOR / CLICK TO MORPH`,mode:`MODE 02 / CHAOS MANIFOLD`},2:{fig:`FIG. 03`,title:`LISSAJOUS KNOT / CLICK TO MORPH`,mode:`MODE 03 / HARMONIC LATTICE`}};function Zd(e,t=1600){let n=[];if(e===0)for(let e=0;e<t;e++){let r=e/t*Math.PI*2,i=e*137.508%360*(Math.PI/180),a=.95+.38*Math.cos(3*r),o=a*Math.cos(2*r),s=a*Math.sin(2*r),c=.45*Math.sin(3*r),l=.24*Math.sqrt(e*73%100/100),u=o+l*Math.cos(i)*Math.cos(2*r),d=s+l*Math.cos(i)*Math.sin(2*r),f=c+l*Math.sin(i);n.push({x:u,y:d,z:f,shade:(Math.sin(i)+1)*.5})}else if(e===1){let e=.1,r=0,i=0,a=.008,o=8/3;for(let t=0;t<120;t++){let t=10*(r-e),n=e*(28-i)-r,s=e*r-o*i;e+=t*a,r+=n*a,i+=s*a}for(let s=0;s<t;s++){let t=10*(r-e),c=e*(28-i)-r,l=e*r-o*i;e+=t*a,r+=c*a,i+=l*a,n.push({x:e*.055,y:r*.055,z:(i-25)*.055,shade:s%10/10})}}else for(let e=0;e<t;e++){let r=e/t*Math.PI*2,i=(e*29%100/100-.5)*.14,a=Math.sin(3*r+.4)*1.1+i,o=Math.sin(4*r)*1.1+i,s=Math.sin(5*r+.8)*.85+i;n.push({x:a,y:o,z:s,shade:(Math.cos(5*r)+1)*.5})}return n}function Qd(){let e=(0,v.useRef)(null),[t,n]=(0,v.useState)(0),{resolvedTheme:r}=cr(),i=(0,v.useRef)({active:!1,lastX:0,lastY:0,rotX:.45,rotY:.35,vx:0,vy:0}),a=(0,v.useRef)({x:0,y:0,active:!1});(0,v.useEffect)(()=>{let n=e.current;if(!n)return;let o=n.getContext(`2d`);if(!o)return;let s=Zd(t),c=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches,l=0,u=()=>{let e=n.getBoundingClientRect(),t=Math.min(window.devicePixelRatio||1,2);n.width=Math.max(1,Math.floor(e.width*t)),n.height=Math.max(1,Math.floor(e.height*t)),o.setTransform(t,0,0,t,0,0)};u(),window.addEventListener(`resize`,u);let d=()=>{let e=n.getBoundingClientRect(),t=e.width,u=e.height;o.clearRect(0,0,t,u);let f=i.current;f.active||c||(f.rotY+=.0035+f.vx*.04,f.rotX+=f.vy*.04,f.vx*=.92,f.vy*=.92);let p=Math.cos(f.rotY),m=Math.sin(f.rotY),h=Math.cos(f.rotX),g=Math.sin(f.rotX),_=Math.min(t,u)*.27,v=t*.52,y=u*.48,b=r===`dark`,x=s.map(e=>{let t=e.x*p-e.z*m,n=e.x*m+e.z*p,r=e.y*h-n*g,i=e.y*g+n*h,o=3.2/(3.2-i),s=v+t*_*o,c=y+r*_*o;if(a.current.active){let e=s-a.current.x,t=c-a.current.y,n=Math.hypot(e,t);if(n<72&&n>.1){let r=(1-n/72)*14;s+=e/n*r,c+=t/n*r}}return{sx:s,sy:c,z:i,shade:e.shade}});x.sort((e,t)=>e.z-t.z);for(let e=0;e<x.length;e++){let t=x[e],n=Math.max(.14,Math.min(.92,(t.z+1.4)/2.6)),r=t.z>.2?1.45:1.05;o.fillStyle=b?`rgba(245, 245, 245, ${n.toFixed(2)})`:`rgba(12, 12, 14, ${n.toFixed(2)})`,o.beginPath(),o.arc(t.sx,t.sy,r,0,Math.PI*2),o.fill()}c||(l=requestAnimationFrame(d))};return d(),()=>{cancelAnimationFrame(l),window.removeEventListener(`resize`,u)}},[t,r]);let o=Xd[t];return(0,R.jsxs)(`div`,{className:`relative flex flex-col justify-between h-full min-h-[360px] lg:min-h-[440px] select-none`,children:[(0,R.jsxs)(`div`,{className:`flex items-center justify-between gap-4 px-5 pt-4 font-mono text-[10px] tracking-[0.14em] uppercase text-neutral-400 dark:text-neutral-500`,children:[(0,R.jsxs)(`span`,{children:[o.fig,` — `,o.title]}),(0,R.jsx)(`span`,{className:`hidden sm:inline`,children:o.mode})]}),(0,R.jsx)(`canvas`,{ref:e,"aria-label":`Interactive 3D particle geometry visualization. Click to morph form or drag to rotate.`,onClick:()=>n(e=>(e+1)%3),onPointerDown:e=>{i.current.active=!0,i.current.lastX=e.clientX,i.current.lastY=e.clientY},onPointerMove:e=>{let t=e.currentTarget.getBoundingClientRect();if(a.current={x:e.clientX-t.left,y:e.clientY-t.top,active:!0},i.current.active){let t=e.clientX-i.current.lastX,n=e.clientY-i.current.lastY;i.current.rotY+=t*.008,i.current.rotX+=n*.008,i.current.vx=t*.08,i.current.vy=n*.08,i.current.lastX=e.clientX,i.current.lastY=e.clientY}},onPointerUp:()=>{i.current.active=!1},onPointerLeave:()=>{i.current.active=!1,a.current.active=!1},className:`w-full flex-1 cursor-grab active:cursor-grabbing`}),(0,R.jsx)(`div`,{className:`flex items-center justify-end px-5 pb-3 font-mono text-[10px] tracking-[0.14em] uppercase text-neutral-400 dark:text-neutral-500`,children:(0,R.jsx)(`span`,{children:`03 FORMS · DRAG CURSOR TO DISPLACE`})})]})}function $d(){let e=Hd(),[t,n]=(0,v.useState)(new Map);(0,v.useEffect)(()=>{$n.progress.toArray().then(e=>{let t=new Map;for(let n of e)t.set(n.lessonId,n);n(t)}).catch(()=>{})},[]);let r=e.flatMap(e=>Ud(e.id)),i=r.length,a=r.filter(e=>t.get(e.frontmatter.id)?.status===`completed`).length,o=r.find(e=>t.get(e.frontmatter.id)?.status!==`completed`)??r[0];return(0,R.jsxs)(`div`,{className:`min-h-full bg-white dark:bg-[#09090b]`,children:[(0,R.jsx)(`section`,{className:`relative border-b border-neutral-200 dark:border-neutral-800`,children:(0,R.jsxs)(`div`,{className:`max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 relative`,children:[(0,R.jsxs)(`div`,{className:`lg:col-span-6 px-6 sm:px-10 lg:px-14 py-12 lg:py-20 flex flex-col justify-between gap-12 lg:border-r border-neutral-200 dark:border-neutral-800`,children:[(0,R.jsxs)(`div`,{className:`space-y-7`,children:[(0,R.jsxs)(`div`,{className:`inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-400`,children:[(0,R.jsx)(`span`,{className:`w-1.5 h-1.5 bg-neutral-950 dark:bg-white inline-block`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{children:`PyData Workspace / Version 1.0`})]}),(0,R.jsxs)(`h1`,{className:`font-mono text-4xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-[-0.04em] leading-[1.08] text-neutral-950 dark:text-white`,children:[`Learn Python & Analytics.`,(0,R.jsx)(`span`,{className:`text-neutral-400 dark:text-neutral-500 block mt-1`,children:`Without the complexity.`})]}),(0,R.jsx)(`p`,{className:`text-sm sm:text-[15px] text-neutral-600 dark:text-neutral-400 max-w-md leading-[1.65]`,children:`An offline-first, hands-on Python and data analytics workspace. Every lesson pairs concise, cited theory with live Python exercises running directly in your browser.`}),(0,R.jsxs)(`div`,{className:`flex flex-wrap items-center gap-3 pt-1`,children:[o&&(0,R.jsxs)(On,{to:`/lesson/${o.frontmatter.id}`,className:`tactile group inline-flex items-center gap-2.5 h-11 px-6 rounded-[2px] bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 text-xs font-medium tracking-wide hover:bg-neutral-800 dark:hover:bg-neutral-200`,children:[(0,R.jsx)(`span`,{children:a>0?`Resume Learning`:`Start Learning`}),(0,R.jsx)(Dr,{className:`w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5`,"aria-hidden":`true`})]}),(0,R.jsxs)(On,{to:`/dataframe-lab`,className:`tactile group inline-flex items-center gap-2.5 h-11 px-6 rounded-[2px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111113] text-neutral-900 dark:text-neutral-100 text-xs font-medium tracking-wide hover:bg-neutral-50 dark:hover:bg-neutral-800/70`,children:[(0,R.jsx)(`span`,{children:`Explore Labs`}),(0,R.jsx)(Tr,{className:`w-3.5 h-3.5 text-neutral-400 transition-transform duration-150 group-hover:translate-x-0.5`,"aria-hidden":`true`})]})]}),(0,R.jsx)(`div`,{className:`font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-400 dark:text-neutral-500 pt-1`,children:`Browser-Native \xA0·\xA0 Offline-First \xA0·\xA0 Zero Setup`})]}),(0,R.jsxs)(`div`,{className:`grid grid-cols-3 gap-6 pt-8 border-t border-neutral-200 dark:border-neutral-800 max-w-md`,children:[(0,R.jsxs)(`div`,{children:[(0,R.jsx)(`p`,{className:`font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:`Runtime`}),(0,R.jsx)(`p`,{className:`font-mono text-xs font-medium text-neutral-900 dark:text-neutral-100 mt-1`,children:`PYODIDE / WASM`})]}),(0,R.jsxs)(`div`,{children:[(0,R.jsx)(`p`,{className:`font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:`Curriculum`}),(0,R.jsxs)(`p`,{className:`font-mono text-xs font-medium text-neutral-900 dark:text-neutral-100 mt-1 tabular-nums`,children:[e.length,` MODULES`]})]}),(0,R.jsxs)(`div`,{children:[(0,R.jsx)(`p`,{className:`font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:`Progress`}),(0,R.jsxs)(`p`,{className:`font-mono text-xs font-medium text-neutral-900 dark:text-neutral-100 mt-1 tabular-nums`,children:[a,` / `,i]})]})]})]}),(0,R.jsxs)(`div`,{className:`lg:col-span-6 relative bg-white dark:bg-[#0b0b0d] min-h-[420px] lg:min-h-[600px] flex flex-col justify-between border-t lg:border-t-0 border-neutral-200 dark:border-neutral-800`,children:[(0,R.jsx)(`span`,{"aria-hidden":`true`,className:`pointer-events-none absolute top-2 left-2 font-mono text-xs text-neutral-300 dark:text-neutral-700 select-none z-10`,children:`+`}),(0,R.jsx)(`span`,{"aria-hidden":`true`,className:`pointer-events-none absolute top-2 right-2 font-mono text-xs text-neutral-300 dark:text-neutral-700 select-none z-10`,children:`+`}),(0,R.jsx)(Qd,{})]}),(0,R.jsx)(`div`,{className:`px-6 pb-8 lg:p-0 lg:absolute lg:bottom-7 lg:left-1/2 lg:-translate-x-[18%] lg:z-20 pointer-events-none sm:pointer-events-auto`,children:(0,R.jsxs)(`div`,{className:`w-full max-w-[390px] rounded-[4px] border border-neutral-800 bg-[#0d0d0f] text-neutral-200 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.38)] overflow-hidden`,children:[(0,R.jsxs)(`div`,{className:`flex items-center justify-between px-3.5 py-2 border-b border-neutral-800/80 bg-[#121215]`,children:[(0,R.jsxs)(`div`,{className:`flex items-center gap-1.5`,"aria-hidden":`true`,children:[(0,R.jsx)(`span`,{className:`w-2.5 h-2.5 rounded-full border border-neutral-600`}),(0,R.jsx)(`span`,{className:`w-2.5 h-2.5 rounded-full border border-neutral-600`}),(0,R.jsx)(`span`,{className:`w-2.5 h-2.5 rounded-full border border-neutral-600`})]}),(0,R.jsx)(`span`,{className:`font-mono text-[10px] text-neutral-500`,children:`pydata — pyodide — 80×12`}),(0,R.jsx)(`span`,{className:`w-8`})]}),(0,R.jsxs)(`div`,{className:`p-4 font-mono text-[11px] leading-[1.7] space-y-0.5`,children:[(0,R.jsxs)(`p`,{className:`text-neutral-100`,children:[(0,R.jsx)(`span`,{className:`text-neutral-500`,children:`$`}),` pydata init analytics-env`]}),(0,R.jsx)(`p`,{className:`text-emerald-400`,children:`✓ Pyodide WASM runtime configured`}),(0,R.jsxs)(`p`,{className:`text-neutral-100 pt-1`,children:[(0,R.jsx)(`span`,{className:`text-neutral-500`,children:`$`}),` python verify_suite.py`]}),(0,R.jsxs)(`p`,{className:`text-neutral-400`,children:[`→ Loading pandas & numpy `,(0,R.jsx)(`span`,{className:`text-neutral-600 ml-1`,children:`1.2s`})]}),(0,R.jsxs)(`p`,{className:`text-neutral-400`,children:[`→ Optimizing dataframe `,(0,R.jsx)(`span`,{className:`text-neutral-600 ml-1`,children:`0.4s`})]}),(0,R.jsx)(`p`,{className:`text-emerald-400`,children:`✓ 14/14 assertions passed`}),(0,R.jsxs)(`p`,{className:`text-emerald-400 flex items-center gap-1.5`,children:[(0,R.jsx)(`span`,{children:`✓ Workspace online`}),(0,R.jsx)(`span`,{className:`text-neutral-500`,children:`indexeddb · 0ms`})]}),(0,R.jsxs)(`p`,{className:`text-neutral-100 pt-0.5 flex items-center gap-1.5`,children:[(0,R.jsx)(`span`,{className:`text-neutral-500`,children:`$`}),(0,R.jsx)(`span`,{className:`inline-block w-1.5 h-3.5 bg-neutral-200 motion-safe:animate-pulse`,"aria-hidden":`true`})]})]})]})})]})}),(0,R.jsxs)(`section`,{className:`max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 py-14 space-y-6`,children:[(0,R.jsxs)(`div`,{className:`flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-4`,children:[(0,R.jsxs)(`div`,{className:`space-y-1`,children:[(0,R.jsx)(`p`,{className:`font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:`01 // Curriculum Index`}),(0,R.jsx)(`h2`,{className:`text-xl font-semibold tracking-tight text-neutral-950 dark:text-white`,children:`Available Modules`})]}),(0,R.jsxs)(`p`,{className:`font-mono text-[11px] uppercase tracking-[0.12em] text-neutral-500 dark:text-neutral-400 tabular-nums`,children:[a,` of `,i,` lessons completed`]})]}),(0,R.jsx)(`div`,{className:`grid grid-cols-1 lg:grid-cols-2 gap-5`,children:e.map((e,n)=>{let r=Ud(e.id),i=r.filter(e=>t.get(e.frontmatter.id)?.status===`completed`).length;return(0,R.jsxs)(`article`,{className:`rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0e] p-5 sm:p-6 flex flex-col justify-between gap-5 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors`,children:[(0,R.jsxs)(`div`,{className:`flex items-start justify-between gap-4`,children:[(0,R.jsxs)(`div`,{className:`space-y-1.5`,children:[(0,R.jsxs)(`span`,{className:`font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:[`MOD. `,String(n+1).padStart(2,`0`),` // `,e.id]}),(0,R.jsx)(`h3`,{className:`text-lg font-semibold tracking-tight text-neutral-950 dark:text-white`,children:e.title}),(0,R.jsx)(`p`,{className:`text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed`,children:e.summary})]}),(0,R.jsxs)(`div`,{className:`flex items-center gap-2 shrink-0 pt-1`,children:[(0,R.jsx)(Si,{completed:i,total:r.length,size:28}),(0,R.jsxs)(`span`,{className:`font-mono text-xs font-medium tabular-nums text-neutral-600 dark:text-neutral-400`,children:[i,`/`,r.length]})]})]}),(0,R.jsx)(`div`,{className:`divide-y divide-neutral-100 dark:divide-neutral-800/80 border-t border-neutral-100 dark:border-neutral-800/80`,children:r.map(e=>{let n=e.frontmatter,r=t.get(n.id)?.status===`completed`;return(0,R.jsxs)(On,{to:`/lesson/${n.id}`,className:`flex items-center justify-between gap-4 py-2.5 px-2 -mx-2 rounded-md hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors group`,children:[(0,R.jsxs)(`div`,{className:`flex items-center gap-3 min-w-0`,children:[r?(0,R.jsx)(Vr,{className:`w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0`,"aria-hidden":`true`}):(0,R.jsx)(`span`,{className:`w-4 h-4 rounded-full border border-neutral-300 dark:border-neutral-700 shrink-0 group-hover:border-neutral-500 dark:group-hover:border-neutral-500 transition-colors`}),(0,R.jsx)(`span`,{className:`text-sm font-medium text-neutral-800 dark:text-neutral-200 truncate group-hover:text-neutral-950 dark:group-hover:text-white`,children:n.title})]}),(0,R.jsxs)(`div`,{className:`flex items-center gap-3 shrink-0 font-mono text-[11px] tabular-nums text-neutral-400 dark:text-neutral-500`,children:[(0,R.jsxs)(`span`,{className:`inline-flex items-center gap-1`,children:[(0,R.jsx)(Gr,{className:`w-3 h-3`,"aria-hidden":`true`}),n.estimatedMinutes,`m`]}),(0,R.jsx)(Tr,{className:`w-3.5 h-3.5 text-neutral-300 dark:text-neutral-600 group-hover:text-neutral-950 dark:group-hover:text-white group-hover:translate-x-0.5 transition-all duration-150`,"aria-hidden":`true`})]})]},n.id)})})]},e.id)})})]})]})}var ef=`modulepreload`,tf=function(e){return`/`+e},nf={},rf=function(e){return e.pathname.endsWith(`.css`)},af=function(e,t,n){if(t in e)return e[t];let r=n();if(!r){e[t]=void 0;return}let i=r.then(()=>{e[t]=void 0},n=>{throw e[t]=void 0,n});return e[t]=i,i},of=function(e,t,n){let r=Promise.resolve();if(t&&t.length>0){let e,i=document.querySelector(`meta[property=csp-nonce]`),a=i?.nonce||i?.getAttribute(`nonce`);function o(e){return Promise.all(e.map(e=>Promise.resolve(e).then(e=>({status:`fulfilled`,value:e}),e=>({status:`rejected`,reason:e}))))}function s(e){return import.meta.resolve?new URL(import.meta.resolve(e)):new URL(e,import.meta.url)}r=o(t.map(t=>{t=tf(t,n);let r=s(t),i=rf(r);return af(nf,r.href,()=>{if(e===void 0){e={all:new Set,styles:new Set};let t=document.getElementsByTagName(`link`);for(let n=t.length-1;n>=0;n--){let r=t[n];e.all.add(r.href),r.rel===`stylesheet`&&e.styles.add(r.href)}}if((i?e.styles:e.all).has(r.href))return;let t=document.createElement(`link`);if(t.rel=i?`stylesheet`:ef,i||(t.as=`script`),t.crossOrigin=``,t.href=r.href,a&&t.setAttribute(`nonce`,a),document.head.appendChild(t),i)return new Promise((e,n)=>{let i=a=>{t.removeEventListener(`load`,i),t.removeEventListener(`error`,i),a.type===`error`?n(Error(`Unable to preload CSS for ${r}`)):e(a)};t.addEventListener(`load`,i),t.addEventListener(`error`,i)})})}).filter(e=>e!==void 0))}function i(e){let t=new Event(`vite:preloadError`,{cancelable:!0});if(t.payload=e,window.dispatchEvent(t),!t.defaultPrevented)throw e}return r.then(t=>{for(let e of t||[])e.status===`rejected`&&i(e.reason);return e().catch(i)})},sf=(0,v.lazy)(()=>of(()=>import(`./LessonPage-B3vSRGyR.js`).then(e=>({default:e.LessonPage})),__vite__mapDeps([0,1,2,3,4,5,6,7]))),cf=(0,v.lazy)(()=>of(()=>import(`./SourcesPage-DgRYKoOT.js`).then(e=>({default:e.SourcesPage})),__vite__mapDeps([8,2]))),lf=(0,v.lazy)(()=>of(()=>import(`./GlossaryPage-RVkOZXow.js`).then(e=>({default:e.GlossaryPage})),[])),uf=(0,v.lazy)(()=>of(()=>import(`./CheatSheetsPage-BC2iYIQd.js`).then(e=>({default:e.CheatSheetsPage})),[])),df=(0,v.lazy)(()=>of(()=>import(`./FlashcardsPage-B2XALM1W.js`).then(e=>({default:e.FlashcardsPage})),[])),ff=(0,v.lazy)(()=>of(()=>import(`./StepVisualizer-BxgBgOjr.js`).then(e=>({default:e.StepVisualizer})),__vite__mapDeps([9,4,5,6]))),pf=(0,v.lazy)(()=>of(()=>import(`./DashboardPage-w5AlRDwE.js`).then(e=>({default:e.DashboardPage})),__vite__mapDeps([10,3]))),Z=(0,v.lazy)(()=>of(()=>import(`./DataFrameLabPage-B1EOqWzE.js`).then(e=>({default:e.DataFrameLabPage})),__vite__mapDeps([11,4,5,12,7]))),mf=(0,v.lazy)(()=>of(()=>import(`./SqlLabPage-CzV19CSX.js`).then(e=>({default:e.SqlLabPage})),__vite__mapDeps([13,4,7]))),hf=(0,v.lazy)(()=>of(()=>import(`./ChartLabPage-BPg2nJTl.js`).then(e=>({default:e.ChartLabPage})),__vite__mapDeps([14,4,5,7]))),gf=(0,v.lazy)(()=>of(()=>import(`./SimulatorsPage-C6FQyHm2.js`).then(e=>({default:e.SimulatorsPage})),__vite__mapDeps([15,6]))),_f=(0,v.lazy)(()=>of(()=>import(`./ProjectsPage-DJgcvag2.js`).then(e=>({default:e.ProjectsPage})),__vite__mapDeps([16,1]))),vf=(0,v.lazy)(()=>of(()=>import(`./ExportImportPage-BUhWxnyV.js`).then(e=>({default:e.ExportImportPage})),__vite__mapDeps([17,12,2]))),yf={"/":{title:`PyData Path — Learn Python & Data Analytics in Your Browser`,description:`An offline-first, hands-on Python and data analytics learning workspace powered by Pyodide WebAssembly.`},"/dashboard":{title:`Learning Dashboard | PyData Path`,description:`Track completed lessons, exercise accuracy, active days, and skill mastery locally.`},"/dataframe-lab":{title:`DataFrame Lab | PyData Path`,description:`Inspect CSV datasets and run pandas and NumPy code directly in your browser.`},"/sql-lab":{title:`SQL Playground | PyData Path`,description:`Practice SQL queries against local datasets in your browser.`},"/chart-lab":{title:`Chart Lab | PyData Path`,description:`Explore data visualizations and plotting workflows in Python.`},"/simulators":{title:`Stats Simulators | PyData Path`,description:`Interactive probability and statistics simulators.`},"/visualizer":{title:`Step Visualizer | PyData Path`,description:`Trace Python code execution line by line.`},"/flashcards":{title:`Flashcards (SM-2) | PyData Path`,description:`Spaced-repetition flashcards for Python and data analytics concepts.`},"/projects":{title:`EDA & Capstone Projects | PyData Path`,description:`Guided exploratory data analysis and capstone project checklists.`},"/cheatsheets":{title:`Cheat Sheets | PyData Path`,description:`Quick-reference syntax guides for Python, pandas, NumPy, and SQL.`},"/glossary":{title:`Glossary | PyData Path`,description:`Definitions for key Python and data analytics terminology.`},"/sources":{title:`Cited Sources | PyData Path`,description:`Official documentation and references cited across PyData Path lessons.`},"/settings":{title:`Settings & Backup | PyData Path`,description:`Export or import your local PyData Path progress and notes.`}};function bf(){let{pathname:e}=pt();return(0,v.useEffect)(()=>{let t=yf[`/`].title,n=yf[`/`].description,r=e.match(/^\/lesson\/([^/]+)/);if(r){let e=Wd(r[1]);e&&(t=`${e.frontmatter.title} | PyData Path`,n=`Interactive Python lesson: ${e.frontmatter.title} (${e.frontmatter.estimatedMinutes} min, ${e.frontmatter.difficulty}).`)}else yf[e]&&(t=yf[e].title,n=yf[e].description);document.title=t;let i=document.querySelector(`meta[name="description"]`);i&&i.setAttribute(`content`,n)},[e]),null}function xf(){return(0,R.jsx)(`div`,{className:`flex items-center justify-center min-h-[40vh] font-mono text-xs uppercase tracking-[0.14em] text-neutral-400`,children:`Loading workspace…`})}function Sf(){return(0,R.jsx)(sr,{children:(0,R.jsxs)(Dn,{children:[(0,R.jsx)(bf,{}),(0,R.jsx)(v.Suspense,{fallback:(0,R.jsx)(xf,{}),children:(0,R.jsx)(Wt,{children:(0,R.jsxs)(Ht,{element:(0,R.jsx)(Yd,{}),children:[(0,R.jsx)(Ht,{path:`/`,element:(0,R.jsx)($d,{})}),(0,R.jsx)(Ht,{path:`/lesson/:lessonId`,element:(0,R.jsx)(sf,{})}),(0,R.jsx)(Ht,{path:`/dashboard`,element:(0,R.jsx)(pf,{})}),(0,R.jsx)(Ht,{path:`/flashcards`,element:(0,R.jsx)(df,{})}),(0,R.jsx)(Ht,{path:`/visualizer`,element:(0,R.jsx)(ff,{})}),(0,R.jsx)(Ht,{path:`/dataframe-lab`,element:(0,R.jsx)(Z,{})}),(0,R.jsx)(Ht,{path:`/sql-lab`,element:(0,R.jsx)(mf,{})}),(0,R.jsx)(Ht,{path:`/chart-lab`,element:(0,R.jsx)(hf,{})}),(0,R.jsx)(Ht,{path:`/simulators`,element:(0,R.jsx)(gf,{})}),(0,R.jsx)(Ht,{path:`/projects`,element:(0,R.jsx)(_f,{})}),(0,R.jsx)(Ht,{path:`/cheatsheets`,element:(0,R.jsx)(uf,{})}),(0,R.jsx)(Ht,{path:`/glossary`,element:(0,R.jsx)(lf,{})}),(0,R.jsx)(Ht,{path:`/sources`,element:(0,R.jsx)(cf,{})}),(0,R.jsx)(Ht,{path:`/settings`,element:(0,R.jsx)(vf,{})}),(0,R.jsx)(Ht,{path:`*`,element:(0,R.jsx)(Bt,{to:`/`,replace:!0})})]})})})]})})}(0,y.createRoot)(document.getElementById(`root`)).render((0,R.jsx)(v.StrictMode,{children:(0,R.jsx)(Sf,{})}));export{tr as A,Nr as C,cr as D,z as E,d as F,o as I,s as L,nr as M,On as N,ir as O,yt as P,l as R,Fr as S,Cr as T,Yr as _,Ud as a,Vr as b,xi as c,pi as d,ai as f,Zr as g,$r as h,Wd as i,er as j,$n as k,yi as l,ti as m,Bd as n,Vd as o,ri as p,Gd as r,Si as s,Hd as t,hi as u,Gr as v,kr as w,Lr as x,Ur as y};
+`)){let t=e.trim();if(!t||t.startsWith(`#`))continue;if(t.startsWith(`- `)&&o){a[o].push(zd(t.slice(2).trim()));continue}o=null;let n=t.indexOf(`:`);if(n===-1)continue;let r=t.slice(0,n).trim(),i=t.slice(n+1).trim();if(i===``)a[r]=[],o=r;else if(i.startsWith(`[`)&&i.endsWith(`]`)){let e=i.slice(1,-1).trim();a[r]=e?e.split(`,`).map(e=>zd(e.trim())):[]}else a[r]=/^\d+$/.test(i)?Number(i):zd(i)}return{data:a,body:i}}function zd(e){return e.startsWith(`"`)&&e.endsWith(`"`)||e.startsWith(`'`)&&e.endsWith(`'`)?e.slice(1,-1):e}function Bd(){return Pd}function Vd(){let e=new Map;for(let t of Bd())e.set(t.id,t);return e}function Hd(){return Object.values(Fd).map(e=>e.default).sort((e,t)=>e.order-t.order)}function Ud(e){let t=[];for(let[n,r]of Object.entries(Id)){if(!n.includes(`/${e}/`))continue;let{data:i,body:a}=Rd(r),o=i;o.moduleId===e&&t.push({frontmatter:o,body:a})}return t.sort((e,t)=>e.frontmatter.order-t.frontmatter.order)}function Wd(e){for(let t of Object.values(Id)){let{data:n,body:r}=Rd(t),i=n;if(i.id===e)return{frontmatter:i,body:r}}}function Gd(e){for(let[t,n]of Object.entries(Ld))if(t.endsWith(`/${e}.exercises.json`))return n.default;return[]}function Kd({open:e,onClose:t}){let n=(0,v.useRef)(null),r=(0,v.useRef)(null),[i,a]=(0,v.useState)(``),[o,s]=(0,v.useState)(0),c=gt(),{resolvedTheme:l,toggleTheme:u}=cr(),d=(0,v.useMemo)(()=>{let e=[],t=Hd();for(let n of t){let t=Ud(n.id);for(let r of t)e.push({id:`lesson-${r.frontmatter.id}`,label:r.frontmatter.title,category:n.title,keywords:`${n.id} ${r.frontmatter.id}`,icon:(0,R.jsx)(Nr,{className:`w-3.5 h-3.5 text-neutral-400`,"aria-hidden":`true`}),action:()=>c(`/lesson/${r.frontmatter.id}`)})}let n=[{to:`/`,label:`Home Workspace`,Icon:xi},{to:`/dashboard`,label:`Learning Dashboard`,Icon:Fr},{to:`/visualizer`,label:`Step Visualizer`,Icon:Zr},{to:`/flashcards`,label:`Flashcards (SM-2)`,Icon:ai},{to:`/dataframe-lab`,label:`DataFrame Lab`,Icon:yi},{to:`/sql-lab`,label:`SQL Playground`,Icon:Yr},{to:`/chart-lab`,label:`Chart Lab`,Icon:Lr},{to:`/simulators`,label:`Stats Simulators`,Icon:Cr},{to:`/projects`,label:`EDA & Capstone Projects`,Icon:ri},{to:`/cheatsheets`,label:`Cheat Sheets`,Icon:$r},{to:`/glossary`,label:`Glossary`,Icon:kr},{to:`/sources`,label:`Cited Sources`,Icon:jr},{to:`/settings`,label:`Settings & Backup`,Icon:hi}];for(let t of n){let n=t.Icon;e.push({id:`page-${t.to}`,label:t.label,category:`Workspace`,icon:(0,R.jsx)(n,{className:`w-3.5 h-3.5 text-neutral-400`,"aria-hidden":`true`}),action:()=>c(t.to)})}return e.push({id:`action-theme`,label:`Switch to ${l===`dark`?`Light`:`Dark`} Mode`,category:`Preference`,keywords:`theme dark light mode appearance`,icon:l===`dark`?(0,R.jsx)(_i,{className:`w-3.5 h-3.5 text-neutral-400`,"aria-hidden":`true`}):(0,R.jsx)(si,{className:`w-3.5 h-3.5 text-neutral-400`,"aria-hidden":`true`}),action:()=>u()}),e},[c,l,u]),f=(0,v.useMemo)(()=>{let e=i.trim().toLowerCase();return e?d.filter(t=>t.label.toLowerCase().includes(e)||t.category.toLowerCase().includes(e)||t.keywords&&t.keywords.toLowerCase().includes(e)).slice(0,14):d.slice(0,14)},[d,i]);(0,v.useEffect)(()=>{let t=n.current;t&&(e&&!t.open?(a(``),s(0),t.showModal(),requestAnimationFrame(()=>r.current?.focus())):!e&&t.open&&t.close())},[e]),(0,v.useEffect)(()=>{s(0)},[i]);let p=e=>{e.action(),t()};return(0,R.jsxs)(`dialog`,{ref:n,"aria-label":`Command palette`,onCancel:e=>{e.preventDefault(),t()},onClick:e=>{e.target===n.current&&t()},className:`cmd-dialog m-auto mt-[12vh] w-[min(92vw,36rem)] rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111113] text-neutral-950 dark:text-neutral-50 shadow-2xl p-0 overflow-hidden`,children:[(0,R.jsxs)(`div`,{className:`flex items-center gap-3 px-4 py-3 border-b border-neutral-200 dark:border-neutral-800`,children:[(0,R.jsx)(pi,{className:`w-4 h-4 text-neutral-400 shrink-0`,"aria-hidden":`true`}),(0,R.jsx)(`input`,{ref:r,type:`text`,value:i,onChange:e=>a(e.target.value),onKeyDown:e=>{e.key===`ArrowDown`?(e.preventDefault(),s(e=>f.length?(e+1)%f.length:0)):e.key===`ArrowUp`?(e.preventDefault(),s(e=>f.length?(e-1+f.length)%f.length:0)):e.key===`Enter`&&f[o]&&(e.preventDefault(),p(f[o]))},placeholder:`Jump to lesson, lab, or command…`,"aria-label":`Search lessons, labs, and commands`,className:`w-full bg-transparent text-sm placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:outline-none`}),(0,R.jsx)(`kbd`,{className:`hidden sm:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wider text-neutral-400 border border-neutral-200 dark:border-neutral-800 rounded`,children:`ESC`})]}),(0,R.jsx)(`div`,{className:`max-h-80 overflow-y-auto py-1.5`,children:f.length===0?(0,R.jsx)(`p`,{className:`px-4 py-8 text-center text-xs font-mono uppercase tracking-wider text-neutral-400`,children:`No matching commands`}):(0,R.jsx)(`ul`,{role:`listbox`,"aria-label":`Search results`,children:f.map((e,t)=>{let n=t===o;return(0,R.jsx)(`li`,{role:`option`,"aria-selected":n,children:(0,R.jsxs)(`button`,{type:`button`,onMouseEnter:()=>s(t),onClick:()=>p(e),className:`w-full flex items-center justify-between gap-3 px-4 py-2 text-left text-xs transition-colors ${n?`bg-neutral-100 dark:bg-neutral-800/80 text-neutral-950 dark:text-white`:`text-neutral-600 dark:text-neutral-400`}`,children:[(0,R.jsxs)(`span`,{className:`flex items-center gap-2.5 min-w-0`,children:[e.icon,(0,R.jsx)(`span`,{className:`font-medium truncate`,children:e.label})]}),(0,R.jsxs)(`span`,{className:`flex items-center gap-2 shrink-0`,children:[(0,R.jsx)(`span`,{className:`font-mono text-[10px] uppercase tracking-wider text-neutral-400 dark:text-neutral-500`,children:e.category}),n&&(0,R.jsx)(qr,{className:`w-3 h-3 text-neutral-400`,"aria-hidden":`true`})]})]})},e.id)})})}),(0,R.jsxs)(`div`,{className:`flex items-center justify-between px-4 py-2 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0c0c0e] font-mono text-[10px] uppercase tracking-wider text-neutral-400`,children:[(0,R.jsx)(`span`,{children:`↑↓ Navigate`}),(0,R.jsx)(`span`,{children:`↵ Open`})]})]})}var qd={"a-foundations":`Track A // Foundations`,"b-advanced":`Track B // Advanced`,"c-analytics":`Track C // Analytics`};function Jd(){return(0,R.jsxs)(`svg`,{width:`16`,height:`16`,viewBox:`0 0 16 16`,fill:`currentColor`,"aria-hidden":`true`,className:`text-neutral-950 dark:text-white shrink-0`,children:[(0,R.jsx)(`circle`,{cx:`2.5`,cy:`2.5`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`8`,cy:`2.5`,r:`1.4`,opacity:`0.35`}),(0,R.jsx)(`circle`,{cx:`13.5`,cy:`2.5`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`2.5`,cy:`8`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`8`,cy:`8`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`13.5`,cy:`8`,r:`1.4`,opacity:`0.35`}),(0,R.jsx)(`circle`,{cx:`2.5`,cy:`13.5`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`8`,cy:`13.5`,r:`1.4`}),(0,R.jsx)(`circle`,{cx:`13.5`,cy:`13.5`,r:`1.4`})]})}function Yd(){let{resolvedTheme:e,toggleTheme:t}=cr(),n=pt(),[r,i]=(0,v.useState)(()=>typeof window<`u`&&window.innerWidth>=1024&&window.location.pathname!==`/`),[a,o]=(0,v.useState)(!1),[s,c]=(0,v.useState)(new Map),[l,u]=(0,v.useState)(0),d=(0,v.useMemo)(()=>Hd(),[]),[f,p]=(0,v.useState)(()=>{let e={};return d[0]&&(e[d[0].id]=!0),e}),m=()=>{$n.progress.toArray().then(e=>{let t=new Map;for(let n of e)t.set(n.lessonId,n);c(t)}).catch(()=>{}),$n.streaks.toArray().then(e=>{u(e.filter(e=>e.exercisesCompleted>0||e.minutes>0).length)}).catch(()=>{})};(0,v.useEffect)(()=>{m();let e=()=>m();return window.addEventListener(`pdp-progress-updated`,e),()=>window.removeEventListener(`pdp-progress-updated`,e)},[n.pathname]),(0,v.useEffect)(()=>{let e=e=>{(e.metaKey||e.ctrlKey)&&e.key.toLowerCase()===`k`&&(e.preventDefault(),o(e=>!e))};return window.addEventListener(`keydown`,e),()=>window.removeEventListener(`keydown`,e)},[]),(0,v.useEffect)(()=>{let e=n.pathname.match(/^\/lesson\/([^/]+)/);if(e){let t=e[1];for(let e of d)if(Ud(e.id).some(e=>e.frontmatter.id===t)){p(t=>({...t,[e.id]:!0}));break}}typeof window<`u`&&window.innerWidth<1024&&i(!1)},[n.pathname,d]);let h=e=>{p(t=>({...t,[e]:!t[e]}))},g=[`a-foundations`,`b-advanced`,`c-analytics`],_=d.flatMap(e=>Ud(e.id)),y=_.find(e=>s.get(e.frontmatter.id)?.status!==`completed`)??_[0];return(0,R.jsxs)(`div`,{className:`min-h-screen flex flex-col bg-white dark:bg-[#09090b] text-neutral-950 dark:text-neutral-50`,children:[(0,R.jsx)(`a`,{href:`#main-content`,className:`skip-link visually-hidden`,children:`Skip to main content`}),(0,R.jsxs)(`header`,{className:`h-14 shrink-0 border-b border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-[#09090b]/90 backdrop-blur-md px-4 lg:px-6 flex items-center justify-between gap-4 sticky top-0 z-30`,children:[(0,R.jsxs)(`div`,{className:`flex items-center gap-3`,children:[(0,R.jsx)(`button`,{type:`button`,onClick:()=>i(e=>!e),"aria-label":r?`Close navigation sidebar`:`Open navigation sidebar`,"aria-expanded":r,className:`tactile inline-flex items-center justify-center w-8 h-8 rounded-md text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/70`,children:r?(0,R.jsx)(di,{className:`w-4 h-4`,"aria-hidden":`true`}):(0,R.jsx)(li,{className:`w-4 h-4`,"aria-hidden":`true`})}),(0,R.jsxs)(On,{to:`/`,className:`flex items-center gap-2.5 font-mono text-xs font-semibold tracking-[0.16em] uppercase text-neutral-950 dark:text-white rounded px-1 py-1`,children:[(0,R.jsx)(Jd,{}),(0,R.jsx)(`span`,{children:`PYDATA`})]})]}),(0,R.jsx)(`nav`,{"aria-label":`Primary`,className:`hidden md:flex items-center gap-1`,children:[{to:`/`,label:`Curriculum`,end:!0},{to:`/dashboard`,label:`Dashboard`},{to:`/dataframe-lab`,label:`DataFrame Lab`},{to:`/sql-lab`,label:`SQL`},{to:`/sources`,label:`Sources`}].map(e=>(0,R.jsx)(kn,{to:e.to,end:e.end,className:({isActive:e})=>`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${e?`text-neutral-950 dark:text-white bg-neutral-100 dark:bg-neutral-800/80`:`text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white`}`,children:e.label},e.to))}),(0,R.jsxs)(`div`,{className:`flex items-center gap-2`,children:[(0,R.jsxs)(`button`,{type:`button`,onClick:()=>o(!0),"aria-label":`Open command palette`,className:`tactile hidden sm:inline-flex items-center gap-2 h-8 px-2.5 rounded-md border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#111113] text-xs text-neutral-500 dark:text-neutral-400 hover:border-neutral-300 dark:hover:border-neutral-700 hover:text-neutral-900 dark:hover:text-neutral-200`,children:[(0,R.jsx)(pi,{className:`w-3.5 h-3.5`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{className:`hidden lg:inline`,children:`Search`}),(0,R.jsx)(`kbd`,{className:`font-mono text-[10px] px-1 py-0.5 rounded bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-400`,children:`⌘K`})]}),(0,R.jsxs)(`span`,{className:`inline-flex items-center gap-1.5 h-8 px-2.5 rounded-md border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111113] font-mono text-[11px] tabular-nums text-neutral-700 dark:text-neutral-300`,title:`Active learning days`,children:[(0,R.jsx)(ti,{className:`w-3.5 h-3.5 text-amber-500`,"aria-hidden":`true`}),l,`d`]}),(0,R.jsx)(kn,{to:`/settings`,"aria-label":`Settings and Backup`,className:({isActive:e})=>`tactile inline-flex items-center justify-center w-8 h-8 rounded-md transition-colors ${e?`bg-neutral-100 dark:bg-neutral-800 text-neutral-950 dark:text-white`:`text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/70`}`,children:(0,R.jsx)(hi,{className:`w-4 h-4`,"aria-hidden":`true`})}),(0,R.jsx)(`button`,{type:`button`,onClick:t,"aria-label":`Switch to ${e===`dark`?`light`:`dark`} mode`,className:`tactile inline-flex items-center justify-center w-8 h-8 rounded-md text-neutral-500 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800/70`,children:e===`dark`?(0,R.jsx)(_i,{className:`w-4 h-4`,"aria-hidden":`true`}):(0,R.jsx)(si,{className:`w-4 h-4`,"aria-hidden":`true`})}),y&&(0,R.jsxs)(On,{to:`/lesson/${y.frontmatter.id}`,className:`tactile group hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 text-xs font-medium hover:bg-neutral-800 dark:hover:bg-neutral-200`,children:[(0,R.jsx)(`span`,{children:`Continue`}),(0,R.jsx)(Dr,{className:`w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5`,"aria-hidden":`true`})]})]})]}),(0,R.jsxs)(`div`,{className:`flex-1 flex min-h-0 relative`,children:[r&&(0,R.jsxs)(R.Fragment,{children:[(0,R.jsx)(`div`,{className:`fixed inset-0 top-14 z-20 bg-black/25 backdrop-blur-[2px] lg:hidden`,onClick:()=>i(!1),"aria-hidden":`true`}),(0,R.jsxs)(`aside`,{"aria-label":`Curriculum navigation`,className:`fixed lg:sticky top-14 left-0 z-30 lg:z-20 w-72 shrink-0 h-[calc(100vh-3.5rem)] border-r border-neutral-200 dark:border-neutral-800 bg-neutral-50/95 dark:bg-[#0c0c0e]/95 backdrop-blur-md lg:backdrop-blur-none overflow-y-auto p-3.5 space-y-5`,children:[g.map(e=>{let t=d.filter(t=>t.track===e);return(0,R.jsxs)(`div`,{children:[(0,R.jsx)(`h2`,{className:`font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500 mb-2 px-2`,children:qd[e]}),t.length===0?(0,R.jsx)(`p`,{className:`text-xs text-neutral-400 dark:text-neutral-600 px-2 font-mono`,children:`Coming soon`}):(0,R.jsx)(`div`,{className:`space-y-1.5`,children:t.map(e=>{let t=Ud(e.id),n=t.filter(e=>s.get(e.frontmatter.id)?.status===`completed`).length,r=!!f[e.id];return(0,R.jsxs)(`div`,{className:`space-y-1`,children:[(0,R.jsx)(`h3`,{children:(0,R.jsxs)(`button`,{type:`button`,"aria-expanded":r,onClick:()=>h(e.id),className:`w-full flex items-center justify-between gap-2 px-2 py-1.5 rounded-md text-left text-xs font-semibold text-neutral-900 dark:text-neutral-100 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 transition-colors`,children:[(0,R.jsxs)(`span`,{className:`flex items-center gap-1.5 min-w-0`,children:[(0,R.jsx)(zr,{className:`w-3.5 h-3.5 shrink-0 text-neutral-400 transition-transform duration-150 ${r?`rotate-90 text-neutral-900 dark:text-white`:``}`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{className:`truncate`,children:e.title})]}),(0,R.jsxs)(`span`,{className:`flex items-center gap-1.5 shrink-0`,children:[(0,R.jsxs)(`span`,{className:`font-mono text-[10px] tabular-nums text-neutral-400`,children:[n,`/`,t.length]}),(0,R.jsx)(Si,{completed:n,total:t.length,size:16})]})]})}),r&&(0,R.jsx)(`ul`,{className:`space-y-0.5 pl-3 border-l border-neutral-200 dark:border-neutral-800 ml-3.5`,children:t.map(e=>{let t=e.frontmatter.id,n=s.get(t)?.status??`not_started`;return(0,R.jsx)(`li`,{children:(0,R.jsxs)(kn,{to:`/lesson/${t}`,className:({isActive:e})=>`flex items-center gap-2 px-2.5 py-1.5 rounded-md text-xs transition-colors ${e?`bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 font-medium`:`text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 hover:text-neutral-950 dark:hover:text-neutral-100`}`,children:[n===`completed`?(0,R.jsx)(Vr,{className:`w-3.5 h-3.5 shrink-0 text-emerald-500`,"aria-hidden":`true`}):(0,R.jsx)(Ur,{className:`w-3.5 h-3.5 shrink-0 opacity-40`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{className:`truncate`,children:e.frontmatter.title})]})},t)})})]},e.id)})})]},e)}),(0,R.jsxs)(`div`,{className:`pt-4 border-t border-neutral-200 dark:border-neutral-800 space-y-1`,children:[(0,R.jsx)(`h2`,{className:`font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500 mb-2 px-2`,children:`Labs // Workspace`}),[{to:`/visualizer`,label:`Step Visualizer`,Icon:Zr},{to:`/flashcards`,label:`Flashcards (SM-2)`,Icon:ai},{to:`/dataframe-lab`,label:`DataFrame Lab`,Icon:yi},{to:`/sql-lab`,label:`SQL Playground`,Icon:Yr},{to:`/chart-lab`,label:`Chart Lab`,Icon:Lr},{to:`/simulators`,label:`Stats Simulators`,Icon:Cr},{to:`/projects`,label:`EDA & Capstone`,Icon:ri},{to:`/cheatsheets`,label:`Cheat Sheets`,Icon:$r},{to:`/glossary`,label:`Glossary`,Icon:kr}].map(({to:e,label:t,Icon:n})=>(0,R.jsxs)(kn,{to:e,className:({isActive:e})=>`flex items-center gap-2 px-2.5 py-1.5 rounded-md text-xs transition-colors ${e?`bg-neutral-950 text-white dark:bg-white dark:text-neutral-950 font-medium`:`text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 hover:text-neutral-950 dark:hover:text-neutral-100`}`,children:[(0,R.jsx)(n,{className:`w-3.5 h-3.5 shrink-0`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{children:t})]},e))]})]})]}),(0,R.jsx)(`main`,{id:`main-content`,tabIndex:-1,className:`flex-1 min-w-0 focus:outline-none`,children:(0,R.jsx)(Vt,{})})]}),(0,R.jsx)(Kd,{open:a,onClose:()=>o(!1)})]})}var Xd={0:{fig:`FIG. 01`,title:`TORUS KNOT (2,3) / CLICK TO MORPH`,mode:`MODE 01 / PARTICLE GEOMETRY`},1:{fig:`FIG. 02`,title:`LORENZ ATTRACTOR / CLICK TO MORPH`,mode:`MODE 02 / CHAOS MANIFOLD`},2:{fig:`FIG. 03`,title:`LISSAJOUS KNOT / CLICK TO MORPH`,mode:`MODE 03 / HARMONIC LATTICE`}};function Zd(e,t=1600){let n=[];if(e===0)for(let e=0;e<t;e++){let r=e/t*Math.PI*2,i=e*137.508%360*(Math.PI/180),a=.95+.38*Math.cos(3*r),o=a*Math.cos(2*r),s=a*Math.sin(2*r),c=.45*Math.sin(3*r),l=.24*Math.sqrt(e*73%100/100),u=o+l*Math.cos(i)*Math.cos(2*r),d=s+l*Math.cos(i)*Math.sin(2*r),f=c+l*Math.sin(i);n.push({x:u,y:d,z:f,shade:(Math.sin(i)+1)*.5})}else if(e===1){let e=.1,r=0,i=0,a=.008,o=8/3;for(let t=0;t<120;t++){let t=10*(r-e),n=e*(28-i)-r,s=e*r-o*i;e+=t*a,r+=n*a,i+=s*a}for(let s=0;s<t;s++){let t=10*(r-e),c=e*(28-i)-r,l=e*r-o*i;e+=t*a,r+=c*a,i+=l*a,n.push({x:e*.055,y:r*.055,z:(i-25)*.055,shade:s%10/10})}}else for(let e=0;e<t;e++){let r=e/t*Math.PI*2,i=(e*29%100/100-.5)*.14,a=Math.sin(3*r+.4)*1.1+i,o=Math.sin(4*r)*1.1+i,s=Math.sin(5*r+.8)*.85+i;n.push({x:a,y:o,z:s,shade:(Math.cos(5*r)+1)*.5})}return n}function Qd(){let e=(0,v.useRef)(null),[t,n]=(0,v.useState)(0),{resolvedTheme:r}=cr(),i=(0,v.useRef)({active:!1,lastX:0,lastY:0,rotX:.45,rotY:.35,vx:0,vy:0}),a=(0,v.useRef)({x:0,y:0,active:!1});(0,v.useEffect)(()=>{let n=e.current;if(!n)return;let o=n.getContext(`2d`);if(!o)return;let s=Zd(t),c=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches,l=0,u=()=>{let e=n.getBoundingClientRect(),t=Math.min(window.devicePixelRatio||1,2);n.width=Math.max(1,Math.floor(e.width*t)),n.height=Math.max(1,Math.floor(e.height*t)),o.setTransform(t,0,0,t,0,0)};u(),window.addEventListener(`resize`,u);let d=()=>{let e=n.getBoundingClientRect(),t=e.width,u=e.height;o.clearRect(0,0,t,u);let f=i.current;f.active||c||(f.rotY+=.0035+f.vx*.04,f.rotX+=f.vy*.04,f.vx*=.92,f.vy*=.92);let p=Math.cos(f.rotY),m=Math.sin(f.rotY),h=Math.cos(f.rotX),g=Math.sin(f.rotX),_=Math.min(t,u)*.27,v=t*.52,y=u*.48,b=r===`dark`,x=s.map(e=>{let t=e.x*p-e.z*m,n=e.x*m+e.z*p,r=e.y*h-n*g,i=e.y*g+n*h,o=3.2/(3.2-i),s=v+t*_*o,c=y+r*_*o;if(a.current.active){let e=s-a.current.x,t=c-a.current.y,n=Math.hypot(e,t);if(n<72&&n>.1){let r=(1-n/72)*14;s+=e/n*r,c+=t/n*r}}return{sx:s,sy:c,z:i,shade:e.shade}});x.sort((e,t)=>e.z-t.z);for(let e=0;e<x.length;e++){let t=x[e],n=Math.max(.14,Math.min(.92,(t.z+1.4)/2.6)),r=t.z>.2?1.45:1.05;o.fillStyle=b?`rgba(245, 245, 245, ${n.toFixed(2)})`:`rgba(12, 12, 14, ${n.toFixed(2)})`,o.beginPath(),o.arc(t.sx,t.sy,r,0,Math.PI*2),o.fill()}c||(l=requestAnimationFrame(d))};return d(),()=>{cancelAnimationFrame(l),window.removeEventListener(`resize`,u)}},[t,r]);let o=Xd[t];return(0,R.jsxs)(`div`,{className:`relative flex flex-col justify-between h-full min-h-[360px] lg:min-h-[440px] select-none`,children:[(0,R.jsxs)(`div`,{className:`flex items-center justify-between gap-4 px-5 pt-4 font-mono text-[10px] tracking-[0.14em] uppercase text-neutral-400 dark:text-neutral-500`,children:[(0,R.jsxs)(`span`,{children:[o.fig,` — `,o.title]}),(0,R.jsx)(`span`,{className:`hidden sm:inline`,children:o.mode})]}),(0,R.jsx)(`canvas`,{ref:e,"aria-label":`Interactive 3D particle geometry visualization. Click to morph form or drag to rotate.`,onClick:()=>n(e=>(e+1)%3),onPointerDown:e=>{i.current.active=!0,i.current.lastX=e.clientX,i.current.lastY=e.clientY},onPointerMove:e=>{let t=e.currentTarget.getBoundingClientRect();if(a.current={x:e.clientX-t.left,y:e.clientY-t.top,active:!0},i.current.active){let t=e.clientX-i.current.lastX,n=e.clientY-i.current.lastY;i.current.rotY+=t*.008,i.current.rotX+=n*.008,i.current.vx=t*.08,i.current.vy=n*.08,i.current.lastX=e.clientX,i.current.lastY=e.clientY}},onPointerUp:()=>{i.current.active=!1},onPointerLeave:()=>{i.current.active=!1,a.current.active=!1},className:`w-full flex-1 cursor-grab active:cursor-grabbing`}),(0,R.jsx)(`div`,{className:`flex items-center justify-end px-5 pb-3 font-mono text-[10px] tracking-[0.14em] uppercase text-neutral-400 dark:text-neutral-500`,children:(0,R.jsx)(`span`,{children:`03 FORMS · DRAG CURSOR TO DISPLACE`})})]})}function $d(){let e=Hd(),[t,n]=(0,v.useState)(new Map);(0,v.useEffect)(()=>{$n.progress.toArray().then(e=>{let t=new Map;for(let n of e)t.set(n.lessonId,n);n(t)}).catch(()=>{})},[]);let r=e.flatMap(e=>Ud(e.id)),i=r.length,a=r.filter(e=>t.get(e.frontmatter.id)?.status===`completed`).length,o=r.find(e=>t.get(e.frontmatter.id)?.status!==`completed`)??r[0];return(0,R.jsxs)(`div`,{className:`min-h-full bg-white dark:bg-[#09090b]`,children:[(0,R.jsx)(`section`,{className:`relative border-b border-neutral-200 dark:border-neutral-800`,children:(0,R.jsxs)(`div`,{className:`max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 relative`,children:[(0,R.jsxs)(`div`,{className:`lg:col-span-6 px-6 sm:px-10 lg:px-14 py-12 lg:py-20 flex flex-col justify-between gap-12 lg:border-r border-neutral-200 dark:border-neutral-800`,children:[(0,R.jsxs)(`div`,{className:`space-y-7`,children:[(0,R.jsxs)(`div`,{className:`inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-400`,children:[(0,R.jsx)(`span`,{className:`w-1.5 h-1.5 bg-neutral-950 dark:bg-white inline-block`,"aria-hidden":`true`}),(0,R.jsx)(`span`,{children:`PyData Workspace / Version 1.0`})]}),(0,R.jsxs)(`h1`,{className:`font-mono text-4xl sm:text-5xl lg:text-[3.25rem] font-medium tracking-[-0.04em] leading-[1.08] text-neutral-950 dark:text-white`,children:[`Learn Python & Analytics.`,(0,R.jsx)(`span`,{className:`text-neutral-400 dark:text-neutral-500 block mt-1`,children:`Without the complexity.`})]}),(0,R.jsx)(`p`,{className:`text-sm sm:text-[15px] text-neutral-600 dark:text-neutral-400 max-w-md leading-[1.65]`,children:`An offline-first, hands-on Python and data analytics workspace. Every lesson pairs concise, cited theory with live Python exercises running directly in your browser.`}),(0,R.jsxs)(`div`,{className:`flex flex-wrap items-center gap-3 pt-1`,children:[o&&(0,R.jsxs)(On,{to:`/lesson/${o.frontmatter.id}`,className:`tactile group inline-flex items-center gap-2.5 h-11 px-6 rounded-[2px] bg-neutral-950 dark:bg-white text-white dark:text-neutral-950 text-xs font-medium tracking-wide hover:bg-neutral-800 dark:hover:bg-neutral-200`,children:[(0,R.jsx)(`span`,{children:a>0?`Resume Learning`:`Start Learning`}),(0,R.jsx)(Dr,{className:`w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5`,"aria-hidden":`true`})]}),(0,R.jsxs)(On,{to:`/dataframe-lab`,className:`tactile group inline-flex items-center gap-2.5 h-11 px-6 rounded-[2px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111113] text-neutral-900 dark:text-neutral-100 text-xs font-medium tracking-wide hover:bg-neutral-50 dark:hover:bg-neutral-800/70`,children:[(0,R.jsx)(`span`,{children:`Explore Labs`}),(0,R.jsx)(Tr,{className:`w-3.5 h-3.5 text-neutral-400 transition-transform duration-150 group-hover:translate-x-0.5`,"aria-hidden":`true`})]})]}),(0,R.jsx)(`div`,{className:`font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-400 dark:text-neutral-500 pt-1`,children:`Browser-Native \xA0·\xA0 Offline-First \xA0·\xA0 Zero Setup`})]}),(0,R.jsxs)(`div`,{className:`grid grid-cols-3 gap-6 pt-8 border-t border-neutral-200 dark:border-neutral-800 max-w-md`,children:[(0,R.jsxs)(`div`,{children:[(0,R.jsx)(`p`,{className:`font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:`Runtime`}),(0,R.jsx)(`p`,{className:`font-mono text-xs font-medium text-neutral-900 dark:text-neutral-100 mt-1`,children:`PYODIDE / WASM`})]}),(0,R.jsxs)(`div`,{children:[(0,R.jsx)(`p`,{className:`font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:`Curriculum`}),(0,R.jsxs)(`p`,{className:`font-mono text-xs font-medium text-neutral-900 dark:text-neutral-100 mt-1 tabular-nums`,children:[e.length,` MODULES`]})]}),(0,R.jsxs)(`div`,{children:[(0,R.jsx)(`p`,{className:`font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:`Progress`}),(0,R.jsxs)(`p`,{className:`font-mono text-xs font-medium text-neutral-900 dark:text-neutral-100 mt-1 tabular-nums`,children:[a,` / `,i]})]})]})]}),(0,R.jsxs)(`div`,{className:`lg:col-span-6 relative bg-white dark:bg-[#0b0b0d] min-h-[420px] lg:min-h-[600px] flex flex-col justify-between border-t lg:border-t-0 border-neutral-200 dark:border-neutral-800`,children:[(0,R.jsx)(`span`,{"aria-hidden":`true`,className:`pointer-events-none absolute top-2 left-2 font-mono text-xs text-neutral-300 dark:text-neutral-700 select-none z-10`,children:`+`}),(0,R.jsx)(`span`,{"aria-hidden":`true`,className:`pointer-events-none absolute top-2 right-2 font-mono text-xs text-neutral-300 dark:text-neutral-700 select-none z-10`,children:`+`}),(0,R.jsx)(Qd,{})]}),(0,R.jsx)(`div`,{className:`px-6 pb-8 lg:p-0 lg:absolute lg:bottom-7 lg:left-1/2 lg:-translate-x-[18%] lg:z-20 pointer-events-none sm:pointer-events-auto`,children:(0,R.jsxs)(`div`,{className:`w-full max-w-[390px] rounded-[4px] border border-neutral-800 bg-[#0d0d0f] text-neutral-200 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.38)] overflow-hidden`,children:[(0,R.jsxs)(`div`,{className:`flex items-center justify-between px-3.5 py-2 border-b border-neutral-800/80 bg-[#121215]`,children:[(0,R.jsxs)(`div`,{className:`flex items-center gap-1.5`,"aria-hidden":`true`,children:[(0,R.jsx)(`span`,{className:`w-2.5 h-2.5 rounded-full border border-neutral-600`}),(0,R.jsx)(`span`,{className:`w-2.5 h-2.5 rounded-full border border-neutral-600`}),(0,R.jsx)(`span`,{className:`w-2.5 h-2.5 rounded-full border border-neutral-600`})]}),(0,R.jsx)(`span`,{className:`font-mono text-[10px] text-neutral-500`,children:`pydata — pyodide — 80×12`}),(0,R.jsx)(`span`,{className:`w-8`})]}),(0,R.jsxs)(`div`,{className:`p-4 font-mono text-[11px] leading-[1.7] space-y-0.5`,children:[(0,R.jsxs)(`p`,{className:`text-neutral-100`,children:[(0,R.jsx)(`span`,{className:`text-neutral-500`,children:`$`}),` pydata init analytics-env`]}),(0,R.jsx)(`p`,{className:`text-emerald-400`,children:`✓ Pyodide WASM runtime configured`}),(0,R.jsxs)(`p`,{className:`text-neutral-100 pt-1`,children:[(0,R.jsx)(`span`,{className:`text-neutral-500`,children:`$`}),` python verify_suite.py`]}),(0,R.jsxs)(`p`,{className:`text-neutral-400`,children:[`→ Loading pandas & numpy `,(0,R.jsx)(`span`,{className:`text-neutral-600 ml-1`,children:`1.2s`})]}),(0,R.jsxs)(`p`,{className:`text-neutral-400`,children:[`→ Optimizing dataframe `,(0,R.jsx)(`span`,{className:`text-neutral-600 ml-1`,children:`0.4s`})]}),(0,R.jsx)(`p`,{className:`text-emerald-400`,children:`✓ 14/14 assertions passed`}),(0,R.jsxs)(`p`,{className:`text-emerald-400 flex items-center gap-1.5`,children:[(0,R.jsx)(`span`,{children:`✓ Workspace online`}),(0,R.jsx)(`span`,{className:`text-neutral-500`,children:`indexeddb · 0ms`})]}),(0,R.jsxs)(`p`,{className:`text-neutral-100 pt-0.5 flex items-center gap-1.5`,children:[(0,R.jsx)(`span`,{className:`text-neutral-500`,children:`$`}),(0,R.jsx)(`span`,{className:`inline-block w-1.5 h-3.5 bg-neutral-200 motion-safe:animate-pulse`,"aria-hidden":`true`})]})]})]})})]})}),(0,R.jsxs)(`section`,{className:`max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-14 py-14 space-y-6`,children:[(0,R.jsxs)(`div`,{className:`flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-4`,children:[(0,R.jsxs)(`div`,{className:`space-y-1`,children:[(0,R.jsx)(`p`,{className:`font-mono text-[10px] uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:`01 // Curriculum Index`}),(0,R.jsx)(`h2`,{className:`text-xl font-semibold tracking-tight text-neutral-950 dark:text-white`,children:`Available Modules`})]}),(0,R.jsxs)(`p`,{className:`font-mono text-[11px] uppercase tracking-[0.12em] text-neutral-500 dark:text-neutral-400 tabular-nums`,children:[a,` of `,i,` lessons completed`]})]}),(0,R.jsx)(`div`,{className:`grid grid-cols-1 lg:grid-cols-2 gap-5`,children:e.map((e,n)=>{let r=Ud(e.id),i=r.filter(e=>t.get(e.frontmatter.id)?.status===`completed`).length;return(0,R.jsxs)(`article`,{className:`rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0e] p-5 sm:p-6 flex flex-col justify-between gap-5 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors`,children:[(0,R.jsxs)(`div`,{className:`flex items-start justify-between gap-4`,children:[(0,R.jsxs)(`div`,{className:`space-y-1.5`,children:[(0,R.jsxs)(`span`,{className:`font-mono text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-400 dark:text-neutral-500`,children:[`MOD. `,String(n+1).padStart(2,`0`),` // `,e.id]}),(0,R.jsx)(`h3`,{className:`text-lg font-semibold tracking-tight text-neutral-950 dark:text-white`,children:e.title}),(0,R.jsx)(`p`,{className:`text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed`,children:e.summary})]}),(0,R.jsxs)(`div`,{className:`flex items-center gap-2 shrink-0 pt-1`,children:[(0,R.jsx)(Si,{completed:i,total:r.length,size:28}),(0,R.jsxs)(`span`,{className:`font-mono text-xs font-medium tabular-nums text-neutral-600 dark:text-neutral-400`,children:[i,`/`,r.length]})]})]}),(0,R.jsx)(`div`,{className:`divide-y divide-neutral-100 dark:divide-neutral-800/80 border-t border-neutral-100 dark:border-neutral-800/80`,children:r.map(e=>{let n=e.frontmatter,r=t.get(n.id)?.status===`completed`;return(0,R.jsxs)(On,{to:`/lesson/${n.id}`,className:`flex items-center justify-between gap-4 py-2.5 px-2 -mx-2 rounded-md hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors group`,children:[(0,R.jsxs)(`div`,{className:`flex items-center gap-3 min-w-0`,children:[r?(0,R.jsx)(Vr,{className:`w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0`,"aria-hidden":`true`}):(0,R.jsx)(`span`,{className:`w-4 h-4 rounded-full border border-neutral-300 dark:border-neutral-700 shrink-0 group-hover:border-neutral-500 dark:group-hover:border-neutral-500 transition-colors`}),(0,R.jsx)(`span`,{className:`text-sm font-medium text-neutral-800 dark:text-neutral-200 truncate group-hover:text-neutral-950 dark:group-hover:text-white`,children:n.title})]}),(0,R.jsxs)(`div`,{className:`flex items-center gap-3 shrink-0 font-mono text-[11px] tabular-nums text-neutral-400 dark:text-neutral-500`,children:[(0,R.jsxs)(`span`,{className:`inline-flex items-center gap-1`,children:[(0,R.jsx)(Gr,{className:`w-3 h-3`,"aria-hidden":`true`}),n.estimatedMinutes,`m`]}),(0,R.jsx)(Tr,{className:`w-3.5 h-3.5 text-neutral-300 dark:text-neutral-600 group-hover:text-neutral-950 dark:group-hover:text-white group-hover:translate-x-0.5 transition-all duration-150`,"aria-hidden":`true`})]})]},n.id)})})]},e.id)})})]})]})}var ef=`modulepreload`,tf=function(e){return`/`+e},nf={},rf=function(e){return e.pathname.endsWith(`.css`)},af=function(e,t,n){if(t in e)return e[t];let r=n();if(!r){e[t]=void 0;return}let i=r.then(()=>{e[t]=void 0},n=>{throw e[t]=void 0,n});return e[t]=i,i},of=function(e,t,n){let r=Promise.resolve();if(t&&t.length>0){let e,i=document.querySelector(`meta[property=csp-nonce]`),a=i?.nonce||i?.getAttribute(`nonce`);function o(e){return Promise.all(e.map(e=>Promise.resolve(e).then(e=>({status:`fulfilled`,value:e}),e=>({status:`rejected`,reason:e}))))}function s(e){return import.meta.resolve?new URL(import.meta.resolve(e)):new URL(e,import.meta.url)}r=o(t.map(t=>{t=tf(t,n);let r=s(t),i=rf(r);return af(nf,r.href,()=>{if(e===void 0){e={all:new Set,styles:new Set};let t=document.getElementsByTagName(`link`);for(let n=t.length-1;n>=0;n--){let r=t[n];e.all.add(r.href),r.rel===`stylesheet`&&e.styles.add(r.href)}}if((i?e.styles:e.all).has(r.href))return;let t=document.createElement(`link`);if(t.rel=i?`stylesheet`:ef,i||(t.as=`script`),t.crossOrigin=``,t.href=r.href,a&&t.setAttribute(`nonce`,a),document.head.appendChild(t),i)return new Promise((e,n)=>{let i=a=>{t.removeEventListener(`load`,i),t.removeEventListener(`error`,i),a.type===`error`?n(Error(`Unable to preload CSS for ${r}`)):e(a)};t.addEventListener(`load`,i),t.addEventListener(`error`,i)})})}).filter(e=>e!==void 0))}function i(e){let t=new Event(`vite:preloadError`,{cancelable:!0});if(t.payload=e,window.dispatchEvent(t),!t.defaultPrevented)throw e}return r.then(t=>{for(let e of t||[])e.status===`rejected`&&i(e.reason);return e().catch(i)})},sf=(0,v.lazy)(()=>of(()=>import(`./LessonPage-B7AbPuRH.js`).then(e=>({default:e.LessonPage})),__vite__mapDeps([0,1,2,3,4,5,6,7]))),cf=(0,v.lazy)(()=>of(()=>import(`./SourcesPage-DHAk24AE.js`).then(e=>({default:e.SourcesPage})),__vite__mapDeps([8,2]))),lf=(0,v.lazy)(()=>of(()=>import(`./GlossaryPage-BhTCNWQy.js`).then(e=>({default:e.GlossaryPage})),[])),uf=(0,v.lazy)(()=>of(()=>import(`./CheatSheetsPage-DZsv4u_E.js`).then(e=>({default:e.CheatSheetsPage})),[])),df=(0,v.lazy)(()=>of(()=>import(`./FlashcardsPage-b51vwwcy.js`).then(e=>({default:e.FlashcardsPage})),[])),ff=(0,v.lazy)(()=>of(()=>import(`./StepVisualizer-D7dgzpvZ.js`).then(e=>({default:e.StepVisualizer})),__vite__mapDeps([9,4,5,6]))),pf=(0,v.lazy)(()=>of(()=>import(`./DashboardPage-CkbxduHP.js`).then(e=>({default:e.DashboardPage})),__vite__mapDeps([10,3]))),Z=(0,v.lazy)(()=>of(()=>import(`./DataFrameLabPage-SE9NAmlH.js`).then(e=>({default:e.DataFrameLabPage})),__vite__mapDeps([11,4,5,12,7]))),mf=(0,v.lazy)(()=>of(()=>import(`./SqlLabPage-CR0rWIjj.js`).then(e=>({default:e.SqlLabPage})),__vite__mapDeps([13,4,7]))),hf=(0,v.lazy)(()=>of(()=>import(`./ChartLabPage-CCFFYxQJ.js`).then(e=>({default:e.ChartLabPage})),__vite__mapDeps([14,4,5,7]))),gf=(0,v.lazy)(()=>of(()=>import(`./SimulatorsPage-BfpDtMQb.js`).then(e=>({default:e.SimulatorsPage})),__vite__mapDeps([15,6]))),_f=(0,v.lazy)(()=>of(()=>import(`./ProjectsPage-BNLyKQdW.js`).then(e=>({default:e.ProjectsPage})),__vite__mapDeps([16,1]))),vf=(0,v.lazy)(()=>of(()=>import(`./ExportImportPage-DBFJHXyG.js`).then(e=>({default:e.ExportImportPage})),__vite__mapDeps([17,12,2]))),yf={"/":{title:`PyData Path — Learn Python & Data Analytics in Your Browser`,description:`An offline-first, hands-on Python and data analytics learning workspace powered by Pyodide WebAssembly.`},"/dashboard":{title:`Learning Dashboard | PyData Path`,description:`Track completed lessons, exercise accuracy, active days, and skill mastery locally.`},"/dataframe-lab":{title:`DataFrame Lab | PyData Path`,description:`Inspect CSV datasets and run pandas and NumPy code directly in your browser.`},"/sql-lab":{title:`SQL Playground | PyData Path`,description:`Practice SQL queries against local datasets in your browser.`},"/chart-lab":{title:`Chart Lab | PyData Path`,description:`Explore data visualizations and plotting workflows in Python.`},"/simulators":{title:`Stats Simulators | PyData Path`,description:`Interactive probability and statistics simulators.`},"/visualizer":{title:`Step Visualizer | PyData Path`,description:`Trace Python code execution line by line.`},"/flashcards":{title:`Flashcards (SM-2) | PyData Path`,description:`Spaced-repetition flashcards for Python and data analytics concepts.`},"/projects":{title:`EDA & Capstone Projects | PyData Path`,description:`Guided exploratory data analysis and capstone project checklists.`},"/cheatsheets":{title:`Cheat Sheets | PyData Path`,description:`Quick-reference syntax guides for Python, pandas, NumPy, and SQL.`},"/glossary":{title:`Glossary | PyData Path`,description:`Definitions for key Python and data analytics terminology.`},"/sources":{title:`Cited Sources | PyData Path`,description:`Official documentation and references cited across PyData Path lessons.`},"/settings":{title:`Settings & Backup | PyData Path`,description:`Export or import your local PyData Path progress and notes.`}};function bf(){let{pathname:e}=pt();return(0,v.useEffect)(()=>{let t=yf[`/`].title,n=yf[`/`].description,r=e.match(/^\/lesson\/([^/]+)/);if(r){let e=Wd(r[1]);e&&(t=`${e.frontmatter.title} | PyData Path`,n=`Interactive Python lesson: ${e.frontmatter.title} (${e.frontmatter.estimatedMinutes} min, ${e.frontmatter.difficulty}).`)}else yf[e]&&(t=yf[e].title,n=yf[e].description);document.title=t;let i=document.querySelector(`meta[name="description"]`);i&&i.setAttribute(`content`,n)},[e]),null}function xf(){return(0,R.jsx)(`div`,{className:`flex items-center justify-center min-h-[40vh] font-mono text-xs uppercase tracking-[0.14em] text-neutral-400`,children:`Loading workspace…`})}function Sf(){return(0,R.jsx)(sr,{children:(0,R.jsxs)(Dn,{children:[(0,R.jsx)(bf,{}),(0,R.jsx)(v.Suspense,{fallback:(0,R.jsx)(xf,{}),children:(0,R.jsx)(Wt,{children:(0,R.jsxs)(Ht,{element:(0,R.jsx)(Yd,{}),children:[(0,R.jsx)(Ht,{path:`/`,element:(0,R.jsx)($d,{})}),(0,R.jsx)(Ht,{path:`/lesson/:lessonId`,element:(0,R.jsx)(sf,{})}),(0,R.jsx)(Ht,{path:`/dashboard`,element:(0,R.jsx)(pf,{})}),(0,R.jsx)(Ht,{path:`/flashcards`,element:(0,R.jsx)(df,{})}),(0,R.jsx)(Ht,{path:`/visualizer`,element:(0,R.jsx)(ff,{})}),(0,R.jsx)(Ht,{path:`/dataframe-lab`,element:(0,R.jsx)(Z,{})}),(0,R.jsx)(Ht,{path:`/sql-lab`,element:(0,R.jsx)(mf,{})}),(0,R.jsx)(Ht,{path:`/chart-lab`,element:(0,R.jsx)(hf,{})}),(0,R.jsx)(Ht,{path:`/simulators`,element:(0,R.jsx)(gf,{})}),(0,R.jsx)(Ht,{path:`/projects`,element:(0,R.jsx)(_f,{})}),(0,R.jsx)(Ht,{path:`/cheatsheets`,element:(0,R.jsx)(uf,{})}),(0,R.jsx)(Ht,{path:`/glossary`,element:(0,R.jsx)(lf,{})}),(0,R.jsx)(Ht,{path:`/sources`,element:(0,R.jsx)(cf,{})}),(0,R.jsx)(Ht,{path:`/settings`,element:(0,R.jsx)(vf,{})}),(0,R.jsx)(Ht,{path:`*`,element:(0,R.jsx)(Bt,{to:`/`,replace:!0})})]})})})]})})}(0,y.createRoot)(document.getElementById(`root`)).render((0,R.jsx)(v.StrictMode,{children:(0,R.jsx)(Sf,{})}));export{tr as A,Nr as C,cr as D,z as E,d as F,o as I,s as L,nr as M,On as N,ir as O,yt as P,l as R,Fr as S,Cr as T,Yr as _,Ud as a,Vr as b,xi as c,pi as d,ai as f,Zr as g,$r as h,Wd as i,er as j,$n as k,yi as l,ti as m,Bd as n,Vd as o,ri as p,Gd as r,Si as s,Hd as t,hi as u,Gr as v,kr as w,Lr as x,Ur as y};

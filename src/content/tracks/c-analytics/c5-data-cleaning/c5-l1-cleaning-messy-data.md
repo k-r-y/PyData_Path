@@ -3,7 +3,7 @@ id: "c5-l1-cleaning-messy-data"
 moduleId: "c5-data-cleaning"
 title: "Missing Values, Duplicates, Strings, and Type Cleaning"
 order: 1
-estimatedMinutes: 22
+estimatedMinutes: 24
 difficulty: "intermediate"
 objectives:
   - "Detect and handle missing values with isna(), dropna(), and fillna()"
@@ -17,13 +17,43 @@ tags: ["data-cleaning", "missing-values", "duplicates", "str-accessor"]
 
 ## Concept
 
-Real-world tables rarely arrive clean. `pandas` provides dedicated tools for each cleaning step [src:pandas-docs]:
-- **Missing values**: `df.isna().sum()` counts nulls per column; `df.dropna(subset=["col"])` drops rows missing critical fields; `df["col"].fillna(0)` imputes defaults [src:pandas-docs].
-- **Duplicates**: `df.duplicated().sum()` counts exact duplicates; `df.drop_duplicates(subset=["order_id"])` keeps unique records [src:pandas-docs].
-- **Strings**: `df["dept"].str.strip().str.upper()` standardizes messy text across a whole column [src:pandas-docs].
-- **Types**: `pd.to_numeric(df["price"], errors="coerce")` turns unparseable strings like `"N/A"` into `NaN`; `pd.to_datetime(df["date"], errors="coerce")` parses dates [src:pandas-docs].
+### 1. Missing Values (`isna`, `dropna`, `fillna`)
 
-Explanation: Never drop missing rows blindly! First ask *why* a value is missing: a missing `coupon_code` usually means "no coupon" (`fillna("")`), whereas a missing `order_total` might require dropping or investigating the row.
+`df.isna().sum()` counts nulls per column; `df.dropna(subset=["col"])` drops rows missing critical fields; `df["col"].fillna(0)` imputes defaults [src:pandas-docs].
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({"price": [10.0, None, 25.0]})
+print("Null count:", int(df["price"].isna().sum()))
+print("Filled:", df["price"].fillna(df["price"].median()).tolist())
+```
+
+Explanation: Never drop missing rows blindly! First ask *why* a value is missing: a missing `coupon_code` means "no coupon" (`fillna("")`), whereas a missing `order_total` might need dropping or investigation.
+
+### 2. Duplicates (`duplicated`, `drop_duplicates`)
+
+`df.duplicated().sum()` counts exact duplicate rows; `df.drop_duplicates(subset=["order_id"])` keeps unique records [src:pandas-docs].
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({"order_id": [1, 1, 2], "amount": [50, 50, 80]})
+print("Unique orders:", len(df.drop_duplicates(subset=["order_id"])))
+```
+
+### 3. String Cleaning (`.str`) and Safe Type Parsing
+
+Use `df["dept"].str.strip().str.upper()` to standardize text across a column, and `pd.to_numeric(df["price"], errors="coerce")` / `pd.to_datetime(..., errors="coerce")` to turn unparseable strings like `"N/A"` into `NaN` / `NaT` [src:pandas-docs].
+
+```python
+import pandas as pd
+
+s = pd.Series(["10", "N/A", "25"])
+print(pd.to_numeric(s, errors="coerce").tolist())  # [10.0, nan, 25.0]
+```
+
+Explanation: Standardize strings *before* calling `drop_duplicates`, otherwise `" is "` and `"IS"` will be treated as two different values.
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 

@@ -1,4 +1,4 @@
-import{D as e,F as t,O as n,R as r,l as i}from"./index-CPtcHmMJ.js";import{E as a,n as o,r as s,t as c}from"./runner-D_tfcKVJ.js";import{t as l}from"./dist-Dy2ME_fX.js";import{t as u}from"./upload-Cj6jR48o.js";import{t as d}from"./loader-circle-BRk6AMbj.js";var f=r(t(),1),p=[{id:`store_sales`,name:`Campus Store Sales (Synthetic)`,filename:`store_sales.csv`,description:`10 synthetic retail transactions for an IS inventory & sales scenario.`,csv:`order_id,date,category,item,units,unit_price,region
+import{D as e,F as t,O as n,R as r,l as i}from"./index-BNzAI8JY.js";import{E as a,n as o,r as s,t as c}from"./runner-DEbTBrmG.js";import{t as l}from"./dist-BJeCOVuI.js";import{t as u}from"./upload-CcLtaL0z.js";import{t as d}from"./loader-circle-DNv9gteP.js";var f=r(t(),1),p=[{id:`store_sales`,name:`Campus Store Sales (Synthetic)`,filename:`store_sales.csv`,description:`10 synthetic retail transactions for an IS inventory & sales scenario.`,csv:`order_id,date,category,item,units,unit_price,region
 1001,2026-01-05,Electronics,USB-C Hub,3,24.50,North
 1002,2026-01-06,Stationery,Grid Notebook,10,4.25,South
 1003,2026-01-07,Electronics,Wireless Mouse,5,18.00,North

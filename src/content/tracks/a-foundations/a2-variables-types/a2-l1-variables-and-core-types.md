@@ -3,13 +3,13 @@ id: "a2-l1-variables-and-core-types"
 moduleId: "a2-variables-types"
 title: "Variables and Core Data Types (int, float, str, bool, None)"
 order: 1
-estimatedMinutes: 15
+estimatedMinutes: 20
 difficulty: "beginner"
 objectives:
-  - "Follow Python variable naming rules and PEP 8 snake_case conventions"
+  - "Follow Python variable naming rules, reserved keywords, and PEP 8 snake_case"
   - "Distinguish int, float, str, bool, and None values"
-  - "Inspect types at runtime using type() and isinstance()"
-  - "Check for None safely using the is operator"
+  - "Inspect types and identity using type(), isinstance(), and is"
+  - "Check for None safely using is None"
 prerequisites: ["a1-l3-first-program-and-errors"]
 packages: []
 sources: ["python-tutorial", "python-lang-ref", "pep8"]
@@ -18,25 +18,50 @@ tags: ["variables", "types", "int", "float", "str", "bool", "None"]
 
 ## Concept
 
-In Python, a variable is a name bound to an object in memory [src:python-lang-ref]. Variable names may contain letters, digits, and underscores (`_`), cannot start with a digit, and are case-sensitive (`total` and `Total` are different names) [src:python-lang-ref]. PEP 8 recommends `snake_case` (lowercase words separated by underscores) for variable names [src:pep8].
+### 1. Variable Binding, Naming Rules, and Reserved Keywords
 
-Python's five foundational built-in scalar/null types are [src:python-tutorial]:
+In Python, a variable is a name bound to an object in memory (`=` is binding, not a fixed memory box) [src:python-lang-ref]. Variable names may contain letters, digits, and underscores (`_`), cannot start with a digit, cannot be a reserved keyword (`if`, `for`, `class`, `None`), and are case-sensitive [src:python-lang-ref]. PEP 8 recommends `snake_case` for variable names [src:pep8].
 
-- `int`: Whole numbers of arbitrary precision (for example, `42`, `-7`, `0`, `1_000_000`) [src:python-tutorial].
-- `float`: Decimal numbers represented in binary floating-point (for example, `3.14`, `-0.5`, `2.0`) [src:python-tutorial]. Note that some base-10 decimals like `0.1 + 0.2` have tiny binary rounding differences (`0.30000000000000004`) [src:python-tutorial].
-- `str`: Immutable sequences of Unicode characters enclosed in single (`'...'`) or double (`"..."`) quotes [src:python-tutorial].
-- `bool`: Logical truth values `True` and `False` (note the capital `T` and `F`) [src:python-lang-ref].
-- `None`: The sole value of `NoneType`, used to represent the intentional absence of a value [src:python-lang-ref].
+```python
+total_units = 12
+unit_price = 4.50
+a = b = 0  # Multiple assignment
+x, y = 10, 20  # Tuple unpacking assignment
+print(total_units, unit_price, x, y)
+```
 
-You can inspect an object's type with `type(value)` or test whether it belongs to a type with `isinstance(value, expected_type)` [src:python-tutorial]. To test whether a variable is `None`, PEP 8 specifies using `x is None` or `x is not None` rather than `==` [src:pep8].
+Explanation: Think of a variable like a sticky note attached to an object. The object has a type (`int`, `str`), while the sticky note is just the name pointing to it.
 
-Explanation: Think of a variable like a sticky note attached to a box. The box itself has a type (such as `int` or `str`), while the sticky note is just the name pointing to it. Moving the sticky note to a different box changes what the name refers to.
+### 2. Numeric Types: `int` and `float`
+
+- `int`: Whole numbers of **arbitrary precision** (Python integers never overflow; underscores like `1_000_000` improve readability) [src:python-tutorial].
+- `float`: IEEE 754 binary floating-point decimals (`3.14`, `2.0`, `1e-3`) [src:python-tutorial]. Because base-10 decimals like `0.1` cannot be represented exactly in binary, `0.1 + 0.2` equals `0.30000000000000004`; use `round()` or `math.isclose()` for comparisons [src:python-tutorial].
+
+```python
+import math
+qty = 1_000_000
+print(math.isclose(0.1 + 0.2, 0.3))  # True
+```
+
+### 3. Text (`str`), Booleans (`bool`), and `None`
+
+- `str`: Immutable Unicode text (`'IS-301'` or `"IS-301"`, or triple-quoted `"""..."""` for multi-line) [src:python-tutorial].
+- `bool`: Logical `True` and `False` (capitalized; `bool` is a subclass of `int`, where `True == 1` and `False == 0`) [src:python-lang-ref].
+- `None`: The sole value of `NoneType`, representing the intentional absence of a value. Always check with `x is None` or `x is not None` per PEP 8 [src:pep8].
+
+```python
+discount = None
+is_active = True
+print(discount is None, isinstance(is_active, bool), isinstance(is_active, int))  # True True True
+```
+
+Explanation: Use `type(val)` to inspect the exact class and `isinstance(val, expected_type)` to check type compatibility (including subclasses).
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
 ## Why it matters
 
-In data analytics, misidentified column types are a top source of silent bugs: a ZIP code or student ID stored as an `int` loses leading zeros, while a price stored as a `str` cannot be summed until converted. Knowing the core types lets you spot and prevent these issues early.
+In data analytics, misidentified column types are a top source of silent bugs: a ZIP code or student ID stored as an `int` loses leading zeros, while a price stored as a `str` cannot be summed until converted.
 
 ## Worked example
 
@@ -51,19 +76,16 @@ print(type(student_id), isinstance(units_enrolled, int))
 print("Has graduation date:", graduation_date is not None)
 ```
 
-Notice that `student_id` is stored as a `str` rather than an `int` because it is an identifier, not a quantity you do arithmetic on.
-
 ## Common mistakes
 
-- **Using lowercase `true`, `false`, or `null`**: Python requires capitalized `True`, `False`, and `None` (unlike Java, PHP, or JavaScript) [src:python-lang-ref].
-- **Comparing `float` values with `==` after arithmetic**: `0.1 + 0.2 == 0.3` evaluates to `False` due to binary floating-point representation [src:python-tutorial].
-- **Using `== None` instead of `is None`**: While `==` often works, custom objects can override `==`, so PEP 8 recommends `is None` [src:pep8].
+- **Using lowercase `true`, `false`, or `null`**: Python requires capitalized `True`, `False`, and `None` [src:python-lang-ref].
+- **Comparing `float` values with `==` after arithmetic**: `0.1 + 0.2 == 0.3` evaluates to `False`; use `math.isclose()` [src:python-tutorial].
 
 ## Check your understanding
 
 1. Why should a phone number or student ID with leading zeros be stored as `str` instead of `int`?
 2. What does `type(3.0)` return?
-3. Complete the exercises on the right to practice filling in type checks, predicting float behavior, and writing variable definitions.
+3. Complete the exercises on the right.
 
 ## Sources
 

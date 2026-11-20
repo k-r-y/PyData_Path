@@ -3,7 +3,7 @@ id: "c11-l1-structured-eda"
 moduleId: "c11-eda-workflow"
 title: "Structured EDA Checklist and Profiling"
 order: 1
-estimatedMinutes: 18
+estimatedMinutes: 20
 difficulty: "intermediate"
 objectives:
   - "Execute a repeatable EDA checklist on a new dataset"
@@ -17,14 +17,37 @@ tags: ["eda", "profiling", "workflow"]
 
 ## Concept
 
-Exploratory Data Analysis (EDA) is a structured investigation before modeling or reporting [src:python-data-analysis]:
-1. **Shape & Schema**: `df.shape`, `df.dtypes`, `df.head()`.
-2. **Missingness & Duplicates**: `df.isna().sum()`, `df.duplicated().sum()`.
-3. **Univariate Checks**: `df.describe()` for numeric columns; `df[col].value_counts()` for categorical columns [src:pandas-docs].
-4. **Bivariate Checks**: Group summaries (`groupby`) and scatter/box plots across segments.
-5. **Decision Log**: Record why rows were filtered or imputed so results are reproducible.
+### 1. Shape, Schema, and Missingness Audit
+
+Start every Exploratory Data Analysis (EDA) by checking dimensions, column types, nulls, and duplicate rows [src:python-data-analysis]:
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({"region": ["North", "South", "North"], "units": [5, None, 8]})
+print("Shape:", df.shape)
+print("Nulls:\n", df.isna().sum())
+```
 
 Explanation: Think of EDA like inspecting a used car before a road trip: you check the tires, oil, and brakes systematically before driving onto the highway.
+
+### 2. Univariate & Bivariate Profiling
+
+Profile numeric columns with `df.describe()` and categorical columns with `df[col].value_counts(dropna=False)` [src:pandas-docs]. Then examine relationships across segments with `groupby()` or scatter/box plots.
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({"region": ["North", "South", "North"], "units": [5, 10, 8]})
+print(df["region"].value_counts(dropna=False))
+print(df.groupby("region")["units"].mean())
+```
+
+Explanation: Always pass `dropna=False` to `value_counts()` during EDA so missing categories are visible rather than silently hidden.
+
+### 3. Decision Log
+
+Record why rows were filtered or imputed so your team (and future you) can reproduce every number.
 
 ## Why it matters
 

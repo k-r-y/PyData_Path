@@ -3,11 +3,12 @@ id: "b9-l1-stdlib-for-analysts"
 moduleId: "b9-stdlib-analysts"
 title: "datetime, collections, statistics, random, re, and pathlib"
 order: 1
-estimatedMinutes: 20
+estimatedMinutes: 24
 difficulty: "intermediate"
 objectives:
   - "Parse and format dates using datetime.strptime() and strftime()"
   - "Count frequencies and group items with collections.Counter and defaultdict"
+  - "Compute quick summaries with statistics and reproducible samples with random"
   - "Extract patterns with re.findall() and build paths with pathlib.Path"
 prerequisites: ["b8-l1-big-o-and-timeit"]
 packages: []
@@ -17,16 +18,61 @@ tags: ["datetime", "collections", "Counter", "re", "pathlib"]
 
 ## Concept
 
-Python's Standard Library includes several high-value modules for analysts [src:python-tutorial]:
-- `datetime`: `datetime.strptime("2026-11-19", "%Y-%m-%d")` parses date strings; `.strftime(...)` formats dates back to text [src:python-tutorial].
-- `collections.Counter`: Counts occurrences in any iterable (`Counter(["a", "b", "a"]).most_common(1)`) [src:python-tutorial].
-- `collections.defaultdict(list)`: Automatically initializes missing keys with a default factory (such as `list` or `int`) [src:python-tutorial].
-- `statistics`: `mean()`, `median()`, `stdev()` for quick numeric summaries without external packages [src:python-tutorial].
-- `random`: `random.seed(42)`, `random.choice()`, `random.sample()` for reproducible synthetic sampling [src:python-tutorial].
-- `re`: Regular expressions (`re.findall(r"\d+", text)`) for extracting structured tokens from messy strings [src:python-tutorial].
-- `pathlib.Path`: Object-oriented filesystem paths (`Path("data") / "sales.csv"`) [src:python-tutorial].
+### 1. `datetime`: Parsing and Formatting Dates
 
-Explanation: Think of `Counter` as an instant tally sheet: instead of writing a 5-line `if key in counts:` loop, `Counter(items)` counts everything in one call.
+`datetime.strptime(text, fmt)` parses date strings into `datetime` objects, and `.strftime(fmt)` formats them back to text [src:python-tutorial].
+
+```python
+from datetime import datetime
+
+dt = datetime.strptime("2026-11-19", "%Y-%m-%d")
+print(dt.strftime("%b %d, %Y"))  # Nov 19, 2026
+```
+
+Explanation: Remember `strptime` = **p**arse from string, `strftime` = **f**ormat to string.
+
+### 2. `collections`: `Counter` and `defaultdict`
+
+- `Counter(iterable)`: Counts occurrences and provides `.most_common(n)` [src:python-tutorial].
+- `defaultdict(list)`: Automatically initializes missing keys with a default factory (such as `list` or `int`) [src:python-tutorial].
+
+```python
+from collections import Counter, defaultdict
+
+counts = Counter(["IS", "CS", "IS"])
+print(counts.most_common(1))  # [('IS', 2)]
+
+groups = defaultdict(list)
+groups["North"].append(100)
+print(dict(groups))           # {'North': [100]}
+```
+
+Explanation: `Counter` replaces manual counting loops, and `defaultdict(list)` avoids writing `if key not in groups: groups[key] = []` before appending.
+
+### 3. `statistics` and `random`
+
+`statistics` provides `mean()`, `median()`, and `stdev()` for quick numeric summaries without installing third-party libraries [src:python-tutorial]. `random` provides `seed()`, `choice()`, and `sample()` for reproducible synthetic data [src:python-tutorial].
+
+```python
+import statistics, random
+
+random.seed(42)
+sample = random.sample(range(1, 100), 5)
+print("Sample:", sample, "Mean:", statistics.mean(sample))
+```
+
+### 4. `re` (Regular Expressions) and `pathlib.Path`
+
+`re.findall(r"\d+", text)` extracts matching substrings using raw strings (`r"..."`), and `pathlib.Path` builds cross-platform file paths cleanly with `/` [src:python-tutorial].
+
+```python
+import re
+from pathlib import Path
+
+nums = re.findall(r"\d+", "Order #104: 3 items")
+p = Path("data") / "sales.csv"
+print(nums, p.name)  # ['104', '3'] sales.csv
+```
 
 Note: Behavior may differ between versions. Check the official docs for your installed version.
 
