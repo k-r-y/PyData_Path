@@ -38,7 +38,8 @@
     "answers": {
       "1": ["split"],
       "2": ["join"]
-    }
+    },
+    "visibleTests": "assert tag_list == ['python', 'sql', 'pandas']\nassert formatted == 'python | sql | pandas'"
   },
   {
     "id": "a3-l1-ex3",
@@ -54,6 +55,9 @@
       "Print dept_code[:2] at the end."
     ],
     "solution": "raw_dept = \"  is-analytics  \"\ndept_code = raw_dept.strip().upper()\nprint(dept_code[:2])",
+    "alternates": [
+      "raw_dept = \"  is-analytics  \"\ndept_code = raw_dept.upper().strip()\nprint(dept_code[:2])"
+    ],
     "explanation": "Chaining .strip().upper() cleans whitespace and normalizes case before slicing the 2-letter prefix.",
     "sources": ["python-tutorial"],
     "lines": [
@@ -76,6 +80,9 @@
       "Use parts[1].strip().upper() for clean_course."
     ],
     "solution": "raw_entry = '  ana.reyes@school.edu ,  is-301  '\nparts = raw_entry.split(',')\nclean_email = parts[0].strip().lower()\nclean_course = parts[1].strip().upper()",
+    "alternates": [
+      "raw_entry = '  ana.reyes@school.edu ,  is-301  '\nemail_part, course_part = raw_entry.split(',')\nclean_email = email_part.lower().strip()\nclean_course = course_part.upper().strip()"
+    ],
     "explanation": "Splitting on ',' and calling .strip() + case normalization on each field standardizes messy CSV-style text.",
     "sources": ["python-tutorial"],
     "starterCode": "raw_entry = '  ana.reyes@school.edu ,  is-301  '\n# Set clean_email and clean_course\n",

@@ -1,0 +1,83 @@
+{
+  "id": "P034",
+  "slug": "balanced-brackets",
+  "title": "Balanced Delimiter Validator",
+  "difficulty": "medium",
+  "tags": [
+    "stack"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "a4-control-flow",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "is_balanced"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Valid nested config expression",
+        "args": [
+          "cfg[0] = (a + {b: 1})"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Interleaved mismatch ([)]",
+        "args": [
+          "([)]"
+        ],
+        "expected": false
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty expression",
+        "args": [
+          ""
+        ],
+        "expected": true
+      },
+      {
+        "label": "No brackets text",
+        "args": [
+          "alpha + beta"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Stray closing bracket",
+        "args": [
+          ")("
+        ],
+        "expected": false
+      },
+      {
+        "label": "Unclosed opening bracket at end",
+        "args": [
+          "({[]})("
+        ],
+        "expected": false
+      },
+      {
+        "label": "Deep nesting performance test",
+        "argsExpr": "('(' * 5000 + '[' * 5000 + ']' * 5000 + ')' * 5000,)",
+        "expected": true,
+        "timeLimitMs": 400,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Use a Python list as a LIFO stack: push opening brackets \"(\", \"[\", \"{\".",
+    "Whenever you encounter a closing bracket, check that the stack is non-empty AND its top element matches the expected opener; ignore non-bracket characters.",
+    "Pseudocode:\n  pairs = {\")\": \"(\", \"]\": \"[\", \"}\": \"{\"}\n  stack = []\n  for ch in expr:\n      if ch in \"([{\": stack.append(ch)\n      elif ch in pairs:\n          if not stack or stack.pop() != pairs[ch]: return False\n  return len(stack) == 0"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

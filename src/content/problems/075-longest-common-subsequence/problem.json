@@ -1,0 +1,90 @@
+{
+  "id": "P075",
+  "slug": "longest-common-subsequence",
+  "title": "Longest Common Subsequence Length",
+  "difficulty": "hard",
+  "tags": [
+    "dp",
+    "strings"
+  ],
+  "estimatedMinutes": 25,
+  "relatedModules": [
+    "a4-control-flow",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "lcs_length"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Non-contiguous common sequence",
+        "args": [
+          "abcde",
+          "ace"
+        ],
+        "expected": 3
+      },
+      {
+        "label": "Completely disjoint strings",
+        "args": [
+          "abc",
+          "xyz"
+        ],
+        "expected": 0
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty input string",
+        "args": [
+          "",
+          "data"
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Identical strings",
+        "args": [
+          "schema",
+          "schema"
+        ],
+        "expected": 6
+      },
+      {
+        "label": "Interleaved order constraint (ab vs ba == 1)",
+        "args": [
+          "ab",
+          "ba"
+        ],
+        "expected": 1
+      },
+      {
+        "label": "Repeated letters with skip gap",
+        "args": [
+          "oxcpqrsvwf",
+          "shmtulqrypy"
+        ],
+        "expected": 2
+      },
+      {
+        "label": "250-char LCS performance test",
+        "argsExpr": "('ab' * 125, 'acb' * 80)",
+        "expected": 160,
+        "timeLimitMs": 350,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "A subsequence keeps relative left-to-right order without requiring consecutive adjacency.",
+    "For prefixes a[:i] and b[:j]: if a[i-1] == b[j-1], dp[j] = prev_diag + 1; else dp[j] = max(dp[j], dp[j-1]).",
+    "Pseudocode:\n  prev = [0] * (len(b) + 1)\n  for ch_a in a:\n      cur = [0] * (len(b) + 1)\n      for j, ch_b in enumerate(b, 1):\n          cur[j] = prev[j - 1] + 1 if ch_a == ch_b else max(prev[j], cur[j - 1])\n      prev = cur\n  return prev[-1]"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

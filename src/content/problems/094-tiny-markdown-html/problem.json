@@ -1,0 +1,85 @@
+{
+  "id": "P094",
+  "slug": "tiny-markdown-html",
+  "title": "Tiny Markdown to HTML Converter",
+  "difficulty": "challenge",
+  "tags": [
+    "strings",
+    "regex"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "a3-strings-io",
+    "a4-control-flow",
+    "b9-stdlib-analysts"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "render_markdown"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Renders heading, paragraph with inline formatting, and list",
+        "args": [
+          "# Title\n\nUse **bold**, *italics*, and `code`.\n\n- First\n- Second"
+        ],
+        "expected": "<h1>Title</h1>\n<p>Use <strong>bold</strong>, <em>italics</em>, and <code>code</code>.</p>\n<ul><li>First</li><li>Second</li></ul>"
+      },
+      {
+        "label": "Escapes raw HTML tags and preserves code fence literally",
+        "args": [
+          "Check <script>alert(1)</script>\n\n```\nx = **not bold** & <tag>\n```"
+        ],
+        "expected": "<p>Check &lt;script&gt;alert(1)&lt;/script&gt;</p>\n<pre><code>x = **not bold** &amp; &lt;tag&gt;</code></pre>"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Supports h1, h2, and h3 headings with inline formatting",
+        "args": [
+          "## Sub *Heading*\n### Level 3"
+        ],
+        "expected": "<h2>Sub <em>Heading</em></h2>\n<h3>Level 3</h3>"
+      },
+      {
+        "label": "Multi-line paragraph joins consecutive text lines with single space",
+        "args": [
+          "Line one\nLine two\n\nLine three"
+        ],
+        "expected": "<p>Line one Line two</p>\n<p>Line three</p>"
+      },
+      {
+        "label": "Inline code span protects nested asterisks from bold/italic",
+        "args": [
+          "Run `**x**` safely"
+        ],
+        "expected": "<p>Run <code>**x**</code> safely</p>"
+      },
+      {
+        "label": "Empty or whitespace-only input returns empty string",
+        "args": [
+          "   \n\n  "
+        ],
+        "expected": ""
+      },
+      {
+        "label": "Mixed blocks separated cleanly by newlines",
+        "args": [
+          "- item **a**\n- item *b*\n# Done"
+        ],
+        "expected": "<ul><li>item <strong>a</strong></li><li>item <em>b</em></li></ul>\n<h1>Done</h1>"
+      }
+    ]
+  },
+  "hints": [
+    "HTML-escape text (`&` -> `&amp;`, `<` -> `&lt;`, `>` -> `&gt;`) before inserting HTML tags.",
+    "Scan line-by-line with a simple block state machine tracking whether you are inside a ``` code fence, an active `<ul>` list, or a paragraph buffer.",
+    "When formatting inline spans, handle backtick `` `code` `` segments first (splitting or regex-replacing them into placeholders/HTML) so asterisks inside code spans are NOT italicized!"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

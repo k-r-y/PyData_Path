@@ -1,0 +1,171 @@
+{
+  "id": "P016",
+  "slug": "merge-two-sorted-lists",
+  "title": "Merge Two Sorted Event Streams",
+  "difficulty": "easy",
+  "tags": [
+    "lists",
+    "two pointers"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "merge_sorted"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Interleaved timestamps",
+        "args": [
+          [
+            1,
+            4,
+            7
+          ],
+          [
+            2,
+            3,
+            8,
+            9
+          ]
+        ],
+        "expected": [
+          1,
+          2,
+          3,
+          4,
+          7,
+          8,
+          9
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "One stream empty",
+        "args": [
+          [],
+          [
+            5,
+            10
+          ]
+        ],
+        "expected": [
+          5,
+          10
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Both empty",
+        "args": [
+          [],
+          []
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Duplicate values preserved",
+        "args": [
+          [
+            1,
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "expected": [
+          1,
+          2,
+          2,
+          2,
+          3
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Disjoint ranges",
+        "args": [
+          [
+            -5,
+            -1
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "expected": [
+          -5,
+          -1,
+          0,
+          3
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "First stream longer tail",
+        "args": [
+          [
+            1,
+            10,
+            20,
+            30
+          ],
+          [
+            2
+          ]
+        ],
+        "expected": [
+          1,
+          2,
+          10,
+          20,
+          30
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Large streams O(n+m) performance",
+        "argsExpr": "(list(range(0, 10000, 2)), list(range(1, 10000, 2)))",
+        "expectedExpr": "list(range(10000))",
+        "timeLimitMs": 400,
+        "checks": [
+          "inputUnchanged"
+        ],
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Use two indices i = 0 and j = 0 pointing to the heads of a and b.",
+    "Repeatedly append the smaller of a[i] and b[j] until one list finishes, then extend with the unconsumed slice of whichever list remains.",
+    "Pseudocode:\n  while i < len(a) and j < len(b): ...\n  out.extend(a[i:])\n  out.extend(b[j:])"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

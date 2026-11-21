@@ -1,0 +1,340 @@
+{
+  "id": "P093",
+  "slug": "mini-query-engine",
+  "title": "Mini Query Engine on List of Dicts",
+  "difficulty": "challenge",
+  "tags": [
+    "dict",
+    "sorting",
+    "parsing"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "a6-data-structures",
+    "b4-functions-deeper",
+    "c2-sql-sqlite"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "query_records"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Filters, sorts multi-key mixed direction, projects columns, and limits without mutating input",
+        "args": [
+          [
+            {
+              "name": "Ana",
+              "dept": "Eng",
+              "salary": 120
+            },
+            {
+              "name": "Ben",
+              "dept": "Sales",
+              "salary": 95
+            },
+            {
+              "name": "Cara",
+              "dept": "Eng",
+              "salary": 140
+            },
+            {
+              "name": "Dan",
+              "dept": "Ops",
+              "salary": 110
+            }
+          ],
+          {
+            "where": [
+              [
+                "dept",
+                "in",
+                [
+                  "Eng",
+                  "Ops"
+                ]
+              ],
+              [
+                "salary",
+                ">=",
+                110
+              ]
+            ],
+            "order_by": [
+              [
+                "dept",
+                false
+              ],
+              [
+                "salary",
+                true
+              ]
+            ],
+            "select": [
+              "name",
+              "salary"
+            ],
+            "limit": 2
+          }
+        ],
+        "expected": [
+          {
+            "name": "Cara",
+            "salary": 140
+          },
+          {
+            "name": "Ana",
+            "salary": 120
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Empty spec clones all rows preserving order",
+        "args": [
+          [
+            {
+              "id": 1,
+              "v": "x"
+            },
+            {
+              "id": 2,
+              "v": "y"
+            }
+          ],
+          {}
+        ],
+        "expected": [
+          {
+            "id": 1,
+            "v": "x"
+          },
+          {
+            "id": 2,
+            "v": "y"
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "All comparison operators (==, !=, >, >=, <, <=, in) evaluated with AND",
+        "args": [
+          [
+            {
+              "id": 1,
+              "tag": "a",
+              "score": 10
+            },
+            {
+              "id": 2,
+              "tag": "b",
+              "score": 20
+            },
+            {
+              "id": 3,
+              "tag": "a",
+              "score": 25
+            },
+            {
+              "id": 4,
+              "tag": "c",
+              "score": 30
+            }
+          ],
+          {
+            "where": [
+              [
+                "tag",
+                "!=",
+                "c"
+              ],
+              [
+                "score",
+                ">",
+                10
+              ],
+              [
+                "score",
+                "<=",
+                25
+              ]
+            ],
+            "order_by": [
+              [
+                "score",
+                false
+              ]
+            ]
+          }
+        ],
+        "expected": [
+          {
+            "id": 2,
+            "tag": "b",
+            "score": 20
+          },
+          {
+            "id": 3,
+            "tag": "a",
+            "score": 25
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Multi-key sort reverses tie stability cleanly",
+        "args": [
+          [
+            {
+              "dept": "B",
+              "rank": 1,
+              "name": "X"
+            },
+            {
+              "dept": "A",
+              "rank": 2,
+              "name": "Y"
+            },
+            {
+              "dept": "A",
+              "rank": 1,
+              "name": "Z"
+            }
+          ],
+          {
+            "order_by": [
+              [
+                "dept",
+                false
+              ],
+              [
+                "rank",
+                true
+              ]
+            ],
+            "select": [
+              "name"
+            ]
+          }
+        ],
+        "expected": [
+          {
+            "name": "Y"
+          },
+          {
+            "name": "Z"
+          },
+          {
+            "name": "X"
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Limit 0 returns empty list",
+        "args": [
+          [
+            {
+              "a": 1
+            }
+          ],
+          {
+            "limit": 0
+          }
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Empty input table returns empty list",
+        "args": [
+          [],
+          {
+            "where": [
+              [
+                "a",
+                "==",
+                1
+              ]
+            ],
+            "select": [
+              "a"
+            ],
+            "limit": 5
+          }
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Equality and less-than filter with descending single-key sort",
+        "args": [
+          [
+            {
+              "k": "x",
+              "n": 5
+            },
+            {
+              "k": "x",
+              "n": 2
+            },
+            {
+              "k": "y",
+              "n": 1
+            }
+          ],
+          {
+            "where": [
+              [
+                "k",
+                "==",
+                "x"
+              ],
+              [
+                "n",
+                "<",
+                5
+              ]
+            ],
+            "select": [
+              "n"
+            ]
+          }
+        ],
+        "expected": [
+          {
+            "n": 2
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Process clauses in SQL logical execution order: WHERE filter -> ORDER BY sort -> LIMIT slice -> SELECT projection.",
+    "For multi-key mixed-direction `order_by` in Python using Timsort stability, apply `result.sort(key=lambda r: r[field], reverse=desc)` from the LAST key backward to the FIRST key!",
+    "Always build fresh projected dicts (`{col: row[col] for col in cols}`) rather than mutating input `rows` dictionaries."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

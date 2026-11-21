@@ -1,0 +1,83 @@
+{
+  "id": "P009",
+  "slug": "reverse-each-word",
+  "title": "Reverse Each Token in Place",
+  "difficulty": "easy",
+  "tags": [
+    "strings"
+  ],
+  "estimatedMinutes": 8,
+  "relatedModules": [
+    "a3-strings-io",
+    "a7-comprehensions-builtins"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "reverse_each_word"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard sentence preserves word order",
+        "args": [
+          "SQL log ready"
+        ],
+        "expected": "LQS gol ydaer"
+      },
+      {
+        "label": "Preserves double space delimiters",
+        "args": [
+          "ab  cd"
+        ],
+        "expected": "ba  dc"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty string",
+        "args": [
+          ""
+        ],
+        "expected": ""
+      },
+      {
+        "label": "Single word",
+        "args": [
+          "Python"
+        ],
+        "expected": "nohtyP"
+      },
+      {
+        "label": "Leading and trailing spaces kept",
+        "args": [
+          " hi "
+        ],
+        "expected": " ih "
+      },
+      {
+        "label": "Single character tokens",
+        "args": [
+          "a b c"
+        ],
+        "expected": "a b c"
+      },
+      {
+        "label": "Symbols attached to tokens",
+        "args": [
+          "id:10! ok?"
+        ],
+        "expected": "!01:di ?ko"
+      }
+    ]
+  },
+  "hints": [
+    "Compare str.split() (collapses runs of spaces) vs str.split(\" \") (preserves exact single-space boundaries).",
+    "Split with line.split(\" \"), reverse each segment s[::-1], and join back with \" \".join(...).",
+    "Pseudocode:\n  return \" \".join(part[::-1] for part in line.split(\" \"))"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

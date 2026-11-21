@@ -13,10 +13,13 @@
       "Use print(major_ver) to display the result."
     ],
     "solution": "import sys\nmajor_ver = sys.version_info.major\nprint(major_ver)",
+    "alternates": [
+      "from sys import version_info\nmajor_ver = version_info.major\nprint(major_ver)"
+    ],
     "explanation": "import sys loads the standard library sys module, which exposes runtime metadata such as sys.version_info.",
     "sources": ["python-tutorial"],
     "starterCode": "# Import sys and assign major_ver\n",
-    "visibleTests": "assert 'sys' in globals(), 'Make sure you imported sys'\nassert major_ver == 3, f'Expected 3, got {major_ver}'",
+    "visibleTests": "import sys as _sys\nassert major_ver == _sys.version_info.major, f'Expected {_sys.version_info.major}, got {major_ver}'\nassert str(_sys.version_info.major) in _sys.stdout.getvalue()",
     "hiddenTests": "assert isinstance(major_ver, int)"
   },
   {
@@ -33,6 +36,9 @@
       "Third line: final_type = type(status_code).__name__"
     ],
     "solution": "status_code = 200\nstatus_code = \"OK\"\nfinal_type = type(status_code).__name__",
+    "alternates": [
+      "status_code = 200\nstatus_code = 'OK'\nfinal_type = 'str' if isinstance(status_code, str) else type(status_code).__name__"
+    ],
     "explanation": "In Python, variable names are labels bound to objects, so the same name can be rebound from an int to a str.",
     "sources": ["python-lang-ref"],
     "starterCode": "status_code = 200\n# Reassign status_code to \"OK\" and set final_type\n",

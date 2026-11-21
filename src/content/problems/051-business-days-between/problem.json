@@ -1,0 +1,105 @@
+{
+  "id": "P051",
+  "slug": "business-days-between",
+  "title": "Count Business Days With Holidays",
+  "difficulty": "medium",
+  "tags": [
+    "datetime"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "b9-stdlib-analysts",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "count_business_days"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Full Monday-to-Sunday week minus 1 holiday",
+        "args": [
+          "2026-11-16",
+          "2026-11-22",
+          [
+            "2026-11-18"
+          ]
+        ],
+        "expected": 4
+      },
+      {
+        "label": "Inverted dates yield 0",
+        "args": [
+          "2026-11-20",
+          "2026-11-16",
+          []
+        ],
+        "expected": 0
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Weekend-only span returns 0",
+        "args": [
+          "2026-11-21",
+          "2026-11-22",
+          []
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Holiday falling on Saturday ignored safely",
+        "args": [
+          "2026-11-16",
+          "2026-11-22",
+          [
+            "2026-11-21"
+          ]
+        ],
+        "expected": 5
+      },
+      {
+        "label": "Same single weekday count equals 1",
+        "args": [
+          "2026-11-16",
+          "2026-11-16",
+          []
+        ],
+        "expected": 1
+      },
+      {
+        "label": "Duplicate or outside holidays harmless",
+        "args": [
+          "2026-11-16",
+          "2026-11-20",
+          [
+            "2026-11-17",
+            "2026-11-17",
+            "2025-01-01"
+          ]
+        ],
+        "expected": 4
+      },
+      {
+        "label": "Full leap February 2024 span",
+        "args": [
+          "2024-02-01",
+          "2024-02-29",
+          []
+        ],
+        "expected": 21
+      }
+    ]
+  },
+  "hints": [
+    "Parse dates with datetime.date.fromisoformat(s).",
+    "A date d is a business day if d.weekday() < 5 (Mon=0..Fri=4) and d not in holiday_dates.",
+    "Pseudocode:\n  cur, end = date.fromisoformat(start), date.fromisoformat(end)\n  hset = {date.fromisoformat(h) for h in (holidays or [])}\n  step = timedelta(days=1)\n  while cur <= end: count if cur.weekday() < 5 and cur not in hset; cur += step"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

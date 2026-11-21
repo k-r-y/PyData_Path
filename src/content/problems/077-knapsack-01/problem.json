@@ -1,0 +1,129 @@
+{
+  "id": "P077",
+  "slug": "knapsack-01",
+  "title": "0/1 Campaign Budget Knapsack",
+  "difficulty": "hard",
+  "tags": [
+    "dp"
+  ],
+  "estimatedMinutes": 25,
+  "relatedModules": [
+    "a4-control-flow",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "knapsack_max_value"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Classic 0/1 item trade-off",
+        "args": [
+          [
+            1,
+            3,
+            4,
+            5
+          ],
+          [
+            1,
+            4,
+            5,
+            7
+          ],
+          7
+        ],
+        "expected": 9
+      },
+      {
+        "label": "Zero budget capacity",
+        "args": [
+          [
+            2,
+            3
+          ],
+          [
+            10,
+            20
+          ],
+          0
+        ],
+        "expected": 0
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty catalog",
+        "args": [
+          [],
+          [],
+          10
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Single item cannot reuse twice (unbounded trap)",
+        "args": [
+          [
+            3,
+            4
+          ],
+          [
+            10,
+            12
+          ],
+          6
+        ],
+        "expected": 12
+      },
+      {
+        "label": "Item heavier than capacity skipped safely",
+        "args": [
+          [
+            10
+          ],
+          [
+            100
+          ],
+          5
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Greedy value/weight ratio fails vs optimal 0/1 mix",
+        "args": [
+          [
+            1,
+            3,
+            4
+          ],
+          [
+            10,
+            20,
+            29
+          ],
+          5
+        ],
+        "expected": 39
+      },
+      {
+        "label": "50 items x 250 budget DP performance",
+        "argsExpr": "([i % 10 + 1 for i in range(50)], [i + 5 for i in range(50)], 250)",
+        "expected": 1438,
+        "timeLimitMs": 350,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Each item can be picked AT MOST once (0 or 1 times).",
+    "In 1D DP `dp[0..capacity]`, iterate capacity BACKWARD `for cap in range(capacity, w - 1, -1)` per item so item i is never reused multiple times in the same row!",
+    "Pseudocode:\n  dp = [0] * (capacity + 1)\n  for w, v in zip(weights, values):\n      for cap in range(capacity, w - 1, -1):\n          dp[cap] = max(dp[cap], dp[cap - w] + v)\n  return dp[capacity]"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

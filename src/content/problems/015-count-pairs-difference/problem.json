@@ -1,0 +1,114 @@
+{
+  "id": "P015",
+  "slug": "count-pairs-difference",
+  "title": "Count Pairs With Difference K",
+  "difficulty": "easy",
+  "tags": [
+    "lists",
+    "dict"
+  ],
+  "estimatedMinutes": 12,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "count_diff_pairs"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Distinct pairs difference 2",
+        "args": [
+          [
+            1,
+            5,
+            3,
+            4,
+            2
+          ],
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "label": "Duplicate values with k=0",
+        "args": [
+          [
+            7,
+            7,
+            7
+          ],
+          0
+        ],
+        "expected": 3
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Negative target k returns 0",
+        "args": [
+          [
+            1,
+            2,
+            3
+          ],
+          -1
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Empty list",
+        "args": [
+          [],
+          1
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Duplicates with k > 0",
+        "args": [
+          [
+            1,
+            2,
+            1,
+            2
+          ],
+          1
+        ],
+        "expected": 4
+      },
+      {
+        "label": "Negatives and zero",
+        "args": [
+          [
+            -3,
+            -1,
+            1,
+            3
+          ],
+          2
+        ],
+        "expected": 3
+      },
+      {
+        "label": "Large list performance check",
+        "argsExpr": "([i % 500 for i in range(15000)], 3)",
+        "expected": 447300,
+        "timeLimitMs": 400,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Counting every i < j where |nums[i] - nums[j]| == k can be done in O(n) with a frequency map.",
+    "If k < 0 return 0. If k == 0 sum c*(c-1)//2 for every frequency c. If k > 0 sum freq[x] * freq[x + k] for each unique key x.",
+    "Pseudocode:\n  freq = Counter(nums)\n  if k == 0: return sum(c * (c - 1) // 2 for c in freq.values())\n  return sum(freq[x] * freq.get(x + k, 0) for x in freq)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

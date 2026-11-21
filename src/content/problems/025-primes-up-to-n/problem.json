@@ -1,0 +1,104 @@
+{
+  "id": "P025",
+  "slug": "primes-up-to-n",
+  "title": "Primes Up to N (Sieve)",
+  "difficulty": "easy",
+  "tags": [
+    "math",
+    "loops"
+  ],
+  "estimatedMinutes": 12,
+  "relatedModules": [
+    "a4-control-flow",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "primes_up_to"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Primes up to 13 inclusive",
+        "args": [
+          13
+        ],
+        "expected": [
+          2,
+          3,
+          5,
+          7,
+          11,
+          13
+        ]
+      },
+      {
+        "label": "Boundary n=1 has no primes",
+        "args": [
+          1
+        ],
+        "expected": []
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Zero and negative bounds",
+        "args": [
+          -10
+        ],
+        "expected": []
+      },
+      {
+        "label": "Single smallest prime n=2",
+        "args": [
+          2
+        ],
+        "expected": [
+          2
+        ]
+      },
+      {
+        "label": "Composite boundary n=20",
+        "args": [
+          20
+        ],
+        "expected": [
+          2,
+          3,
+          5,
+          7,
+          11,
+          13,
+          17,
+          19
+        ]
+      },
+      {
+        "label": "Count up to 100 equals 25",
+        "args": [
+          100
+        ],
+        "expectedExpr": "[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]"
+      },
+      {
+        "label": "Sieve up to 25,000 performance check",
+        "args": [
+          25000
+        ],
+        "expectedExpr": "[2] + [x for x in range(3, 25001, 2) if all(x % d != 0 for d in range(3, int(x**0.5) + 1, 2))]",
+        "timeLimitMs": 300,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "A Sieve of Eratosthenes marks multiples of each prime p starting from p * p as False inside a boolean bytearray/list of size n + 1.",
+    "You only need to cross off multiples up to p <= int(n ** 0.5). Return all indices i >= 2 still True.",
+    "Pseudocode:\n  is_prime = [True] * (n + 1)\n  is_prime[0] = is_prime[1] = False\n  for p in range(2, int(n**0.5) + 1):\n      if is_prime[p]: mark p*p..n step p as False"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

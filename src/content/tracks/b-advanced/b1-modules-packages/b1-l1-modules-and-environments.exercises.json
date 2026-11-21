@@ -12,11 +12,14 @@
       "Call import is_helpers and is_helpers.format_sku(7)."
     ],
     "solution": "with open('is_helpers.py', 'w', encoding='utf-8') as f:\n    f.write(\"def format_sku(num):\\n    return f'SKU-{num:03d}'\\n\")\n\nimport importlib\nimport is_helpers\nimportlib.reload(is_helpers)\ncode = is_helpers.format_sku(7)",
+    "alternates": [
+      "with open('is_helpers.py', 'w', encoding='utf-8') as f:\n    f.write(\"def format_sku(num):\\n    return f'SKU-{num:03d}'\\n\")\n\nimport importlib\nimport is_helpers\nimportlib.reload(is_helpers)\nfrom is_helpers import format_sku\ncode = format_sku(7)"
+    ],
     "explanation": "Any .py file on sys.path (including the current directory in Pyodide) can be imported as a module.",
     "sources": ["python-tutorial"],
     "starterCode": "# Write is_helpers.py, import it, and set code = is_helpers.format_sku(7)\n",
     "visibleTests": "assert code == 'SKU-007'",
-    "hiddenTests": "assert is_helpers.format_sku(42) == 'SKU-042'"
+    "hiddenTests": "import is_helpers as _is_h\nassert _is_h.format_sku(42) == 'SKU-042'"
   },
   {
     "id": "b1-l1-ex2",

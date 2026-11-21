@@ -1,0 +1,84 @@
+{
+  "id": "P022",
+  "slug": "first-non-repeating-char",
+  "title": "First Unique Telemetry Character",
+  "difficulty": "easy",
+  "tags": [
+    "strings",
+    "dict"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "first_unique_char"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Returns index 1 when y is first unique char",
+        "args": [
+          "pydatapath"
+        ],
+        "expected": 1
+      },
+      {
+        "label": "All repeating characters return -1",
+        "args": [
+          "aabbcc"
+        ],
+        "expected": -1
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty string returns -1",
+        "args": [
+          ""
+        ],
+        "expected": -1
+      },
+      {
+        "label": "Single character at index 0",
+        "args": [
+          "z"
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Unique character at end",
+        "args": [
+          "aabbccd"
+        ],
+        "expected": 6
+      },
+      {
+        "label": "Case sensitivity kept separate",
+        "args": [
+          "AaB"
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Long 70k character stream performance check",
+        "argsExpr": "('ab' * 35000 + 'Z',)",
+        "expected": 70000,
+        "timeLimitMs": 350,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Calling text.count(ch) inside a loop takes O(n^2) time on long strings.",
+    "Instead, build a frequency map in pass 1 (Counter(text)), then walk enumerate(text) in pass 2 returning the first i where counts[ch] == 1.",
+    "Pseudocode:\n  counts = Counter(text)\n  for i, ch in enumerate(text):\n      if counts[ch] == 1: return i\n  return -1"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

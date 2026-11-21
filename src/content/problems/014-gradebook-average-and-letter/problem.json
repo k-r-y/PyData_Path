@@ -1,0 +1,128 @@
+{
+  "id": "P014",
+  "slug": "gradebook-average-and-letter",
+  "title": "Gradebook Average and Letter Grade",
+  "difficulty": "easy",
+  "tags": [
+    "dict",
+    "conditionals"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a4-control-flow",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "summarize_gradebook"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard cohort grades",
+        "args": [
+          {
+            "Alice": [
+              95,
+              85,
+              90
+            ],
+            "Bob": [
+              72,
+              78
+            ]
+          }
+        ],
+        "expectedExpr": "{'Alice': (90.0, 'A'), 'Bob': (75.0, 'C')}"
+      },
+      {
+        "label": "Empty gradebook returns empty dict",
+        "args": [
+          {}
+        ],
+        "expected": {}
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Boundary exact thresholds 90/80/70/60",
+        "args": [
+          {
+            "s1": [
+              90
+            ],
+            "s2": [
+              80
+            ],
+            "s3": [
+              70
+            ],
+            "s4": [
+              60
+            ],
+            "s5": [
+              59.9
+            ]
+          }
+        ],
+        "expectedExpr": "{'s1': (90.0, 'A'), 's2': (80.0, 'B'), 's3': (70.0, 'C'), 's4': (60.0, 'D'), 's5': (59.9, 'F')}"
+      },
+      {
+        "label": "Student with empty score list gets 0.0 F",
+        "args": [
+          {
+            "Sam": []
+          }
+        ],
+        "expectedExpr": "{'Sam': (0.0, 'F')}"
+      },
+      {
+        "label": "Rounding to 2 decimal places",
+        "args": [
+          {
+            "Mia": [
+              100,
+              95,
+              92
+            ]
+          }
+        ],
+        "expectedExpr": "{'Mia': (95.67, 'A')}"
+      },
+      {
+        "label": "Just below B threshold 79.99 is C",
+        "args": [
+          {
+            "Leo": [
+              79.99
+            ]
+          }
+        ],
+        "expectedExpr": "{'Leo': (79.99, 'C')}"
+      },
+      {
+        "label": "All zeros",
+        "args": [
+          {
+            "Pat": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "expectedExpr": "{'Pat': (0.0, 'F')}"
+      }
+    ]
+  },
+  "hints": [
+    "Handle an empty score list cleanly (average = 0.0) before dividing by len(scores).",
+    "Round average to 2 decimals with round(total / count, 2) and map using >= 90 A, >= 80 B, >= 70 C, >= 60 D, else F.",
+    "Pseudocode:\n  for name, scores in book.items():\n      avg = round(sum(scores) / len(scores), 2) if scores else 0.0\n      ..."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

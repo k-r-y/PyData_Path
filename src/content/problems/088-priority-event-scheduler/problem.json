@@ -1,0 +1,79 @@
+{
+  "id": "P088",
+  "slug": "priority-event-scheduler",
+  "title": "Stable Priority Event Scheduler",
+  "difficulty": "hard",
+  "tags": [
+    "oop",
+    "heapq"
+  ],
+  "estimatedMinutes": 20,
+  "relatedModules": [
+    "b2-oop",
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Lower priority number pops first; equal priorities keep FIFO order",
+        "inputDisplay": "push(2, \"backup\"), push(1, \"alert\"), push(2, \"reindex\")",
+        "expectedDisplay": "pop order: \"alert\", \"backup\", \"reindex\"",
+        "script": "s = PriorityScheduler()\ns.push(2, \"backup\")\ns.push(1, \"alert\")\ns.push(2, \"reindex\")\nassert len(s) == 3\nassert s.peek() == \"alert\"\nassert [s.pop(), s.pop(), s.pop()] == [\"alert\", \"backup\", \"reindex\"]\nassert len(s) == 0"
+      },
+      {
+        "label": "Pop/peek on empty scheduler raises IndexError",
+        "inputDisplay": "PriorityScheduler().pop()",
+        "expectedDisplay": "Raises IndexError",
+        "script": "s = PriorityScheduler()\ntry:\n    s.pop()\n    assert False\nexcept IndexError:\n    pass"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "FIFO order preserved even when task_ids are alphabetically reversed",
+        "inputDisplay": "push(1, \"zeta\"), push(1, \"alpha\")",
+        "expectedDisplay": "\"zeta\" before \"alpha\"",
+        "script": "s = PriorityScheduler()\ns.push(1, \"zeta\")\ns.push(1, \"alpha\")\nassert [s.pop(), s.pop()] == [\"zeta\", \"alpha\"]"
+      },
+      {
+        "label": "Negative priority values more urgent than 0",
+        "inputDisplay": "push(0, \"norm\"), push(-5, \"crit\")",
+        "expectedDisplay": "\"crit\" then \"norm\"",
+        "script": "s = PriorityScheduler()\ns.push(0, \"norm\")\ns.push(-5, \"crit\")\nassert [s.pop(), s.pop()] == [\"crit\", \"norm\"]"
+      },
+      {
+        "label": "Peek does not remove item",
+        "inputDisplay": "peek() twice then pop()",
+        "expectedDisplay": "Same item and unchanged length",
+        "script": "s = PriorityScheduler()\ns.push(3, \"job\")\nassert s.peek() == \"job\" and s.peek() == \"job\" and len(s) == 1"
+      },
+      {
+        "label": "Interleaved push and pop operations",
+        "inputDisplay": "push/pop sequence",
+        "expectedDisplay": "Strict priority + FIFO maintenance",
+        "script": "s = PriorityScheduler()\ns.push(5, \"a\"); s.push(2, \"b\")\nassert s.pop() == \"b\"\ns.push(2, \"c\"); s.push(1, \"d\")\nassert [s.pop(), s.pop(), s.pop()] == [\"d\", \"c\", \"a\"]"
+      },
+      {
+        "label": "O(log n) speed over 15,000 events",
+        "inputDisplay": "15,000 pushes in reverse priority",
+        "expectedDisplay": "Fast heap sort pop verification",
+        "timeLimitMs": 400,
+        "isPerformance": true,
+        "script": "s = PriorityScheduler()\nfor i in range(15000, 0, -1):\n    s.push(i, f\"t{i}\")\nassert s.pop() == \"t1\"\nassert len(s) == 14999"
+      }
+    ]
+  },
+  "hints": [
+    "Push `(priority, seq, task_id)` tuples onto a `heapq` list where `seq` increments monotonically on every push.",
+    "Because `seq` breaks ties before `task_id` is ever compared, equal priorities always exit in FIFO insertion order cleanly!",
+    "Pseudocode:\n  self._seq += 1\n  heapq.heappush(self._heap, (priority, self._seq, task_id))"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

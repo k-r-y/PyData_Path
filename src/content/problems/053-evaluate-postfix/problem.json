@@ -1,0 +1,129 @@
+{
+  "id": "P053",
+  "slug": "evaluate-postfix",
+  "title": "Reverse Polish Expression Evaluator",
+  "difficulty": "medium",
+  "tags": [
+    "stack"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "a6-data-structures",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "eval_postfix"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard RPN expression",
+        "args": [
+          [
+            "2",
+            "1",
+            "+",
+            "3",
+            "*"
+          ]
+        ],
+        "expected": 9
+      },
+      {
+        "label": "Truncating negative division toward zero",
+        "args": [
+          [
+            "10",
+            "6",
+            "9",
+            "3",
+            "+",
+            "-11",
+            "*",
+            "/",
+            "*",
+            "17",
+            "+",
+            "5",
+            "+"
+          ]
+        ],
+        "expected": 22
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Single literal operand",
+        "args": [
+          [
+            "42"
+          ]
+        ],
+        "expected": 42
+      },
+      {
+        "label": "Subtraction order b - a vs a - b",
+        "args": [
+          [
+            "10",
+            "3",
+            "-"
+          ]
+        ],
+        "expected": 7
+      },
+      {
+        "label": "Negative dividend truncates toward zero (-7 / 2 == -3)",
+        "args": [
+          [
+            "-7",
+            "2",
+            "/"
+          ]
+        ],
+        "expected": -3
+      },
+      {
+        "label": "Division positive truncation",
+        "args": [
+          [
+            "7",
+            "2",
+            "/"
+          ]
+        ],
+        "expected": 3
+      },
+      {
+        "label": "Chained operators with negative result",
+        "args": [
+          [
+            "5",
+            "1",
+            "2",
+            "+",
+            "4",
+            "*",
+            "+",
+            "3",
+            "-",
+            "-1",
+            "*"
+          ]
+        ],
+        "expected": -14
+      }
+    ]
+  },
+  "hints": [
+    "Push integer operands onto a stack. When you see +, -, *, /, pop `right` first, then `left`!",
+    "Division truncates toward zero (`int(left / right)`), NOT Python floor division `left // right` (since `-7 // 2 == -4` while `int(-7 / 2) == -3`).",
+    "Pseudocode:\n  for tok in tokens:\n      if tok in {\"+\",\"-\",\"*\",\"/\"}:\n          b, a = stack.pop(), stack.pop()\n          apply op (use int(a / b) for \"/\")\n      else: stack.append(int(tok))\n  return stack[-1]"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

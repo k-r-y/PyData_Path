@@ -43,11 +43,14 @@
       "Use ax.bar(['Q1', 'Q2'], [100, 140]) and ax.set_title('Quarterly Sales')."
     ],
     "solution": "import matplotlib\nmatplotlib.use('Agg')\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\nax.bar(['Q1', 'Q2'], [100, 140])\nax.set_title('Quarterly Sales')",
+    "alternates": [
+      "import matplotlib\nmatplotlib.use('Agg')\nimport matplotlib.pyplot as plt\n\nplt.figure()\nplt.bar(['Q1', 'Q2'], [100, 140])\nplt.title('Quarterly Sales')\nfig = plt.gcf()\nax = plt.gca()"
+    ],
     "explanation": "fig, ax = plt.subplots() gives direct control over bars, titles, and axis labels.",
     "sources": ["matplotlib-docs"],
     "starterCode": "import matplotlib\nmatplotlib.use('Agg')\nimport matplotlib.pyplot as plt\n\n# Create fig, ax, plot bar chart, and set title\n",
-    "visibleTests": "assert ax.get_title() == 'Quarterly Sales'\nassert len(ax.patches) == 2",
-    "hiddenTests": "assert fig is not None"
+    "visibleTests": "_ax = ax if 'ax' in globals() else plt.gca()\nassert _ax.get_title() == 'Quarterly Sales'\nassert len(_ax.patches) == 2",
+    "hiddenTests": "_fig = fig if 'fig' in globals() else plt.gcf()\nassert _fig is not None"
   },
   {
     "id": "c8-l1-fc1",

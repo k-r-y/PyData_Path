@@ -1,0 +1,186 @@
+{
+  "id": "P007",
+  "slug": "configurable-fizzbuzz",
+  "title": "Configurable Alert Rules (FizzBuzz)",
+  "difficulty": "easy",
+  "tags": [
+    "conditionals",
+    "lists"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a4-control-flow",
+    "a5-functions"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "generate_alerts"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Classic 3/5 rules up to 6",
+        "args": [
+          6,
+          [
+            [
+              3,
+              "WARN"
+            ],
+            [
+              5,
+              "SYNC"
+            ]
+          ]
+        ],
+        "expected": [
+          "1",
+          "2",
+          "WARN",
+          "4",
+          "SYNC",
+          "WARN"
+        ]
+      },
+      {
+        "label": "Combined match preserves rule order",
+        "args": [
+          15,
+          [
+            [
+              3,
+              "A"
+            ],
+            [
+              5,
+              "B"
+            ]
+          ]
+        ],
+        "expected": [
+          "1",
+          "2",
+          "A",
+          "4",
+          "B",
+          "A",
+          "7",
+          "8",
+          "A",
+          "B",
+          "11",
+          "A",
+          "13",
+          "14",
+          "AB"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Zero limit",
+        "args": [
+          0,
+          [
+            [
+              2,
+              "EVEN"
+            ]
+          ]
+        ],
+        "expected": []
+      },
+      {
+        "label": "Empty rules returns string numbers",
+        "args": [
+          4,
+          []
+        ],
+        "expected": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "label": "Three custom rules stacking at 12",
+        "args": [
+          12,
+          [
+            [
+              2,
+              "Two"
+            ],
+            [
+              3,
+              "Three"
+            ],
+            [
+              4,
+              "Four"
+            ]
+          ]
+        ],
+        "expected": [
+          "1",
+          "Two",
+          "Three",
+          "TwoFour",
+          "5",
+          "TwoThree",
+          "7",
+          "TwoFour",
+          "Three",
+          "Two",
+          "11",
+          "TwoThreeFour"
+        ]
+      },
+      {
+        "label": "n equals 1",
+        "args": [
+          1,
+          [
+            [
+              1,
+              "PING"
+            ]
+          ]
+        ],
+        "expected": [
+          "PING"
+        ]
+      },
+      {
+        "label": "Single large divisor unused",
+        "args": [
+          5,
+          [
+            [
+              9,
+              "NINE"
+            ]
+          ]
+        ],
+        "expected": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Loop i from 1 through n inclusive. Build matching labels for each (div, label) pair where i % div == 0.",
+    "Do not stop after the first matching rule: join all matching labels in rule order, falling back to str(i) only when no rule matched.",
+    "Pseudocode:\n  for i in range(1, n + 1):\n      parts = [lbl for div, lbl in rules if div > 0 and i % div == 0]\n      out.append(\"\".join(parts) or str(i))"
+  ],
+  "sources": [
+    "python-tutorial",
+    "automate-boring-stuff"
+  ]
+}

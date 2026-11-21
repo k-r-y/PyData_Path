@@ -278,8 +278,36 @@ json.dumps(_out)
 
     if (msg.type === 'run') {
       if (msg.datasets) {
+        const pyModNames: string[] = [];
         for (const [filename, content] of Object.entries(msg.datasets)) {
-          py.FS.writeFile(filename, content, { encoding: 'utf8' });
+          const clean = filename.replace(/^\/+/, '');
+          const lastSlash = clean.lastIndexOf('/');
+          if (lastSlash > 0) {
+            const dir = clean.slice(0, lastSlash);
+            const parts = dir.split('/').filter(Boolean);
+            let cur = '';
+            for (const p of parts) {
+              cur = cur ? `${cur}/${p}` : p;
+              if (!py.FS.analyzePath(cur).exists) {
+                py.FS.mkdir(cur);
+              }
+            }
+          }
+          py.FS.writeFile(clean, content, { encoding: 'utf8' });
+          if (clean.endsWith('.py')) {
+            pyModNames.push(clean.slice(0, -3).replace(/\//g, '.'));
+          }
+        }
+        if (pyModNames.length > 0) {
+          py.globals.set('__pdp_reloaded_mods__', py.toPy(pyModNames));
+          py.runPython(`
+import sys, os, importlib
+if "." not in sys.path and os.getcwd() not in sys.path:
+    sys.path.insert(0, os.getcwd())
+importlib.invalidate_caches()
+for _m in list(__pdp_reloaded_mods__):
+    sys.modules.pop(_m, None)
+`);
         }
       }
 

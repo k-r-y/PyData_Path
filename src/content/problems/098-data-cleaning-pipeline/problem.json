@@ -1,0 +1,168 @@
+{
+  "id": "P098",
+  "slug": "data-cleaning-pipeline",
+  "title": "Data Cleaning Pipeline in Pure Python",
+  "difficulty": "challenge",
+  "tags": [
+    "data",
+    "dict",
+    "csv"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "a9-files-csv-json",
+    "c5-data-cleaning",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "clean_sales_csv"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Trims whitespace, strips currency symbols, drops invalid/cancelled rows, and deduplicates",
+        "args": [
+          "tx_id,region,amount,status\n T1 , north ,\" $1,250.50 \", COMPLETED \n T1 , north , 999 , completed \n T2 , east , -50 , completed \n T3 , west , 200 , CANCELLED \n T4 , south , 42.126 , settled "
+        ],
+        "expected": {
+          "rows": [
+            {
+              "tx_id": "T1",
+              "region": "NORTH",
+              "amount": 1250.5,
+              "status": "completed"
+            },
+            {
+              "tx_id": "T4",
+              "region": "SOUTH",
+              "amount": 42.13,
+              "status": "settled"
+            }
+          ],
+          "valid_count": 2,
+          "dropped_count": 2,
+          "duplicate_count": 1
+        }
+      },
+      {
+        "label": "Header-only CSV produces zero counts cleanly",
+        "args": [
+          "tx_id,region,amount,status\n"
+        ],
+        "expected": {
+          "rows": [],
+          "valid_count": 0,
+          "dropped_count": 0,
+          "duplicate_count": 0
+        }
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Missing required fields or non-numeric amounts increment dropped_count",
+        "args": [
+          "tx_id,region,amount,status\n , north, 100, ok\n T2, , 100, ok\n T3, north, N/A, ok\n T4, north, 0, ok"
+        ],
+        "expected": {
+          "rows": [],
+          "valid_count": 0,
+          "dropped_count": 4,
+          "duplicate_count": 0
+        }
+      },
+      {
+        "label": "Duplicate tx_id on previously valid row counts as duplicate only, keeping first",
+        "args": [
+          "tx_id,region,amount,status\n A1, east, 10, ok\n A1, west, 20, ok\n A1, south, 30, ok"
+        ],
+        "expected": {
+          "rows": [
+            {
+              "tx_id": "A1",
+              "region": "EAST",
+              "amount": 10,
+              "status": "ok"
+            }
+          ],
+          "valid_count": 1,
+          "dropped_count": 0,
+          "duplicate_count": 2
+        }
+      },
+      {
+        "label": "Cancelled or invalid duplicate rows count as dropped rather than duplicates",
+        "args": [
+          "tx_id,region,amount,status\n A1, east, 10, ok\n A1, east, 20, cancelled\n A1, east, bad, ok"
+        ],
+        "expected": {
+          "rows": [
+            {
+              "tx_id": "A1",
+              "region": "EAST",
+              "amount": 10,
+              "status": "ok"
+            }
+          ],
+          "valid_count": 1,
+          "dropped_count": 2,
+          "duplicate_count": 0
+        }
+      },
+      {
+        "label": "Defaults missing status to unknown and strips dollar/commas safely",
+        "args": [
+          "tx_id,region,amount,status\n R1, apac,\" $10,000.00 \", "
+        ],
+        "expected": {
+          "rows": [
+            {
+              "tx_id": "R1",
+              "region": "APAC",
+              "amount": 10000,
+              "status": "unknown"
+            }
+          ],
+          "valid_count": 1,
+          "dropped_count": 0,
+          "duplicate_count": 0
+        }
+      },
+      {
+        "label": "Preserves order of valid non-duplicate records cleanly",
+        "args": [
+          "tx_id,region,amount,status\n Z9, na, 12.5, paid\n A1, eu, 7.5, paid"
+        ],
+        "expected": {
+          "rows": [
+            {
+              "tx_id": "Z9",
+              "region": "NA",
+              "amount": 12.5,
+              "status": "paid"
+            },
+            {
+              "tx_id": "A1",
+              "region": "EU",
+              "amount": 7.5,
+              "status": "paid"
+            }
+          ],
+          "valid_count": 2,
+          "dropped_count": 0,
+          "duplicate_count": 0
+        }
+      }
+    ]
+  },
+  "hints": [
+    "Wrap `csv_text` in `io.StringIO` and parse rows with `csv.DictReader` so quoted fields like `\"$1,250.50\"` are split accurately.",
+    "Check validity (non-empty `tx_id`/`region`, `status != \"cancelled\"`, valid float `amount > 0`) BEFORE checking `seen_ids` so invalid rows increment `dropped_count` first.",
+    "Clean numeric text via `raw.replace(\"$\", \"\").replace(\",\", \"\").strip()` then `round(float(...), 2)`."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-data-analysis"
+  ]
+}

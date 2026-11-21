@@ -1,0 +1,261 @@
+{
+  "id": "P037",
+  "slug": "rotate-matrix-90",
+  "title": "Rotate Image Grid 90 Clockwise",
+  "difficulty": "medium",
+  "tags": [
+    "nested lists"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "a6-data-structures",
+    "a7-comprehensions-builtins"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "rotate_90_clockwise"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "3x3 matrix clockwise rotation",
+        "args": [
+          [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              4,
+              5,
+              6
+            ],
+            [
+              7,
+              8,
+              9
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            7,
+            4,
+            1
+          ],
+          [
+            8,
+            5,
+            2
+          ],
+          [
+            9,
+            6,
+            3
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "2x2 matrix clockwise rotation",
+        "args": [
+          [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty grid",
+        "args": [
+          []
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "1x1 single element",
+        "args": [
+          [
+            [
+              42
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            42
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "4x4 checkerboard",
+        "args": [
+          [
+            [
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              1
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1,
+            0
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Identity diagonal preserved as anti-diagonal",
+        "args": [
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Strings matrix preserves coordinates",
+        "args": [
+          [
+            [
+              "NW",
+              "NE"
+            ],
+            [
+              "SW",
+              "SE"
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            "SW",
+            "NW"
+          ],
+          [
+            "SE",
+            "NE"
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Rotating 90 degrees clockwise moves old cell (r, c) to new position (c, n - 1 - r).",
+    "Equivalently, transpose the matrix and then reverse every row: [list(reversed(col)) for col in zip(*matrix)].",
+    "Pseudocode:\n  n = len(matrix)\n  return [[matrix[n - 1 - r][c] for r in range(n)] for c in range(n)]"
+  ],
+  "sources": [
+    "python-tutorial"
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "id": "P089",
+  "slug": "grid-paths-obstacles",
+  "title": "Count Grid Paths Around Obstacles",
+  "difficulty": "hard",
+  "tags": [
+    "dp"
+  ],
+  "estimatedMinutes": 20,
+  "relatedModules": [
+    "a4-control-flow",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "unique_paths"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "3x3 grid with center obstacle",
+        "args": [
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "expected": 2
+      },
+      {
+        "label": "Blocked destination yields 0",
+        "args": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        ],
+        "expected": 0
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Blocked origin yields 0",
+        "args": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Single open cell 1x1 yields 1",
+        "args": [
+          [
+            [
+              0
+            ]
+          ]
+        ],
+        "expected": 1
+      },
+      {
+        "label": "Empty grid yields 0",
+        "args": [
+          []
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Clear 4x4 grid has C(6, 3) == 20 paths",
+        "argsExpr": "([[0]*4 for _ in range(4)],)",
+        "expected": 20
+      },
+      {
+        "label": "Clear 25x25 grid DP avoids exponential recursion",
+        "argsExpr": "([[0]*25 for _ in range(25)],)",
+        "expected": 32247603683100,
+        "timeLimitMs": 300,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "If you can only move right or down, the ways to reach cell (r, c) equals ways(r-1, c) + ways(r, c-1) (or 0 if grid[r][c] == 1).",
+    "Use a 1D DP row `dp = [0] * cols` initialized with `dp[0] = 1` (if start is open); for each row, set `dp[c] = 0 if obstacle else dp[c] + dp[c - 1]`.",
+    "Pseudocode:\n  dp = [0] * cols; dp[0] = 1 if grid[0][0] == 0 else 0\n  for row in grid:\n      for c in range(cols):\n          if row[c] == 1: dp[c] = 0\n          elif c > 0: dp[c] += dp[c - 1]\n  return dp[-1]"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

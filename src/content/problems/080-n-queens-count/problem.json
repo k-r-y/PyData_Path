@@ -1,0 +1,85 @@
+{
+  "id": "P080",
+  "slug": "n-queens-count",
+  "title": "Count Valid N-Queens Layouts",
+  "difficulty": "hard",
+  "tags": [
+    "backtracking"
+  ],
+  "estimatedMinutes": 25,
+  "relatedModules": [
+    "a5-functions",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "count_n_queens"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "4x4 board yields 2 distinct solutions",
+        "args": [
+          4
+        ],
+        "expected": 2
+      },
+      {
+        "label": "3x3 board has 0 valid placements",
+        "args": [
+          3
+        ],
+        "expected": 0
+      }
+    ],
+    "hidden": [
+      {
+        "label": "1x1 trivial solution",
+        "args": [
+          1
+        ],
+        "expected": 1
+      },
+      {
+        "label": "2x2 impossible",
+        "args": [
+          2
+        ],
+        "expected": 0
+      },
+      {
+        "label": "5x5 has 10 solutions",
+        "args": [
+          5
+        ],
+        "expected": 10
+      },
+      {
+        "label": "6x6 has 4 solutions",
+        "args": [
+          6
+        ],
+        "expected": 4
+      },
+      {
+        "label": "8x8 classic chessboard equals 92",
+        "args": [
+          8
+        ],
+        "expected": 92,
+        "timeLimitMs": 350,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Place one queen per row `r = 0..n-1` so rows never conflict.",
+    "Track blocked columns `cols`, main diagonals `r - c`, and anti-diagonals `r + c` in sets for O(1) conflict checking per candidate square.",
+    "Pseudocode:\n  def dfs(r):\n      if r == n: return 1\n      total = 0\n      for c in range(n):\n          if c in cols or (r-c) in diag1 or (r+c) in diag2: continue\n          add; total += dfs(r+1); remove\n      return total"
+  ],
+  "sources": [
+    "python-tutorial",
+    "think-python"
+  ]
+}

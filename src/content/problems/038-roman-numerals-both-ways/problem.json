@@ -1,0 +1,76 @@
+{
+  "id": "P038",
+  "slug": "roman-numerals-both-ways",
+  "title": "Roman Numeral Codec Both Ways",
+  "difficulty": "medium",
+  "tags": [
+    "strings",
+    "dict"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "a3-strings-io",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Classic subtractive notation round-trip",
+        "inputDisplay": "int_to_roman(1994) and roman_to_int(\"MCMXCIV\")",
+        "expectedDisplay": "\"MCMXCIV\" and 1994",
+        "script": "assert int_to_roman(1994) == \"MCMXCIV\"\nassert roman_to_int(\"MCMXCIV\") == 1994"
+      },
+      {
+        "label": "Simple additive numerals",
+        "inputDisplay": "int_to_roman(58) and roman_to_int(\"LVIII\")",
+        "expectedDisplay": "\"LVIII\" and 58",
+        "script": "assert int_to_roman(58) == \"LVIII\"\nassert roman_to_int(\"LVIII\") == 58"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Minimum value 1 -> I",
+        "inputDisplay": "1 <-> \"I\"",
+        "expectedDisplay": "Round-trip succeeds",
+        "script": "assert int_to_roman(1) == \"I\"\nassert roman_to_int(\"I\") == 1"
+      },
+      {
+        "label": "Maximum standard value 3999 -> MMMCMXCIX",
+        "inputDisplay": "3999 <-> \"MMMCMXCIX\"",
+        "expectedDisplay": "Exact round-trip",
+        "script": "assert int_to_roman(3999) == \"MMMCMXCIX\"\nassert roman_to_int(\"MMMCMXCIX\") == 3999"
+      },
+      {
+        "label": "All six subtractive forms",
+        "inputDisplay": "4, 9, 40, 90, 400, 900",
+        "expectedDisplay": "IV, IX, XL, XC, CD, CM",
+        "script": "pairs = [(4,\"IV\"),(9,\"IX\"),(40,\"XL\"),(90,\"XC\"),(400,\"CD\"),(900,\"CM\")]\nfor val, txt in pairs:\n    assert int_to_roman(val) == txt\n    assert roman_to_int(txt) == val"
+      },
+      {
+        "label": "Mixed complex numbers 444 and 2026",
+        "inputDisplay": "CDXLIV and MMXXVI",
+        "expectedDisplay": "444 and 2026",
+        "script": "assert int_to_roman(444) == \"CDXLIV\"\nassert roman_to_int(\"CDXLIV\") == 444\nassert int_to_roman(2026) == \"MMXXVI\"\nassert roman_to_int(\"MMXXVI\") == 2026"
+      },
+      {
+        "label": "Sweep all integers 1..200 round-trip",
+        "inputDisplay": "roman_to_int(int_to_roman(x)) == x",
+        "expectedDisplay": "All 200 integers round-trip cleanly",
+        "script": "for x in range(1, 201):\n    assert roman_to_int(int_to_roman(x)) == x"
+      }
+    ]
+  },
+  "hints": [
+    "For int_to_roman, include subtractive tokens directly in descending table: [(1000,\"M\"), (900,\"CM\"), (500,\"D\"), (400,\"CD\"), ..., (4,\"IV\"), (1,\"I\")].",
+    "For roman_to_int, walk left to right: if current numeral value < next numeral value, subtract current; otherwise add current.",
+    "Pseudocode:\n  # int_to_roman uses greedy loop with divmod over 13 (val, sym) pairs\n  # roman_to_int checks values[s[i]] < values[s[i+1]]"
+  ],
+  "sources": [
+    "python-tutorial",
+    "think-python"
+  ]
+}

@@ -30,11 +30,14 @@ def run_with_trace(source_code, max_steps=300):
 
     ns = {"__name__": "__main__"}
     error = None
+    truncated = False
     try:
         compiled = compile(source_code, "<traced_code>", "exec")
         sys.settrace(tracer)
         exec(compiled, ns)
     except Exception as exc:
+        if isinstance(exc, RuntimeError) and f"Trace limit reached ({max_steps} steps)." in str(exc):
+            truncated = True
         error = f"{type(exc).__name__}: {exc}"
     finally:
         sys.settrace(None)
@@ -42,6 +45,8 @@ def run_with_trace(source_code, max_steps=300):
 
     return json.dumps({
         "steps": steps,
+        "truncated": truncated,
+        "maxSteps": max_steps,
         "error": error,
         "finalStdout": stdout_buf.getvalue(),
     })

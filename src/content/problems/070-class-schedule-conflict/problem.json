@@ -1,0 +1,149 @@
+{
+  "id": "P070",
+  "slug": "class-schedule-conflict",
+  "title": "Detect Overlapping Course Schedules",
+  "difficulty": "medium",
+  "tags": [
+    "intervals",
+    "sorting"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "find_conflicts"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Back-to-back courses do not conflict; true overlaps sorted lexicographically",
+        "args": [
+          [
+            [
+              "IS201",
+              540,
+              630
+            ],
+            [
+              "CS101",
+              600,
+              690
+            ],
+            [
+              "IS305",
+              630,
+              720
+            ]
+          ]
+        ],
+        "expectedExpr": "[('CS101', 'IS201'), ('CS101', 'IS305')]"
+      },
+      {
+        "label": "Disjoint non-overlapping schedule",
+        "args": [
+          [
+            [
+              "A",
+              10,
+              20
+            ],
+            [
+              "B",
+              20,
+              30
+            ],
+            [
+              "C",
+              30,
+              40
+            ]
+          ]
+        ],
+        "expected": []
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty or single course returns empty list",
+        "args": [
+          [
+            [
+              "ONLY",
+              100,
+              200
+            ]
+          ]
+        ],
+        "expected": []
+      },
+      {
+        "label": "Identical window orders pair id_a < id_b",
+        "args": [
+          [
+            [
+              "Z",
+              100,
+              150
+            ],
+            [
+              "A",
+              100,
+              150
+            ]
+          ]
+        ],
+        "expectedExpr": "[('A', 'Z')]"
+      },
+      {
+        "label": "Nested long lecture overlaps multiple short labs",
+        "args": [
+          [
+            [
+              "LAB1",
+              550,
+              580
+            ],
+            [
+              "LEC",
+              540,
+              700
+            ],
+            [
+              "LAB2",
+              620,
+              660
+            ]
+          ]
+        ],
+        "expectedExpr": "[('LAB1', 'LEC'), ('LAB2', 'LEC')]"
+      },
+      {
+        "label": "Empty sessions input",
+        "args": [
+          []
+        ],
+        "expected": []
+      },
+      {
+        "label": "Sparse 500-course non-overlapping performance sweep",
+        "argsExpr": "([[f'C{i:04d}', i * 100, i * 100 + 90] for i in range(500, 0, -1)],)",
+        "expected": [],
+        "timeLimitMs": 300,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Half-open intervals [s1, e1) and [s2, e2) conflict strictly when max(s1, s2) < min(e1, e2). Back-to-back equality e1 == s2 is NOT a conflict!",
+    "Sort a copy by start time first: then while checking sessions[i], stop the inner loop immediately once sessions[j][1] >= sessions[i][2]!",
+    "Pseudocode:\n  ordered = sorted(sessions, key=lambda x: (x[1], x[2], x[0]))\n  for i in range(n): for j in range(i+1, n):\n      if ordered[j][1] >= ordered[i][2]: break\n      record tuple(sorted((ordered[i][0], ordered[j][0])))\n  return sorted(conflicts)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

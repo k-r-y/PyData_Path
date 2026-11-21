@@ -1,0 +1,282 @@
+{
+  "id": "P095",
+  "slug": "transaction-fraud-flagger",
+  "title": "Transaction Fraud Flagger",
+  "difficulty": "challenge",
+  "tags": [
+    "streams",
+    "sliding window",
+    "rules"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "a6-data-structures",
+    "b3-iterators-generators",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "flag_fraud"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Flags high amount, burst velocity, and impossible geo jump",
+        "args": [
+          [
+            {
+              "tx_id": "t1",
+              "account": "A",
+              "ts": 100,
+              "amount": 50,
+              "country": "US"
+            },
+            {
+              "tx_id": "t2",
+              "account": "A",
+              "ts": 120,
+              "amount": 6000,
+              "country": "US"
+            },
+            {
+              "tx_id": "t3",
+              "account": "A",
+              "ts": 130,
+              "amount": 20,
+              "country": "US"
+            },
+            {
+              "tx_id": "t4",
+              "account": "A",
+              "ts": 140,
+              "amount": 25,
+              "country": "FR"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "tx_id": "t2",
+            "reasons": [
+              "HIGH_AMOUNT"
+            ]
+          },
+          {
+            "tx_id": "t4",
+            "reasons": [
+              "GEO_IMPOSSIBLE",
+              "VELOCITY"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Accounts tracked independently across overlapping timestamps",
+        "args": [
+          [
+            {
+              "tx_id": "x1",
+              "account": "A",
+              "ts": 10,
+              "amount": 10,
+              "country": "US"
+            },
+            {
+              "tx_id": "x2",
+              "account": "B",
+              "ts": 11,
+              "amount": 10,
+              "country": "UK"
+            },
+            {
+              "tx_id": "x3",
+              "account": "A",
+              "ts": 12,
+              "amount": 10,
+              "country": "US"
+            },
+            {
+              "tx_id": "x4",
+              "account": "B",
+              "ts": 13,
+              "amount": 10,
+              "country": "UK"
+            }
+          ]
+        ],
+        "expected": []
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Exactly 3 transactions in 60s allowed; 4th triggers VELOCITY",
+        "args": [
+          [
+            {
+              "tx_id": "1",
+              "account": "A",
+              "ts": 100,
+              "amount": 10,
+              "country": "SG"
+            },
+            {
+              "tx_id": "2",
+              "account": "A",
+              "ts": 120,
+              "amount": 10,
+              "country": "SG"
+            },
+            {
+              "tx_id": "3",
+              "account": "A",
+              "ts": 160,
+              "amount": 10,
+              "country": "SG"
+            },
+            {
+              "tx_id": "4",
+              "account": "A",
+              "ts": 161,
+              "amount": 10,
+              "country": "SG"
+            }
+          ]
+        ],
+        "expected": []
+      },
+      {
+        "label": "Inclusive 60s window boundary triggers VELOCITY on 4th at t+60",
+        "args": [
+          [
+            {
+              "tx_id": "1",
+              "account": "A",
+              "ts": 100,
+              "amount": 10,
+              "country": "SG"
+            },
+            {
+              "tx_id": "2",
+              "account": "A",
+              "ts": 110,
+              "amount": 10,
+              "country": "SG"
+            },
+            {
+              "tx_id": "3",
+              "account": "A",
+              "ts": 120,
+              "amount": 10,
+              "country": "SG"
+            },
+            {
+              "tx_id": "4",
+              "account": "A",
+              "ts": 160,
+              "amount": 10,
+              "country": "SG"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "tx_id": "4",
+            "reasons": [
+              "VELOCITY"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Country jump at exact 300s triggers; 301s does not",
+        "args": [
+          [
+            {
+              "tx_id": "1",
+              "account": "A",
+              "ts": 0,
+              "amount": 50,
+              "country": "US"
+            },
+            {
+              "tx_id": "2",
+              "account": "A",
+              "ts": 300,
+              "amount": 50,
+              "country": "JP"
+            },
+            {
+              "tx_id": "3",
+              "account": "A",
+              "ts": 601,
+              "amount": 50,
+              "country": "CA"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "tx_id": "2",
+            "reasons": [
+              "GEO_IMPOSSIBLE"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Amount exactly 5000.0 is clean; 5000.01 flags HIGH_AMOUNT",
+        "args": [
+          [
+            {
+              "tx_id": "ok",
+              "account": "A",
+              "ts": 1,
+              "amount": 5000,
+              "country": "US"
+            },
+            {
+              "tx_id": "bad",
+              "account": "A",
+              "ts": 2,
+              "amount": 5000.01,
+              "country": "US"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "tx_id": "bad",
+            "reasons": [
+              "HIGH_AMOUNT"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Linear O(n) sliding window performance on 12,000 single-account events",
+        "argsExpr": "([{\"tx_id\": f\"t{i}\", \"account\": \"HOT\", \"ts\": i * 20, \"amount\": 100.0, \"country\": \"US\"} for i in range(12000)],)",
+        "expected": [
+          {
+            "tx_id": "t3",
+            "reasons": [
+              "VELOCITY"
+            ]
+          }
+        ],
+        "expectedExpr": "[{\"tx_id\": f\"t{i}\", \"reasons\": [\"VELOCITY\"]} for i in range(3, 12000)]",
+        "timeLimitMs": 1800,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Maintain a separate `collections.deque` of recent timestamps and last `(ts, country)` pair per account.",
+    "Evict timestamps strictly older than `ts - 60` (`while q and q[0] < ts - 60: q.popleft()`) BEFORE appending the new transaction.",
+    "Append current `ts`; if `len(q) > 3`, record `\"VELOCITY\"`. Always sort the reasons list for any flagged transaction."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

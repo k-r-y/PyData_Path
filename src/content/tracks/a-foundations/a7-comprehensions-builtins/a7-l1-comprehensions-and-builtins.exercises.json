@@ -13,6 +13,9 @@
       "Expression: round(p * 1.1, 2) or p * 1.1"
     ],
     "solution": "prices = [100, 45, 220, 80]\nhigh_prices = [round(p * 1.1, 2) for p in prices if p >= 100]",
+    "alternates": [
+      "prices = [100, 45, 220, 80]\nhigh_prices = [round(p + p * 0.1, 2) for p in prices if not (p < 100)]"
+    ],
     "explanation": "List comprehensions combine filtering (if) and transformation (p * 1.1) in one expression.",
     "sources": ["python-tutorial"],
     "starterCode": "prices = [100, 45, 220, 80]\n# Build high_prices using a list comprehension\n",
@@ -56,7 +59,8 @@
     "answers": {
       "1": ["sorted"],
       "2": ["lambda"]
-    }
+    },
+    "visibleTests": "assert top == [{'item': 'B', 'units': 12}, {'item': 'A', 'units': 5}]"
   },
   {
     "id": "a7-l1-fc1",

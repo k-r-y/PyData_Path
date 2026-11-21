@@ -1,0 +1,90 @@
+{
+  "id": "P026",
+  "slug": "gcd-and-lcm",
+  "title": "Cycle Sync: GCD and LCM",
+  "difficulty": "easy",
+  "tags": [
+    "math"
+  ],
+  "estimatedMinutes": 8,
+  "relatedModules": [
+    "a4-control-flow",
+    "a5-functions"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "gcd_and_lcm"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Two sync intervals 12 and 18",
+        "args": [
+          12,
+          18
+        ],
+        "expectedExpr": "(6, 36)"
+      },
+      {
+        "label": "Coprime intervals 7 and 15",
+        "args": [
+          7,
+          15
+        ],
+        "expectedExpr": "(1, 105)"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Both zero returns (0, 0)",
+        "args": [
+          0,
+          0
+        ],
+        "expectedExpr": "(0, 0)"
+      },
+      {
+        "label": "One zero gives (b, 0)",
+        "args": [
+          0,
+          14
+        ],
+        "expectedExpr": "(14, 0)"
+      },
+      {
+        "label": "Negatives normalized via abs",
+        "args": [
+          -12,
+          18
+        ],
+        "expectedExpr": "(6, 36)"
+      },
+      {
+        "label": "Identical numbers",
+        "args": [
+          25,
+          25
+        ],
+        "expectedExpr": "(25, 25)"
+      },
+      {
+        "label": "Large coprime pair",
+        "args": [
+          100003,
+          99991
+        ],
+        "expectedExpr": "(1, 100003 * 99991)"
+      }
+    ]
+  },
+  "hints": [
+    "Euclidean algorithm: while b: a, b = b, a % b; return abs(a).",
+    "Avoid ZeroDivisionError in lcm = (abs(a * b) // g) when g == 0 (when both a and b are 0, lcm is 0).",
+    "Pseudocode:\n  g = gcd(abs(a), abs(b))\n  lcm = (abs(a) // g * abs(b)) if g else 0\n  return (g, lcm)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "think-python"
+  ]
+}

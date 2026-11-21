@@ -2,6 +2,12 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import CodeMirror, { type ReactCodeMirrorRef } from '@uiw/react-codemirror';
 import { python } from '@codemirror/lang-python';
 import { indentUnit } from '@codemirror/language';
+import {
+  autocompletion,
+  completionKeymap,
+  type Completion,
+  type CompletionContext,
+} from '@codemirror/autocomplete';
 import { toggleComment } from '@codemirror/commands';
 import { openSearchPanel, search, searchKeymap } from '@codemirror/search';
 import { oneDark } from '@codemirror/theme-one-dark';
@@ -19,18 +25,76 @@ import {
   Monitor,
   Loader2,
   Check,
+  Terminal,
 } from 'lucide-react';
 import { useTheme } from '../../components/ThemeProvider';
 
 export type EditorThemeMode = 'system' | 'light' | 'dark';
 
+const PYTHON_KEYWORDS = [
+  'False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break',
+  'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally',
+  'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'match',
+  'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while',
+  'with', 'yield',
+];
+
+const PYTHON_BUILTINS = [
+  'abs', 'all', 'any', 'bin', 'bool', 'bytearray', 'bytes', 'callable',
+  'chr', 'classmethod', 'complex', 'dict', 'dir', 'divmod', 'enumerate',
+  'filter', 'float', 'format', 'frozenset', 'getattr', 'hasattr', 'hash',
+  'hex', 'id', 'input', 'int', 'isinstance', 'issubclass', 'iter', 'len',
+  'list', 'map', 'max', 'min', 'next', 'object', 'oct', 'open', 'ord',
+  'pow', 'print', 'property', 'range', 'repr', 'reversed', 'round', 'set',
+  'setattr', 'slice', 'sorted', 'staticmethod', 'str', 'sum', 'super',
+  'tuple', 'type', 'vars', 'zip',
+];
+
+function pythonCompletionSource(context: CompletionContext) {
+  const word = context.matchBefore(/[A-Za-z_]\w*/);
+  if (!word || (word.from === word.to && !context.explicit)) return null;
+
+  const docText = context.state.doc.toString();
+  const seen = new Set<string>();
+  const options: Completion[] = [];
+
+  for (const kw of PYTHON_KEYWORDS) {
+    seen.add(kw);
+    options.push({ label: kw, type: 'keyword', boost: -1 });
+  }
+  for (const bi of PYTHON_BUILTINS) {
+    if (!seen.has(bi)) {
+      seen.add(bi);
+      options.push({ label: bi, type: 'function' });
+    }
+  }
+  const identMatches = docText.match(/\b[A-Za-z_][A-Za-z0-9_]{1,}\b/g) ?? [];
+  for (const id of identMatches) {
+    if (!seen.has(id) && id !== word.text) {
+      seen.add(id);
+      options.push({ label: id, type: 'variable', boost: 2 });
+    }
+  }
+
+  return {
+    from: word.from,
+    options,
+    validFor: /^[A-Za-z_]\w*$/,
+  };
+}
+
 export interface ProblemEditorProps {
   code: string;
   onChange: (value: string) => void;
   onRun: () => void;
-  onSubmit: () => void;
-  onResetConfirm: () => void;
+  onSubmit?: () => void;
+  onResetConfirm?: () => void;
   onVisualize?: () => void;
+  onLoadIntoTerminal?: () => void;
+  hideSubmit?: boolean;
+  hideReset?: boolean;
+  hideVisualize?: boolean;
+  runLabel?: string;
   running: boolean;
   runtimeStatus: 'idle' | 'loading' | 'running' | 'ready';
   errorLine?: number | null;
@@ -80,6 +144,11 @@ export function ProblemEditor({
   onSubmit,
   onResetConfirm,
   onVisualize,
+  onLoadIntoTerminal,
+  hideSubmit = false,
+  hideReset = false,
+  hideVisualize = false,
+  runLabel = 'Run',
   running,
   runtimeStatus,
   errorLine,
@@ -96,13 +165,14 @@ export function ProblemEditor({
   const editorRef = useRef<ReactCodeMirrorRef>(null);
   const resetDialogRef = useRef<HTMLDialogElement>(null);
   const runRef = useRef(onRun);
-  const submitRef = useRef(onSubmit);
+  const submitRef = useRef<() => void>(onSubmit ?? onRun);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const settingsPanelId = useId();
   const resetTitleId = useId();
 
+  const fontSizeId = useId();
   runRef.current = onRun;
-  submitRef.current = onSubmit;
+  submitRef.current = onSubmit ?? onRun;
 
   const effectiveDark =
     editorTheme === 'system' ? resolvedTheme === 'dark' : editorTheme === 'dark';
@@ -124,6 +194,7 @@ export function ProblemEditor({
     () => [
       python(),
       indentUnit.of('    '),
+      autocompletion({ override: [pythonCompletionSource] }),
       search({ top: true }),
       errorLineField,
       keymap.of([
@@ -145,6 +216,7 @@ export function ProblemEditor({
           key: 'Mod-/',
           run: toggleComment,
         },
+        ...completionKeymap,
         ...searchKeymap,
       ]),
       EditorView.theme({
@@ -194,7 +266,7 @@ export function ProblemEditor({
     if (!dialog) return;
     const choice = dialog.returnValue;
     dialog.returnValue = '';
-    if (choice === 'confirm') {
+    if (choice === 'confirm' && onResetConfirm) {
       onResetConfirm();
     }
   };
@@ -225,52 +297,68 @@ export function ProblemEditor({
             ) : (
               <Play className="w-3.5 h-3.5" aria-hidden="true" />
             )}
-            <span>Run</span>
+            <span>{runLabel}</span>
             <kbd className="hidden sm:inline font-mono text-[10px] px-1 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">
               Ctrl+↵
             </kbd>
           </button>
 
-          <button
-            type="button"
-            onClick={onSubmit}
-            disabled={running}
-            className="tactile inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 text-white text-xs font-semibold min-h-7"
-          >
-            {running ? (
-              <Loader2 className="w-3.5 h-3.5 animate-spin" aria-hidden="true" />
-            ) : (
-              <Send className="w-3.5 h-3.5" aria-hidden="true" />
-            )}
-            <span>Submit</span>
-            <kbd className="hidden sm:inline font-mono text-[10px] px-1 py-0.5 rounded bg-emerald-700/80 text-emerald-100">
-              Ctrl+⇧+↵
-            </kbd>
-          </button>
+          {!hideSubmit && onSubmit && (
+            <button
+              type="button"
+              onClick={onSubmit}
+              disabled={running}
+              className="tactile inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 text-white text-xs font-semibold min-h-7"
+            >
+              {running ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin" aria-hidden="true" />
+              ) : (
+                <Send className="w-3.5 h-3.5" aria-hidden="true" />
+              )}
+              <span>Submit</span>
+              <kbd className="hidden sm:inline font-mono text-[10px] px-1 py-0.5 rounded bg-emerald-700/80 text-emerald-100">
+                Ctrl+⇧+↵
+              </kbd>
+            </button>
+          )}
 
           <span role="separator" aria-orientation="vertical" className="h-4 w-px bg-neutral-200 dark:bg-neutral-700 mx-0.5" />
 
-          <button
-            type="button"
-            onClick={openResetModal}
-            disabled={running}
-            title="Reset code to starter template"
-            className="tactile inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 disabled:opacity-50"
-          >
-            <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
-            <span className="hidden md:inline">Reset</span>
-          </button>
+          {!hideReset && onResetConfirm && (
+            <button
+              type="button"
+              onClick={openResetModal}
+              disabled={running}
+              title="Reset code to starter template"
+              className="tactile inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 disabled:opacity-50"
+            >
+              <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
+              <span className="hidden md:inline">Reset</span>
+            </button>
+          )}
 
-          {!examMode && (
+          {!examMode && !hideVisualize && (
             <button
               type="button"
               onClick={onVisualize}
               disabled={!onVisualize}
-              title={onVisualize ? 'Step-through execution visualizer' : 'Step-through visualizer arrives in Phase 3'}
+              title={onVisualize ? 'Step-through execution visualizer' : 'Step-through visualizer'}
               className="tactile inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60 disabled:opacity-45 disabled:cursor-not-allowed"
             >
               <Eye className="w-3.5 h-3.5" aria-hidden="true" />
               <span className="hidden md:inline">Visualize</span>
+            </button>
+          )}
+
+          {!examMode && onLoadIntoTerminal && (
+            <button
+              type="button"
+              onClick={onLoadIntoTerminal}
+              title="Open terminal and run this editor code in the interactive REPL namespace"
+              className="tactile inline-flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-neutral-800/60"
+            >
+              <Terminal className="w-3.5 h-3.5" aria-hidden="true" />
+              <span className="hidden lg:inline">Load to Terminal</span>
             </button>
           )}
         </div>
@@ -312,11 +400,11 @@ export function ProblemEditor({
             <Search className="w-3.5 h-3.5" aria-hidden="true" />
           </button>
 
-          <label className="sr-only" htmlFor="problem-editor-fontsize">
+          <label className="sr-only" htmlFor={fontSizeId}>
             Editor font size
           </label>
           <select
-            id="problem-editor-fontsize"
+            id={fontSizeId}
             aria-label="Editor font size"
             value={fontSize}
             onChange={(e) => onFontSizeChange(Number(e.target.value))}

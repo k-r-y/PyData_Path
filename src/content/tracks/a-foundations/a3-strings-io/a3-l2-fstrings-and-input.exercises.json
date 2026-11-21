@@ -13,6 +13,9 @@
       "Use f\"Total: ${total:.2f}\" for summary."
     ],
     "solution": "qty = int(input())\nprice = float(input())\ntotal = qty * price\nsummary = f\"Total: ${total:.2f}\"",
+    "alternates": [
+      "qty = float(input())\nprice = float(input())\ntotal = qty * price\nsummary = f'Total: ${total:.2f}'"
+    ],
     "explanation": "input() always returns str. Converting qty with int() and price with float() enables numeric multiplication.",
     "sources": ["python-tutorial"],
     "inputs": ["4", "12.50"],
@@ -54,6 +57,9 @@
       "Print the f-string last."
     ],
     "solution": "capacity = 40\nenrolled = 36\nseats_left = capacity - enrolled\nprint(f\"Seats remaining: {seats_left}\")",
+    "alternates": [
+      "enrolled = 36\ncapacity = 40\nseats_left = capacity - enrolled\nprint(f\"Seats remaining: {seats_left}\")"
+    ],
     "explanation": "Variables must be defined before they are referenced in an f-string.",
     "sources": ["python-tutorial"],
     "lines": [
@@ -77,12 +83,15 @@
       "Assign to receipt and call print(receipt)."
     ],
     "solution": "item = input()\nprice = float(input())\nreceipt = f\"{item}: ${price:.2f}\"\nprint(receipt)",
+    "alternates": [
+      "receipt = f\"{input()}: ${float(input()):.2f}\"\nprint(receipt)"
+    ],
     "explanation": "Combining input() conversion with :.2f produces clean currency formatting.",
     "sources": ["python-tutorial"],
     "inputs": ["Notebook", "4.5"],
     "starterCode": "# Read item and price from input(), format receipt, and print it\n",
     "visibleTests": "assert receipt == 'Notebook: $4.50'",
-    "hiddenTests": "assert isinstance(price, float)"
+    "hiddenTests": "import sys as _sys\nassert 'Notebook: $4.50' in _sys.stdout.getvalue()"
   },
   {
     "id": "a3-l2-fc1",

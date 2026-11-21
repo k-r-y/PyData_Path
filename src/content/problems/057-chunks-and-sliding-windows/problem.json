@@ -1,0 +1,76 @@
+{
+  "id": "P057",
+  "slug": "chunks-and-sliding-windows",
+  "title": "Batch Chunk and Window Generators",
+  "difficulty": "medium",
+  "tags": [
+    "generators",
+    "itertools"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "b3-iterators-generators",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Even and short tail chunks",
+        "inputDisplay": "list(chunks([1,2,3,4,5], 2))",
+        "expectedDisplay": "[[1, 2], [3, 4], [5]]",
+        "script": "assert list(chunks([1, 2, 3, 4, 5], 2)) == [[1, 2], [3, 4], [5]]\nassert list(chunks([], 3)) == []"
+      },
+      {
+        "label": "Overlapping fixed-size sliding windows",
+        "inputDisplay": "list(sliding_window([10, 20, 30, 40], 3))",
+        "expectedDisplay": "[(10, 20, 30), (20, 30, 40)]",
+        "script": "assert list(sliding_window([10, 20, 30, 40], 3)) == [(10, 20, 30), (20, 30, 40)]"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Window larger than sequence yields empty",
+        "inputDisplay": "sliding_window([1, 2], 5)",
+        "expectedDisplay": "[]",
+        "script": "assert list(sliding_window([1, 2], 5)) == []"
+      },
+      {
+        "label": "Generators work lazily on iterators (not just lists)",
+        "inputDisplay": "chunks((x for x in range(7)), 3) and sliding_window((x for x in range(5)), 2)",
+        "expectedDisplay": "Handles single-pass iterator objects cleanly",
+        "script": "assert list(chunks((x for x in range(7)), 3)) == [[0,1,2],[3,4,5],[6]]\nassert list(sliding_window((x for x in range(5)), 2)) == [(0,1),(1,2),(2,3),(3,4)]"
+      },
+      {
+        "label": "Size <= 0 raises ValueError",
+        "inputDisplay": "chunks([1], 0) and sliding_window([1], 0)",
+        "expectedDisplay": "Raises ValueError",
+        "script": "for fn in (chunks, sliding_window):\n    try:\n        list(fn([1, 2], 0))\n        assert False\n    except ValueError:\n        pass"
+      },
+      {
+        "label": "Exact multiple chunk size leaves no extra empty slice",
+        "inputDisplay": "chunks([1,2,3,4], 2)",
+        "expectedDisplay": "[[1,2],[3,4]]",
+        "script": "assert list(chunks([1, 2, 3, 4], 2)) == [[1, 2], [3, 4]]"
+      },
+      {
+        "label": "Window size 1 produces 1-tuples",
+        "inputDisplay": "sliding_window(\"abc\", 1)",
+        "expectedDisplay": "[(\"a\",), (\"b\",), (\"c\",)]",
+        "script": "assert list(sliding_window(\"abc\", 1)) == [(\"a\",), (\"b\",), (\"c\",)]"
+      }
+    ]
+  },
+  "hints": [
+    "Work with iter(iterable) + itertools.islice OR collections.deque(maxlen=k) so BOTH lists AND lazy single-pass generators work cleanly without calling len().",
+    "For chunks(iterable, size): take `batch = list(islice(it, size))` inside `while batch: yield batch`. For sliding_window(iterable, k): fill a `deque(maxlen=k)` with `islice(it, k - 1)` then yield `tuple(win)` as each remaining element enters!",
+    "Pseudocode:\n  if size <= 0: raise ValueError(...)\n  it = iter(iterable)\n  while (batch := list(islice(it, size))): yield batch"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "P006",
+  "slug": "vowels-consonants-per-word",
+  "title": "Vowels and Consonants per Word",
+  "difficulty": "easy",
+  "tags": [
+    "strings",
+    "dict"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a3-strings-io",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "analyze_words"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Simple log phrase",
+        "args": [
+          "Data hub 42 ok"
+        ],
+        "expectedExpr": "[('Data', 2, 2), ('hub', 1, 2), ('42', 0, 0), ('ok', 1, 1)]"
+      },
+      {
+        "label": "Empty text",
+        "args": [
+          "   "
+        ],
+        "expected": []
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Mixed uppercase vowels and hyphens",
+        "args": [
+          "API-v2 Queue!"
+        ],
+        "expectedExpr": "[('API-v2', 2, 2), ('Queue!', 4, 1)]"
+      },
+      {
+        "label": "Digits only token",
+        "args": [
+          "100 200"
+        ],
+        "expectedExpr": "[('100', 0, 0), ('200', 0, 0)]"
+      },
+      {
+        "label": "Single letter vowel",
+        "args": [
+          "I a"
+        ],
+        "expectedExpr": "[('I', 1, 0), ('a', 1, 0)]"
+      },
+      {
+        "label": "Duplicate words preserved in order",
+        "args": [
+          "sync sync"
+        ],
+        "expectedExpr": "[('sync', 0, 4), ('sync', 0, 4)]"
+      },
+      {
+        "label": "All vowels token",
+        "args": [
+          "AEIOUaeiou"
+        ],
+        "expectedExpr": "[('AEIOUaeiou', 10, 0)]"
+      }
+    ]
+  },
+  "hints": [
+    "Split the text on whitespace using text.split() so empty whitespace yields an empty list.",
+    "For each token, count ASCII letters: vowels = set(\"aeiouAEIOU\"). Ignore digits and punctuation when tallying vowels and consonants.",
+    "Pseudocode:\n  for word in text.split():\n      v = c = 0\n      for ch in word:\n          if ch in vowels: v += 1\n          elif (\"a\" <= ch.lower() <= \"z\"): c += 1\n      result.append((word, v, c))"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

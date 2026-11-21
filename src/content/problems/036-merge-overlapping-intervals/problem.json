@@ -1,0 +1,204 @@
+{
+  "id": "P036",
+  "slug": "merge-overlapping-intervals",
+  "title": "Merge Maintenance Windows",
+  "difficulty": "medium",
+  "tags": [
+    "sorting",
+    "lists"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "merge_intervals"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Unsorted overlapping and disjoint windows",
+        "args": [
+          [
+            [
+              8,
+              10
+            ],
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              6
+            ],
+            [
+              15,
+              18
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Touching intervals merge together",
+        "args": [
+          [
+            [
+              1,
+              4
+            ],
+            [
+              4,
+              5
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            1,
+            5
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty schedule",
+        "args": [
+          []
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Single interval",
+        "args": [
+          [
+            [
+              5,
+              9
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            5,
+            9
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Fully nested inner interval preserved by max end",
+        "args": [
+          [
+            [
+              1,
+              10
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              2,
+              8
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            1,
+            10
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Negative coordinates",
+        "args": [
+          [
+            [
+              -10,
+              -5
+            ],
+            [
+              -6,
+              0
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        ],
+        "expected": [
+          [
+            -10,
+            0
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Large unsorted windows O(n log n)",
+        "argsExpr": "([[i * 2, i * 2 + 2] for i in range(6000, -1, -1)],)",
+        "expected": [
+          [
+            0,
+            12002
+          ]
+        ],
+        "timeLimitMs": 500,
+        "checks": [
+          "inputUnchanged"
+        ],
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Sort intervals by start time first using sorted(intervals, key=lambda iv: (iv[0], iv[1])).",
+    "Walk sorted intervals: if merged is empty or merged[-1][1] < cur[0], append [cur[0], cur[1]]; otherwise extend merged[-1][1] = max(merged[-1][1], cur[1]).",
+    "Pseudocode:\n  if not intervals: return []\n  ordered = sorted(intervals)\n  merged = [list(ordered[0])]\n  for start, end in ordered[1:]:\n      if start <= merged[-1][1]: merged[-1][1] = max(merged[-1][1], end)\n      else: merged.append([start, end])\n  return merged"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

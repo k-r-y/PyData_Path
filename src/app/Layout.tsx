@@ -22,6 +22,8 @@ import {
   ArrowUpRight,
   ChevronRight,
   Code2,
+  Terminal,
+  Clock,
 } from 'lucide-react';
 import { useTheme } from '../components/ThemeProvider';
 import { ProgressRing } from '../components/ProgressRing';
@@ -70,6 +72,7 @@ export function Layout() {
   const [cmdOpen, setCmdOpen] = useState(false);
   const [progressMap, setProgressMap] = useState<Map<string, ProgressRecord>>(new Map());
   const [streakDays, setStreakDays] = useState(0);
+  const [dueReviewCount, setDueReviewCount] = useState(0);
 
   const modules = useMemo(() => getAllModules(), []);
 
@@ -95,6 +98,14 @@ export function Layout() {
       .then((rows) => {
         setStreakDays(rows.filter((r) => r.exercisesCompleted > 0 || r.minutes > 0).length);
       })
+      .catch(() => {});
+
+    const today = new Date().toISOString().slice(0, 10);
+    db.reviewQueue
+      .where('dueDate')
+      .belowOrEqual(today)
+      .count()
+      .then((c) => setDueReviewCount(c))
       .catch(() => {});
   };
 
@@ -182,6 +193,7 @@ export function Layout() {
           {[
             { to: '/', label: 'Curriculum', end: true },
             { to: '/problems', label: 'Problems' },
+            { to: '/playground', label: 'Playground' },
             { to: '/dashboard', label: 'Dashboard' },
             { to: '/dataframe-lab', label: 'DataFrame Lab' },
             { to: '/sql-lab', label: 'SQL' },
@@ -200,6 +212,14 @@ export function Layout() {
               }
             >
               {item.label}
+              {item.to === '/problems' && dueReviewCount > 0 && (
+                <span
+                  className="ml-1.5 inline-flex items-center justify-center px-1.5 py-0.5 rounded-full bg-amber-500 text-white font-mono text-[10px] leading-none tabular-nums"
+                  title={`${dueReviewCount} problem${dueReviewCount === 1 ? '' : 's'} due for SM-2 review today`}
+                >
+                  {dueReviewCount}
+                </span>
+              )}
             </NavLink>
           ))}
         </nav>
@@ -386,6 +406,8 @@ export function Layout() {
                 </h2>
                 {[
                   { to: '/problems', label: 'Problem Solver', Icon: Code2 },
+                  { to: '/playground', label: 'Python Playground', Icon: Terminal },
+                  { to: '/exam', label: 'Timed Exam', Icon: Clock },
                   { to: '/visualizer', label: 'Step Visualizer', Icon: Eye },
                   { to: '/flashcards', label: 'Flashcards (SM-2)', Icon: Layers },
                   { to: '/dataframe-lab', label: 'DataFrame Lab', Icon: Table2 },
@@ -409,6 +431,11 @@ export function Layout() {
                   >
                     <Icon className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                     <span>{label}</span>
+                    {to === '/problems' && dueReviewCount > 0 && (
+                      <span className="ml-auto inline-flex items-center justify-center px-1.5 py-0.5 rounded-full bg-amber-500 text-white font-mono text-[10px] leading-none tabular-nums">
+                        {dueReviewCount}
+                      </span>
+                    )}
                   </NavLink>
                 ))}
               </div>

@@ -1,0 +1,1 @@
+Given `nums: list[int]`, return `out` of the same length where `out[i]` equals the product of all elements of `nums` **except `nums[i]`**, without using division (`/` or `//`) and in `O(n)` time (for empty `[]`, return `[]`; for a 1-element list `[x]`, return `[1]`).

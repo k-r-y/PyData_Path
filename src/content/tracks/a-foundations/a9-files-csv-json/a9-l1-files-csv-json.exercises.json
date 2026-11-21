@@ -13,6 +13,9 @@
       "Accumulate totals[cat] = round(totals.get(cat, 0.0) + float(row['amount']), 2)."
     ],
     "solution": "import csv\nimport io\n\ndef summarize_expenses(csv_text):\n    totals = {}\n    for row in csv.DictReader(io.StringIO(csv_text)):\n        cat = row['category']\n        totals[cat] = round(totals.get(cat, 0.0) + float(row['amount']), 2)\n    return totals",
+    "alternates": [
+      "import csv\nimport io\n\ndef summarize_expenses(csv_text):\n    totals = {}\n    reader = csv.reader(io.StringIO(csv_text))\n    next(reader, None)\n    for row in reader:\n        if not row:\n            continue\n        cat, amt = row[0], float(row[1])\n        totals[cat] = round(totals.get(cat, 0.0) + amt, 2)\n    return totals"
+    ],
     "explanation": "csv.DictReader reads each row as a dict; converting amount with float() allows summing by category.",
     "sources": ["python-tutorial"],
     "starterCode": "import csv\nimport io\n\ndef summarize_expenses(csv_text):\n    # return dict of {category: total_float}\n    pass\n",
@@ -38,7 +41,8 @@
     "answers": {
       "1": ["loads"],
       "2": ["dumps"]
-    }
+    },
+    "visibleTests": "assert data == {'ok': True}\nassert '\"ok\"' in text"
   },
   {
     "id": "a9-l1-ex3",

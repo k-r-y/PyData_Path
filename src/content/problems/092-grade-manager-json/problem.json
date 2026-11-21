@@ -1,0 +1,77 @@
+{
+  "id": "P092",
+  "slug": "grade-manager-json",
+  "title": "Grade Manager Core With JSON Persistence",
+  "difficulty": "challenge",
+  "tags": [
+    "oop",
+    "files",
+    "json"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "b2-oop",
+    "a9-files-csv-json"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Tracks student scores, overwrites duplicates, and computes averages",
+        "inputDisplay": "add S1 quiz=80 then overwrite quiz=90 + lab=100 -> avg 95.0",
+        "expectedDisplay": "95.0",
+        "script": "gb = GradeBook()\ngb.add_score(\"S1\", \"quiz\", 80)\ngb.add_score(\"S1\", \"quiz\", 90)\ngb.add_score(\"S1\", \"lab\", 100)\nassert abs(gb.student_average(\"S1\") - 95.0) < 1e-6"
+      },
+      {
+        "label": "Persists and restores full state via JSON file",
+        "inputDisplay": "save_json(\"/tmp/p092_vis.json\") -> load_json(...)",
+        "expectedDisplay": "Restored GradeBook matches averages and top_students",
+        "script": "gb = GradeBook()\ngb.add_score(\"S2\", \"exam\", 88.5)\ngb.add_score(\"S1\", \"exam\", 95.0)\npath = \"/tmp/p092_vis.json\"\ngb.save_json(path)\nrestored = GradeBook.load_json(path)\nassert abs(restored.student_average(\"S2\") - 88.5) < 1e-6\nassert restored.top_students(2) == [(\"S1\", 95.0), (\"S2\", 88.5)]"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Out-of-range score rejects with ValueError",
+        "inputDisplay": "score = -1 or score = 101",
+        "expectedDisplay": "Raises ValueError",
+        "script": "gb = GradeBook()\nfor bad in (-0.1, 100.1):\n    try:\n        gb.add_score(\"S1\", \"hw\", bad)\n        assert False\n    except ValueError:\n        pass"
+      },
+      {
+        "label": "Boundary scores 0 and 100 are accepted cleanly",
+        "inputDisplay": "score=0 and score=100 -> avg 50.0",
+        "expectedDisplay": "50.0",
+        "script": "gb = GradeBook()\ngb.add_score(\"S1\", \"a\", 0)\ngb.add_score(\"S1\", \"b\", 100)\nassert abs(gb.student_average(\"S1\") - 50.0) < 1e-6"
+      },
+      {
+        "label": "Unknown student raises KeyError",
+        "inputDisplay": "student_average(\"MISSING\")",
+        "expectedDisplay": "Raises KeyError",
+        "script": "gb = GradeBook()\ntry:\n    gb.student_average(\"MISSING\")\n    assert False\nexcept KeyError:\n    pass"
+      },
+      {
+        "label": "top_students breaks equal averages alphabetically ascending",
+        "inputDisplay": "B=90, A=90, C=80 -> top 2 == [(\"A\", 90.0), (\"B\", 90.0)]",
+        "expectedDisplay": "[(\"A\", 90.0), (\"B\", 90.0)]",
+        "script": "gb = GradeBook()\ngb.add_score(\"B\", \"e\", 90)\ngb.add_score(\"A\", \"e\", 90)\ngb.add_score(\"C\", \"e\", 80)\nassert gb.top_students(2) == [(\"A\", 90.0), (\"B\", 90.0)]"
+      },
+      {
+        "label": "top_students(0) and load_json missing file behavior",
+        "inputDisplay": "top_students(0) == [] and load_json missing -> FileNotFoundError",
+        "expectedDisplay": "Valid empty list and FileNotFoundError",
+        "script": "gb = GradeBook()\ngb.add_score(\"A\", \"e\", 90)\nassert gb.top_students(0) == []\ntry:\n    GradeBook.load_json(\"/tmp/definitely_missing_p092.json\")\n    assert False\nexcept FileNotFoundError:\n    pass"
+      }
+    ]
+  },
+  "hints": [
+    "Store scores in nested dicts `{student_id: {assessment: float(score)}}` so repeated `add_score` calls naturally overwrite the same assessment.",
+    "For `top_students(k)`, sort `(student_id, avg)` with key `lambda item: (-item[1], item[0])`.",
+    "Serialize nested dicts cleanly with `json.dump(..., fp, indent=2)` and reload via a `@classmethod` reconstructing a new `GradeBook`."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

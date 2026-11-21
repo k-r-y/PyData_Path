@@ -1,0 +1,84 @@
+{
+  "id": "P013",
+  "slug": "password-rule-checker",
+  "title": "Password Policy Validator",
+  "difficulty": "easy",
+  "tags": [
+    "strings",
+    "conditionals"
+  ],
+  "estimatedMinutes": 8,
+  "relatedModules": [
+    "a3-strings-io",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "is_valid_password"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Strong service password",
+        "args": [
+          "DataPath#2026"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Missing symbol rejected",
+        "args": [
+          "DataPath2026"
+        ],
+        "expected": false
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Too short 7 chars",
+        "args": [
+          "Ab1!xyz"
+        ],
+        "expected": false
+      },
+      {
+        "label": "No uppercase rejected",
+        "args": [
+          "datapath#1"
+        ],
+        "expected": false
+      },
+      {
+        "label": "No lowercase rejected",
+        "args": [
+          "DATAPATH#1"
+        ],
+        "expected": false
+      },
+      {
+        "label": "Whitespace inside rejected",
+        "args": [
+          "Data 1!ab"
+        ],
+        "expected": false
+      },
+      {
+        "label": "Minimum valid 8-char boundary",
+        "args": [
+          "Ab3!efgh"
+        ],
+        "expected": true
+      }
+    ]
+  },
+  "hints": [
+    "Check overall length (>= 8) and ensure no whitespace exists using any(ch.isspace() ...).",
+    "Verify at least one uppercase letter, lowercase letter, digit, and one symbol from \"!@#$%^&*-_\".",
+    "Pseudocode:\n  if len(pw) < 8 or any(c.isspace() for c in pw): return False\n  return any(isupper) and any(islower) and any(isdigit) and any(c in symbols)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

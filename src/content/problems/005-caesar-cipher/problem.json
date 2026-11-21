@@ -1,0 +1,90 @@
+{
+  "id": "P005",
+  "slug": "caesar-cipher",
+  "title": "Caesar Cipher Tag Encoder",
+  "difficulty": "easy",
+  "tags": [
+    "strings"
+  ],
+  "estimatedMinutes": 12,
+  "relatedModules": [
+    "a3-strings-io",
+    "a5-functions"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "caesar_shift"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Positive shift wrapping z to b",
+        "args": [
+          "Alert-Z9",
+          3
+        ],
+        "expected": "Dohuw-C9"
+      },
+      {
+        "label": "Negative decode shift",
+        "args": [
+          "Dohuw-C9",
+          -3
+        ],
+        "expected": "Alert-Z9"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Zero shift preserves exact string",
+        "args": [
+          "Ticket_42!",
+          0
+        ],
+        "expected": "Ticket_42!"
+      },
+      {
+        "label": "Large shift greater than 26",
+        "args": [
+          "abcXYZ",
+          29
+        ],
+        "expected": "defABC"
+      },
+      {
+        "label": "Large negative shift",
+        "args": [
+          "abcXYZ",
+          -29
+        ],
+        "expected": "xyzUVW"
+      },
+      {
+        "label": "Full alphabet round-trip shift 26",
+        "args": [
+          "DataPath",
+          26
+        ],
+        "expected": "DataPath"
+      },
+      {
+        "label": "Empty text",
+        "args": [
+          "",
+          13
+        ],
+        "expected": ""
+      }
+    ]
+  },
+  "hints": [
+    "Lowercase and uppercase letters form two separate 26-letter rings; digits, spaces, and symbols stay unchanged.",
+    "Compute base = ord(\"a\") if ch.islower() else ord(\"A\"), normalize k = shift % 26, and map chr(base + (ord(ch) - base + k) % 26).",
+    "Pseudocode:\n  k = shift % 26\n  for ch in text:\n      if \"a\" <= ch <= \"z\": shift relative to ord(\"a\")\n      elif \"A\" <= ch <= \"Z\": shift relative to ord(\"A\")\n      else: keep ch unchanged"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

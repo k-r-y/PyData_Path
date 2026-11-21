@@ -1,0 +1,78 @@
+{
+  "id": "P047",
+  "slug": "queue-using-two-stacks",
+  "title": "FIFO Queue Using Two Stacks",
+  "difficulty": "medium",
+  "tags": [
+    "oop"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "a6-data-structures",
+    "b2-oop",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Strict FIFO order across interleaved ops",
+        "inputDisplay": "enqueue(1), enqueue(2), peek(), dequeue(), enqueue(3), dequeue(), dequeue()",
+        "expectedDisplay": "1, 1, 2, 3",
+        "script": "q = TwoStackQueue()\nq.enqueue(1)\nq.enqueue(2)\nassert q.peek() == 1\nassert q.dequeue() == 1\nq.enqueue(3)\nassert q.dequeue() == 2\nassert q.dequeue() == 3\nassert q.is_empty() is True"
+      },
+      {
+        "label": "Empty checks and IndexError on underflow",
+        "inputDisplay": "TwoStackQueue().is_empty() and dequeue()",
+        "expectedDisplay": "is_empty == True; dequeue raises IndexError",
+        "script": "q = TwoStackQueue()\nassert q.is_empty() is True\ntry:\n    q.dequeue()\n    assert False\nexcept IndexError:\n    pass"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Drain and refill repeatedly",
+        "inputDisplay": "Fill 5, drain all, fill 3",
+        "expectedDisplay": "Preserves FIFO each cycle",
+        "script": "q = TwoStackQueue()\nfor x in range(5): q.enqueue(x)\nassert [q.dequeue() for _ in range(5)] == [0,1,2,3,4]\nfor x in [10, 20]: q.enqueue(x)\nassert q.peek() == 10\nassert q.dequeue() == 10\nassert q.dequeue() == 20"
+      },
+      {
+        "label": "None value allowed inside queue cleanly",
+        "inputDisplay": "enqueue(None), peek(), dequeue()",
+        "expectedDisplay": "Returns None cleanly and flips empty",
+        "script": "q = TwoStackQueue()\nq.enqueue(None)\nassert q.is_empty() is False\nassert q.peek() is None\nassert q.dequeue() is None\nassert q.is_empty() is True"
+      },
+      {
+        "label": "Peek on empty queue raises IndexError",
+        "inputDisplay": "TwoStackQueue().peek()",
+        "expectedDisplay": "Raises IndexError",
+        "script": "q = TwoStackQueue()\ntry:\n    q.peek()\n    assert False\nexcept IndexError:\n    pass"
+      },
+      {
+        "label": "Only stack push/pop methods used internally",
+        "inputDisplay": "Enqueued values maintain order across mixed waves",
+        "expectedDisplay": "Matches reference FIFO",
+        "script": "q = TwoStackQueue()\nq.enqueue(\"A\")\nq.enqueue(\"B\")\nassert q.dequeue() == \"A\"\nq.enqueue(\"C\")\nq.enqueue(\"D\")\nassert [q.dequeue(), q.dequeue(), q.dequeue()] == [\"B\", \"C\", \"D\"]"
+      },
+      {
+        "label": "Amortized O(1) performance over 20,000 items",
+        "inputDisplay": "Enqueue 20,000 items then dequeue all 20,000",
+        "expectedDisplay": "Completes quickly via lazy out-stack flip",
+        "timeLimitMs": 450,
+        "isPerformance": true,
+        "script": "q = TwoStackQueue()\nfor i in range(20000):\n    q.enqueue(i)\nfor i in range(20000):\n    assert q.dequeue() == i"
+      }
+    ]
+  },
+  "hints": [
+    "Keep an `inbox` list for enqueue() and an `outbox` list for peek() / dequeue().",
+    "Only pour elements from `inbox` into `outbox` (`while self._in: self._out.append(self._in.pop())`) when `outbox` is completely empty!",
+    "Pseudocode:\n  def _shift(self):\n      if not self._out:\n          while self._in: self._out.append(self._in.pop())"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

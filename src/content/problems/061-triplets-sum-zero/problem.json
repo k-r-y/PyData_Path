@@ -1,0 +1,171 @@
+{
+  "id": "P061",
+  "slug": "triplets-sum-zero",
+  "title": "Zero-Sum Adjustment Triplets",
+  "difficulty": "medium",
+  "tags": [
+    "sorting",
+    "two pointers"
+  ],
+  "estimatedMinutes": 25,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "three_sum"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Duplicate elements yield unique triplets only",
+        "args": [
+          [
+            -1,
+            0,
+            1,
+            2,
+            -1,
+            -4
+          ]
+        ],
+        "expected": [
+          [
+            -1,
+            -1,
+            2
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "No zero-sum combinations",
+        "args": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "All zeros yields single [0, 0, 0]",
+        "args": [
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "expected": [
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Fewer than three elements",
+        "args": [
+          [
+            0,
+            0
+          ]
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Two valid triplets symmetric around zero",
+        "args": [
+          [
+            -2,
+            0,
+            1,
+            1,
+            2
+          ]
+        ],
+        "expected": [
+          [
+            -2,
+            0,
+            2
+          ],
+          [
+            -2,
+            1,
+            1
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Already sorted duplicates on all positions",
+        "args": [
+          [
+            -2,
+            -2,
+            0,
+            0,
+            2,
+            2
+          ]
+        ],
+        "expected": [
+          [
+            -2,
+            0,
+            2
+          ]
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Duplicate-padded two-pointer O(n^2) vs slow O(n^3)",
+        "argsExpr": "(list(range(-180, 181)) + [1000] * 300,)",
+        "expectedExpr": "[[a, b, -(a + b)] for a in range(-180, 1) for b in range(a + 1, 181) if b < -(a + b) <= 180]",
+        "timeLimitMs": 1000,
+        "checks": [
+          "inputUnchanged"
+        ],
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Sort a copy of nums first so duplicates are adjacent and two pointers work cleanly.",
+    "For each index i: skip if i > 0 and arr[i] == arr[i - 1]. Use lo = i + 1, hi = n - 1 and skip duplicate lo / hi values after recording a matching triplet.",
+    "Pseudocode:\n  arr = sorted(nums)\n  for i in range(n - 2):\n      if i > 0 and arr[i] == arr[i-1]: continue\n      two-pointer sweep over (i+1, n-1)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

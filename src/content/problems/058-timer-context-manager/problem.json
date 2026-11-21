@@ -1,0 +1,75 @@
+{
+  "id": "P058",
+  "slug": "timer-context-manager",
+  "title": "Elapsed Timer Context Manager",
+  "difficulty": "medium",
+  "tags": [
+    "context managers"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "b5-context-managers",
+    "b2-oop"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Measures positive elapsed duration after block exits",
+        "inputDisplay": "with Timer() as t: sum(range(5000))",
+        "expectedDisplay": "isinstance(t.elapsed, float) and t.elapsed >= 0.0",
+        "script": "with Timer() as t:\n    _ = sum(range(5000))\nassert isinstance(t.elapsed, float)\nassert t.elapsed >= 0.0"
+      },
+      {
+        "label": "Records elapsed even when body raises Exception without suppressing it",
+        "inputDisplay": "with Timer() as t: raise ValueError(\"fail\")",
+        "expectedDisplay": "ValueError propagates AND t.elapsed >= 0.0 is populated",
+        "script": "t = Timer()\ntry:\n    with t:\n        _ = sum(range(1000))\n        raise ValueError(\"fail\")\n    assert False, \"Exception should not be suppressed\"\nexcept ValueError:\n    pass\nassert isinstance(t.elapsed, float)\nassert t.elapsed >= 0.0"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "__enter__ returns self cleanly",
+        "inputDisplay": "with Timer() as t: ...",
+        "expectedDisplay": "t is the Timer instance",
+        "script": "obj = Timer()\nwith obj as bound:\n    assert bound is obj"
+      },
+      {
+        "label": "Initial elapsed before entering is 0.0",
+        "inputDisplay": "Timer().elapsed before with-block",
+        "expectedDisplay": "0.0",
+        "script": "t = Timer()\nassert t.elapsed == 0.0"
+      },
+      {
+        "label": "Reusable across sequential with blocks resets timer cleanly",
+        "inputDisplay": "Run same Timer instance twice sequentially",
+        "expectedDisplay": "Second run measures cleanly without errors",
+        "script": "t = Timer()\nwith t:\n    _ = sum(range(2000))\ne1 = t.elapsed\nwith t:\n    _ = 1 + 1\ne2 = t.elapsed\nassert e1 >= 0.0 and e2 >= 0.0"
+      },
+      {
+        "label": "Optional label attribute supported",
+        "inputDisplay": "Timer(\"load\").label",
+        "expectedDisplay": "\"load\"",
+        "script": "t = Timer(\"load\")\nassert t.label == \"load\""
+      },
+      {
+        "label": "Exception return value False behavior",
+        "inputDisplay": "__exit__ returns False or None",
+        "expectedDisplay": "Does not swallow RuntimeError",
+        "script": "try:\n    with Timer() as tm:\n        raise RuntimeError(\"boom\")\n    assert False\nexcept RuntimeError:\n    assert tm.elapsed >= 0.0"
+      }
+    ]
+  },
+  "hints": [
+    "Implement __enter__(self) recording time.perf_counter() and returning self.",
+    "Implement __exit__(self, exc_type, exc_val, exc_tb) computing time.perf_counter() - self._start and returning False (do NOT return True, which swallows exceptions!).",
+    "Pseudocode:\n  class Timer:\n      def __init__(self, label=\"\"): self.label = label; self.elapsed = 0.0\n      def __enter__(self): self._start = time.perf_counter(); return self\n      def __exit__(self, *exc): self.elapsed = time.perf_counter() - self._start; return False"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

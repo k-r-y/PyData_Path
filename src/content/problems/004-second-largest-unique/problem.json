@@ -1,0 +1,109 @@
+{
+  "id": "P004",
+  "slug": "second-largest-unique",
+  "title": "Second Largest Unique Amount",
+  "difficulty": "easy",
+  "tags": [
+    "lists"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a4-control-flow",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "second_largest_unique"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Distinct sales amounts",
+        "args": [
+          [
+            120,
+            450,
+            310,
+            450
+          ]
+        ],
+        "expected": 310
+      },
+      {
+        "label": "All values equal has no runner-up",
+        "args": [
+          [
+            50,
+            50,
+            50
+          ]
+        ],
+        "expected": null
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty list",
+        "args": [
+          []
+        ],
+        "expected": null
+      },
+      {
+        "label": "Single element",
+        "args": [
+          [
+            42
+          ]
+        ],
+        "expected": null
+      },
+      {
+        "label": "Negative balances",
+        "args": [
+          [
+            -10,
+            -2,
+            -5,
+            -2
+          ]
+        ],
+        "expected": -5
+      },
+      {
+        "label": "Zero and negative mix",
+        "args": [
+          [
+            -1,
+            0,
+            0
+          ]
+        ],
+        "expected": -1
+      },
+      {
+        "label": "Already sorted ascending",
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        ],
+        "expected": 4
+      }
+    ]
+  },
+  "hints": [
+    "Sort or track unique values so duplicate maxima do not act as the second largest.",
+    "You can maintain two variables: best and second (both initialized to None) in a single O(n) pass over the numbers.",
+    "Pseudocode:\n  first = second = None\n  for x in nums:\n      if first is None or x > first:\n          if x != first: second = first\n          first = x\n      elif x != first and (second is None or x > second):\n          second = x\n  return second"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

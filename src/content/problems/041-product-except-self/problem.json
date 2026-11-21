@@ -1,0 +1,147 @@
+{
+  "id": "P041",
+  "slug": "product-except-self",
+  "title": "Product of Others Without Division",
+  "difficulty": "medium",
+  "tags": [
+    "prefix",
+    "lists"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "product_except_self"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard integer weights",
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ],
+        "expected": [
+          24,
+          12,
+          8,
+          6
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Single zero keeps zero product cleanly",
+        "args": [
+          [
+            -1,
+            1,
+            0,
+            -3,
+            3
+          ]
+        ],
+        "expected": [
+          0,
+          0,
+          9,
+          0,
+          0
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty input",
+        "args": [
+          []
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Two zeros zeroes all outputs",
+        "args": [
+          [
+            0,
+            5,
+            0
+          ]
+        ],
+        "expected": [
+          0,
+          0,
+          0
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Single element returns [1]",
+        "args": [
+          [
+            9
+          ]
+        ],
+        "expected": [
+          1
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Negative signs odd vs even",
+        "args": [
+          [
+            -2,
+            3,
+            -4
+          ]
+        ],
+        "expected": [
+          -12,
+          8,
+          -6
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Linear O(n) prefix/suffix pass on 10k items",
+        "argsExpr": "([1 if i % 2 == 0 else -1 for i in range(10000)],)",
+        "expectedExpr": "[(-1 if (5000 - (0 if i % 2 == 0 else 1)) % 2 else 1) for i in range(10000)]",
+        "timeLimitMs": 400,
+        "checks": [
+          "inputUnchanged"
+        ],
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Every output[i] equals (product of elements strictly left of i) * (product of elements strictly right of i).",
+    "Pass 1 stores prefix products left-to-right into out[i]. Pass 2 walks right-to-left multiplying a running suffix product into out[i]. Zeroes require no division or special cases!",
+    "Pseudocode:\n  out = [1] * len(nums)\n  prefix = 1\n  for i, x in enumerate(nums): out[i] = prefix; prefix *= x\n  suffix = 1\n  for i in range(len(nums) - 1, -1, -1): out[i] *= suffix; suffix *= nums[i]\n  return out"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "id": "P071",
+  "slug": "shortest-path-maze",
+  "title": "Shortest Warehouse Maze Route",
+  "difficulty": "hard",
+  "tags": [
+    "bfs",
+    "grid"
+  ],
+  "estimatedMinutes": 30,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "shortest_maze_steps"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Simple 3x4 warehouse corridor",
+        "args": [
+          [
+            [
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              1,
+              1,
+              0,
+              0
+            ]
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "expected": 5
+      },
+      {
+        "label": "Blocked destination unreachable",
+        "args": [
+          [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "expected": -1
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Start equals end on open cell returns 0",
+        "args": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Start on wall cell returns -1",
+        "args": [
+          [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "expected": -1
+      },
+      {
+        "label": "End on wall cell returns -1",
+        "args": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "expected": -1
+      },
+      {
+        "label": "Detour around U-shaped obstacle",
+        "args": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              1,
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "expected": 8
+      },
+      {
+        "label": "60x60 open floor performance test",
+        "argsExpr": "([[0] * 60 for _ in range(60)], (0, 0), (59, 59))",
+        "expected": 118,
+        "timeLimitMs": 500,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Use Breadth-First Search (BFS) with collections.deque so cells are explored in strictly non-decreasing distance order.",
+    "Check bounds and grid[r][c] == 0 for BOTH start and end up front. Mark each cell visited AT ENQUEUE TIME (not on pop) so the same cell is not queued multiple times.",
+    "Pseudocode:\n  q = deque([(sr, sc, 0)])\n  seen = {(sr, sc)}\n  while q:\n      r, c, d = q.popleft()\n      if (r, c) == (er, ec): return d\n      for dr, dc in ((-1,0),(1,0),(0,-1),(0,1)):\n          ...\n  return -1"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

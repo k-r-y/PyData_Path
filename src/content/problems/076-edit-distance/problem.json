@@ -1,0 +1,93 @@
+{
+  "id": "P076",
+  "slug": "edit-distance",
+  "title": "Levenshtein Edit Distance",
+  "difficulty": "hard",
+  "tags": [
+    "dp",
+    "strings"
+  ],
+  "estimatedMinutes": 25,
+  "relatedModules": [
+    "a4-control-flow",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "edit_distance"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Classic transform horse to ros",
+        "args": [
+          "horse",
+          "ros"
+        ],
+        "expected": 3
+      },
+      {
+        "label": "Intention to execution",
+        "args": [
+          "intention",
+          "execution"
+        ],
+        "expected": 5
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Both empty strings",
+        "args": [
+          "",
+          ""
+        ],
+        "expected": 0
+      },
+      {
+        "label": "One empty string requires full insertions",
+        "args": [
+          "",
+          "abcde"
+        ],
+        "expected": 5
+      },
+      {
+        "label": "Identical strings require 0 edits",
+        "args": [
+          "analytics",
+          "analytics"
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Pure insertions",
+        "args": [
+          "cat",
+          "cart"
+        ],
+        "expected": 1
+      },
+      {
+        "label": "200-char fuzzy match speed check",
+        "args": [
+          "schema_v1_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "schema_v2_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        ],
+        "expected": 1,
+        "timeLimitMs": 350,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Each single edit can insert a char, delete a char, or substitute one char for another.",
+    "Base cases: transforming an empty string to length j costs j insertions. Transition: 0 extra cost when a[i-1] == b[j-1], else 1 + min(delete, insert, replace).",
+    "Pseudocode:\n  prev = list(range(len(b) + 1))\n  for i, ca in enumerate(a, 1):\n      cur = [i] + [0] * len(b)\n      for j, cb in enumerate(b, 1):\n          cur[j] = prev[j-1] if ca == cb else 1 + min(prev[j], cur[j-1], prev[j-1])\n      prev = cur"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

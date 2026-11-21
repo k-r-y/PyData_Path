@@ -1,0 +1,84 @@
+{
+  "id": "P064",
+  "slug": "ipv4-validator",
+  "title": "Strict IPv4 Address Validator",
+  "difficulty": "medium",
+  "tags": [
+    "strings",
+    "parsing"
+  ],
+  "estimatedMinutes": 12,
+  "relatedModules": [
+    "a3-strings-io",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "is_valid_ipv4"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Valid loopback and gateway IP",
+        "args": [
+          "192.168.0.1"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Leading zero octet rejected cleanly",
+        "args": [
+          "192.168.01.1"
+        ],
+        "expected": false
+      }
+    ],
+    "hidden": [
+      {
+        "label": "All zeros valid",
+        "args": [
+          "0.0.0.0"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Max octets 255 valid",
+        "args": [
+          "255.255.255.255"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Out of range octet 256 rejected",
+        "args": [
+          "256.1.1.1"
+        ],
+        "expected": false
+      },
+      {
+        "label": "Sign or space inside octet rejected",
+        "args": [
+          "+1.2.3.4"
+        ],
+        "expected": false
+      },
+      {
+        "label": "Double zero octet \"00\" rejected",
+        "args": [
+          "10.00.0.1"
+        ],
+        "expected": false
+      }
+    ]
+  },
+  "hints": [
+    "Split on \".\" and require len(parts) == 4.",
+    "For each part: check `part.isdigit()` (and `all(\"0\" <= ch <= \"9\" ...)` so non-ASCII Unicode digits fail too), `len(part) == 1 or not part.startswith(\"0\")`, and `0 <= int(part) <= 255`.",
+    "Pseudocode:\n  parts = ip.split(\".\")\n  if len(parts) != 4: return False\n  for p in parts:\n      if not p or not all(\"0\" <= c <= \"9\" for c in p): return False\n      if len(p) > 1 and p[0] == \"0\": return False\n      if int(p) > 255: return False\n  return True"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

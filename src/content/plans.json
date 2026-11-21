@@ -1,0 +1,42 @@
+[
+  {
+    "id": "foundations",
+    "title": "Foundations",
+    "description": "Core control flow, loops, conditionals, dictionaries, and everyday Python fundamentals.",
+    "problemIds": [
+      "P001", "P002", "P003", "P004", "P006", "P007", "P008", "P010", "P011", "P014", "P025", "P030"
+    ]
+  },
+  {
+    "id": "strings-and-lists",
+    "title": "Strings and Lists",
+    "description": "Text cleaning, parsing, slicing, intervals, two-pointer scans, and formatting patterns.",
+    "problemIds": [
+      "P002", "P005", "P009", "P011", "P012", "P013", "P016", "P020", "P021", "P028", "P029", "P033", "P036", "P039", "P048", "P065"
+    ]
+  },
+  {
+    "id": "data-structures",
+    "title": "Data Structures",
+    "description": "Hash maps, sets, stacks, queues, classes, custom exceptions, heaps, and LRU caching.",
+    "problemIds": [
+      "P011", "P015", "P022", "P030", "P031", "P032", "P034", "P045", "P046", "P047", "P053", "P059", "P072", "P085"
+    ]
+  },
+  {
+    "id": "algorithms",
+    "title": "Algorithms",
+    "description": "Sliding window, binary search, recursion, BFS/DFS graph traversal, dynamic programming, and backtracking.",
+    "problemIds": [
+      "P035", "P039", "P040", "P042", "P061", "P063", "P071", "P074", "P075", "P076", "P079", "P083"
+    ]
+  },
+  {
+    "id": "data-analytics-prep",
+    "title": "Data Analytics Prep",
+    "description": "IS data workflows: CSV parsing, log aggregation, dates, validation, statistics, and pure-Python reporting.",
+    "problemIds": [
+      "P011", "P014", "P023", "P031", "P039", "P048", "P049", "P050", "P051", "P059", "P060", "P098", "P099", "P100"
+    ]
+  }
+]

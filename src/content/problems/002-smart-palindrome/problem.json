@@ -1,0 +1,83 @@
+{
+  "id": "P002",
+  "slug": "smart-palindrome",
+  "title": "Smart Palindrome Audit",
+  "difficulty": "easy",
+  "tags": [
+    "strings"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a3-strings-io",
+    "a5-functions"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "is_smart_palindrome"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Mixed punctuation and casing badge code",
+        "args": [
+          "A man, a plan, a canal: Panama!"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Mismatched audit tag",
+        "args": [
+          "Order-204"
+        ],
+        "expected": false
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty string",
+        "args": [
+          ""
+        ],
+        "expected": true
+      },
+      {
+        "label": "Punctuation only string",
+        "args": [
+          "...---!!!"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Single alphanumeric character",
+        "args": [
+          "Z"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Numeric SKU palindrome",
+        "args": [
+          "12-321"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Numeric SKU non-palindrome",
+        "args": [
+          "123-45"
+        ],
+        "expected": false
+      }
+    ]
+  },
+  "hints": [
+    "Ignore spaces, punctuation, and letter casing before comparing characters symmetrically.",
+    "Build a filtered lowercase string (or use two pointers left/right skipping non-alphanumeric characters with .isalnum()).",
+    "Pseudocode:\n  cleaned = [c.lower() for c in text if c.isalnum()]\n  return cleaned == cleaned[::-1]"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

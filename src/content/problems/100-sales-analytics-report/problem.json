@@ -1,0 +1,78 @@
+{
+  "id": "P100",
+  "slug": "sales-analytics-report",
+  "title": "Sales Analytics Report: read, clean, aggregate, top N, trend, text report",
+  "difficulty": "challenge",
+  "tags": [
+    "data",
+    "files",
+    "capstone"
+  ],
+  "estimatedMinutes": 40,
+  "relatedModules": [
+    "a9-files-csv-json",
+    "c11-eda-workflow",
+    "c14-capstone"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Reads CSV file, cleans bad rows/duplicates, aggregates top N and monthly trend, formats report",
+        "inputDisplay": "/tmp/p100_vis.csv with Electronics/Books/Home + dirty row + duplicate",
+        "expectedDisplay": "Dict with clean_orders=4, total_revenue=350.0, top_categories, monthly_trend, report_text",
+        "script": "csv_data = \"\"\"order_id,month,category,revenue,qty\nO1,2026-01,Electronics,100.00,1\nO1,2026-01,Electronics,999.00,5\nO2,2026-02,Books,50.00,2\nO3,2026-01, ,75.00,1\nO4,2026-02,Home,120.00,3\nO5,2026-02,Electronics,80.00,1\n\"\"\"\npath = \"/tmp/p100_vis.csv\"\nwith open(path, \"w\", encoding=\"utf-8\") as fp:\n    fp.write(csv_data)\nrep = build_sales_report(path, top_n=2)\nassert rep[\"clean_orders\"] == 4\nassert rep[\"total_revenue\"] == 350.0\nassert rep[\"top_categories\"] == [(\"Electronics\", 180.0), (\"Home\", 120.0)]\nassert rep[\"monthly_trend\"] == [(\"2026-01\", 100.0), (\"2026-02\", 250.0)]\nassert \"Orders: 4\" in rep[\"report_text\"]\nassert \"Total Revenue: $350.00\" in rep[\"report_text\"]\nassert \"- Electronics: $180.00\" in rep[\"report_text\"]\nassert \"- 2026-02: $250.00\" in rep[\"report_text\"]"
+      },
+      {
+        "label": "All-dirty CSV yields zero orders cleanly",
+        "inputDisplay": "/tmp/p100_empty.csv with negative revenue and missing fields",
+        "expectedDisplay": "clean_orders==0, total_revenue==0.0, empty lists",
+        "script": "path = \"/tmp/p100_empty.csv\"\nwith open(path, \"w\", encoding=\"utf-8\") as fp:\n    fp.write(\"order_id,month,category,revenue,qty\\nO1,2026-01,Tech,-10,1\\nO2,2026-01,,50,1\\n\")\nrep = build_sales_report(path, top_n=3)\nassert rep[\"clean_orders\"] == 0\nassert rep[\"total_revenue\"] == 0.0\nassert rep[\"top_categories\"] == []\nassert rep[\"monthly_trend\"] == []\nassert \"Orders: 0\" in rep[\"report_text\"]"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Breaks top_categories revenue ties alphabetically ascending",
+        "inputDisplay": "Zed=$100, Alpha=$100, Mid=$50 with top_n=2 -> Alpha then Zed",
+        "expectedDisplay": "[(\"Alpha\", 100.0), (\"Zed\", 100.0)]",
+        "script": "path = \"/tmp/p100_tie.csv\"\nwith open(path, \"w\", encoding=\"utf-8\") as fp:\n    fp.write(\"order_id,month,category,revenue,qty\\n1,2026-03,Zed,100,1\\n2,2026-03,Alpha,100,1\\n3,2026-03,Mid,50,1\\n\")\nrep = build_sales_report(path, top_n=2)\nassert rep[\"top_categories\"] == [(\"Alpha\", 100.0), (\"Zed\", 100.0)]"
+      },
+      {
+        "label": "Drops non-positive qty or non-numeric revenue cleanly",
+        "inputDisplay": "qty=0, qty=-2, revenue=bad all dropped",
+        "expectedDisplay": "Only valid row kept",
+        "script": "path = \"/tmp/p100_bad.csv\"\nwith open(path, \"w\", encoding=\"utf-8\") as fp:\n    fp.write(\"order_id,month,category,revenue,qty\\n1,2026-01,Tools,10,0\\n2,2026-01,Tools,10,-2\\n3,2026-01,Tools,bad,1\\n4,2026-01,Tools,25.5,2\\n\")\nrep = build_sales_report(path, top_n=1)\nassert rep[\"clean_orders\"] == 1\nassert rep[\"total_revenue\"] == 25.5"
+      },
+      {
+        "label": "Chronological monthly trend sorting independent of file row order",
+        "inputDisplay": "2026-12 appears before 2025-11 and 2026-02",
+        "expectedDisplay": "Sorted chronologically ascending",
+        "script": "path = \"/tmp/p100_months.csv\"\nwith open(path, \"w\", encoding=\"utf-8\") as fp:\n    fp.write(\"order_id,month,category,revenue,qty\\n1,2026-12,A,10,1\\n2,2025-11,A,20,1\\n3,2026-02,A,30,1\\n\")\nrep = build_sales_report(path)\nassert rep[\"monthly_trend\"] == [(\"2025-11\", 20.0), (\"2026-02\", 30.0), (\"2026-12\", 10.0)]"
+      },
+      {
+        "label": "Handles whitespace trimming and quoted currency revenue values",
+        "inputDisplay": "\"$1,000.25\" with leading/trailing spaces on fields",
+        "expectedDisplay": "clean_orders==1, total_revenue==1000.25",
+        "script": "path = \"/tmp/p100_trim.csv\"\nwith open(path, \"w\", encoding=\"utf-8\") as fp:\n    fp.write('order_id,month,category,revenue,qty\\n 1 , 2026-04 , Data ,\" $1,000.25 \", 2 \\n')\nrep = build_sales_report(path)\nassert rep[\"total_revenue\"] == 1000.25\nassert rep[\"top_categories\"] == [(\"Data\", 1000.25)]"
+      },
+      {
+        "label": "Exact report_text section headers and bullet structure verified",
+        "inputDisplay": "Standard CSV -> report_text sections formatted cleanly",
+        "expectedDisplay": "Contains Orders, Total Revenue, Top Categories, Monthly Trend headers and bullets",
+        "script": "path = \"/tmp/p100_fmt.csv\"\nwith open(path, \"w\", encoding=\"utf-8\") as fp:\n    fp.write(\"order_id,month,category,revenue,qty\\n1,2026-01,Cloud,125,2\\n\")\nrep = build_sales_report(path, top_n=1)\nexpected_lines = [\n    \"Orders: 1\",\n    \"Total Revenue: $125.00\",\n    \"Top Categories:\",\n    \"- Cloud: $125.00\",\n    \"Monthly Trend:\",\n    \"- 2026-01: $125.00\",\n]\nassert rep[\"report_text\"].strip().splitlines() == expected_lines"
+      }
+    ]
+  },
+  "hints": [
+    "Use `csv.DictReader` to read `csv_path`, validate non-empty `order_id`, `month`, `category`, integer `qty > 0`, numeric `revenue > 0` (stripping `$` and `,`), and keep the first valid occurrence of each `order_id`.",
+    "Aggregate category totals and month totals using `collections.defaultdict(float)`. Sort categories by `(-rev, category)` and slice `[:top_n]`; sort months ascending chronologically.",
+    "Format `report_text` lines cleanly with f-strings `f\"${val:.2f}\"`."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-data-analysis"
+  ]
+}

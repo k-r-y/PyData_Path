@@ -1,0 +1,152 @@
+{
+  "id": "P032",
+  "slug": "group-anagrams",
+  "title": "Group Anagram Identifiers",
+  "difficulty": "medium",
+  "tags": [
+    "dict",
+    "strings"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "group_anagrams"
+  },
+  "compare": {
+    "checker": "checker.py"
+  },
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard mixed word groups",
+        "args": [
+          [
+            "eat",
+            "tea",
+            "tan",
+            "ate",
+            "nat",
+            "bat"
+          ]
+        ],
+        "expected": [
+          [
+            "eat",
+            "tea",
+            "ate"
+          ],
+          [
+            "tan",
+            "nat"
+          ],
+          [
+            "bat"
+          ]
+        ]
+      },
+      {
+        "label": "Empty input",
+        "args": [
+          []
+        ],
+        "expected": []
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Single word",
+        "args": [
+          [
+            "solo"
+          ]
+        ],
+        "expected": [
+          [
+            "solo"
+          ]
+        ]
+      },
+      {
+        "label": "Empty strings and duplicates preserved",
+        "args": [
+          [
+            "",
+            "",
+            "a"
+          ]
+        ],
+        "expected": [
+          [
+            "",
+            ""
+          ],
+          [
+            "a"
+          ]
+        ]
+      },
+      {
+        "label": "Duplicate letter counts matter (aab vs abb)",
+        "args": [
+          [
+            "aab",
+            "baa",
+            "abb",
+            "bba"
+          ]
+        ],
+        "expected": [
+          [
+            "aab",
+            "baa"
+          ],
+          [
+            "abb",
+            "bba"
+          ]
+        ]
+      },
+      {
+        "label": "All unique signatures",
+        "args": [
+          [
+            "cat",
+            "dog",
+            "bird"
+          ]
+        ],
+        "expected": [
+          [
+            "cat"
+          ],
+          [
+            "dog"
+          ],
+          [
+            "bird"
+          ]
+        ]
+      },
+      {
+        "label": "Large batch grouping performance test",
+        "argsExpr": "([''.join(sorted('abcde')) if i % 2 == 0 else 'edcba' for i in range(4000)] + ['xyz'] * 1000,)",
+        "expected": [],
+        "timeLimitMs": 500,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Two words are anagrams if and only if sorting their characters produces the same key.",
+    "Use a dict (or collections.defaultdict(list)) keyed by \"\".join(sorted(word)) or a 26-letter frequency tuple.",
+    "Pseudocode:\n  groups = defaultdict(list)\n  for w in words:\n      groups[\"\".join(sorted(w))].append(w)\n  return list(groups.values())"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

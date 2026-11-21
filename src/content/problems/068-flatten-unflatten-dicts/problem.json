@@ -1,0 +1,76 @@
+{
+  "id": "P068",
+  "slug": "flatten-unflatten-dicts",
+  "title": "Flatten and Unflatten Config Dicts",
+  "difficulty": "medium",
+  "tags": [
+    "recursion",
+    "dict"
+  ],
+  "estimatedMinutes": 20,
+  "relatedModules": [
+    "a5-functions",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Multi-level nested config round-trip",
+        "inputDisplay": "{\"db\": {\"host\": \"localhost\", \"port\": 5432}, \"debug\": true}",
+        "expectedDisplay": "Flattens to dotted keys and reconstructs nested dict cleanly",
+        "script": "orig = {\"db\": {\"host\": \"localhost\", \"port\": 5432}, \"debug\": True}\nflat = flatten_dict(orig)\nassert flat == {\"db.host\": \"localhost\", \"db.port\": 5432, \"debug\": True}\nassert unflatten_dict(flat) == orig"
+      },
+      {
+        "label": "Empty dictionary stays empty",
+        "inputDisplay": "flatten_dict({}) and unflatten_dict({})",
+        "expectedDisplay": "{} and {}",
+        "script": "assert flatten_dict({}) == {}\nassert unflatten_dict({}) == {}"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Depth 4 nesting",
+        "inputDisplay": "{\"a\": {\"b\": {\"c\": {\"d\": 42}}}}",
+        "expectedDisplay": "{\"a.b.c.d\": 42} round-trip",
+        "script": "nested = {\"a\": {\"b\": {\"c\": {\"d\": 42}}}}\nassert flatten_dict(nested) == {\"a.b.c.d\": 42}\nassert unflatten_dict({\"a.b.c.d\": 42}) == nested"
+      },
+      {
+        "label": "Custom separator supported",
+        "inputDisplay": "sep=\"/\"",
+        "expectedDisplay": "{\"a/b\": 1}",
+        "script": "assert flatten_dict({\"a\": {\"b\": 1}}, sep=\"/\") == {\"a/b\": 1}\nassert unflatten_dict({\"a/b\": 1}, sep=\"/\") == {\"a\": {\"b\": 1}}"
+      },
+      {
+        "label": "Multiple sibling branches merge under shared parent in unflatten",
+        "inputDisplay": "{\"db.host\": \"a\", \"db.port\": 1, \"cache.ttl\": 60}",
+        "expectedDisplay": "{\"db\": {\"host\": \"a\", \"port\": 1}, \"cache\": {\"ttl\": 60}}",
+        "script": "flat = {\"db.host\": \"a\", \"db.port\": 1, \"cache.ttl\": 60}\nassert unflatten_dict(flat) == {\"db\": {\"host\": \"a\", \"port\": 1}, \"cache\": {\"ttl\": 60}}"
+      },
+      {
+        "label": "Flat dictionary unchanged",
+        "inputDisplay": "{\"x\": 1, \"y\": \"ok\"}",
+        "expectedDisplay": "Matches identical keys",
+        "script": "assert flatten_dict({\"x\": 1, \"y\": \"ok\"}) == {\"x\": 1, \"y\": \"ok\"}\nassert unflatten_dict({\"x\": 1, \"y\": \"ok\"}) == {\"x\": 1, \"y\": \"ok\"}"
+      },
+      {
+        "label": "Preserves list leaf values intact",
+        "inputDisplay": "{\"app\": {\"ports\": [80, 443]}}",
+        "expectedDisplay": "{\"app.ports\": [80, 443]}",
+        "script": "d = {\"app\": {\"ports\": [80, 443]}}\nf = flatten_dict(d)\nassert f == {\"app.ports\": [80, 443]}\nassert unflatten_dict(f) == d"
+      }
+    ]
+  },
+  "hints": [
+    "In flatten_dict(d, sep=\".\"), recurse only when isinstance(value, dict) and value is non-empty.",
+    "In unflatten_dict(d, sep=\".\"), split each compound key with key.split(sep), walk down `cur = cur.setdefault(part, {})` for intermediate segments, and assign `cur[parts[-1]] = value`.",
+    "Pseudocode unflatten:\n  root = {}\n  for key, val in flat.items():\n      parts = key.split(sep)\n      node = root\n      for p in parts[:-1]: node = node.setdefault(p, {})\n      node[parts[-1]] = val\n  return root"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

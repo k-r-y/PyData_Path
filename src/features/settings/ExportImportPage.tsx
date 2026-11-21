@@ -1,32 +1,74 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Settings, Download, Upload, CheckCircle2, AlertCircle } from 'lucide-react';
-import { db } from '../../db/database';
+import { db, getSetting, saveSetting } from '../../db/database';
 import { useTheme } from '../../components/ThemeProvider';
+
+interface ExportTables {
+  progress?: unknown[];
+  attempts?: unknown[];
+  mastery?: unknown[];
+  flashcards?: unknown[];
+  notes?: unknown[];
+  bookmarks?: unknown[];
+  settings?: unknown[];
+  streaks?: unknown[];
+  projects?: unknown[];
+  problemProgress?: unknown[];
+  submissions?: unknown[];
+  drafts?: unknown[];
+  problemNotes?: unknown[];
+  reviewQueue?: unknown[];
+  playgroundFiles?: unknown[];
+  examSessions?: unknown[];
+}
 
 interface ExportPayload {
   version: number;
   exportedAt: string;
-  tables: {
-    progress: unknown[];
-    attempts: unknown[];
-    mastery: unknown[];
-    flashcards: unknown[];
-    notes: unknown[];
-    bookmarks: unknown[];
-    settings: unknown[];
-    streaks: unknown[];
-    projects: unknown[];
-  };
+  tables: ExportTables;
 }
 
 export function ExportImportPage() {
   const { theme, setTheme } = useTheme();
   const [importMode, setImportMode] = useState<'merge' | 'replace'>('merge');
   const [statusMsg, setStatusMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [hintMinutes, setHintMinutes] = useState<[number, number, number]>([3, 8, 15]);
+  const [hintFails, setHintFails] = useState<[number, number, number]>([1, 3, 5]);
+
+  useEffect(() => {
+    Promise.all([
+      getSetting<[number, number, number]>('hintUnlockMinutes', [3, 8, 15]),
+      getSetting<[number, number, number]>('hintUnlockFails', [1, 3, 5]),
+    ])
+      .then(([mins, fails]) => {
+        if (Array.isArray(mins) && mins.length === 3) setHintMinutes(mins);
+        if (Array.isArray(fails) && fails.length === 3) setHintFails(fails);
+      })
+      .catch(() => {});
+  }, []);
+
+  const updateHintSetting = (
+    kind: 'min' | 'fail',
+    idx: 0 | 1 | 2,
+    rawVal: string
+  ) => {
+    const val = Math.max(0, Math.min(120, Number(rawVal) || 0));
+    if (kind === 'min') {
+      const next: [number, number, number] = [...hintMinutes] as [number, number, number];
+      next[idx] = val;
+      setHintMinutes(next);
+      saveSetting('hintUnlockMinutes', next).catch(() => {});
+    } else {
+      const next: [number, number, number] = [...hintFails] as [number, number, number];
+      next[idx] = val;
+      setHintFails(next);
+      saveSetting('hintUnlockFails', next).catch(() => {});
+    }
+  };
 
   const handleExport = async () => {
     const payload: ExportPayload = {
-      version: 1,
+      version: 2,
       exportedAt: new Date().toISOString(),
       tables: {
         progress: await db.progress.toArray(),
@@ -38,6 +80,13 @@ export function ExportImportPage() {
         settings: await db.settings.toArray(),
         streaks: await db.streaks.toArray(),
         projects: await db.projects.toArray(),
+        problemProgress: await db.problemProgress.toArray(),
+        submissions: await db.submissions.toArray(),
+        drafts: await db.drafts.toArray(),
+        problemNotes: await db.problemNotes.toArray(),
+        reviewQueue: await db.reviewQueue.toArray(),
+        playgroundFiles: await db.playgroundFiles.toArray(),
+        examSessions: await db.examSessions.toArray(),
       },
     };
 
@@ -48,7 +97,7 @@ export function ExportImportPage() {
     a.download = `pydata-path-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    setStatusMsg({ ok: true, text: 'Progress exported as JSON.' });
+    setStatusMsg({ ok: true, text: 'Progress exported as v2 JSON (includes Problem Solver & Playground tables).' });
   };
 
   const handleImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,8 +108,15 @@ export function ExportImportPage() {
       const text = await file.text();
       const parsed = JSON.parse(text) as ExportPayload;
 
-      if (parsed.version !== 1 || !parsed.tables || typeof parsed.tables !== 'object') {
-        setStatusMsg({ ok: false, text: 'Invalid backup file: unsupported version or missing tables.' });
+      if (
+        (parsed.version !== 1 && parsed.version !== 2) ||
+        !parsed.tables ||
+        typeof parsed.tables !== 'object'
+      ) {
+        setStatusMsg({
+          ok: false,
+          text: 'Invalid backup file: expected version 1 or 2 with a tables object.',
+        });
         return;
       }
 
@@ -74,6 +130,13 @@ export function ExportImportPage() {
         [db.settings, parsed.tables.settings],
         [db.streaks, parsed.tables.streaks],
         [db.projects, parsed.tables.projects],
+        [db.problemProgress, parsed.tables.problemProgress],
+        [db.submissions, parsed.tables.submissions],
+        [db.drafts, parsed.tables.drafts],
+        [db.problemNotes, parsed.tables.problemNotes],
+        [db.reviewQueue, parsed.tables.reviewQueue],
+        [db.playgroundFiles, parsed.tables.playgroundFiles],
+        [db.examSessions, parsed.tables.examSessions],
       ] as const;
 
       await db.transaction('rw', db.tables, async () => {
@@ -95,7 +158,7 @@ export function ExportImportPage() {
       window.dispatchEvent(new Event('pdp-progress-updated'));
       setStatusMsg({
         ok: true,
-        text: `Imported backup successfully (${importMode} mode).`,
+        text: `Imported v${parsed.version} backup successfully (${importMode} mode).`,
       });
     } catch (err) {
       setStatusMsg({
@@ -109,11 +172,11 @@ export function ExportImportPage() {
     <div className="max-w-3xl mx-auto px-6 py-8 space-y-6">
       <header className="space-y-1 border-b border-neutral-200 dark:border-neutral-800 pb-4">
         <h1 className="text-2xl font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-          <Settings className="w-6 h-6 text-neutral-600 dark:text-neutral-400" />
+          <Settings className="w-6 h-6 text-neutral-600 dark:text-neutral-400" aria-hidden="true" />
           Settings &amp; Backup
         </h1>
         <p className="text-xs text-neutral-500 dark:text-neutral-400">
-          Customize your workspace and export or restore your local IndexedDB progress.
+          Customize your workspace, Problem Solver hint timings, and local IndexedDB backups.
         </p>
       </header>
 
@@ -139,6 +202,56 @@ export function ExportImportPage() {
         </div>
       </section>
 
+      {/* Hint Unlock Timing Defaults */}
+      <section className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0e] p-5 space-y-3">
+        <h2 className="text-sm font-semibold text-neutral-900 dark:text-white">
+          Problem Solver Hint Unlock Thresholds
+        </h2>
+        <p className="text-xs text-neutral-500 dark:text-neutral-400">
+          Each hint level unlocks automatically when either its elapsed minutes or failed submission threshold is reached.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
+          {([0, 1, 2] as const).map((idx) => (
+            <div
+              key={idx}
+              className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#111113] p-3 space-y-2 text-xs"
+            >
+              <div className="font-mono font-semibold text-neutral-700 dark:text-neutral-200">
+                Hint Level {idx + 1}
+              </div>
+              <div className="flex items-center justify-between gap-2">
+                <label htmlFor={`set-hint-min-${idx}`} className="text-neutral-600 dark:text-neutral-400">
+                  Minutes
+                </label>
+                <input
+                  id={`set-hint-min-${idx}`}
+                  type="number"
+                  min={0}
+                  max={120}
+                  value={hintMinutes[idx]}
+                  onChange={(e) => updateHintSetting('min', idx, e.target.value)}
+                  className="w-20 px-2 py-1 rounded border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#09090b] font-mono text-xs tabular-nums"
+                />
+              </div>
+              <div className="flex items-center justify-between gap-2">
+                <label htmlFor={`set-hint-fail-${idx}`} className="text-neutral-600 dark:text-neutral-400">
+                  Failed submits
+                </label>
+                <input
+                  id={`set-hint-fail-${idx}`}
+                  type="number"
+                  min={0}
+                  max={50}
+                  value={hintFails[idx]}
+                  onChange={(e) => updateHintSetting('fail', idx, e.target.value)}
+                  className="w-20 px-2 py-1 rounded border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#09090b] font-mono text-xs tabular-nums"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Export / Import */}
       <section className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0c0c0e] p-5 space-y-4">
         <h2 className="text-sm font-semibold text-neutral-900 dark:text-white">
@@ -151,13 +264,16 @@ export function ExportImportPage() {
             onClick={handleExport}
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-neutral-950 hover:bg-neutral-800 text-white dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 text-xs font-semibold"
           >
-            <Download className="w-3.5 h-3.5" />
+            <Download className="w-3.5 h-3.5" aria-hidden="true" />
             Export Progress JSON
           </button>
 
           <div className="flex items-center gap-2 text-xs">
+            <label htmlFor="import-mode-select" className="sr-only">
+              Import mode
+            </label>
             <select
-              aria-label="Import mode"
+              id="import-mode-select"
               value={importMode}
               onChange={(e) => setImportMode(e.target.value as 'merge' | 'replace')}
               className="rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#09090b] px-2.5 py-1.5"
@@ -167,7 +283,7 @@ export function ExportImportPage() {
             </select>
 
             <label className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-xs font-semibold cursor-pointer">
-              <Upload className="w-3.5 h-3.5" />
+              <Upload className="w-3.5 h-3.5" aria-hidden="true" />
               Import JSON
               <input type="file" accept=".json,application/json" onChange={handleImport} className="sr-only" />
             </label>
@@ -176,13 +292,18 @@ export function ExportImportPage() {
 
         {statusMsg && (
           <div
+            role="status"
             className={`flex items-center gap-2 text-xs p-3 rounded-md border ${
               statusMsg.ok
                 ? 'border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200'
                 : 'border-rose-200 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-200'
             }`}
           >
-            {statusMsg.ok ? <CheckCircle2 className="w-4 h-4" /> : <AlertCircle className="w-4 h-4" />}
+            {statusMsg.ok ? (
+              <CheckCircle2 className="w-4 h-4 shrink-0" aria-hidden="true" />
+            ) : (
+              <AlertCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
+            )}
             <span>{statusMsg.text}</span>
           </div>
         )}

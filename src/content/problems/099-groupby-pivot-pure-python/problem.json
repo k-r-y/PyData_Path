@@ -1,0 +1,246 @@
+{
+  "id": "P099",
+  "slug": "groupby-pivot-pure-python",
+  "title": "Group By and Pivot Without pandas",
+  "difficulty": "challenge",
+  "tags": [
+    "data",
+    "dict",
+    "aggregation"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "a6-data-structures",
+    "a7-comprehensions-builtins",
+    "c6-transform-combine"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "pivot_table"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Pivots sum across missing (row, col) cells filled with fill_value",
+        "args": [
+          [
+            {
+              "region": "East",
+              "q": "Q1",
+              "rev": 100
+            },
+            {
+              "region": "East",
+              "q": "Q1",
+              "rev": 50
+            },
+            {
+              "region": "West",
+              "q": "Q2",
+              "rev": 200
+            }
+          ],
+          "region",
+          "q",
+          "rev",
+          "sum",
+          0
+        ],
+        "expected": {
+          "East": {
+            "Q1": 150,
+            "Q2": 0
+          },
+          "West": {
+            "Q1": 0,
+            "Q2": 200
+          }
+        }
+      },
+      {
+        "label": "Computes cell-wise mean accurately rounded to 4 decimals",
+        "args": [
+          [
+            {
+              "dept": "Eng",
+              "yr": "2025",
+              "s": 10
+            },
+            {
+              "dept": "Eng",
+              "yr": "2025",
+              "s": 20
+            },
+            {
+              "dept": "Eng",
+              "yr": "2025",
+              "s": 25
+            }
+          ],
+          "dept",
+          "yr",
+          "s",
+          "mean",
+          0
+        ],
+        "expected": {
+          "Eng": {
+            "2025": 18.3333
+          }
+        }
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Supports count, min, and max aggregations",
+        "args": [
+          [
+            {
+              "r": "A",
+              "c": "X",
+              "v": 4
+            },
+            {
+              "r": "A",
+              "c": "X",
+              "v": 9
+            },
+            {
+              "r": "B",
+              "c": "Y",
+              "v": 3
+            }
+          ],
+          "r",
+          "c",
+          "v",
+          "max",
+          -1
+        ],
+        "expected": {
+          "A": {
+            "X": 9,
+            "Y": -1
+          },
+          "B": {
+            "X": -1,
+            "Y": 3
+          }
+        }
+      },
+      {
+        "label": "Min aggregation preserves negative numbers cleanly",
+        "args": [
+          [
+            {
+              "r": "A",
+              "c": "X",
+              "v": -5
+            },
+            {
+              "r": "A",
+              "c": "X",
+              "v": 2
+            }
+          ],
+          "r",
+          "c",
+          "v",
+          "min",
+          0
+        ],
+        "expected": {
+          "A": {
+            "X": -5
+          }
+        }
+      },
+      {
+        "label": "Count aggregation uses integer float counts and fill_value on empty cells",
+        "args": [
+          [
+            {
+              "r": "A",
+              "c": "X",
+              "v": 10
+            },
+            {
+              "r": "B",
+              "c": "Y",
+              "v": 20
+            }
+          ],
+          "r",
+          "c",
+          "v",
+          "count",
+          0
+        ],
+        "expected": {
+          "A": {
+            "X": 1,
+            "Y": 0
+          },
+          "B": {
+            "X": 0,
+            "Y": 1
+          }
+        }
+      },
+      {
+        "label": "Empty input list returns empty dict",
+        "args": [
+          [],
+          "r",
+          "c",
+          "v",
+          "sum",
+          0
+        ],
+        "expected": {}
+      },
+      {
+        "label": "Custom non-zero fill_value populates all sparse cells",
+        "args": [
+          [
+            {
+              "r": "A",
+              "c": "1",
+              "v": 5
+            },
+            {
+              "r": "B",
+              "c": "2",
+              "v": 8
+            }
+          ],
+          "r",
+          "c",
+          "v",
+          "sum",
+          -99
+        ],
+        "expected": {
+          "A": {
+            "1": 5,
+            "2": -99
+          },
+          "B": {
+            "1": -99,
+            "2": 8
+          }
+        }
+      }
+    ]
+  },
+  "hints": [
+    "Collect sorted unique row keys `row_keys` and column keys `col_keys`, plus group lists of floats into `buckets[(rk, ck)]`.",
+    "Build the nested result over every pair `(rk, ck)` so sparse cells receive `round(float(fill_value), 4)`.",
+    "Support `agg` in `(\"sum\", \"mean\", \"count\", \"min\", \"max\")`; raise `ValueError` for unknown aggregators."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-data-analysis"
+  ]
+}

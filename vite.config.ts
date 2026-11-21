@@ -35,6 +35,7 @@ function pyodideAssetsPlugin(): Plugin {
         }
         const ext = path.extname(filePath);
         res.setHeader('Content-Type', mimeTypes[ext] ?? 'application/octet-stream');
+        res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
         fs.createReadStream(filePath).pipe(res);
       });
     },
@@ -116,6 +117,18 @@ export default defineConfig({
   plugins: [react(), tailwindcss(), pyodideAssetsPlugin(), problemsMetadataPlugin()],
   optimizeDeps: {
     exclude: ['pyodide'],
+  },
+  server: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
+  },
+  preview: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
   },
   worker: {
     format: 'es',

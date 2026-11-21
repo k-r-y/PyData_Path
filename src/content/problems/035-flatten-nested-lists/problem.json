@@ -1,0 +1,168 @@
+{
+  "id": "P035",
+  "slug": "flatten-nested-lists",
+  "title": "Flatten Nested Configuration Lists",
+  "difficulty": "medium",
+  "tags": [
+    "recursion"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "a5-functions",
+    "b4-functions-deeper"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "flatten_list"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Mixed depth numbers and strings",
+        "args": [
+          [
+            1,
+            [
+              2,
+              [
+                "abc",
+                [
+                  3
+                ]
+              ]
+            ],
+            []
+          ]
+        ],
+        "expected": [
+          1,
+          2,
+          "abc",
+          3
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Empty nested lists collapse to empty list",
+        "args": [
+          [
+            [],
+            [
+              []
+            ]
+          ]
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Already flat list",
+        "args": [
+          [
+            10,
+            20,
+            30
+          ]
+        ],
+        "expected": [
+          10,
+          20,
+          30
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Deeply nested single value",
+        "args": [
+          [
+            [
+              [
+                [
+                  99
+                ]
+              ]
+            ]
+          ]
+        ],
+        "expected": [
+          99
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Contains dicts/tuples treated as leaf items",
+        "args": [
+          [
+            {
+              "k": 1
+            },
+            [
+              true,
+              null
+            ]
+          ]
+        ],
+        "expected": [
+          {
+            "k": 1
+          },
+          true,
+          null
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Multiple empty strings preserved intact",
+        "args": [
+          [
+            "",
+            [
+              "x",
+              ""
+            ]
+          ]
+        ],
+        "expected": [
+          "",
+          "x",
+          ""
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Deep 120-level nesting without recursion overflow",
+        "argsExpr": "(lambda: (x := [1], [x := [x] for _ in range(120)], x)[-1])()",
+        "expected": [
+          1
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Only expand elements when isinstance(item, list). Leave strings, numbers, tuples, and dicts intact.",
+    "You can walk recursively into sublists or iterate explicitly with a stack for arbitrary nesting depth.",
+    "Pseudocode (recursive):\n  out = []\n  for item in nested:\n      if isinstance(item, list): out.extend(flatten_list(item))\n      else: out.append(item)\n  return out"
+  ],
+  "sources": [
+    "python-tutorial",
+    "think-python"
+  ]
+}

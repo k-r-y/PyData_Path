@@ -1,0 +1,84 @@
+{
+  "id": "P073",
+  "slug": "calculator-without-eval",
+  "title": "Infix Expression Calculator",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "stack"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "evaluate_expr"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Operator precedence and parentheses",
+        "args": [
+          "3 + 5 * (2 - 8) / 2"
+        ],
+        "expected": -12
+      },
+      {
+        "label": "Zero truncation division on negative dividend",
+        "args": [
+          "-7 / 2 + 10"
+        ],
+        "expected": 7
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Single integer",
+        "args": [
+          " 42 "
+        ],
+        "expected": 42
+      },
+      {
+        "label": "Unary minus inside parentheses",
+        "args": [
+          "-(3 + 4) * 2"
+        ],
+        "expected": -14
+      },
+      {
+        "label": "Double negation handled cleanly",
+        "args": [
+          "10 - -5"
+        ],
+        "expected": 15
+      },
+      {
+        "label": "Nested multi-level parentheses",
+        "args": [
+          "((2 + 3) * (4 - 1)) / 3"
+        ],
+        "expected": 5
+      },
+      {
+        "label": "Chained division left-associative",
+        "args": [
+          "100 / 5 / 2"
+        ],
+        "expected": 10
+      }
+    ]
+  },
+  "hints": [
+    "Never call eval() or exec(). Convert infix tokens to postfix (Shunting Yard) OR write recursive descent parsing: expr (+,-) -> term (*,/) -> factor (int, unary -, (expr)).",
+    "For integer division, truncate toward zero with int(a / b) instead of a // b.",
+    "Pseudocode (recursive descent):\n  parse_expr(): parse_term(), then loop + or -\n  parse_term(): parse_factor(), then loop * or /\n  parse_factor(): handle unary - / +, \"( expr )\", or integer literal"
+  ],
+  "sources": [
+    "python-tutorial",
+    "think-python"
+  ]
+}

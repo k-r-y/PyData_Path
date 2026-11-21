@@ -1,0 +1,78 @@
+{
+  "id": "P084",
+  "slug": "connected-groups-union-find",
+  "title": "Connected Groups With Union-Find",
+  "difficulty": "hard",
+  "tags": [
+    "graph",
+    "classes"
+  ],
+  "estimatedMinutes": 25,
+  "relatedModules": [
+    "b2-oop",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Union merges components and decrements count",
+        "inputDisplay": "UnionFind(4): union(0, 1), union(2, 3), union(1, 2)",
+        "expectedDisplay": "count tracks 4 -> 3 -> 2 -> 1",
+        "script": "uf = UnionFind(4)\nassert uf.count == 4\nassert uf.union(0, 1) is True and uf.count == 3\nassert uf.union(2, 3) is True and uf.count == 2\nassert uf.connected(0, 3) is False\nassert uf.union(1, 2) is True and uf.count == 1\nassert uf.connected(0, 3) is True"
+      },
+      {
+        "label": "Redundant union returns False without changing count",
+        "inputDisplay": "uf.union(0, 1) repeated",
+        "expectedDisplay": "False",
+        "script": "uf = UnionFind(3)\nassert uf.union(0, 1) is True\nassert uf.union(0, 1) is False\nassert uf.count == 2"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Self-union and self-connected",
+        "inputDisplay": "union(1, 1) and connected(1, 1)",
+        "expectedDisplay": "False, True",
+        "script": "uf = UnionFind(3)\nassert uf.connected(1, 1) is True\nassert uf.union(1, 1) is False\nassert uf.count == 3"
+      },
+      {
+        "label": "Find returns canonical root per component",
+        "inputDisplay": "uf.find(a) == uf.find(b)",
+        "expectedDisplay": "Equal iff connected",
+        "script": "uf = UnionFind(5)\nuf.union(0, 4)\nuf.union(4, 2)\nassert uf.find(0) == uf.find(2) == uf.find(4)\nassert uf.find(1) != uf.find(0)"
+      },
+      {
+        "label": "Zero-node UnionFind boundary",
+        "inputDisplay": "UnionFind(0)",
+        "expectedDisplay": "count == 0",
+        "script": "uf = UnionFind(0)\nassert uf.count == 0"
+      },
+      {
+        "label": "Disjoint chains merge cleanly",
+        "inputDisplay": "Union two 3-node chains",
+        "expectedDisplay": "Final count 1",
+        "script": "uf = UnionFind(6)\nuf.union(0, 1); uf.union(1, 2)\nuf.union(3, 4); uf.union(4, 5)\nassert uf.count == 2\nuf.union(2, 3)\nassert uf.count == 1\nassert uf.connected(0, 5) is True"
+      },
+      {
+        "label": "Large chain path-compression performance (10,000 nodes)",
+        "inputDisplay": "Chain 10,000 nodes + 10,000 finds",
+        "expectedDisplay": "Near O(1) amortized alpha(n)",
+        "timeLimitMs": 450,
+        "isPerformance": true,
+        "script": "uf = UnionFind(10000)\nfor i in range(9999):\n    uf.union(i, i + 1)\nassert uf.count == 1\nfor i in range(0, 10000, 100):\n    assert uf.connected(0, i) is True"
+      }
+    ]
+  },
+  "hints": [
+    "Keep parent = list(range(n)), rank = [0] * n, and self.count = n.",
+    "In find(x), apply iterative or recursive path compression: while parent[x] != x: parent[x] = parent[parent[x]]; x = parent[x]. In union(a, b), attach the shallower rank root under the taller root!",
+    "Pseudocode:\n  def find(self, x):\n      while self.parent[x] != x:\n          self.parent[x] = self.parent[self.parent[x]]\n          x = self.parent[x]\n      return x"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

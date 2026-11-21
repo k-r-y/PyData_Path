@@ -1,0 +1,79 @@
+{
+  "id": "P046",
+  "slug": "stack-constant-min",
+  "title": "Telemetry Stack With O(1) Minimum",
+  "difficulty": "medium",
+  "tags": [
+    "oop",
+    "stack"
+  ],
+  "estimatedMinutes": 20,
+  "relatedModules": [
+    "a6-data-structures",
+    "b2-oop",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Push, min updates, and pop restores previous min",
+        "inputDisplay": "push(-2), push(0), push(-3), get_min(), pop(), top(), get_min()",
+        "expectedDisplay": "-3, 0, -2",
+        "script": "st = MinStack()\nst.push(-2)\nst.push(0)\nst.push(-3)\nassert st.get_min() == -3\nst.pop()\nassert st.top() == 0\nassert st.get_min() == -2"
+      },
+      {
+        "label": "Duplicate minimum values pop safely",
+        "inputDisplay": "push(5), push(5), pop(), get_min()",
+        "expectedDisplay": "get_min() remains 5",
+        "script": "st = MinStack()\nst.push(5)\nst.push(5)\nassert st.get_min() == 5\nassert st.pop() == 5\nassert st.get_min() == 5"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Decreasing then increasing wave",
+        "inputDisplay": "push 10, 4, 8, 2, pop, pop, get_min",
+        "expectedDisplay": "min transitions cleanly 2 -> 4 -> 10",
+        "script": "st = MinStack()\nst.push(10)\nst.push(4)\nst.push(8)\nst.push(2)\nassert st.get_min() == 2\nst.pop()\nassert st.get_min() == 4\nst.pop()\nassert st.get_min() == 4\nst.pop()\nassert st.get_min() == 10"
+      },
+      {
+        "label": "Popping empty stack raises IndexError",
+        "inputDisplay": "MinStack().pop() and get_min()",
+        "expectedDisplay": "Raises IndexError",
+        "script": "st = MinStack()\nfor method in (st.pop, st.top, st.get_min):\n    try:\n        method()\n        assert False\n    except IndexError:\n        pass"
+      },
+      {
+        "label": "Negative and zero minimum tracking",
+        "inputDisplay": "push(0), push(-1), pop(), get_min()",
+        "expectedDisplay": "0",
+        "script": "st = MinStack()\nst.push(0)\nst.push(-1)\nassert st.get_min() == -1\nst.pop()\nassert st.get_min() == 0"
+      },
+      {
+        "label": "Single element cycle empty and reuse",
+        "inputDisplay": "push(7), pop(), push(3), get_min()",
+        "expectedDisplay": "3",
+        "script": "st = MinStack()\nst.push(7)\nassert st.pop() == 7\nst.push(3)\nassert st.get_min() == 3"
+      },
+      {
+        "label": "O(1) per-operation performance under 20,000 get_min calls",
+        "inputDisplay": "15,000 interleaved push and get_min operations",
+        "expectedDisplay": "All get_min queries execute in O(1)",
+        "timeLimitMs": 500,
+        "isPerformance": true,
+        "script": "st = MinStack()\nfor x in range(15000, 0, -1):\n    st.push(x)\n    assert st.get_min() == x\nfor _ in range(5000):\n    st.pop()\nassert st.get_min() == 5001"
+      }
+    ]
+  },
+  "hints": [
+    "Each item pushed onto the stack freezes what the minimum was up to that depth.",
+    "Store tuples `(value, current_min)` on a single stack (or keep a parallel `mins` stack). On push, new_min = min(value, current_min).",
+    "Pseudocode:\n  class MinStack:\n      def __init__(self): self.data = []\n      def push(self, x): cur = x if not self.data else min(x, self.data[-1][1]); self.data.append((x, cur))\n      def pop(self): return self.data.pop()[0]\n      def top(self): return self.data[-1][0]\n      def get_min(self): return self.data[-1][1]"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

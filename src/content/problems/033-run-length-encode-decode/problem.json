@@ -1,0 +1,77 @@
+{
+  "id": "P033",
+  "slug": "run-length-encode-decode",
+  "title": "Run-Length Telemetry Codec",
+  "difficulty": "medium",
+  "tags": [
+    "strings"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "a3-strings-io",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Basic encode and decode round-trip",
+        "inputDisplay": "rle_encode(\"AAABBC\") and rle_decode(\"A3B2C1\")",
+        "expectedDisplay": "\"A3B2C1\" and \"AAABBC\"",
+        "script": "assert rle_encode(\"AAABBC\") == \"A3B2C1\"\nassert rle_decode(\"A3B2C1\") == \"AAABBC\""
+      },
+      {
+        "label": "Empty string stays empty",
+        "inputDisplay": "rle_encode(\"\") and rle_decode(\"\")",
+        "expectedDisplay": "\"\" and \"\"",
+        "script": "assert rle_encode(\"\") == \"\"\nassert rle_decode(\"\") == \"\""
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Multi-digit run length count (>= 10)",
+        "inputDisplay": "\"W\" * 12 + \"X\"",
+        "expectedDisplay": "\"W12X1\" round-trip",
+        "script": "raw = \"W\" * 12 + \"X\"\nenc = rle_encode(raw)\nassert enc == \"W12X1\"\nassert rle_decode(enc) == raw"
+      },
+      {
+        "label": "Single character",
+        "inputDisplay": "\"Z\"",
+        "expectedDisplay": "\"Z1\" -> \"Z\"",
+        "script": "assert rle_encode(\"Z\") == \"Z1\"\nassert rle_decode(\"Z1\") == \"Z\""
+      },
+      {
+        "label": "Repeating non-adjacent letters stay separate runs",
+        "inputDisplay": "\"AABAA\"",
+        "expectedDisplay": "\"A2B1A2\"",
+        "script": "assert rle_encode(\"AABAA\") == \"A2B1A2\"\nassert rle_decode(\"A2B1A2\") == \"AABAA\""
+      },
+      {
+        "label": "All distinct characters",
+        "inputDisplay": "\"ABCDE\"",
+        "expectedDisplay": "\"A1B1C1D1E1\"",
+        "script": "assert rle_encode(\"ABCDE\") == \"A1B1C1D1E1\"\nassert rle_decode(\"A1B1C1D1E1\") == \"ABCDE\""
+      },
+      {
+        "label": "Long repeated telemetry stream",
+        "inputDisplay": "Round-trip on 20,000-char run",
+        "expectedDisplay": "Fast O(n) encode and decode",
+        "timeLimitMs": 500,
+        "isPerformance": true,
+        "script": "raw = \"A\" * 12000 + \"B\" * 8000\nenc = rle_encode(raw)\nassert enc == \"A12000B8000\"\nassert rle_decode(enc) == raw"
+      }
+    ]
+  },
+  "hints": [
+    "For encoding, walk left to right counting consecutive equal characters and emit `<char><count>` whenever a run ends.",
+    "For decoding, a run count can span MULTIPLE digits (such as A12B1)! Read the character first, then consume all consecutive digits with while i < len(s) and s[i].isdigit().",
+    "Pseudocode decode:\n  i = 0\n  while i < len(encoded):\n      ch = encoded[i]; i += 1\n      start = i\n      while i < len(encoded) and encoded[i].isdigit(): i += 1\n      out.append(ch * int(encoded[start:i]))"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

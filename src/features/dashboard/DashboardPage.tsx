@@ -17,6 +17,7 @@ import {
   type StreakRecord,
 } from '../../db/database';
 import { getAllModules, getLessonsForModule } from '../../content/loader';
+import { getProblemMetaById } from '../../content/problemLoader';
 import { ProgressRing } from '../../components/ProgressRing';
 
 const MASTERY_LABELS = ['Not Started', 'Practicing', 'Comfortable', 'Mastered'];
@@ -168,27 +169,33 @@ export function DashboardPage() {
             </p>
           ) : (
             <ul className="space-y-2">
-              {bookmarks.map((b) => (
-                <li
-                  key={b.id}
-                  className="flex items-center justify-between gap-2 text-xs p-2.5 rounded-md bg-neutral-50 dark:bg-[#111113] border border-neutral-200 dark:border-neutral-800"
-                >
-                  <Link
-                    to={`/lesson/${b.lessonId}`}
-                    className="font-medium text-neutral-900 dark:text-neutral-100 hover:underline truncate"
+              {bookmarks.map((b) => {
+                const probMeta = b.problemId ? getProblemMetaById(b.problemId) : undefined;
+                const dest = probMeta
+                  ? `/problems/${probMeta.slug}`
+                  : `/lesson/${b.lessonId}`;
+                return (
+                  <li
+                    key={b.id}
+                    className="flex items-center justify-between gap-2 text-xs p-2.5 rounded-md bg-neutral-50 dark:bg-[#111113] border border-neutral-200 dark:border-neutral-800"
                   >
-                    {b.reason}
-                  </Link>
-                  <button
-                    type="button"
-                    onClick={() => removeBookmark(b.id)}
-                    aria-label="Remove bookmark"
-                    className="p-1.5 rounded text-neutral-400 hover:text-rose-600 transition-colors"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
-                  </button>
-                </li>
-              ))}
+                    <Link
+                      to={dest}
+                      className="font-medium text-neutral-900 dark:text-neutral-100 hover:underline truncate"
+                    >
+                      {b.reason}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => removeBookmark(b.id)}
+                      aria-label="Remove bookmark"
+                      className="p-1.5 rounded text-neutral-400 hover:text-rose-600 transition-colors"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </section>

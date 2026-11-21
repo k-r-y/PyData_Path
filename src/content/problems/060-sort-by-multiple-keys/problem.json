@@ -1,0 +1,246 @@
+{
+  "id": "P060",
+  "slug": "sort-by-multiple-keys",
+  "title": "Sort Catalog by Multi-Direction Keys",
+  "difficulty": "medium",
+  "tags": [
+    "sorting",
+    "tuples"
+  ],
+  "estimatedMinutes": 12,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "sort_inventory"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Category asc, stock desc, sku asc",
+        "args": [
+          [
+            {
+              "category": "Tech",
+              "stock": 5,
+              "sku": "B2"
+            },
+            {
+              "category": "Office",
+              "stock": 12,
+              "sku": "C1"
+            },
+            {
+              "category": "Tech",
+              "stock": 12,
+              "sku": "A9"
+            },
+            {
+              "category": "Tech",
+              "stock": 12,
+              "sku": "A1"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "category": "Office",
+            "stock": 12,
+            "sku": "C1"
+          },
+          {
+            "category": "Tech",
+            "stock": 12,
+            "sku": "A1"
+          },
+          {
+            "category": "Tech",
+            "stock": 12,
+            "sku": "A9"
+          },
+          {
+            "category": "Tech",
+            "stock": 5,
+            "sku": "B2"
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Empty inventory",
+        "args": [
+          []
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Single record",
+        "args": [
+          [
+            {
+              "category": "A",
+              "stock": 0,
+              "sku": "X"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "category": "A",
+            "stock": 0,
+            "sku": "X"
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "All same category sorted by stock desc",
+        "args": [
+          [
+            {
+              "category": "K",
+              "stock": 1,
+              "sku": "Z"
+            },
+            {
+              "category": "K",
+              "stock": 9,
+              "sku": "M"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "category": "K",
+            "stock": 9,
+            "sku": "M"
+          },
+          {
+            "category": "K",
+            "stock": 1,
+            "sku": "Z"
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Tied stock broken by sku asc not desc",
+        "args": [
+          [
+            {
+              "category": "K",
+              "stock": 4,
+              "sku": "SKU-2"
+            },
+            {
+              "category": "K",
+              "stock": 4,
+              "sku": "SKU-1"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "category": "K",
+            "stock": 4,
+            "sku": "SKU-1"
+          },
+          {
+            "category": "K",
+            "stock": 4,
+            "sku": "SKU-2"
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Negative backorder stock handled cleanly",
+        "args": [
+          [
+            {
+              "category": "A",
+              "stock": -3,
+              "sku": "1"
+            },
+            {
+              "category": "A",
+              "stock": 0,
+              "sku": "2"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "category": "A",
+            "stock": 0,
+            "sku": "2"
+          },
+          {
+            "category": "A",
+            "stock": -3,
+            "sku": "1"
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Case-sensitive string order preserved",
+        "args": [
+          [
+            {
+              "category": "B",
+              "stock": 1,
+              "sku": "1"
+            },
+            {
+              "category": "A",
+              "stock": 1,
+              "sku": "1"
+            }
+          ]
+        ],
+        "expected": [
+          {
+            "category": "A",
+            "stock": 1,
+            "sku": "1"
+          },
+          {
+            "category": "B",
+            "stock": 1,
+            "sku": "1"
+          }
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Use sorted(rows, key=lambda r: (r[\"category\"], -r[\"stock\"], r[\"sku\"])).",
+    "Never mutate rows with rows.sort() in place.",
+    "Pseudocode:\n  return sorted(rows, key=lambda item: (item[\"category\"], -item[\"stock\"], item[\"sku\"]))"
+  ],
+  "sources": [
+    "python-tutorial"
+  ]
+}

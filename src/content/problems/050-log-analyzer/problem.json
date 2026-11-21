@@ -1,0 +1,180 @@
+{
+  "id": "P050",
+  "slug": "log-analyzer",
+  "title": "Structured Server Log Analyzer",
+  "difficulty": "medium",
+  "tags": [
+    "strings",
+    "dict",
+    "datetime"
+  ],
+  "estimatedMinutes": 20,
+  "relatedModules": [
+    "a3-strings-io",
+    "a6-data-structures",
+    "b9-stdlib-analysts"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "analyze_logs"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard mixed level service logs",
+        "args": [
+          [
+            "2026-11-20T10:00:00 INFO auth login succeeded",
+            "2026-11-20T10:01:00 ERROR billing card timeout",
+            "2026-11-20T10:02:00 WARN auth slow token refresh",
+            "2026-11-20T10:03:00 ERROR auth bad signature"
+          ]
+        ],
+        "expected": {
+          "total": 4,
+          "by_level": {
+            "INFO": 1,
+            "ERROR": 2,
+            "WARN": 1
+          },
+          "by_service": {
+            "auth": 3,
+            "billing": 1
+          },
+          "error_services": [
+            "auth",
+            "billing"
+          ]
+        }
+      },
+      {
+        "label": "Empty log lines",
+        "args": [
+          []
+        ],
+        "expected": {
+          "total": 0,
+          "by_level": {},
+          "by_service": {},
+          "error_services": []
+        }
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Blank lines ignored",
+        "args": [
+          [
+            "  ",
+            "",
+            "2026-11-20T09:00:00 INFO api ok"
+          ]
+        ],
+        "expected": {
+          "total": 1,
+          "by_level": {
+            "INFO": 1
+          },
+          "by_service": {
+            "api": 1
+          },
+          "error_services": []
+        }
+      },
+      {
+        "label": "No ERROR entries gives empty error_services",
+        "args": [
+          [
+            "2026-11-20T09:00:00 WARN cache miss",
+            "2026-11-20T09:00:05 INFO cache hit"
+          ]
+        ],
+        "expected": {
+          "total": 2,
+          "by_level": {
+            "WARN": 1,
+            "INFO": 1
+          },
+          "by_service": {
+            "cache": 2
+          },
+          "error_services": []
+        }
+      },
+      {
+        "label": "Multiple errors on single service deduplicated in error_services",
+        "args": [
+          [
+            "2026-11-20T09:00:00 ERROR db fail 1",
+            "2026-11-20T09:00:01 ERROR db fail 2"
+          ]
+        ],
+        "expected": {
+          "total": 2,
+          "by_level": {
+            "ERROR": 2
+          },
+          "by_service": {
+            "db": 2
+          },
+          "error_services": [
+            "db"
+          ]
+        }
+      },
+      {
+        "label": "Messages with many spaces preserved cleanly via maxsplit=3",
+        "args": [
+          [
+            "2026-11-20T09:00:00 ERROR worker failed with extra   spaces"
+          ]
+        ],
+        "expected": {
+          "total": 1,
+          "by_level": {
+            "ERROR": 1
+          },
+          "by_service": {
+            "worker": 1
+          },
+          "error_services": [
+            "worker"
+          ]
+        }
+      },
+      {
+        "label": "Sorted error_services order independent of log order",
+        "args": [
+          [
+            "2026-11-20T09:00:00 ERROR zeta down",
+            "2026-11-20T09:01:00 ERROR alpha down"
+          ]
+        ],
+        "expected": {
+          "total": 2,
+          "by_level": {
+            "ERROR": 2
+          },
+          "by_service": {
+            "zeta": 1,
+            "alpha": 1
+          },
+          "error_services": [
+            "alpha",
+            "zeta"
+          ]
+        }
+      }
+    ]
+  },
+  "hints": [
+    "Each valid log line follows `<timestamp> <LEVEL> <service> <message...>`. Use line.strip().split(None, 3).",
+    "Track counters for `by_level` and `by_service`, plus a `set` of services where `level == \"ERROR\"`.",
+    "Pseudocode:\n  by_level, by_service, err_svcs = {}, {}, set()\n  for raw in lines:\n      parts = raw.strip().split(None, 3)\n      if len(parts) < 3: continue\n      ts, level, service = parts[0], parts[1], parts[2]\n      ...\n  return {\"total\": total, \"by_level\": by_level, \"by_service\": by_service, \"error_services\": sorted(err_svcs)}"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

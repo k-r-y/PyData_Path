@@ -1,0 +1,91 @@
+{
+  "id": "P021",
+  "slug": "anagram-check",
+  "title": "Case-Insensitive Phrase Anagram Check",
+  "difficulty": "easy",
+  "tags": [
+    "strings",
+    "dict"
+  ],
+  "estimatedMinutes": 8,
+  "relatedModules": [
+    "a3-strings-io",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "are_anagrams"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Classic spaced phrase anagram",
+        "args": [
+          "Dormitory",
+          "Dirty room"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Multiplicity mismatch",
+        "args": [
+          "aab",
+          "abb"
+        ],
+        "expected": false
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty phrases",
+        "args": [
+          "",
+          "   "
+        ],
+        "expected": true
+      },
+      {
+        "label": "Different total non-space lengths",
+        "args": [
+          "data",
+          "datas"
+        ],
+        "expected": false
+      },
+      {
+        "label": "Same letters with extra spaces",
+        "args": [
+          "Listen  ",
+          " Silent"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Disjoint same-length words",
+        "args": [
+          "abc",
+          "def"
+        ],
+        "expected": false
+      },
+      {
+        "label": "Long anagram check",
+        "args": [
+          "aabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccddaabbccdd",
+          "dcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcbadcba"
+        ],
+        "expected": true
+      }
+    ]
+  },
+  "hints": [
+    "Remove spaces and convert both strings to lowercase before comparing character counts.",
+    "collections.Counter(cleaned_a) == collections.Counter(cleaned_b) runs in O(n) time without sorting.",
+    "Pseudocode:\n  def norm(s): return Counter(ch.lower() for ch in s if ch != \" \")\n  return norm(a) == norm(b)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "id": "P049",
+  "slug": "inventory-report-csv",
+  "title": "Inventory Valuation From CSV",
+  "difficulty": "medium",
+  "tags": [
+    "files",
+    "csv"
+  ],
+  "estimatedMinutes": 20,
+  "relatedModules": [
+    "a9-files-csv-json",
+    "b9-stdlib-analysts"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "summarize_inventory_csv"
+  },
+  "compare": {
+    "checker": "checker.py"
+  },
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard multi-category CSV",
+        "args": [
+          "sku,category,units,unit_price\nA1,Hardware,2,15.50\nB2,Supplies,5,3.00\nA2,Hardware,1,9.50\n"
+        ],
+        "expected": {
+          "Hardware": 40.5,
+          "Supplies": 15
+        }
+      },
+      {
+        "label": "Header only CSV yields empty summary",
+        "args": [
+          "sku,category,units,unit_price\n"
+        ],
+        "expected": {}
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Quoted category containing commas",
+        "args": [
+          "sku,category,units,unit_price\nX1,\"Office, Supplies\",3,4.25\nX2,\"Office, Supplies\",1,2.75\n"
+        ],
+        "expected": {
+          "Office, Supplies": 15.5
+        }
+      },
+      {
+        "label": "Blank trailing lines skipped cleanly",
+        "args": [
+          "sku,category,units,unit_price\nK1,Tools,4,2.50\n\n\n"
+        ],
+        "expected": {
+          "Tools": 10
+        }
+      },
+      {
+        "label": "Zero unit rows preserved with 0.0 total",
+        "args": [
+          "sku,category,units,unit_price\nZ1,Promo,0,99.99\n"
+        ],
+        "expected": {
+          "Promo": 0
+        }
+      },
+      {
+        "label": "Decimal rounding precision to 2 places",
+        "args": [
+          "sku,category,units,unit_price\nD1,Parts,3,0.10\nD2,Parts,7,0.20\n"
+        ],
+        "expected": {
+          "Parts": 1.7
+        }
+      },
+      {
+        "label": "Different column ordering in CSV header",
+        "args": [
+          "category,unit_price,sku,units\nAudio,12.0,S9,2\n"
+        ],
+        "expected": {
+          "Audio": 24
+        }
+      }
+    ]
+  },
+  "hints": [
+    "Use csv.DictReader(io.StringIO(csv_text.strip())) so quoted commas and varied header order work automatically.",
+    "Accumulate total = round(totals.get(cat, 0.0) + int(row[\"units\"]) * float(row[\"unit_price\"]), 2) or round each category sum at the end.",
+    "Pseudocode:\n  reader = csv.DictReader(io.StringIO(csv_text))\n  totals = {}\n  for row in reader:\n      if not row.get(\"category\"): continue\n      totals[cat] = totals.get(cat, 0.0) + int(row[\"units\"]) * float(row[\"unit_price\"])\n  return {k: round(v, 2) for k, v in totals.items()}"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

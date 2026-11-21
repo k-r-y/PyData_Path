@@ -1,0 +1,140 @@
+{
+  "id": "P062",
+  "slug": "find-all-duplicates",
+  "title": "Duplicate Transaction IDs in O(n)",
+  "difficulty": "medium",
+  "tags": [
+    "sets",
+    "dict"
+  ],
+  "estimatedMinutes": 12,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "find_duplicates"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Multiple repeated transaction IDs sorted",
+        "args": [
+          [
+            4,
+            3,
+            2,
+            7,
+            8,
+            2,
+            3,
+            1
+          ]
+        ],
+        "expected": [
+          2,
+          3
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "No duplicates returns empty",
+        "args": [
+          [
+            10,
+            20,
+            30
+          ]
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty input",
+        "args": [
+          []
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Value appearing 3+ times reported once",
+        "args": [
+          [
+            5,
+            5,
+            5,
+            1,
+            5
+          ]
+        ],
+        "expected": [
+          5
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Negatives and zero supported",
+        "args": [
+          [
+            0,
+            -1,
+            0,
+            2,
+            -1
+          ]
+        ],
+        "expected": [
+          -1,
+          0
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Single element",
+        "args": [
+          [
+            99
+          ]
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "O(n) scan over 20k records catches O(n^2) count",
+        "argsExpr": "(list(range(10000)) + [42, 9999] + list(range(10000)),)",
+        "expectedExpr": "list(range(10000))",
+        "timeLimitMs": 400,
+        "checks": [
+          "inputUnchanged"
+        ],
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Use two sets: `seen` and `dupes` (or Counter(nums)) in a single linear pass.",
+    "Return sorted(dupes) so each duplicate number appears exactly once in ascending order.",
+    "Pseudocode:\n  seen, dupes = set(), set()\n  for x in nums:\n      if x in seen: dupes.add(x)\n      else: seen.add(x)\n  return sorted(dupes)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

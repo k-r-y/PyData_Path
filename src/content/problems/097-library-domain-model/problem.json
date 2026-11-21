@@ -1,0 +1,78 @@
+{
+  "id": "P097",
+  "slug": "library-domain-model",
+  "title": "Library Management Domain Model",
+  "difficulty": "challenge",
+  "tags": [
+    "oop",
+    "exceptions",
+    "tests"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "b2-oop",
+    "a8-errors-exceptions",
+    "b7-testing-debugging"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Add stock, checkout, list member loans, and return book cleanly",
+        "inputDisplay": "add(\"111\", \"Clean Code\", 2) -> checkout -> available==1 -> return -> available==2",
+        "expectedDisplay": "Counts and loan lists match cleanly",
+        "script": "lib = Library(max_loans_per_member=2)\nlib.add_book(\"111\", \"Clean Code\", 2)\nassert lib.available_copies(\"111\") == 2\nlib.checkout(\"m1\", \"111\")\nassert lib.available_copies(\"111\") == 1\nassert lib.member_loans(\"m1\") == [\"111\"]\nlib.return_book(\"m1\", \"111\")\nassert lib.available_copies(\"111\") == 2\nassert lib.member_loans(\"m1\") == []"
+      },
+      {
+        "label": "Custom exceptions inherit cleanly from LibraryError",
+        "inputDisplay": "issubclass(BookNotFoundError, LibraryError), NoCopiesAvailableError, LoanLimitExceededError",
+        "expectedDisplay": "All subclasses of LibraryError",
+        "script": "assert issubclass(BookNotFoundError, LibraryError)\nassert issubclass(NoCopiesAvailableError, LibraryError)\nassert issubclass(LoanLimitExceededError, LibraryError)"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Unknown ISBN raises BookNotFoundError",
+        "inputDisplay": "checkout(\"m1\", \"unknown\") / available_copies(\"unknown\")",
+        "expectedDisplay": "Raises BookNotFoundError",
+        "script": "lib = Library()\nfor fn in (lambda: lib.available_copies(\"nope\"), lambda: lib.checkout(\"m1\", \"nope\")):\n    try:\n        fn()\n        assert False\n    except BookNotFoundError:\n        pass"
+      },
+      {
+        "label": "Stock depletion raises NoCopiesAvailableError",
+        "inputDisplay": "1 copy checked out by m1; m2 checkout raises NoCopiesAvailableError",
+        "expectedDisplay": "Raises NoCopiesAvailableError",
+        "script": "lib = Library()\nlib.add_book(\"222\", \"Python\", 1)\nlib.checkout(\"m1\", \"222\")\ntry:\n    lib.checkout(\"m2\", \"222\")\n    assert False\nexcept NoCopiesAvailableError:\n    pass"
+      },
+      {
+        "label": "Member loan cap raises LoanLimitExceededError",
+        "inputDisplay": "max_loans_per_member=2; 3rd checkout raises LoanLimitExceededError",
+        "expectedDisplay": "Raises LoanLimitExceededError",
+        "script": "lib = Library(2)\nlib.add_book(\"1\", \"A\", 1); lib.add_book(\"2\", \"B\", 1); lib.add_book(\"3\", \"C\", 1)\nlib.checkout(\"m1\", \"1\"); lib.checkout(\"m1\", \"2\")\ntry:\n    lib.checkout(\"m1\", \"3\")\n    assert False\nexcept LoanLimitExceededError:\n    pass"
+      },
+      {
+        "label": "Same member cannot check out duplicate copy of same ISBN",
+        "inputDisplay": "checkout(\"m1\", \"111\") twice raises LibraryError without consuming extra copy",
+        "expectedDisplay": "Raises LibraryError; copy count intact",
+        "script": "lib = Library(3)\nlib.add_book(\"111\", \"D\", 3)\nlib.checkout(\"m1\", \"111\")\ntry:\n    lib.checkout(\"m1\", \"111\")\n    assert False\nexcept LibraryError:\n    pass\nassert lib.available_copies(\"111\") == 2"
+      },
+      {
+        "label": "add_book tops up stock and returning unborrowed book raises LibraryError",
+        "inputDisplay": "add_book increments stock; invalid copies<=0 ValueError; return unborrowed LibraryError",
+        "expectedDisplay": "Invariants enforced cleanly",
+        "script": "lib = Library()\nlib.add_book(\"9\", \"X\", 2)\nlib.add_book(\"9\", \"X\", 3)\nassert lib.available_copies(\"9\") == 5\ntry:\n    lib.add_book(\"8\", \"Bad\", 0)\n    assert False\nexcept ValueError:\n    pass\ntry:\n    lib.return_book(\"m1\", \"9\")\n    assert False\nexcept LibraryError:\n    pass"
+      }
+    ]
+  },
+  "hints": [
+    "Define custom exceptions inheriting from `LibraryError(Exception)`: `BookNotFoundError`, `NoCopiesAvailableError`, `LoanLimitExceededError`.",
+    "In `checkout`, validate in deterministic order: book exists -> available copies > 0 -> member does not already hold ISBN -> `len(loans) < max_loans`.",
+    "Return `sorted(member_loans_set)` from `member_loans(member_id)` cleanly."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

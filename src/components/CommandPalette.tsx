@@ -79,6 +79,8 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
     const pages = [
       { to: '/', label: 'Home Workspace', Icon: Terminal },
       { to: '/problems', label: 'Problem Solver List', Icon: Code2 },
+      { to: '/playground', label: 'Python Playground (IDE + REPL)', Icon: Terminal },
+      { to: '/exam', label: 'Timed Exam Mode', Icon: Activity },
       { to: '/dashboard', label: 'Learning Dashboard', Icon: BarChart3 },
       { to: '/visualizer', label: 'Step Visualizer', Icon: Eye },
       { to: '/flashcards', label: 'Flashcards (SM-2)', Icon: Layers },

@@ -1,0 +1,79 @@
+{
+  "id": "P017",
+  "slug": "is-power-of-two",
+  "title": "Check Power of Two Shard Count",
+  "difficulty": "easy",
+  "tags": [
+    "math"
+  ],
+  "estimatedMinutes": 6,
+  "relatedModules": [
+    "a4-control-flow",
+    "a5-functions"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "is_power_of_two"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Valid shard size 64",
+        "args": [
+          64
+        ],
+        "expected": true
+      },
+      {
+        "label": "Non-power 12",
+        "args": [
+          12
+        ],
+        "expected": false
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Zero is not a power of two",
+        "args": [
+          0
+        ],
+        "expected": false
+      },
+      {
+        "label": "Negative value returns False",
+        "args": [
+          -8
+        ],
+        "expected": false
+      },
+      {
+        "label": "Exponent zero (1 == 2**0)",
+        "args": [
+          1
+        ],
+        "expected": true
+      },
+      {
+        "label": "Large power of two 2**40",
+        "argsExpr": "(2**40,)",
+        "expected": true
+      },
+      {
+        "label": "Large non-power 2**40 + 1",
+        "argsExpr": "(2**40 + 1,)",
+        "expected": false
+      }
+    ]
+  },
+  "hints": [
+    "Only strictly positive integers can be integer powers of 2 (1, 2, 4, 8, ...).",
+    "In binary, positive powers of 2 have exactly one 1 bit, so n & (n - 1) clears it to 0.",
+    "Pseudocode:\n  return n > 0 and (n & (n - 1)) == 0"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

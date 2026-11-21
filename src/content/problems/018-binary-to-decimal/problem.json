@@ -1,0 +1,84 @@
+{
+  "id": "P018",
+  "slug": "binary-to-decimal",
+  "title": "Binary String to Decimal Without int()",
+  "difficulty": "easy",
+  "tags": [
+    "strings",
+    "math"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a3-strings-io",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "binary_to_decimal"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard 8-bit flag",
+        "args": [
+          "101101"
+        ],
+        "expected": 45
+      },
+      {
+        "label": "Zero bitstring",
+        "args": [
+          "0"
+        ],
+        "expected": 0
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Leading zeros ignored arithmetically",
+        "args": [
+          "000101"
+        ],
+        "expected": 5
+      },
+      {
+        "label": "All ones byte",
+        "args": [
+          "11111111"
+        ],
+        "expected": 255
+      },
+      {
+        "label": "Large 32-bit unsigned string",
+        "args": [
+          "10000000000000000000000000000001"
+        ],
+        "expected": 2147483649
+      },
+      {
+        "label": "Single 1 bit",
+        "args": [
+          "1"
+        ],
+        "expected": 1
+      },
+      {
+        "label": "15-bit alternating binary",
+        "args": [
+          "101010101010101"
+        ],
+        "expected": 21845
+      }
+    ]
+  },
+  "hints": [
+    "Process bits left to right: double the running value and add 1 if the bit is \"1\".",
+    "Do not call int(bits, 2) or eval(). Raise ValueError if bits is empty or contains anything besides \"0\" and \"1\".",
+    "Pseudocode:\n  val = 0\n  for ch in bits:\n      if ch not in (\"0\", \"1\"): raise ValueError(...)\n      val = val * 2 + (1 if ch == \"1\" else 0)\n  return val"
+  ],
+  "sources": [
+    "python-tutorial",
+    "think-python"
+  ]
+}

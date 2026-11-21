@@ -1,0 +1,115 @@
+{
+  "id": "P074",
+  "slug": "minimum-coin-change",
+  "title": "Minimum Coin Change Count",
+  "difficulty": "hard",
+  "tags": [
+    "dp"
+  ],
+  "estimatedMinutes": 25,
+  "relatedModules": [
+    "a4-control-flow",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "min_coins"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Greedy fails while DP succeeds ([1, 3, 4] for 6)",
+        "args": [
+          [
+            1,
+            3,
+            4
+          ],
+          6
+        ],
+        "expected": 2
+      },
+      {
+        "label": "Unreachable odd target with even coins",
+        "args": [
+          [
+            2,
+            4
+          ],
+          7
+        ],
+        "expected": -1
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Zero target requires 0 coins",
+        "args": [
+          [
+            1,
+            5,
+            10
+          ],
+          0
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Empty coins unreachable for positive target",
+        "args": [
+          [],
+          5
+        ],
+        "expected": -1
+      },
+      {
+        "label": "Standard currency mix",
+        "args": [
+          [
+            1,
+            5,
+            10,
+            25
+          ],
+          63
+        ],
+        "expected": 6
+      },
+      {
+        "label": "Single coin exact match",
+        "args": [
+          [
+            7
+          ],
+          21
+        ],
+        "expected": 3
+      },
+      {
+        "label": "DP 600 target completes quickly",
+        "args": [
+          [
+            2,
+            3,
+            7,
+            11
+          ],
+          600
+        ],
+        "expected": 56,
+        "timeLimitMs": 350,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Greedy largest-coin-first fails on coin sets like [1, 3, 4] for amount 6 (greedy picks 4+1+1=3 instead of 3+3=2).",
+    "Use bottom-up 1D DP: dp = [amount + 1] * (amount + 1) with dp[0] = 0; for a in range(1, amount + 1): dp[a] = min(dp[a - c] + 1 for c in coins if c <= a).",
+    "Pseudocode:\n  INF = amount + 1\n  dp = [INF] * (amount + 1); dp[0] = 0\n  for coin in coins:\n      for x in range(coin, amount + 1):\n          dp[x] = min(dp[x], dp[x - coin] + 1)\n  return -1 if dp[amount] >= INF else dp[amount]"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

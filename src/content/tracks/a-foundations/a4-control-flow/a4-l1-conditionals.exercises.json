@@ -79,6 +79,9 @@
       "Assign the string to a variable named alert."
     ],
     "solution": "stock = 3\nif stock <= 0:\n    alert = 'OUT_OF_STOCK'\nelif stock <= 5:\n    alert = 'LOW_STOCK'\nelse:\n    alert = 'OK'",
+    "alternates": [
+      "stock = 3\nalert = 'OUT_OF_STOCK' if stock <= 0 else ('LOW_STOCK' if 1 <= stock <= 5 else 'OK')"
+    ],
     "explanation": "Checking <= 0 first, then <= 5 in an elif, handles negative/zero, low, and healthy stock cleanly.",
     "sources": ["python-tutorial"],
     "starterCode": "stock = 3\n# Set alert using if / elif / else\n",

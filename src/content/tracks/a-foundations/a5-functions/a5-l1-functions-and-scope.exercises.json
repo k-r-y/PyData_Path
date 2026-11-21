@@ -13,6 +13,9 @@
       "Use return, not print."
     ],
     "solution": "def apply_discount(subtotal, rate=0.10):\n    return round(subtotal * (1 - rate), 2)",
+    "alternates": [
+      "def apply_discount(subtotal, rate=0.10):\n    discount = subtotal * rate\n    return round(subtotal - discount, 2)"
+    ],
     "explanation": "Default arguments let callers omit rate when the standard 10% discount applies.",
     "sources": ["python-tutorial"],
     "starterCode": "def apply_discount(subtotal, rate=0.10):\n    # return discounted total rounded to 2 decimals\n    pass\n",

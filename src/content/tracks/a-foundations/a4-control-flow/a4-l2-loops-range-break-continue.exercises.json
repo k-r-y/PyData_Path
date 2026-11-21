@@ -13,10 +13,14 @@
       "Make sure total += n runs before n += 1."
     ],
     "solution": "n = 1\ntotal = 0\nwhile n <= 5:\n    total += n\n    n += 1",
+    "alternates": [
+      "n = 0\ntotal = 0\nwhile n < 5:\n    n += 1\n    total += n",
+      "total = sum(range(1, 6))"
+    ],
     "explanation": "Using <= 5 includes 5, and n += 1 ensures the while condition eventually becomes False.",
     "sources": ["python-tutorial"],
     "brokenCode": "n = 1\ntotal = 0\nwhile n < 5:\n    total += n\n    # missing increment!\n",
-    "visibleTests": "assert total == 15\nassert n == 6",
+    "visibleTests": "assert total == 15",
     "hiddenTests": "assert isinstance(total, int)",
     "bugDescription": "n was never incremented (infinite loop) and < 5 excluded 5."
   },
@@ -53,6 +57,9 @@
       "Append f'{r}-{q}' to labels."
     ],
     "solution": "regions = ['North', 'South']\nquarters = ['Q1', 'Q2', 'Q3']\nlabels = []\nfor r in regions:\n    for q in quarters:\n        labels.append(f'{r}-{q}')",
+    "alternates": [
+      "regions = ['North', 'South']\nquarters = ['Q1', 'Q2', 'Q3']\nlabels = [f'{r}-{q}' for r in regions for q in quarters]"
+    ],
     "explanation": "Nested loops pair each outer region with every inner quarter in order.",
     "sources": ["python-tutorial"],
     "starterCode": "regions = ['North', 'South']\nquarters = ['Q1', 'Q2', 'Q3']\nlabels = []\n# Use nested loops to populate labels\n",
@@ -73,6 +80,9 @@
       "Use tags.append(...) in each branch."
     ],
     "solution": "tags = []\nfor n in range(1, 16):\n    if n % 3 == 0 and n % 5 == 0:\n        tags.append('FizzBuzz')\n    elif n % 3 == 0:\n        tags.append('Fizz')\n    elif n % 5 == 0:\n        tags.append('Buzz')\n    else:\n        tags.append(str(n))",
+    "alternates": [
+      "tags = ['FizzBuzz' if n % 15 == 0 else 'Fizz' if n % 3 == 0 else 'Buzz' if n % 5 == 0 else str(n) for n in range(1, 16)]"
+    ],
     "explanation": "Checking divisibility by both 3 and 5 before individual checks ensures 15 gets 'FizzBuzz'.",
     "sources": ["python-tutorial"],
     "starterCode": "tags = []\n# Loop from 1 to 15 and append to tags\n",

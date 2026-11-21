@@ -15,6 +15,16 @@ const ProblemWorkspacePage = lazy(() =>
     default: m.ProblemWorkspacePage,
   }))
 );
+const PlaygroundPage = lazy(() =>
+  import('../features/playground/PlaygroundPage').then((m) => ({
+    default: m.PlaygroundPage,
+  }))
+);
+const ExamPage = lazy(() =>
+  import('../features/exam/ExamPage').then((m) => ({
+    default: m.ExamPage,
+  }))
+);
 const SourcesPage = lazy(() => import('./SourcesPage').then((m) => ({ default: m.SourcesPage })));
 const GlossaryPage = lazy(() => import('./GlossaryPage').then((m) => ({ default: m.GlossaryPage })));
 const CheatSheetsPage = lazy(() =>
@@ -63,6 +73,14 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   '/problems': {
     title: 'Problem Solver | PyData Path',
     description: 'Practice Python and IS data problem solving in your browser with instant automated grading.',
+  },
+  '/playground': {
+    title: 'Python Playground | PyData Path',
+    description: 'Multi-file Python IDE, REPL terminal, and simulated shell running in your browser.',
+  },
+  '/exam': {
+    title: 'Timed Exam Mode | PyData Path',
+    description: 'Practice solving Python coding problems under timed exam conditions.',
   },
   '/dataframe-lab': {
     title: 'DataFrame Lab | PyData Path',
@@ -166,6 +184,8 @@ export function App() {
               <Route path="/lesson/:lessonId" element={<LessonPage />} />
               <Route path="/problems" element={<ProblemListPage />} />
               <Route path="/problems/:slug" element={<ProblemWorkspacePage />} />
+              <Route path="/playground" element={<PlaygroundPage />} />
+              <Route path="/exam" element={<ExamPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/flashcards" element={<FlashcardsPage />} />
               <Route path="/visualizer" element={<StepVisualizer />} />

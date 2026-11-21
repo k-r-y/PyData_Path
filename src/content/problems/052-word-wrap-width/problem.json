@@ -1,0 +1,90 @@
+{
+  "id": "P052",
+  "slug": "word-wrap-width",
+  "title": "Greedy CLI Report Word Wrapper",
+  "difficulty": "medium",
+  "tags": [
+    "strings"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "a3-strings-io",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "wrap_text"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Basic greedy paragraph packing",
+        "args": [
+          "PyData Path learns in the browser",
+          12
+        ],
+        "expected": "PyData Path\nlearns in\nthe browser"
+      },
+      {
+        "label": "Single word wider than width sits intact on own line",
+        "args": [
+          "supercalifragilistic ok",
+          10
+        ],
+        "expected": "supercalifragilistic\nok"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty text",
+        "args": [
+          "   ",
+          10
+        ],
+        "expected": ""
+      },
+      {
+        "label": "Exact boundary fit without extra wrap",
+        "args": [
+          "abc def",
+          7
+        ],
+        "expected": "abc def"
+      },
+      {
+        "label": "Exceeding by 1 wraps cleanly",
+        "args": [
+          "abc def",
+          6
+        ],
+        "expected": "abc\ndef"
+      },
+      {
+        "label": "One word per line when width=1",
+        "args": [
+          "one two three",
+          1
+        ],
+        "expected": "one\ntwo\nthree"
+      },
+      {
+        "label": "Extra input spaces normalized to single spaces",
+        "args": [
+          "hello   world   again",
+          11
+        ],
+        "expected": "hello world\nagain"
+      }
+    ]
+  },
+  "hints": [
+    "Extract words cleanly using text.split(). Return \"\" if empty.",
+    "Maintain current_line list and current_len. Adding a word to a non-empty line adds (1 + len(word)) characters (accounting for the joining space).",
+    "Pseudocode:\n  for w in text.split():\n      if not line: line = [w]; cur_len = len(w)\n      elif cur_len + 1 + len(w) <= width: line.append(w); cur_len += 1 + len(w)\n      else: flush line; line = [w]; cur_len = len(w)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

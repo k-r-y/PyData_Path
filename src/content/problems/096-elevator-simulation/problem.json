@@ -1,0 +1,76 @@
+{
+  "id": "P096",
+  "slug": "elevator-simulation",
+  "title": "Elevator Controller Simulation",
+  "difficulty": "challenge",
+  "tags": [
+    "state machine",
+    "oop"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "b2-oop",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Sweeps upward serving all upper stops before reversing downward",
+        "inputDisplay": "start=4; req 5, 2, 7 -> visits [5, 6, 7, 6, 5, 4, 3, 2]",
+        "expectedDisplay": "[5, 6, 7, 6, 5, 4, 3, 2]",
+        "script": "e = Elevator(1, 10, 4)\ne.request(5)\ne.request(2)\ne.request(7)\nassert e.run_until_idle() == [5, 6, 7, 6, 5, 4, 3, 2]\nassert e.status() == {\"floor\": 2, \"direction\": 0, \"pending\": []}"
+      },
+      {
+        "label": "Tie-breaks equidistant requests upward from idle",
+        "inputDisplay": "start=5; req 3 and 7 -> goes up to 7 first",
+        "expectedDisplay": "[6, 7, 6, 5, 4, 3]",
+        "script": "e = Elevator(1, 10, 5)\ne.request(3)\ne.request(7)\nassert e.run_until_idle() == [6, 7, 6, 5, 4, 3]"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Out-of-range constructor or request raises ValueError",
+        "inputDisplay": "Elevator(1, 5, 6) or request(0) / request(6)",
+        "expectedDisplay": "Raises ValueError",
+        "script": "try:\n    Elevator(1, 5, 6)\n    assert False\nexcept ValueError:\n    pass\ne = Elevator(1, 5, 2)\nfor bad in (0, 6):\n    try:\n        e.request(bad)\n        assert False\n    except ValueError:\n        pass"
+      },
+      {
+        "label": "Request at current idle floor is immediately satisfied without extra step",
+        "inputDisplay": "start=4; req 4 -> pending == []",
+        "expectedDisplay": "run_until_idle() == []",
+        "script": "e = Elevator(1, 10, 4)\ne.request(4)\nassert e.run_until_idle() == []\nassert e.status() == {\"floor\": 4, \"direction\": 0, \"pending\": []}"
+      },
+      {
+        "label": "Mid-sweep dynamically added request above gets picked up on same pass",
+        "inputDisplay": "start=1, req(4), step x2 (now floor 3), req(2) & req(5)",
+        "expectedDisplay": "Reaches 4 -> 5 -> 4 -> 3 -> 2",
+        "script": "e = Elevator(1, 10, 1)\ne.request(4)\nassert e.step() == 2\nassert e.step() == 3\ne.request(2)\ne.request(5)\nassert e.run_until_idle() == [4, 5, 4, 3, 2]"
+      },
+      {
+        "label": "Duplicate floor requests are deduplicated",
+        "inputDisplay": "req(4) twice only visits 4 once",
+        "expectedDisplay": "pending == [4]",
+        "script": "e = Elevator(1, 10, 2)\ne.request(4)\ne.request(4)\nassert e.status()[\"pending\"] == [4]"
+      },
+      {
+        "label": "Downward sweep first when closer stop is below",
+        "inputDisplay": "start=6; req 5 and 9 -> down to 5 then up to 9",
+        "expectedDisplay": "[5, 6, 7, 8, 9]",
+        "script": "e = Elevator(1, 10, 6)\ne.request(5)\ne.request(9)\nassert e.run_until_idle() == [5, 6, 7, 8, 9]"
+      }
+    ]
+  },
+  "hints": [
+    "Use the directional SCAN/LOOK policy: keep moving in the current direction (`+1` or `-1`) as long as any pending stop exists in that direction!",
+    "Only when moving `up` and NO pending stops `> floor` remain, reverse to `-1` (if pending `< floor` exists) or go idle (`0`). Mirror for `down`.",
+    "If idle (`direction == 0`) with non-empty pending stops: choose the nearest floor `target = min(pending, key=lambda f: (abs(f - floor), -f))` so upward ties beat downward ties (`-f` is smaller when `f > floor`)."
+  ],
+  "sources": [
+    "python-tutorial",
+    "pep8"
+  ]
+}

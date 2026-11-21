@@ -1,0 +1,80 @@
+{
+  "id": "P091",
+  "slug": "spreadsheet-evaluator",
+  "title": "Mini Spreadsheet Formula Evaluator",
+  "difficulty": "challenge",
+  "tags": [
+    "parsing",
+    "graph",
+    "cycle detection"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "a6-data-structures",
+    "a8-errors-exceptions",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Evaluates DAG formulas referencing earlier and later cells",
+        "inputDisplay": "{\"A1\": 10, \"B1\": \"=A1 * 2\", \"C1\": \"=(A1 + B1) / 3\"}",
+        "expectedDisplay": "{\"A1\": 10, \"B1\": 20, \"C1\": 10}",
+        "script": "out = evaluate_sheet({\"A1\": 10, \"B1\": \"=A1 * 2\", \"C1\": \"=(A1 + B1) / 3\"})\nassert out == {\"A1\": 10, \"B1\": 20, \"C1\": 10}"
+      },
+      {
+        "label": "Circular dependency raises ValueError",
+        "inputDisplay": "{\"A1\": \"=B1 + 1\", \"B1\": \"=A1 + 1\"}",
+        "expectedDisplay": "Raises ValueError",
+        "script": "try:\n    evaluate_sheet({\"A1\": \"=B1 + 1\", \"B1\": \"=A1 + 1\"})\n    assert False, \"Expected ValueError\"\nexcept ValueError:\n    pass"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Forward cell reference resolved before literal definition",
+        "inputDisplay": "{\"A1\": \"=Z10 - 5\", \"Z10\": \"25\"}",
+        "expectedDisplay": "{\"A1\": 20, \"Z10\": 25}",
+        "script": "assert evaluate_sheet({\"A1\": \"=Z10 - 5\", \"Z10\": \"25\"}) == {\"A1\": 20, \"Z10\": 25}"
+      },
+      {
+        "label": "Unary minus and truncation toward zero",
+        "inputDisplay": "{\"A1\": -7, \"B1\": \"=A1 / 2\", \"C1\": \"=-B1 + 4\"}",
+        "expectedDisplay": "{\"A1\": -7, \"B1\": -3, \"C1\": 7}",
+        "script": "assert evaluate_sheet({\"A1\": -7, \"B1\": \"=A1 / 2\", \"C1\": \"=-B1 + 4\"}) == {\"A1\": -7, \"B1\": -3, \"C1\": 7}"
+      },
+      {
+        "label": "Self-referencing formula triggers ValueError",
+        "inputDisplay": "{\"B2\": \"=B2 * 2\"}",
+        "expectedDisplay": "Raises ValueError",
+        "script": "try:\n    evaluate_sheet({\"B2\": \"=B2 * 2\"})\n    assert False\nexcept ValueError:\n    pass"
+      },
+      {
+        "label": "Empty spreadsheet returns empty dict",
+        "inputDisplay": "{}",
+        "expectedDisplay": "{}",
+        "script": "assert evaluate_sheet({}) == {}"
+      },
+      {
+        "label": "Diamond dependency graph and 150-cell memoized chain",
+        "inputDisplay": "150 chained cells C1..C150",
+        "expectedDisplay": "C150 == 150 within 350ms",
+        "timeLimitMs": 350,
+        "isPerformance": true,
+        "script": "sheet = {\"C1\": 1}\nfor i in range(2, 151):\n    sheet[f\"C{i}\"] = f\"=C{i - 1} + C{i - 1} - C{i - 1} + 1\"\nres = evaluate_sheet(sheet)\nassert res[\"C150\"] == 150"
+      }
+    ]
+  },
+  "hints": [
+    "Track 3 states per cell during DFS evaluation: unvisited, visiting (active recursion stack), and visited (memoized integer result).",
+    "Whenever DFS reaches a cell currently marked visiting, immediately raise ValueError(\"Circular reference\").",
+    "Parse each formula string after \"=\" via recursive descent (expr + / -, term * / /, factor number / cell / unary / parentheses) using int(a / b) truncation."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

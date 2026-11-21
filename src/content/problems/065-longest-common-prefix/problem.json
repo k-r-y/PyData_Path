@@ -1,0 +1,105 @@
+{
+  "id": "P065",
+  "slug": "longest-common-prefix",
+  "title": "Longest Common Route Prefix",
+  "difficulty": "medium",
+  "tags": [
+    "strings"
+  ],
+  "estimatedMinutes": 12,
+  "relatedModules": [
+    "a3-strings-io",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "longest_common_prefix"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Shared API endpoint prefix",
+        "args": [
+          [
+            "/api/v2/users",
+            "/api/v2/orders",
+            "/api/v2/metrics"
+          ]
+        ],
+        "expected": "/api/v2/"
+      },
+      {
+        "label": "No shared leading character",
+        "args": [
+          [
+            "alpha",
+            "beta",
+            "gamma"
+          ]
+        ],
+        "expected": ""
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty list returns empty string",
+        "args": [
+          []
+        ],
+        "expected": ""
+      },
+      {
+        "label": "Single string returns itself",
+        "args": [
+          [
+            "inventory"
+          ]
+        ],
+        "expected": "inventory"
+      },
+      {
+        "label": "Includes empty string stops at length 0",
+        "args": [
+          [
+            "abc",
+            "",
+            "abd"
+          ]
+        ],
+        "expected": ""
+      },
+      {
+        "label": "Shortest string limits common prefix",
+        "args": [
+          [
+            "data",
+            "database",
+            "databricks"
+          ]
+        ],
+        "expected": "data"
+      },
+      {
+        "label": "Identical strings",
+        "args": [
+          [
+            "sync",
+            "sync",
+            "sync"
+          ]
+        ],
+        "expected": "sync"
+      }
+    ]
+  },
+  "hints": [
+    "Handle empty input words == [] by returning \"\".",
+    "Zip characters across all words simultaneously (`zip(*words)`), appending chars while `len(set(chars)) == 1`, or compare min(words) and max(words) lexicographically!",
+    "Pseudocode:\n  if not words: return \"\"\n  first, last = min(words), max(words)\n  compare chars up to min(len(first), len(last))"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

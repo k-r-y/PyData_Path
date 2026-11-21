@@ -1,0 +1,202 @@
+{
+  "id": "P044",
+  "slug": "spiral-order-matrix",
+  "title": "Clockwise Spiral Matrix Sweep",
+  "difficulty": "medium",
+  "tags": [
+    "nested lists"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "a4-control-flow",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "spiral_order"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Square 3x3 spiral",
+        "args": [
+          [
+            [
+              1,
+              2,
+              3
+            ],
+            [
+              4,
+              5,
+              6
+            ],
+            [
+              7,
+              8,
+              9
+            ]
+          ]
+        ],
+        "expected": [
+          1,
+          2,
+          3,
+          6,
+          9,
+          8,
+          7,
+          4,
+          5
+        ]
+      },
+      {
+        "label": "Rectangular 3x4 spiral",
+        "args": [
+          [
+            [
+              1,
+              2,
+              3,
+              4
+            ],
+            [
+              5,
+              6,
+              7,
+              8
+            ],
+            [
+              9,
+              10,
+              11,
+              12
+            ]
+          ]
+        ],
+        "expected": [
+          1,
+          2,
+          3,
+          4,
+          8,
+          12,
+          11,
+          10,
+          9,
+          5,
+          6,
+          7
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty grid",
+        "args": [
+          []
+        ],
+        "expected": []
+      },
+      {
+        "label": "Single row 1x4",
+        "args": [
+          [
+            [
+              10,
+              20,
+              30,
+              40
+            ]
+          ]
+        ],
+        "expected": [
+          10,
+          20,
+          30,
+          40
+        ]
+      },
+      {
+        "label": "Single column 4x1",
+        "args": [
+          [
+            [
+              1
+            ],
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ]
+          ]
+        ],
+        "expected": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "label": "1x1 single item",
+        "args": [
+          [
+            [
+              7
+            ]
+          ]
+        ],
+        "expected": [
+          7
+        ]
+      },
+      {
+        "label": "Tall 4x2 spiral",
+        "args": [
+          [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ]
+        ],
+        "expected": [
+          1,
+          2,
+          4,
+          6,
+          8,
+          7,
+          5,
+          3
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Maintain four boundary indices: top=0, bottom=len(m)-1, left=0, right=len(m[0])-1.",
+    "Trace top row (left..right), top += 1; right col (top..bottom), right -= 1; then check `if top <= bottom:` before tracing bottom row; then `if left <= right:` before left col.",
+    "Pseudocode:\n  while top <= bottom and left <= right:\n      emit top row; top += 1\n      emit right col; right -= 1\n      if top <= bottom: emit bottom row reversed; bottom -= 1\n      if left <= right: emit left col reversed; left += 1"
+  ],
+  "sources": [
+    "python-tutorial"
+  ]
+}

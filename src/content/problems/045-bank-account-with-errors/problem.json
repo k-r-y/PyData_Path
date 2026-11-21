@@ -1,0 +1,76 @@
+{
+  "id": "P045",
+  "slug": "bank-account-with-errors",
+  "title": "Ledger Account With Custom Errors",
+  "difficulty": "medium",
+  "tags": [
+    "oop",
+    "exceptions"
+  ],
+  "estimatedMinutes": 20,
+  "relatedModules": [
+    "a8-errors-exceptions",
+    "b2-oop"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Valid deposits and withdrawals track balance and history",
+        "inputDisplay": "Account(\"Ops\", 100); deposit(50); withdraw(30)",
+        "expectedDisplay": "balance == 120.0",
+        "script": "acc = Account(\"Ops\", 100)\nassert acc.owner == \"Ops\"\nassert acc.deposit(50) == 150\nassert acc.withdraw(30) == 120\nassert acc.balance == 120"
+      },
+      {
+        "label": "Overdraft raises InsufficientFundsError without changing balance",
+        "inputDisplay": "Account(\"Ops\", 40).withdraw(75)",
+        "expectedDisplay": "Raises InsufficientFundsError; balance stays 40",
+        "script": "acc = Account(\"Ops\", 40)\ntry:\n    acc.withdraw(75)\n    assert False, \"Expected InsufficientFundsError\"\nexcept InsufficientFundsError:\n    pass\nassert acc.balance == 40"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Negative or zero initial balance rejected with ValueError",
+        "inputDisplay": "Account(\"Ops\", -10)",
+        "expectedDisplay": "Raises ValueError",
+        "script": "try:\n    Account(\"Ops\", -10)\n    assert False, \"Expected ValueError\"\nexcept ValueError:\n    pass\nacc0 = Account(\"Zero\")\nassert acc0.balance == 0"
+      },
+      {
+        "label": "Non-positive deposit raises ValueError",
+        "inputDisplay": "deposit(0) and deposit(-25)",
+        "expectedDisplay": "Raises ValueError both times",
+        "script": "acc = Account(\"Ops\", 50)\nfor bad in (0, -25):\n    try:\n        acc.deposit(bad)\n        assert False, \"Expected ValueError\"\n    except ValueError:\n        pass\nassert acc.balance == 50"
+      },
+      {
+        "label": "Non-positive withdrawal raises ValueError",
+        "inputDisplay": "withdraw(0) and withdraw(-5)",
+        "expectedDisplay": "Raises ValueError before checking balance",
+        "script": "acc = Account(\"Ops\", 50)\nfor bad in (0, -5):\n    try:\n        acc.withdraw(bad)\n        assert False, \"Expected ValueError\"\n    except ValueError:\n        pass\nassert acc.balance == 50"
+      },
+      {
+        "label": "InsufficientFundsError inherits from Exception/ValueError",
+        "inputDisplay": "issubclass(InsufficientFundsError, Exception)",
+        "expectedDisplay": "True",
+        "script": "assert issubclass(InsufficientFundsError, Exception)\nassert isinstance(InsufficientFundsError(\"low\"), Exception)"
+      },
+      {
+        "label": "Exact full balance withdrawal zeroes account cleanly",
+        "inputDisplay": "Account(\"Clear\", 200).withdraw(200)",
+        "expectedDisplay": "balance == 0",
+        "script": "acc = Account(\"Clear\", 200)\nassert acc.withdraw(200) == 0\nassert acc.balance == 0"
+      }
+    ]
+  },
+  "hints": [
+    "Define class InsufficientFundsError(ValueError): pass (or subclass Exception).",
+    "Check amount <= 0 BEFORE comparing amount > self.balance in withdraw(), raising ValueError for bad amounts and InsufficientFundsError for overdrafts.",
+    "Pseudocode:\n  class InsufficientFundsError(ValueError): pass\n  class Account:\n      def __init__(self, owner, balance=0):\n          if balance < 0: raise ValueError(...)\n          self.owner = owner; self.balance = balance\n      def deposit(self, amt): ...\n      def withdraw(self, amt): ..."
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

@@ -12,6 +12,9 @@
       "Wrap the result in sorted(...)."
     ],
     "solution": "def find_common(list_a, list_b):\n    return sorted(set(list_a) & set(list_b))",
+    "alternates": [
+      "def find_common(list_a, list_b):\n    b_set = set(list_b)\n    return sorted({x for x in list_a if x in b_set})"
+    ],
     "explanation": "Set intersection runs in O(len(a) + len(b)) average time instead of O(len(a) * len(b)).",
     "sources": ["python-tutorial"],
     "starterCode": "def find_common(list_a, list_b):\n    # return sorted list of common elements using sets\n    pass\n",

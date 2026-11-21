@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   CheckCircle2,
   XCircle,
@@ -23,6 +23,7 @@ import {
 } from '../../runtime/problemGrader';
 import { getPlainLanguageErrorHint } from '../../runtime/errorHints';
 import type { CustomRunResult } from '../../runtime/runner';
+import { TerminalPane } from '../terminal/TerminalPane';
 
 export type BottomPanelTab = 'tests' | 'output' | 'terminal';
 
@@ -39,6 +40,10 @@ interface TestResultsPanelProps {
   customResult: CustomRunResult | null;
   revealedHiddenIndices: Set<number>;
   onRevealHiddenCase: (testIndex: number) => void;
+  editorCode?: string;
+  editorFilename?: string;
+  externalTerminalLoadSignal?: number;
+  testsFooter?: React.ReactNode;
   examMode?: boolean;
 }
 
@@ -127,9 +132,20 @@ export function TestResultsPanel({
   customResult,
   revealedHiddenIndices,
   onRevealHiddenCase,
+  editorCode,
+  editorFilename,
+  externalTerminalLoadSignal = 0,
+  testsFooter,
   examMode = false,
 }: TestResultsPanelProps) {
   const [showCustomBox, setShowCustomBox] = useState(false);
+  const [terminalActivated, setTerminalActivated] = useState(false);
+
+  useEffect(() => {
+    if (activeTab === 'terminal' && !examMode) {
+      setTerminalActivated(true);
+    }
+  }, [activeTab, examMode]);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const tabs: Array<{ id: BottomPanelTab; label: string; disabled?: boolean }> = [
     { id: 'tests', label: 'Tests' },
@@ -398,6 +414,7 @@ export function TestResultsPanel({
               </ul>
             </>
           )}
+          {testsFooter}
         </div>
 
         <div
@@ -425,9 +442,9 @@ export function TestResultsPanel({
           )}
 
           <div>
-            <h3 className="font-mono text-[10px] uppercase tracking-wider text-neutral-500 mb-1">
+            <h2 className="font-mono text-[10px] uppercase tracking-wider text-neutral-500 mb-1">
               Captured Output (stdout)
-            </h3>
+            </h2>
             <pre className="font-mono text-xs whitespace-pre-wrap rounded border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0d0d0f] p-3 text-neutral-800 dark:text-neutral-200 min-h-20">
               {suiteResult?.stdout || customResult?.stdout || '(No printed output yet.)'}
             </pre>
@@ -438,14 +455,16 @@ export function TestResultsPanel({
           role="tabpanel"
           aria-labelledby="pdp-bottom-tab-terminal"
           hidden={activeTab !== 'terminal'}
-          className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0d0d0f] p-4 text-neutral-600 dark:text-neutral-400"
+          className={activeTab === 'terminal' ? 'h-full flex flex-col min-h-[260px]' : ''}
         >
-          <p className="font-medium text-neutral-900 dark:text-neutral-100 mb-1">
-            Interactive Terminal (Phase 2)
-          </p>
-          <p className="text-xs">
-            The isolated xterm.js Python REPL, simulated filesystem shell, and &ldquo;Load my code into terminal&rdquo; workflow will be wired here in Phase 2.
-          </p>
+          {terminalActivated && !examMode && (
+            <TerminalPane
+              active={activeTab === 'terminal'}
+              editorCode={editorCode}
+              editorFilename={editorFilename}
+              externalLoadSignal={externalTerminalLoadSignal}
+            />
+          )}
         </div>
       </div>
     </div>

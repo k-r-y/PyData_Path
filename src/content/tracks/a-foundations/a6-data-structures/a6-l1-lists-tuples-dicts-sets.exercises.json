@@ -13,6 +13,9 @@
       "Use sorted(contacts.keys())."
     ],
     "solution": "contacts = {'Ana': '555-0101', 'Ben': '555-0102'}\ncontacts['Cara'] = '555-0103'\ndan_phone = contacts.get('Dan', 'Not Found')\nnames = sorted(contacts.keys())",
+    "alternates": [
+      "contacts = {'Ana': '555-0101', 'Ben': '555-0102'}\ncontacts.update({'Cara': '555-0103'})\ndan_phone = contacts['Dan'] if 'Dan' in contacts else 'Not Found'\nnames = sorted(contacts)"
+    ],
     "explanation": "dict assignment adds keys, .get() avoids KeyError, and sorted(contacts.keys()) returns an ordered list.",
     "sources": ["python-tutorial"],
     "starterCode": "contacts = {'Ana': '555-0101', 'Ben': '555-0102'}\n# Add Cara, look up Dan, and sort names\n",
@@ -56,7 +59,8 @@
     "answers": {
       "1": ["set"],
       "2": ["set"]
-    }
+    },
+    "visibleTests": "assert empty == set() and isinstance(empty, set)\nassert unique_skus == {'A1', 'A2'}"
   },
   {
     "id": "a6-l1-fc1",

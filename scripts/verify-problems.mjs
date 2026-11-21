@@ -81,6 +81,173 @@ function loadValidSourceIds() {
   return new Set(arr.map((s) => s.id));
 }
 
+function loadModulePackagesMap() {
+  const map = new Map();
+  for (const track of fs.readdirSync(tracksDir, { withFileTypes: true })) {
+    if (!track.isDirectory()) continue;
+    const tDir = path.join(tracksDir, track.name);
+    for (const mod of fs.readdirSync(tDir, { withFileTypes: true })) {
+      if (!mod.isDirectory()) continue;
+      const mPath = path.join(tDir, mod.name, 'module.json');
+      if (fs.existsSync(mPath)) {
+        const meta = JSON.parse(fs.readFileSync(mPath, 'utf8'));
+        if (meta.id) map.set(meta.id, meta);
+      }
+    }
+  }
+  return map;
+}
+
+function collectExerciseFiles(dir) {
+  const out = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...collectExerciseFiles(full));
+    else if (entry.name.endsWith('.exercises.json')) out.push(full);
+  }
+  return out.sort();
+}
+
+async function verifyLessonExercises(pool, moduleMap) {
+  const files = collectExerciseFiles(tracksDir);
+  let checked = 0;
+  let altsChecked = 0;
+  let skippedOffline = 0;
+  let errors = 0;
+
+  for (const filePath of files) {
+    const modDirName = path.basename(path.dirname(filePath));
+    let packages = [];
+    for (const mod of moduleMap.values()) {
+      if (mod.id === modDirName && Array.isArray(mod.packages)) {
+        packages = mod.packages;
+        break;
+      }
+    }
+
+    const exercises = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    for (const ex of exercises) {
+      if (ex.type === 'code' || ex.type === 'debug') {
+        checked++;
+        const solRes = await pool.call(
+          {
+            type: 'lessonExec',
+            code: ex.solution,
+            visibleTests: ex.visibleTests,
+            hiddenTests: ex.hiddenTests,
+            inputs: ex.inputs,
+            packages,
+          },
+          8000
+        );
+        if (solRes.data?.skippedPackage) {
+          if (!solRes.data.syntaxOk) {
+            console.error(`  [FAIL LESSON] ${ex.id} canonical solution syntax error: ${solRes.data.error}`);
+            errors++;
+          } else {
+            skippedOffline++;
+          }
+        } else if (!solRes.ok || !solRes.data?.ok) {
+          console.error(`  [FAIL LESSON] ${ex.id} canonical solution failed:\n${solRes.data?.error ?? solRes.error}`);
+          errors++;
+        }
+
+        for (const [altIdx, alt] of (ex.alternates ?? []).entries()) {
+          if (typeof alt !== 'string') continue;
+          altsChecked++;
+          const altRes = await pool.call(
+            {
+              type: 'lessonExec',
+              code: alt,
+              visibleTests: ex.visibleTests,
+              hiddenTests: ex.hiddenTests,
+              inputs: ex.inputs,
+              packages,
+            },
+            8000
+          );
+          if (altRes.data?.skippedPackage) {
+            if (!altRes.data.syntaxOk) {
+              console.error(`  [FAIL LESSON] ${ex.id} alternate #${altIdx + 1} syntax error: ${altRes.data.error}`);
+              errors++;
+            } else {
+              skippedOffline++;
+            }
+          } else if (!altRes.ok || !altRes.data?.ok) {
+            console.error(`  [FAIL LESSON] ${ex.id} alternate #${altIdx + 1} failed:\n${altRes.data?.error ?? altRes.error}`);
+            errors++;
+          }
+        }
+      } else if (ex.type === 'parsons') {
+        checked++;
+        const canonical = ex.lines.join('\n');
+        const refRes = await pool.call(
+          { type: 'lessonExec', code: canonical, exportState: true, packages },
+          8000
+        );
+        if (!refRes.ok || !refRes.data?.ok) {
+          console.error(`  [FAIL LESSON] ${ex.id} parsons canonical failed:\n${refRes.data?.error ?? refRes.error}`);
+          errors++;
+          continue;
+        }
+        for (const [altIdx, alt] of (ex.alternates ?? []).entries()) {
+          if (typeof alt !== 'string') continue;
+          altsChecked++;
+          const altRes = await pool.call(
+            { type: 'lessonExec', code: alt, exportState: true, packages },
+            8000
+          );
+          const match =
+            altRes.ok &&
+            altRes.data?.ok &&
+            altRes.data.stdout.trimEnd() === refRes.data.stdout.trimEnd() &&
+            altRes.data.stateJson === refRes.data.stateJson;
+          if (!match) {
+            console.error(`  [FAIL LESSON] ${ex.id} parsons alternate #${altIdx + 1} behavioral mismatch`);
+            errors++;
+          }
+        }
+      } else if (ex.type === 'fillblank' && ex.visibleTests) {
+        checked++;
+        const filled = ex.codeWithBlanks.replace(/\{\{(\d+)\}\}/g, (_, k) => {
+          const list = ex.answers?.[k];
+          return Array.isArray(list) && list.length > 0 ? list[0] : '';
+        });
+        const fbRes = await pool.call(
+          {
+            type: 'lessonExec',
+            code: filled,
+            visibleTests: ex.visibleTests,
+            hiddenTests: ex.hiddenTests ?? '',
+            packages,
+          },
+          8000
+        );
+        if (fbRes.data?.skippedPackage) {
+          if (!fbRes.data.syntaxOk) {
+            console.error(`  [FAIL LESSON] ${ex.id} fillblank syntax error: ${fbRes.data.error}`);
+            errors++;
+          } else {
+            skippedOffline++;
+          }
+        } else if (!fbRes.ok || !fbRes.data?.ok) {
+          console.error(`  [FAIL LESSON] ${ex.id} fillblank behavioral check failed:\n${fbRes.data?.error ?? fbRes.error}`);
+          errors++;
+        }
+      } else if (ex.type === 'predict') {
+        checked++;
+        const pRes = await pool.call({ type: 'lessonExec', code: ex.code, packages }, 8000);
+        if (!pRes.ok || !pRes.data?.ok || pRes.data.stdout.trimEnd() !== ex.expectedOutput.trimEnd()) {
+          console.error(`  [FAIL LESSON] ${ex.id} predict output mismatch`);
+          errors++;
+        }
+      }
+    }
+  }
+
+  return { checked, altsChecked, skippedOffline, errors };
+}
+
 function loadValidModuleIds() {
   const ids = new Set();
   for (const track of fs.readdirSync(tracksDir, { withFileTypes: true })) {
@@ -548,19 +715,38 @@ async function main() {
     }
   }
 
+  let lessonErrors = 0;
+  if (!filterArg) {
+    const moduleMap = loadModulePackagesMap();
+    const lessonReport = await verifyLessonExercises(pool, moduleMap);
+    lessonErrors = lessonReport.errors;
+    console.log('\n=== Verification Summary ===');
+    console.log('ID   | Title                           | Diff   | Tests | Solutions | Wrong Caught | Warns | Errs');
+    console.log('-----+---------------------------------+--------+-------+-----------+--------------+-------+-----');
+    for (const row of summaryRows) {
+      console.log(
+        `${String(row.id).padEnd(4)} | ${String(row.title).slice(0, 31).padEnd(31)} | ${String(row.difficulty).padEnd(6)} | ${String(row.tests).padStart(5)} | ${String(row.sols).padStart(9)} | ${String(row.wrong).padStart(12)} | ${String(row.warnings).padStart(5)} | ${String(row.errors).padStart(4)}`
+      );
+    }
+    console.log(`\nTotal problems: ${summaryRows.length}, Errors: ${totalFailures}, Warnings: ${totalWarnings}`);
+    console.log(
+      `Lesson exercises checked: ${lessonReport.checked}, Alternates checked: ${lessonReport.altsChecked}, Offline wheel skips (syntax verified): ${lessonReport.skippedOffline}, Lesson errors: ${lessonReport.errors}`
+    );
+  } else {
+    console.log('\n=== Verification Summary ===');
+    console.log('ID   | Title                           | Diff   | Tests | Solutions | Wrong Caught | Warns | Errs');
+    console.log('-----+---------------------------------+--------+-------+-----------+--------------+-------+-----');
+    for (const row of summaryRows) {
+      console.log(
+        `${String(row.id).padEnd(4)} | ${String(row.title).slice(0, 31).padEnd(31)} | ${String(row.difficulty).padEnd(6)} | ${String(row.tests).padStart(5)} | ${String(row.sols).padStart(9)} | ${String(row.wrong).padStart(12)} | ${String(row.warnings).padStart(5)} | ${String(row.errors).padStart(4)}`
+      );
+    }
+    console.log(`\nTotal problems: ${summaryRows.length}, Errors: ${totalFailures}, Warnings: ${totalWarnings}`);
+  }
+
   pool.terminate();
 
-  console.log('\n=== Verification Summary ===');
-  console.log('ID   | Title                           | Diff   | Tests | Solutions | Wrong Caught | Warns | Errs');
-  console.log('-----+---------------------------------+--------+-------+-----------+--------------+-------+-----');
-  for (const row of summaryRows) {
-    console.log(
-      `${String(row.id).padEnd(4)} | ${String(row.title).slice(0, 31).padEnd(31)} | ${String(row.difficulty).padEnd(6)} | ${String(row.tests).padStart(5)} | ${String(row.sols).padStart(9)} | ${String(row.wrong).padStart(12)} | ${String(row.warnings).padStart(5)} | ${String(row.errors).padStart(4)}`
-    );
-  }
-  console.log(`\nTotal problems: ${summaryRows.length}, Errors: ${totalFailures}, Warnings: ${totalWarnings}`);
-
-  if (totalFailures > 0) {
+  if (totalFailures > 0 || lessonErrors > 0) {
     process.exit(1);
   }
 }

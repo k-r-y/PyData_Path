@@ -1,0 +1,108 @@
+{
+  "id": "P066",
+  "slug": "best-single-trade-profit",
+  "title": "Best Single Buy-Sell Margin",
+  "difficulty": "medium",
+  "tags": [
+    "lists"
+  ],
+  "estimatedMinutes": 12,
+  "relatedModules": [
+    "a4-control-flow",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "max_single_profit"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Buy at low 1, sell later at 6",
+        "args": [
+          [
+            7,
+            1,
+            5,
+            3,
+            6,
+            4
+          ]
+        ],
+        "expected": 5
+      },
+      {
+        "label": "Strictly declining prices yield 0",
+        "args": [
+          [
+            7,
+            6,
+            4,
+            3,
+            1
+          ]
+        ],
+        "expected": 0
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty or single day prices yield 0",
+        "args": [
+          [
+            10
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Minimum arrives after earlier local spike",
+        "args": [
+          [
+            3,
+            8,
+            1,
+            9
+          ]
+        ],
+        "expected": 8
+      },
+      {
+        "label": "Flat prices yield 0",
+        "args": [
+          [
+            5,
+            5,
+            5,
+            5
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Empty list",
+        "args": [
+          []
+        ],
+        "expected": 0
+      },
+      {
+        "label": "O(n) scan over 12,000 daily prices",
+        "argsExpr": "([10000 - i for i in range(6000)] + [10000 + i for i in range(6000)],)",
+        "expected": 11998,
+        "timeLimitMs": 400,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "For any selling day price p, the best buy happened on the cheapest earlier day seen so far (`min_price`).",
+    "Track `min_price = float(\"inf\")` and `best_profit = 0` in one left-to-right pass.",
+    "Pseudocode:\n  min_p, best = float(\"inf\"), 0\n  for p in prices:\n      if p < min_p: min_p = p\n      elif p - min_p > best: best = p - min_p\n  return best"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

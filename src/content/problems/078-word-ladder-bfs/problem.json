@@ -1,0 +1,119 @@
+{
+  "id": "P078",
+  "slug": "word-ladder-bfs",
+  "title": "Shortest Word Mutation Path",
+  "difficulty": "hard",
+  "tags": [
+    "bfs",
+    "strings"
+  ],
+  "estimatedMinutes": 30,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "shortest_word_ladder"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Classic hit -> cog needs 4 steps",
+        "args": [
+          "hit",
+          "cog",
+          [
+            "hot",
+            "dot",
+            "dog",
+            "lot",
+            "log",
+            "cog"
+          ]
+        ],
+        "expected": 4
+      },
+      {
+        "label": "End word missing from dictionary returns -1",
+        "args": [
+          "hit",
+          "cog",
+          [
+            "hot",
+            "dot",
+            "dog",
+            "lot",
+            "log"
+          ]
+        ],
+        "expected": -1
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Start equals end returns 0",
+        "args": [
+          "cat",
+          "cat",
+          [
+            "cat"
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Direct 1-letter transform",
+        "args": [
+          "cold",
+          "cord",
+          [
+            "cord"
+          ]
+        ],
+        "expected": 1
+      },
+      {
+        "label": "Begin word not initially inside word_list still works",
+        "args": [
+          "aaa",
+          "aab",
+          [
+            "aab"
+          ]
+        ],
+        "expected": 1
+      },
+      {
+        "label": "Disconnected dictionary islands return -1",
+        "args": [
+          "aaa",
+          "zzz",
+          [
+            "aab",
+            "aac",
+            "zzy"
+          ]
+        ],
+        "expected": -1
+      },
+      {
+        "label": "Wildcard bucket BFS on 1200-word corpus",
+        "argsExpr": "('a000', 'b050', ['a{:03d}'.format(i) for i in range(1, 51)] + ['b{:03d}'.format(i) for i in range(1, 51)] + ['a050', 'b050'] + ['x{:03d}'.format(i) for i in range(1000)])",
+        "expected": 2,
+        "timeLimitMs": 400,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Return the number of single-character steps (edges): 0 if begin == end, else 4 for hit -> hot -> dot -> dog -> cog, or -1 if unreachable.",
+    "Pre-index word_list using wildcard patterns `w[:i] + \"*\" + w[i+1:]` so BFS finds 1-letter neighbors in O(L) without scanning the entire dictionary per word.",
+    "Pseudocode:\n  if begin == end: return 0\n  if end not in word_set: return -1\n  build wildcard_map[pattern] -> [words]\n  BFS from (begin, 0)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "id": "P029",
+  "slug": "collapse-spaces-title-case",
+  "title": "Normalize Catalog Headings",
+  "difficulty": "easy",
+  "tags": [
+    "strings"
+  ],
+  "estimatedMinutes": 8,
+  "relatedModules": [
+    "a3-strings-io",
+    "a7-comprehensions-builtins"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "normalize_heading"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Extra spaces and lowercase words",
+        "args": [
+          "   senior   DATA   analyst  "
+        ],
+        "expected": "Senior Data Analyst"
+      },
+      {
+        "label": "Apostrophe handling differs from str.title()",
+        "args": [
+          "don't   stop   learning"
+        ],
+        "expected": "Don't Stop Learning"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Whitespace only returns empty string",
+        "args": [
+          "   \t\n  "
+        ],
+        "expected": ""
+      },
+      {
+        "label": "Single lowercase word",
+        "args": [
+          "inventory"
+        ],
+        "expected": "Inventory"
+      },
+      {
+        "label": "Mixed tabs and newlines collapsed",
+        "args": [
+          "line\tone\n  two"
+        ],
+        "expected": "Line One Two"
+      },
+      {
+        "label": "Alphanumeric token keeps digits intact",
+        "args": [
+          "v2  module"
+        ],
+        "expected": "V2 Module"
+      },
+      {
+        "label": "Already normalized",
+        "args": [
+          "Python Data Path"
+        ],
+        "expected": "Python Data Path"
+      }
+    ]
+  },
+  "hints": [
+    "Use text.split() with no arguments to strip leading/trailing whitespace and collapse arbitrary runs of whitespace.",
+    "Use word.capitalize() on each token rather than str.title(), because str.title() mistakenly capitalizes letters right after apostrophes (\"Don'T\").",
+    "Pseudocode:\n  return \" \".join(w.capitalize() for w in text.split())"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

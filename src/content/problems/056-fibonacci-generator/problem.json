@@ -1,0 +1,77 @@
+{
+  "id": "P056",
+  "slug": "fibonacci-generator",
+  "title": "Fibonacci Stream and Digit Threshold",
+  "difficulty": "medium",
+  "tags": [
+    "generators"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "b3-iterators-generators",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Generator yields standard Fibonacci prefix",
+        "inputDisplay": "First 8 items of fibonacci_gen()",
+        "expectedDisplay": "[0, 1, 1, 2, 3, 5, 8, 13]",
+        "script": "import itertools\ng = fibonacci_gen()\nassert list(itertools.islice(g, 8)) == [0, 1, 1, 2, 3, 5, 8, 13]"
+      },
+      {
+        "label": "First Fibonacci index with 2 digits",
+        "inputDisplay": "first_fib_with_digits(2)",
+        "expectedDisplay": "7 (F(7) = 13)",
+        "script": "assert first_fib_with_digits(2) == 7"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "1-digit threshold matches F(0) = 0 at index 0",
+        "inputDisplay": "first_fib_with_digits(1)",
+        "expectedDisplay": "0",
+        "script": "assert first_fib_with_digits(1) == 0"
+      },
+      {
+        "label": "3-digit threshold F(12) = 144",
+        "inputDisplay": "first_fib_with_digits(3)",
+        "expectedDisplay": "12",
+        "script": "assert first_fib_with_digits(3) == 12"
+      },
+      {
+        "label": "4-digit threshold F(17) = 1597",
+        "inputDisplay": "first_fib_with_digits(4)",
+        "expectedDisplay": "17",
+        "script": "assert first_fib_with_digits(4) == 17"
+      },
+      {
+        "label": "Lazy generator supports large 50-digit check quickly",
+        "inputDisplay": "first_fib_with_digits(50)",
+        "expectedDisplay": "237",
+        "timeLimitMs": 400,
+        "isPerformance": true,
+        "script": "assert first_fib_with_digits(50) == 237"
+      },
+      {
+        "label": "Independent generator instances do not share state",
+        "inputDisplay": "Two separate calls to fibonacci_gen()",
+        "expectedDisplay": "Each starts cleanly at 0, 1, 1",
+        "script": "g1, g2 = fibonacci_gen(), fibonacci_gen()\nassert [next(g1), next(g1), next(g2)] == [0, 1, 0]"
+      }
+    ]
+  },
+  "hints": [
+    "Inside fibonacci_gen(), initialize a, b = 0, 1 and loop while True: yield a; a, b = b, a + b.",
+    "For first_fib_with_digits(digits): iterate enumerate(fibonacci_gen()) and return idx as soon as val >= 10**(digits - 1) (or 0 when digits <= 1).",
+    "Pseudocode:\n  def fibonacci_gen():\n      a, b = 0, 1\n      while True:\n          yield a\n          a, b = b, a + b"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

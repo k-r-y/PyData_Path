@@ -1,0 +1,78 @@
+{
+  "id": "P055",
+  "slug": "memoize-decorator",
+  "title": "Memoize Cache Decorator",
+  "difficulty": "medium",
+  "tags": [
+    "decorators",
+    "dict"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "b4-functions-deeper",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Caches positional arguments and avoids recomputation",
+        "inputDisplay": "@memoize fib or counter called twice on same args",
+        "expectedDisplay": "Underlying function executes once per unique input",
+        "script": "calls = 0\n@memoize\ndef square(x):\n    global calls\n    calls += 1\n    return x * x\nassert square(5) == 25\nassert square(5) == 25\nassert square(6) == 36\nassert calls == 2"
+      },
+      {
+        "label": "Independent decorated functions maintain separate caches",
+        "inputDisplay": "Two @memoize functions called with same key (2)",
+        "expectedDisplay": "Results never leak across functions",
+        "script": "@memoize\ndef f(x): return x + 10\n@memoize\ndef g(x): return x * 10\nassert f(2) == 12\nassert g(2) == 20"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Handles keyword arguments distinctly from positional mismatches",
+        "inputDisplay": "compute(1, scale=2) vs compute(1, scale=3)",
+        "expectedDisplay": "Separate cache keys per kwargs",
+        "script": "hits = 0\n@memoize\ndef scale_val(x, factor=1):\n    global hits\n    hits += 1\n    return x * factor\nassert scale_val(4, factor=2) == 8\nassert scale_val(4, factor=2) == 8\nassert scale_val(4, factor=3) == 12\nassert hits == 2"
+      },
+      {
+        "label": "Caches False and None return values properly",
+        "inputDisplay": "Returning None/False should still hit cache",
+        "expectedDisplay": "Called only once",
+        "script": "cnt = 0\n@memoize\ndef maybe(x):\n    global cnt\n    cnt += 1\n    return None if x == 0 else False\nassert maybe(0) is None\nassert maybe(0) is None\nassert maybe(1) is False\nassert maybe(1) is False\nassert cnt == 2"
+      },
+      {
+        "label": "Preserves function name with functools.wraps",
+        "inputDisplay": "fn.__name__",
+        "expectedDisplay": "Matches wrapped function",
+        "script": "@memoize\ndef tax(x): return x * 0.1\nassert tax.__name__ == \"tax\""
+      },
+      {
+        "label": "Multiple arguments cached tuple key",
+        "inputDisplay": "add(3, 4) twice",
+        "expectedDisplay": "Calls once",
+        "script": "n = 0\n@memoize\ndef add(a, b):\n    global n\n    n += 1\n    return a + b\nassert add(3, 4) == 7 and add(3, 4) == 7\nassert n == 1"
+      },
+      {
+        "label": "Recursive Fibonacci speed test",
+        "inputDisplay": "memoized fib(35)",
+        "expectedDisplay": "9227465 quickly without exponential blowup",
+        "timeLimitMs": 300,
+        "isPerformance": true,
+        "script": "@memoize\ndef fib(n):\n    return n if n < 2 else fib(n - 1) + fib(n - 2)\nassert fib(35) == 9227465"
+      }
+    ]
+  },
+  "hints": [
+    "Create a fresh dict `cache = {}` INSIDE `memoize(fn)` so each decorated function keeps its own isolated dictionary.",
+    "Key by `(args, tuple(sorted(kwargs.items())))` and check `if key not in cache: cache[key] = fn(*args, **kwargs)` (do NOT check `cache.get(key) is None` when None itself can be a valid return value!).",
+    "Pseudocode:\n  def memoize(fn):\n      cache = {}\n      @functools.wraps(fn)\n      def wrapper(*args, **kwargs):\n          key = (args, tuple(sorted(kwargs.items())))\n          if key not in cache: cache[key] = fn(*args, **kwargs)\n          return cache[key]\n      return wrapper"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

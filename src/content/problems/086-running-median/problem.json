@@ -1,0 +1,77 @@
+{
+  "id": "P086",
+  "slug": "running-median",
+  "title": "Streaming Running Median Tracker",
+  "difficulty": "hard",
+  "tags": [
+    "heapq"
+  ],
+  "estimatedMinutes": 30,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Odd and even stream length medians",
+        "inputDisplay": "add(5), median()==5.0, add(15), median()==10.0, add(1), median()==5.0",
+        "expectedDisplay": "5.0, 10.0, 5.0",
+        "script": "m = MedianTracker()\nm.add(5)\nassert m.median() == 5.0\nm.add(15)\nassert m.median() == 10.0\nm.add(1)\nassert m.median() == 5.0"
+      },
+      {
+        "label": "Empty tracker median raises ValueError",
+        "inputDisplay": "MedianTracker().median()",
+        "expectedDisplay": "Raises ValueError",
+        "script": "m = MedianTracker()\ntry:\n    m.median()\n    assert False\nexcept ValueError:\n    pass"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Descending insertion sequence",
+        "inputDisplay": "add 10, 8, 6, 4, 2",
+        "expectedDisplay": "10.0, 9.0, 8.0, 7.0, 6.0",
+        "script": "m = MedianTracker()\nout = []\nfor x in [10, 8, 6, 4, 2]:\n    m.add(x); out.append(m.median())\nassert out == [10.0, 9.0, 8.0, 7.0, 6.0]"
+      },
+      {
+        "label": "Duplicate identical values",
+        "inputDisplay": "add(7, 7, 7, 100)",
+        "expectedDisplay": "7.0, 7.0, 7.0, 7.0",
+        "script": "m = MedianTracker()\nfor x in [7, 7, 7, 100]: m.add(x)\nassert m.median() == 7.0"
+      },
+      {
+        "label": "Negative values supported accurately",
+        "inputDisplay": "[-10, -20, -30, -40]",
+        "expectedDisplay": "-25.0",
+        "script": "m = MedianTracker()\nfor x in [-10, -20, -30, -40]: m.add(x)\nassert m.median() == -25.0"
+      },
+      {
+        "label": "Median always returned as float",
+        "inputDisplay": "type(m.median()) is float",
+        "expectedDisplay": "True",
+        "script": "m = MedianTracker(); m.add(4)\nassert isinstance(m.median(), float)"
+      },
+      {
+        "label": "O(log n) two-heap speed over 9,000 zig-zag stream additions",
+        "inputDisplay": "Add 9,000 alternating integers and query median every step",
+        "expectedDisplay": "Final median == 0.5",
+        "timeLimitMs": 450,
+        "isPerformance": true,
+        "script": "m = MedianTracker()\nfor i in range(1, 9001):\n    m.add(-i if i % 2 else i)\n    _ = m.median()\nassert m.median() == 0.5"
+      }
+    ]
+  },
+  "hints": [
+    "Use two heaps: `low` (a max-heap simulated by pushing negated `-num`) holding the smaller half, and `high` (min-heap) holding the larger half.",
+    "Maintain invariant: `len(low) == len(high)` OR `len(low) == len(high) + 1`, and every element in `low <= every element in high`.",
+    "Pseudocode:\n  push -num to low, pop max (-heappop(low)) and push to high\n  if len(high) > len(low): push -heappop(high) to low\n  median: -low[0] if len(low) > len(high) else (-low[0] + high[0]) / 2.0"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

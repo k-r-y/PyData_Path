@@ -1,0 +1,83 @@
+{
+  "id": "P028",
+  "slug": "24h-to-12h-time",
+  "title": "24-Hour to 12-Hour Clock Formatter",
+  "difficulty": "easy",
+  "tags": [
+    "strings"
+  ],
+  "estimatedMinutes": 8,
+  "relatedModules": [
+    "a3-strings-io",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "format_12h"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Afternoon timestamp",
+        "args": [
+          "14:05"
+        ],
+        "expected": "2:05 PM"
+      },
+      {
+        "label": "Midnight boundary 00:15",
+        "args": [
+          "00:15"
+        ],
+        "expected": "12:15 AM"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Noon boundary 12:00",
+        "args": [
+          "12:00"
+        ],
+        "expected": "12:00 PM"
+      },
+      {
+        "label": "Midnight exact 00:00",
+        "args": [
+          "00:00"
+        ],
+        "expected": "12:00 AM"
+      },
+      {
+        "label": "Morning single digit hour drops leading zero",
+        "args": [
+          "09:07"
+        ],
+        "expected": "9:07 AM"
+      },
+      {
+        "label": "Late night 23:59",
+        "args": [
+          "23:59"
+        ],
+        "expected": "11:59 PM"
+      },
+      {
+        "label": "Noon past 12:45",
+        "args": [
+          "12:45"
+        ],
+        "expected": "12:45 PM"
+      }
+    ]
+  },
+  "hints": [
+    "Parse hour and minute strings by splitting on \":\". Determine suffix = \"AM\" if hour < 12 else \"PM\".",
+    "Map display_hour = hour % 12 or 12 so both 0 and 12 render as 12!",
+    "Pseudocode:\n  h, m = map(int, time_str.split(\":\"))\n  suffix = \"AM\" if h < 12 else \"PM\"\n  h12 = h % 12 or 12\n  return f\"{h12}:{m:02d} {suffix}\""
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

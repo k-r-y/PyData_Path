@@ -1,0 +1,84 @@
+{
+  "id": "P019",
+  "slug": "decimal-to-binary",
+  "title": "Decimal to Binary Without bin()",
+  "difficulty": "easy",
+  "tags": [
+    "math",
+    "strings"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a4-control-flow",
+    "a3-strings-io"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "decimal_to_binary"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard positive integer 45",
+        "args": [
+          45
+        ],
+        "expected": "101101"
+      },
+      {
+        "label": "Zero boundary returns \"0\"",
+        "args": [
+          0
+        ],
+        "expected": "0"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Value 1",
+        "args": [
+          1
+        ],
+        "expected": "1"
+      },
+      {
+        "label": "Power of two 16",
+        "args": [
+          16
+        ],
+        "expected": "10000"
+      },
+      {
+        "label": "All ones byte 255",
+        "args": [
+          255
+        ],
+        "expected": "11111111"
+      },
+      {
+        "label": "Arbitrary large integer 1025",
+        "args": [
+          1025
+        ],
+        "expected": "10000000001"
+      },
+      {
+        "label": "1000000",
+        "args": [
+          1000000
+        ],
+        "expected": "11110100001001000000"
+      }
+    ]
+  },
+  "hints": [
+    "Special-case n == 0 to return \"0\" immediately.",
+    "While n > 0, collect str(n % 2), halve n //= 2, then reverse the collected bits.",
+    "Pseudocode:\n  if n == 0: return \"0\"\n  bits = []\n  while n > 0:\n      bits.append(str(n % 2)); n //= 2\n  return \"\".join(reversed(bits))"
+  ],
+  "sources": [
+    "python-tutorial",
+    "think-python"
+  ]
+}

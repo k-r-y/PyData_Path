@@ -1,0 +1,79 @@
+{
+  "id": "P087",
+  "slug": "rate-limiter-class",
+  "title": "Sliding Window API Rate Limiter",
+  "difficulty": "hard",
+  "tags": [
+    "oop",
+    "sliding window",
+    "time"
+  ],
+  "estimatedMinutes": 25,
+  "relatedModules": [
+    "b2-oop",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Enforces max_requests inside sliding window per client",
+        "inputDisplay": "RateLimiter(2, 10): reqs at t=1, t=4 allowed; t=9 rejected; t=11 allowed (t=1 expired)",
+        "expectedDisplay": "True, True, False, True",
+        "script": "rl = RateLimiter(2, 10)\nassert rl.allow(\"c1\", 1) is True\nassert rl.allow(\"c1\", 4) is True\nassert rl.allow(\"c1\", 9) is False\nassert rl.allow(\"c1\", 11) is True"
+      },
+      {
+        "label": "Isolates separate client_id buckets",
+        "inputDisplay": "c1 hits cap; c2 still allowed cleanly",
+        "expectedDisplay": "c2 independent of c1",
+        "script": "rl = RateLimiter(1, 5)\nassert rl.allow(\"c1\", 2) is True\nassert rl.allow(\"c1\", 3) is False\nassert rl.allow(\"c2\", 3) is True"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Exact boundary timestamp - window_seconds expires old entry",
+        "inputDisplay": "window=10: req at t=0 expires when t=10 arrives",
+        "expectedDisplay": "Allowed at t=10",
+        "script": "rl = RateLimiter(1, 10)\nassert rl.allow(\"u\", 0) is True\nassert rl.allow(\"u\", 9.99) is False\nassert rl.allow(\"u\", 10) is True"
+      },
+      {
+        "label": "Rejected requests do NOT consume quota slots",
+        "inputDisplay": "Denied at t=5 must not push out t=1 or keep window saturated past t=10",
+        "expectedDisplay": "Quota frees at t=11 cleanly",
+        "script": "rl = RateLimiter(1, 10)\nassert rl.allow(\"u\", 1) is True\nassert rl.allow(\"u\", 5) is False\nassert rl.allow(\"u\", 9) is False\nassert rl.allow(\"u\", 11) is True"
+      },
+      {
+        "label": "Multiple identical timestamp bursts handled accurately",
+        "inputDisplay": "3 requests at exact same timestamp with limit=2",
+        "expectedDisplay": "True, True, False",
+        "script": "rl = RateLimiter(2, 5)\nassert rl.allow(\"x\", 100) is True\nassert rl.allow(\"x\", 100) is True\nassert rl.allow(\"x\", 100) is False"
+      },
+      {
+        "label": "Limit zero denies all traffic",
+        "inputDisplay": "RateLimiter(0, 10).allow(\"a\", 1)",
+        "expectedDisplay": "False",
+        "script": "rl = RateLimiter(0, 10)\nassert rl.allow(\"a\", 1) is False"
+      },
+      {
+        "label": "O(1) amortized eviction over 15,000 sequential events",
+        "inputDisplay": "15,000 ascending timestamp checks spaced 6s apart",
+        "expectedDisplay": "Deque popleft finishes fast",
+        "timeLimitMs": 350,
+        "isPerformance": true,
+        "script": "rl = RateLimiter(10, 50)\nfor t in range(15000):\n    assert rl.allow(\"hot\", float(t * 6)) is True"
+      }
+    ]
+  },
+  "hints": [
+    "Keep a collections.deque per `client_id` storing accepted timestamps only.",
+    "On `allow(client_id, timestamp)`: popleft from that client deque while `q and q[0] <= timestamp - window_seconds`. If `len(q) < max_requests`, append `timestamp` and return True; else return False.",
+    "Pseudocode:\n  q = self._logs[client_id]\n  cutoff = timestamp - self._window\n  while q and q[0] <= cutoff: q.popleft()\n  if len(q) >= self._limit: return False\n  q.append(timestamp); return True"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

@@ -23,8 +23,10 @@ import {
   saveProblemDraft,
   saveSetting,
   type ProblemProgressRecord,
+  type ReviewQueueRecord,
   type SubmissionRecord,
 } from '../../db/database';
+import { calculateSm2 } from '../flashcards/sm2';
 import { gradeProblem } from '../../runtime/grader';
 import { pyodideRunner, type CustomRunResult } from '../../runtime/runner';
 import type {
@@ -36,6 +38,11 @@ import type {
 import { ProblemEditor, type EditorThemeMode } from './ProblemEditor';
 import { TestResultsPanel, type BottomPanelTab } from './TestResultsPanel';
 import { SubmissionsPanel } from './SubmissionsPanel';
+import { HintsPanel } from './HintsPanel';
+import { ExplanationPanel } from './ExplanationPanel';
+import { ProblemNotesPanel } from './ProblemNotesPanel';
+import { ProblemVisualizeModal } from './ProblemVisualizeModal';
+import { ComplexityBenchCard } from './ComplexityBenchCard';
 
 type LeftTab = 'description' | 'hints' | 'explanation' | 'notes' | 'submissions';
 type MobileTab = 'problem' | 'code' | 'tests';
@@ -78,6 +85,19 @@ export function ProblemWorkspacePage() {
   const [customResult, setCustomResult] = useState<CustomRunResult | null>(null);
   const [revealedHiddenIndices, setRevealedHiddenIndices] = useState<Set<number>>(new Set());
 
+  // Phase 3 Learning Layer state
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [hintUnlockMinutes, setHintUnlockMinutes] = useState<[number, number, number]>([3, 8, 15]);
+  const [hintUnlockFails, setHintUnlockFails] = useState<[number, number, number]>([1, 3, 5]);
+  const [noteMarkdown, setNoteMarkdown] = useState('');
+  const [noteUpdatedAt, setNoteUpdatedAt] = useState<string | null>(null);
+  const [bookmarkReason, setBookmarkReason] = useState<'bookmark' | 'stuck' | null>(null);
+  const [reviewRecord, setReviewRecord] = useState<ReviewQueueRecord | null>(null);
+  const [showAcceptedPrompt, setShowAcceptedPrompt] = useState(false);
+  const [reflectionInput, setReflectionInput] = useState('');
+  const [reflectionSaved, setReflectionSaved] = useState(false);
+  const [vizOpen, setVizOpen] = useState(false);
+
   // Editor preferences
   const [fontSize, setFontSize] = useState(14);
   const [editorTheme, setEditorTheme] = useState<EditorThemeMode>('system');
@@ -103,13 +123,25 @@ export function ProblemWorkspacePage() {
       getSetting<number>('editorFontSize', 14),
       getSetting<EditorThemeMode>('editorTheme', 'system'),
       getSetting<boolean>('editorLigatures', false),
+      getSetting<[number, number, number]>('hintUnlockMinutes', [3, 8, 15]),
+      getSetting<[number, number, number]>('hintUnlockFails', [1, 3, 5]),
     ])
-      .then(([sz, th, lig]) => {
+      .then(([sz, th, lig, hMins, hFails]) => {
         setFontSize(sz);
         setEditorTheme(th);
         setLigatures(lig);
+        if (Array.isArray(hMins) && hMins.length === 3) setHintUnlockMinutes(hMins);
+        if (Array.isArray(hFails) && hFails.length === 3) setHintUnlockFails(hFails);
       })
       .catch(() => {});
+  }, []);
+
+  // Tick elapsed working time for progressive hint unlocking
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setElapsedSeconds(Math.floor((Date.now() - startTimeRef.current) / 1000));
+    }, 1000);
+    return () => window.clearInterval(id);
   }, []);
 
   useEffect(() => {
@@ -121,7 +153,12 @@ export function ProblemWorkspacePage() {
     setErrorLine(null);
     setRevealedHiddenIndices(new Set());
     setLeftTab('description');
+    setShowAcceptedPrompt(false);
+    setReflectionInput('');
+    setReflectionSaved(false);
+    setVizOpen(false);
     startTimeRef.current = Date.now();
+    setElapsedSeconds(0);
 
     if (!slug) {
       setBundle(null);
@@ -140,10 +177,13 @@ export function ProblemWorkspacePage() {
         setBundle(loaded);
         loadedProblemIdRef.current = loaded.spec.id;
 
-        const [draft, prog, subs] = await Promise.all([
+        const [draft, prog, subs, noteRec, bookmarkRec, revRec] = await Promise.all([
           db.drafts.get(loaded.spec.id),
           db.problemProgress.get(loaded.spec.id),
           db.submissions.where('problemId').equals(loaded.spec.id).reverse().sortBy('timestamp'),
+          db.problemNotes.get(loaded.spec.id),
+          db.bookmarks.get(`problem-${loaded.spec.id}`),
+          db.reviewQueue.get(loaded.spec.id),
         ]);
         if (cancelled) return;
 
@@ -153,6 +193,16 @@ export function ProblemWorkspacePage() {
         setDraftSavedAt(draft?.updatedAt ?? null);
         setProgress(prog ?? null);
         setSubmissions(subs);
+        setNoteMarkdown(noteRec?.markdown ?? '');
+        setNoteUpdatedAt(noteRec?.updatedAt ?? null);
+        setBookmarkReason(
+          bookmarkRec
+            ? bookmarkRec.reason.includes('(stuck)')
+              ? 'stuck'
+              : 'bookmark'
+            : null
+        );
+        setReviewRecord(revRec ?? null);
         setLoading(false);
       })
       .catch(() => {
@@ -303,6 +353,22 @@ export function ProblemWorkspacePage() {
         .reverse()
         .sortBy('timestamp');
       setSubmissions(updatedSubs);
+
+      if (res.verdict === 'Accepted') {
+        setShowAcceptedPrompt(true);
+        setReflectionSaved(false);
+        const existingRev = await db.reviewQueue.get(bundle.spec.id);
+        if (!existingRev) {
+          const initialSm2 = calculateSm2({ ease: 2.5, intervalDays: 0, repetitions: 0 }, 4);
+          const createdRev: ReviewQueueRecord = {
+            problemId: bundle.spec.id,
+            ...initialSm2,
+          };
+          await db.reviewQueue.put(createdRev);
+          setReviewRecord(createdRev);
+        }
+      }
+
       window.dispatchEvent(new Event('pdp-progress-updated'));
     } finally {
       setRunning(false);
@@ -346,6 +412,131 @@ export function ProblemWorkspacePage() {
       setProgress(updated);
     },
     [bundle]
+  );
+
+  const handleRevealHint = useCallback(
+    async (level: 1 | 2 | 3) => {
+      if (!bundle) return;
+      const existing = await db.problemProgress.get(bundle.spec.id);
+      const nextHint = Math.max(existing?.maxHintLevel ?? 0, level);
+      const updated: ProblemProgressRecord = existing
+        ? {
+            ...existing,
+            maxHintLevel: nextHint,
+            solvedUnaided: existing.status === 'solved' ? existing.solvedUnaided : false,
+          }
+        : {
+            problemId: bundle.spec.id,
+            status: 'attempted',
+            attempts: 0,
+            firstSolvedAt: null,
+            lastAttemptAt: new Date().toISOString(),
+            bestPassed: 0,
+            totalTests: bundle.spec.tests.visible.length + bundle.spec.tests.hidden.length,
+            solvedUnaided: false,
+            maxHintLevel: nextHint,
+            solutionViewed: false,
+            revealedFailingCase: false,
+            timeSpentSeconds: 0,
+          };
+      await db.problemProgress.put(updated);
+      setProgress(updated);
+    },
+    [bundle]
+  );
+
+  const handleConfirmGiveUp = useCallback(async () => {
+    if (!bundle) return;
+    const existing = await db.problemProgress.get(bundle.spec.id);
+    const updated: ProblemProgressRecord = existing
+      ? {
+          ...existing,
+          solutionViewed: true,
+          solvedUnaided: existing.status === 'solved' ? existing.solvedUnaided : false,
+        }
+      : {
+          problemId: bundle.spec.id,
+          status: 'attempted',
+          attempts: 0,
+          firstSolvedAt: null,
+          lastAttemptAt: new Date().toISOString(),
+          bestPassed: 0,
+          totalTests: bundle.spec.tests.visible.length + bundle.spec.tests.hidden.length,
+          solvedUnaided: false,
+          maxHintLevel: 0,
+          solutionViewed: true,
+          revealedFailingCase: false,
+          timeSpentSeconds: 0,
+        };
+    await db.problemProgress.put(updated);
+    setProgress(updated);
+  }, [bundle]);
+
+  const handleSaveNotes = useCallback(
+    async (md: string) => {
+      if (!bundle) return;
+      const now = new Date().toISOString();
+      setNoteMarkdown(md);
+      setNoteUpdatedAt(now);
+      await db.problemNotes.put({
+        problemId: bundle.spec.id,
+        markdown: md,
+        updatedAt: now,
+      });
+    },
+    [bundle]
+  );
+
+  const handleToggleBookmark = useCallback(
+    async (kind: 'bookmark' | 'stuck') => {
+      if (!bundle) return;
+      const bmId = `problem-${bundle.spec.id}`;
+      if (bookmarkReason === kind) {
+        await db.bookmarks.delete(bmId);
+        setBookmarkReason(null);
+      } else {
+        await db.bookmarks.put({
+          id: bmId,
+          lessonId: '',
+          problemId: bundle.spec.id,
+          reason: `${bundle.spec.id}: ${bundle.spec.title} (${kind})`,
+          createdAt: new Date().toISOString(),
+        });
+        setBookmarkReason(kind);
+      }
+      window.dispatchEvent(new Event('pdp-progress-updated'));
+    },
+    [bundle, bookmarkReason]
+  );
+
+  const handleSaveReflection = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!bundle || !reflectionInput.trim()) return;
+      const dateStr = new Date().toISOString().slice(0, 10);
+      const entry = `[Reflection (${dateStr})]: ${reflectionInput.trim()}`;
+      const nextMd = noteMarkdown.trim() ? `${noteMarkdown.trim()}\n\n${entry}` : entry;
+      await handleSaveNotes(nextMd);
+      setReflectionInput('');
+      setReflectionSaved(true);
+    },
+    [bundle, reflectionInput, noteMarkdown, handleSaveNotes]
+  );
+
+  const handleRateSm2 = useCallback(
+    async (quality: 3 | 4 | 5) => {
+      if (!bundle) return;
+      const prev = reviewRecord ?? { ease: 2.5, intervalDays: 0, repetitions: 0 };
+      const res = calculateSm2(prev, quality);
+      const updated: ReviewQueueRecord = {
+        problemId: bundle.spec.id,
+        ...res,
+      };
+      await db.reviewQueue.put(updated);
+      setReviewRecord(updated);
+      window.dispatchEvent(new Event('pdp-progress-updated'));
+    },
+    [bundle, reviewRecord]
   );
 
   // Horizontal splitter drag
@@ -571,10 +762,15 @@ export function ProblemWorkspacePage() {
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
                   components={{
-                    h3: ({ children }) => (
-                      <h3 className="text-base font-semibold text-neutral-950 dark:text-white mt-6 mb-2">
+                    h2: ({ children }) => (
+                      <h2 className="text-base font-semibold text-neutral-950 dark:text-white mt-6 mb-2">
                         {children}
-                      </h3>
+                      </h2>
+                    ),
+                    h3: ({ children }) => (
+                      <h2 className="text-base font-semibold text-neutral-950 dark:text-white mt-6 mb-2">
+                        {children}
+                      </h2>
                     ),
                     ul: ({ children }) => (
                       <ul className="list-disc pl-5 space-y-1.5">{children}</ul>
@@ -616,37 +812,39 @@ export function ProblemWorkspacePage() {
             </div>
 
             <div role="tabpanel" aria-labelledby="pdp-left-tab-hints" hidden={leftTab !== 'hints'}>
-              <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#111113] p-4 text-xs text-neutral-600 dark:text-neutral-400">
-                <p className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
-                  3-Level Hint Ladder (Phase 3)
-                </p>
-                <p>
-                  Timed and attempt-gated progressive hints (nudge, approach, pseudocode) with early-override logging will be unlocked in Phase 3.
-                </p>
-              </div>
+              <HintsPanel
+                spec={spec}
+                progress={progress}
+                elapsedSeconds={elapsedSeconds + (progress?.timeSpentSeconds ?? 0)}
+                hintUnlockMinutes={hintUnlockMinutes}
+                hintUnlockFails={hintUnlockFails}
+                onConfigureThresholds={(mins, fails) => {
+                  setHintUnlockMinutes(mins);
+                  setHintUnlockFails(fails);
+                  saveSetting('hintUnlockMinutes', mins).catch(() => {});
+                  saveSetting('hintUnlockFails', fails).catch(() => {});
+                }}
+                onRevealHint={handleRevealHint}
+              />
             </div>
 
             <div role="tabpanel" aria-labelledby="pdp-left-tab-explanation" hidden={leftTab !== 'explanation'}>
-              <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#111113] p-4 text-xs text-neutral-600 dark:text-neutral-400 space-y-2">
-                <p className="font-semibold text-neutral-900 dark:text-neutral-100 flex items-center gap-1.5">
-                  <Lock className="w-3.5 h-3.5" aria-hidden="true" />
-                  Explanation (Phase 3)
-                </p>
-                <p>
-                  Guided approach walkthroughs, reference solution complexities, common mistakes, and the &ldquo;Give up and view&rdquo; unlock gate will be wired in Phase 3.
-                </p>
-              </div>
+              <ExplanationPanel
+                meta={bundle.meta}
+                spec={spec}
+                unlocked={progress?.status === 'solved' || progress?.solutionViewed === true}
+                onConfirmGiveUp={handleConfirmGiveUp}
+              />
             </div>
 
             <div role="tabpanel" aria-labelledby="pdp-left-tab-notes" hidden={leftTab !== 'notes'}>
-              <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#111113] p-4 text-xs text-neutral-600 dark:text-neutral-400">
-                <p className="font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
-                  Problem Notes &amp; Reflection (Phase 3)
-                </p>
-                <p>
-                  Per-problem Markdown notes, stuck-list bookmarks, and post-Accepted one-sentence reflections will be wired in Phase 3.
-                </p>
-              </div>
+              <ProblemNotesPanel
+                markdown={noteMarkdown}
+                updatedAt={noteUpdatedAt}
+                bookmarkReason={bookmarkReason}
+                onSaveNotes={handleSaveNotes}
+                onToggleBookmark={handleToggleBookmark}
+              />
             </div>
 
             <div role="tabpanel" aria-labelledby="pdp-left-tab-submissions" hidden={leftTab !== 'submissions'}>
@@ -706,6 +904,7 @@ export function ProblemWorkspacePage() {
               onRun={handleRun}
               onSubmit={handleSubmit}
               onResetConfirm={handleResetConfirm}
+              onVisualize={() => setVizOpen(true)}
               running={running}
               runtimeStatus={runtimeStatus}
               errorLine={errorLine}
@@ -771,10 +970,89 @@ export function ProblemWorkspacePage() {
               customResult={customResult}
               revealedHiddenIndices={revealedHiddenIndices}
               onRevealHiddenCase={handleRevealHiddenCase}
+              editorCode={code}
+              editorFilename={`${spec.slug}.py`}
+              testsFooter={
+                <div className="space-y-3 pt-1">
+                  {showAcceptedPrompt && (
+                    <div className="rounded-lg border border-emerald-200 dark:border-emerald-900 bg-emerald-50/70 dark:bg-emerald-950/30 p-3.5 space-y-3">
+                      <form onSubmit={handleSaveReflection} className="space-y-2">
+                        <label
+                          htmlFor="pdp-reflection-input"
+                          className="block text-xs font-semibold text-emerald-900 dark:text-emerald-200"
+                        >
+                          Accepted! Explain your approach in one sentence (saved to Notes):
+                        </label>
+                        <div className="flex flex-wrap gap-2">
+                          <input
+                            id="pdp-reflection-input"
+                            type="text"
+                            value={reflectionInput}
+                            onChange={(e) => setReflectionInput(e.target.value)}
+                            placeholder="e.g. Tracked seen complements in a dict for O(n) single-pass lookup."
+                            className="flex-1 min-w-[200px] px-2.5 py-1.5 rounded border border-emerald-300 dark:border-emerald-800 bg-white dark:bg-[#09090b] text-xs text-neutral-900 dark:text-neutral-100"
+                          />
+                          <button
+                            type="submit"
+                            className="px-3 py-1.5 rounded bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-medium"
+                          >
+                            {reflectionSaved ? 'Saved to Notes' : 'Save Reflection'}
+                          </button>
+                        </div>
+                      </form>
+
+                      <div className="pt-2 border-t border-emerald-200/80 dark:border-emerald-900/80 flex flex-wrap items-center justify-between gap-2">
+                        <div className="text-[11px] text-emerald-900 dark:text-emerald-200">
+                          <span className="font-semibold">Spaced Review Queue (SM-2): </span>
+                          {reviewRecord ? (
+                            <span className="font-mono">
+                              Next due {reviewRecord.dueDate} ({reviewRecord.intervalDays}d interval)
+                            </span>
+                          ) : (
+                            <span>Schedule next review:</span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <button
+                            type="button"
+                            onClick={() => handleRateSm2(3)}
+                            className="px-2.5 py-1 rounded border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 text-amber-900 dark:text-amber-200 text-[11px] font-medium"
+                          >
+                            Hard
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleRateSm2(4)}
+                            className="px-2.5 py-1 rounded border border-emerald-300 dark:border-emerald-800 bg-white dark:bg-[#09090b] text-emerald-800 dark:text-emerald-200 text-[11px] font-medium"
+                          >
+                            Good
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleRateSm2(5)}
+                            className="px-2.5 py-1 rounded border border-emerald-600 bg-emerald-600 text-white text-[11px] font-medium"
+                          >
+                            Easy
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <ComplexityBenchCard spec={spec} code={code} />
+                </div>
+              }
             />
           </div>
         </div>
       </div>
+
+      <ProblemVisualizeModal
+        open={vizOpen}
+        onClose={() => setVizOpen(false)}
+        spec={spec}
+        code={code}
+      />
     </div>
   );
 }

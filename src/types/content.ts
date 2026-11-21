@@ -42,6 +42,7 @@ export interface BaseExercise {
   points: number;
   hints: [string, string, string];
   solution: string;
+  alternates?: Array<string | Record<string, string>>;
   explanation: string;
   sources: string[];
 }
@@ -66,6 +67,8 @@ export interface FillBlankExercise extends BaseExercise {
   type: 'fillblank';
   codeWithBlanks: string;
   answers: Record<string, string[]>;
+  visibleTests?: string;
+  hiddenTests?: string;
 }
 
 export interface ParsonsExercise extends BaseExercise {

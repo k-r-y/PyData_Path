@@ -1,0 +1,126 @@
+{
+  "id": "P027",
+  "slug": "pascal-triangle-row",
+  "title": "Pascal Triangle Binomial Row",
+  "difficulty": "easy",
+  "tags": [
+    "lists",
+    "loops"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a4-control-flow",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "pascal_row"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "0-based row 4",
+        "args": [
+          4
+        ],
+        "expected": [
+          1,
+          4,
+          6,
+          4,
+          1
+        ]
+      },
+      {
+        "label": "Row 0 boundary",
+        "args": [
+          0
+        ],
+        "expected": [
+          1
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Row 1",
+        "args": [
+          1
+        ],
+        "expected": [
+          1,
+          1
+        ]
+      },
+      {
+        "label": "Row 2",
+        "args": [
+          2
+        ],
+        "expected": [
+          1,
+          2,
+          1
+        ]
+      },
+      {
+        "label": "Row 5",
+        "args": [
+          5
+        ],
+        "expected": [
+          1,
+          5,
+          10,
+          10,
+          5,
+          1
+        ]
+      },
+      {
+        "label": "Row 7",
+        "args": [
+          7
+        ],
+        "expected": [
+          1,
+          7,
+          21,
+          35,
+          35,
+          21,
+          7,
+          1
+        ]
+      },
+      {
+        "label": "Row 10 exact integers",
+        "args": [
+          10
+        ],
+        "expected": [
+          1,
+          10,
+          45,
+          120,
+          210,
+          252,
+          210,
+          120,
+          45,
+          10,
+          1
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Row n (0-indexed) has n + 1 entries starting and ending with 1.",
+    "Each next binomial coefficient follows C(n, k+1) = C(n, k) * (n - k) // (k + 1), or build rows iteratively from [1].",
+    "Pseudocode:\n  row = [1]\n  for k in range(n):\n      row.append(row[-1] * (n - k) // (k + 1))\n  return row"
+  ],
+  "sources": [
+    "python-tutorial"
+  ]
+}

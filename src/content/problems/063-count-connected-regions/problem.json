@@ -1,0 +1,173 @@
+{
+  "id": "P063",
+  "slug": "count-connected-regions",
+  "title": "Count Active Cluster Regions in Grid",
+  "difficulty": "medium",
+  "tags": [
+    "grid",
+    "dfs"
+  ],
+  "estimatedMinutes": 20,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "count_regions"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Three orthogonal server cluster islands",
+        "args": [
+          [
+            [
+              "1",
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "1",
+              "0",
+              "0",
+              "1"
+            ],
+            [
+              "0",
+              "0",
+              "1",
+              "1"
+            ],
+            [
+              "0",
+              "1",
+              "0",
+              "0"
+            ]
+          ]
+        ],
+        "expected": 3,
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Diagonal active cells remain separate regions",
+        "args": [
+          [
+            [
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "expected": 2,
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty grid returns 0",
+        "args": [
+          []
+        ],
+        "expected": 0,
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "All zeros returns 0",
+        "args": [
+          [
+            [
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0"
+            ]
+          ]
+        ],
+        "expected": 0,
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Single connected block",
+        "args": [
+          [
+            [
+              "1",
+              "1"
+            ],
+            [
+              "1",
+              "1"
+            ]
+          ]
+        ],
+        "expected": 1,
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "U-shaped contiguous cluster counts as 1",
+        "args": [
+          [
+            [
+              "1",
+              "0",
+              "1"
+            ],
+            [
+              "1",
+              "0",
+              "1"
+            ],
+            [
+              "1",
+              "1",
+              "1"
+            ]
+          ]
+        ],
+        "expected": 1,
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "50x50 alternating grid iterative DFS/BFS avoids recursion limit",
+        "argsExpr": "([[str((r + c) % 2) for c in range(50)] for r in range(50)],)",
+        "expected": 1250,
+        "timeLimitMs": 400,
+        "checks": [
+          "inputUnchanged"
+        ],
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Whenever you find an unvisited cell == \"1\", increment regions += 1 and flood-fill all orthogonally connected \"1\" neighbors.",
+    "Do NOT mutate the caller grid (keep a `visited` set) and use an iterative stack or deque BFS so large grids never hit Python recursion limits.",
+    "Pseudocode:\n  visited = set(); regions = 0\n  for r in range(R): for c in range(C):\n      if grid[r][c] == \"1\" and (r, c) not in visited:\n          regions += 1; flood_bfs(r, c)\n  return regions"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

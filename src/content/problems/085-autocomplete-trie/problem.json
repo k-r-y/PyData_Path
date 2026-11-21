@@ -1,0 +1,78 @@
+{
+  "id": "P085",
+  "slug": "autocomplete-trie",
+  "title": "Prefix Autocomplete Trie",
+  "difficulty": "hard",
+  "tags": [
+    "oop",
+    "trees"
+  ],
+  "estimatedMinutes": 30,
+  "relatedModules": [
+    "b2-oop",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Insert, exact search, starts_with, and sorted autocomplete",
+        "inputDisplay": "Insert metrics, merge, memo, mode; query prefix \"me\"",
+        "expectedDisplay": "[\"memo\", \"merge\", \"metrics\"]",
+        "script": "t = Trie()\nfor w in [\"metrics\", \"merge\", \"memo\", \"mode\"]:\n    t.insert(w)\nassert t.search(\"memo\") is True\nassert t.search(\"mem\") is False\nassert t.starts_with(\"mem\") is True\nassert t.autocomplete(\"me\") == [\"memo\", \"merge\", \"metrics\"]"
+      },
+      {
+        "label": "Unknown prefix yields empty autocomplete list",
+        "inputDisplay": "t.autocomplete(\"xyz\")",
+        "expectedDisplay": "[]",
+        "script": "t = Trie()\nt.insert(\"alpha\")\nassert t.autocomplete(\"xyz\") == []"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty prefix returns all inserted words sorted",
+        "inputDisplay": "autocomplete(\"\")",
+        "expectedDisplay": "All words alphabetically",
+        "script": "t = Trie()\nfor w in [\"zeta\", \"alpha\", \"mid\"]: t.insert(w)\nassert t.autocomplete(\"\") == [\"alpha\", \"mid\", \"zeta\"]"
+      },
+      {
+        "label": "Empty word handled cleanly if inserted",
+        "inputDisplay": "t.insert(\"\")",
+        "expectedDisplay": "search(\"\") is True",
+        "script": "t = Trie()\nassert t.search(\"\") is False\nt.insert(\"\")\nassert t.search(\"\") is True\nassert t.autocomplete(\"\") == [\"\"]"
+      },
+      {
+        "label": "Prefix which is itself a stored word appears first in autocomplete",
+        "inputDisplay": "Insert \"app\" and \"apple\"; autocomplete(\"app\")",
+        "expectedDisplay": "[\"app\", \"apple\"]",
+        "script": "t = Trie()\nt.insert(\"apple\")\nt.insert(\"app\")\nassert t.search(\"app\") is True\nassert t.autocomplete(\"app\") == [\"app\", \"apple\"]"
+      },
+      {
+        "label": "Duplicate insert remains deduplicated cleanly",
+        "inputDisplay": "Insert \"tag\" twice",
+        "expectedDisplay": "Appears once in autocomplete(\"t\")",
+        "script": "t = Trie()\nt.insert(\"tag\")\nt.insert(\"tag\")\nassert t.autocomplete(\"t\") == [\"tag\"]"
+      },
+      {
+        "label": "Large vocabulary lookup without scanning unrelated prefixes",
+        "inputDisplay": "Insert 1500 words and query selective prefix",
+        "expectedDisplay": "Fast O(prefix + matches) query",
+        "timeLimitMs": 400,
+        "isPerformance": true,
+        "script": "t = Trie()\nfor i in range(1500):\n    t.insert(f\"item_{i:04d}\")\nt.insert(\"target_alpha\")\nt.insert(\"target_beta\")\nassert t.autocomplete(\"target_\") == [\"target_alpha\", \"target_beta\"]"
+      }
+    ]
+  },
+  "hints": [
+    "Represent each TrieNode with `children: dict[str, TrieNode]` and `is_end: bool`.",
+    "For autocomplete(prefix): walk down to the node matching `prefix` (returning [] if any char is missing), then DFS its children in `sorted(node.children.keys())` order accumulating complete words!",
+    "Pseudocode:\n  def autocomplete(self, prefix):\n      node = self._walk(prefix)\n      if not node: return []\n      dfs(node, prefix, out)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

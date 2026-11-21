@@ -13,10 +13,13 @@
       "Check that the separator has spaces around the pipe: ' | '."
     ],
     "solution": "item_id = 'SKU-104'\nitem_name = 'Barcode Scanner'\nstock = 12\nprint(item_id, item_name, stock, sep=' | ')",
+    "alternates": [
+      "item_id = 'SKU-104'\nitem_name = 'Barcode Scanner'\nstock = 12\nprint(f'{item_id} | {item_name} | {stock}')"
+    ],
     "explanation": "Passing multiple arguments to print() with sep=' | ' joins them cleanly without manual string concatenation.",
     "sources": ["python-tutorial"],
     "starterCode": "item_id = 'SKU-104'\nitem_name = 'Barcode Scanner'\nstock = 12\n# Print them joined by ' | '\n",
-    "visibleTests": "assert item_id == 'SKU-104'\nassert stock == 12\nassert ' | ' in __pdp_stdout__.getvalue() if '__pdp_stdout__' in globals() else True",
+    "visibleTests": "import sys as _sys\nassert stock == 12\nassert 'SKU-104 | Barcode Scanner | 12' in _sys.stdout.getvalue()",
     "hiddenTests": "assert isinstance(stock, int)"
   },
   {
@@ -33,10 +36,14 @@
       "Use print('Total enrolled:', total_students) or str(total_students)."
     ],
     "solution": "total_students = 45\nprint('Total enrolled:', total_students)",
-    "explanation": "Fixing the variable typo resolves NameError, and using a comma in print() (or str()) resolves TypeError.",
+    "alternates": [
+      "total_students = 45\nprint(f'Total enrolled: {total_students}')",
+      "total_students = 45\nprint('Total enrolled: ' + str(total_students))"
+    ],
+    "explanation": "Fixing the variable typo resolves NameError, and using a comma in print() (or str() / f-string) resolves TypeError.",
     "sources": ["python-tutorial", "python-lang-ref"],
     "starterCode": "total_students = 45\nprint('Total enrolled: ' + total_student)\n",
-    "visibleTests": "assert total_students == 45",
+    "visibleTests": "import sys as _sys\nassert total_students == 45\nassert 'Total enrolled: 45' in _sys.stdout.getvalue()",
     "hiddenTests": "assert isinstance(total_students, int)"
   }
 ]

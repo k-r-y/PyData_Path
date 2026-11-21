@@ -1,0 +1,162 @@
+{
+  "id": "P012",
+  "slug": "rotate-list-by-k",
+  "title": "Rotate Queue Schedule by K",
+  "difficulty": "easy",
+  "tags": [
+    "lists",
+    "slicing"
+  ],
+  "estimatedMinutes": 10,
+  "relatedModules": [
+    "a6-data-structures",
+    "a7-comprehensions-builtins"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "rotate_right"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Standard shift right by 2",
+        "args": [
+          [
+            10,
+            20,
+            30,
+            40,
+            50
+          ],
+          2
+        ],
+        "expected": [
+          40,
+          50,
+          10,
+          20,
+          30
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Empty schedule",
+        "args": [
+          [],
+          3
+        ],
+        "expected": [],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Shift by 0",
+        "args": [
+          [
+            "a",
+            "b",
+            "c"
+          ],
+          0
+        ],
+        "expected": [
+          "a",
+          "b",
+          "c"
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Shift larger than list length",
+        "args": [
+          [
+            1,
+            2,
+            3
+          ],
+          7
+        ],
+        "expected": [
+          3,
+          1,
+          2
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Negative shift rotates left",
+        "args": [
+          [
+            1,
+            2,
+            3,
+            4
+          ],
+          -1
+        ],
+        "expected": [
+          2,
+          3,
+          4,
+          1
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Single item list",
+        "args": [
+          [
+            "only"
+          ],
+          100
+        ],
+        "expected": [
+          "only"
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      },
+      {
+        "label": "Full cycle shift equals length",
+        "args": [
+          [
+            5,
+            6,
+            7
+          ],
+          3
+        ],
+        "expected": [
+          5,
+          6,
+          7
+        ],
+        "checks": [
+          "inputUnchanged"
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Rotating by a multiple of len(items) brings the list back to its original order, so reduce k using k % len(items).",
+    "Python negative slicing items[-r:] + items[:-r] constructs a new rotated list cleanly when r = k % len(items) and r > 0.",
+    "Pseudocode:\n  if not items: return []\n  r = k % len(items)\n  return items[-r:] + items[:-r] if r else list(items)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

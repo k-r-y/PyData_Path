@@ -1,0 +1,125 @@
+{
+  "id": "P069",
+  "slug": "arithmetic-tokenizer",
+  "title": "Arithmetic Formula Lexer",
+  "difficulty": "medium",
+  "tags": [
+    "strings",
+    "parsing"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "a3-strings-io",
+    "a4-control-flow"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "tokenize_expr"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Formula with integers, decimals, parens, spaces",
+        "args": [
+          "12 + (3.5 * 40) - 8/2"
+        ],
+        "expected": [
+          "12",
+          "+",
+          "(",
+          "3.5",
+          "*",
+          "40",
+          ")",
+          "-",
+          "8",
+          "/",
+          "2"
+        ]
+      },
+      {
+        "label": "Compact formula without spaces",
+        "args": [
+          "10+20*(3-1)"
+        ],
+        "expected": [
+          "10",
+          "+",
+          "20",
+          "*",
+          "(",
+          "3",
+          "-",
+          "1",
+          ")"
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Whitespace only string",
+        "args": [
+          "   "
+        ],
+        "expected": []
+      },
+      {
+        "label": "Multi-digit decimals preserved intact",
+        "args": [
+          "100.25 + 0.75"
+        ],
+        "expected": [
+          "100.25",
+          "+",
+          "0.75"
+        ]
+      },
+      {
+        "label": "Nested parentheses",
+        "args": [
+          "((1+2))"
+        ],
+        "expected": [
+          "(",
+          "(",
+          "1",
+          "+",
+          "2",
+          ")",
+          ")"
+        ]
+      },
+      {
+        "label": "Single number token",
+        "args": [
+          "42"
+        ],
+        "expected": [
+          "42"
+        ]
+      },
+      {
+        "label": "Negative unary and binary operators separated cleanly",
+        "args": [
+          "-5 + 10"
+        ],
+        "expected": [
+          "-",
+          "5",
+          "+",
+          "10"
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Walk character by character with index i (do NOT call expr.split(), since operators may have zero spaces around them!).",
+    "Skip whitespace; emit single-char tokens for \"+-*/()\"; when seeing a digit (or \".\"), scan all consecutive digits and at most one decimal point as one numeric token.",
+    "Pseudocode:\n  while i < len(s):\n      if s[i].isspace(): i += 1\n      elif s[i] in \"+-*/()\": emit s[i]; i += 1\n      elif s[i].isdigit() or s[i] == \".\": collect full number run\n      else: raise ValueError(...)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

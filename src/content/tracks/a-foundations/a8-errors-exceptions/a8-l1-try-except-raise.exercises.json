@@ -12,6 +12,9 @@
       "Catch except ZeroDivisionError: and return 0.0."
     ],
     "solution": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return 0.0",
+    "alternates": [
+      "def safe_divide(a, b):\n    if b == 0:\n        return 0.0\n    return a / b"
+    ],
     "explanation": "Catching ZeroDivisionError specifically handles division by zero without masking other bugs.",
     "sources": ["python-tutorial"],
     "starterCode": "def safe_divide(a, b):\n    # return a / b or 0.0 on ZeroDivisionError\n    pass\n",

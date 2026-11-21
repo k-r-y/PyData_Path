@@ -1,0 +1,106 @@
+{
+  "id": "P008",
+  "slug": "leap-years-in-range",
+  "title": "Leap Years in Audit Range",
+  "difficulty": "easy",
+  "tags": [
+    "conditionals",
+    "math"
+  ],
+  "estimatedMinutes": 8,
+  "relatedModules": [
+    "a4-control-flow",
+    "a5-functions"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "leap_years_in_range"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Range crossing 2000 century leap year",
+        "args": [
+          1996,
+          2005
+        ],
+        "expected": [
+          1996,
+          2000,
+          2004
+        ]
+      },
+      {
+        "label": "Range crossing non-leap century 1900",
+        "args": [
+          1896,
+          1905
+        ],
+        "expected": [
+          1896,
+          1904
+        ]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Inverted bounds returns empty",
+        "args": [
+          2025,
+          2020
+        ],
+        "expected": []
+      },
+      {
+        "label": "Single leap year exact boundary",
+        "args": [
+          2024,
+          2024
+        ],
+        "expected": [
+          2024
+        ]
+      },
+      {
+        "label": "Single non-leap year",
+        "args": [
+          2023,
+          2023
+        ],
+        "expected": []
+      },
+      {
+        "label": "2100 century exception",
+        "args": [
+          2096,
+          2104
+        ],
+        "expected": [
+          2096,
+          2104
+        ]
+      },
+      {
+        "label": "Early leap year 1600",
+        "args": [
+          1596,
+          1604
+        ],
+        "expected": [
+          1596,
+          1600,
+          1604
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "A Gregorian year is a leap year if divisible by 4, EXCEPT century years (divisible by 100) are not leap years unless also divisible by 400.",
+    "Condition: (y % 4 == 0 and y % 100 != 0) or (y % 400 == 0).",
+    "Pseudocode:\n  return [y for y in range(start, end + 1) if (y % 4 == 0 and y % 100 != 0) or y % 400 == 0]"
+  ],
+  "sources": [
+    "python-tutorial"
+  ]
+}

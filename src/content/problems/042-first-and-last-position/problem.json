@@ -1,0 +1,115 @@
+{
+  "id": "P042",
+  "slug": "first-and-last-position",
+  "title": "Sorted Range Bounds Binary Search",
+  "difficulty": "medium",
+  "tags": [
+    "binary search"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "a5-functions",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "search_range"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Repeated target range in sorted timestamps",
+        "args": [
+          [
+            5,
+            7,
+            7,
+            8,
+            8,
+            10
+          ],
+          8
+        ],
+        "expectedExpr": "(3, 4)"
+      },
+      {
+        "label": "Missing target returns (-1, -1)",
+        "args": [
+          [
+            5,
+            7,
+            7,
+            8,
+            8,
+            10
+          ],
+          6
+        ],
+        "expectedExpr": "(-1, -1)"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty list returns (-1, -1)",
+        "args": [
+          [],
+          0
+        ],
+        "expectedExpr": "(-1, -1)"
+      },
+      {
+        "label": "Single matching element",
+        "args": [
+          [
+            9
+          ],
+          9
+        ],
+        "expectedExpr": "(0, 0)"
+      },
+      {
+        "label": "Entire list identical matches target",
+        "args": [
+          [
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          4
+        ],
+        "expectedExpr": "(0, 4)"
+      },
+      {
+        "label": "Target below min and above max",
+        "args": [
+          [
+            2,
+            4,
+            6
+          ],
+          10
+        ],
+        "expectedExpr": "(-1, -1)"
+      },
+      {
+        "label": "O(log n) search over 50k sorted timestamps",
+        "argsExpr": "(list(range(25000)) + [25000]*5 + list(range(25001, 50000)), 25000)",
+        "expectedExpr": "(25000, 25004)",
+        "timeLimitMs": 400,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Use two binary searches: one for the leftmost insertion index of target (bisect_left style) and one for the rightmost match (bisect_right - 1).",
+    "Verify the candidate index actually equals target and stays in bounds before returning.",
+    "Pseudocode:\n  def find_bound(left_side):\n      lo, hi, ans = 0, len(nums) - 1, -1\n      while lo <= hi:\n          mid = (lo + hi) // 2\n          if nums[mid] == target:\n              ans = mid\n              if left_side: hi = mid - 1\n              else: lo = mid + 1\n          elif nums[mid] < target: lo = mid + 1\n          else: hi = mid - 1\n      return ans"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

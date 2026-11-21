@@ -1,0 +1,135 @@
+{
+  "id": "P048",
+  "slug": "mini-csv-parser-with-quotes",
+  "title": "Stateful Quoted CSV Parser",
+  "difficulty": "medium",
+  "tags": [
+    "strings",
+    "parsing"
+  ],
+  "estimatedMinutes": 22,
+  "relatedModules": [
+    "a3-strings-io",
+    "a9-files-csv-json"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "parse_csv"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Quoted fields with commas and escaped double quotes",
+        "args": [
+          "id,note\n1,\"Hello, world\"\n2,\"Said \"\"OK\"\" twice\"\n"
+        ],
+        "expected": [
+          [
+            "id",
+            "note"
+          ],
+          [
+            "1",
+            "Hello, world"
+          ],
+          [
+            "2",
+            "Said \"OK\" twice"
+          ]
+        ]
+      },
+      {
+        "label": "Empty text yields empty rows list",
+        "args": [
+          ""
+        ],
+        "expected": []
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty quoted fields and trailing comma",
+        "args": [
+          "a,\"\","
+        ],
+        "expected": [
+          [
+            "a",
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "label": "Quoted newline inside a cell",
+        "args": [
+          "k,v\n1,\"line1\nline2\"\n"
+        ],
+        "expected": [
+          [
+            "k",
+            "v"
+          ],
+          [
+            "1",
+            "line1\nline2"
+          ]
+        ]
+      },
+      {
+        "label": "CRLF line endings normalized",
+        "args": [
+          "x,y\r\n3,4\r\n"
+        ],
+        "expected": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "3",
+            "4"
+          ]
+        ]
+      },
+      {
+        "label": "No trailing newline on final row",
+        "args": [
+          "h1,h2\n10,20"
+        ],
+        "expected": [
+          [
+            "h1",
+            "h2"
+          ],
+          [
+            "10",
+            "20"
+          ]
+        ]
+      },
+      {
+        "label": "Escaped quotes at start and end of field",
+        "args": [
+          "\"\"\"hi\"\"\",end"
+        ],
+        "expected": [
+          [
+            "\"hi\"",
+            "end"
+          ]
+        ]
+      }
+    ]
+  },
+  "hints": [
+    "Use a character-by-character state machine rather than line.split(\",\") because quoted fields can contain BOTH commas and embedded newlines!",
+    "Track `in_quotes = False`. While `in_quotes`, if `text[i:i+2] == '\"\"'`, append `\"` and advance `i += 2`; if single `\"`, flip `in_quotes = False`. Outside quotes, `,` finishes a cell and `\\n` finishes a row.",
+    "Pseudocode:\n  walk i with while i < len(text):\n      if in_quotes: handle \"\" -> \" vs closing \"\n      else: handle \", comma, \\r\\n or \\n, or ordinary char\n  flush trailing cell/row if non-empty"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

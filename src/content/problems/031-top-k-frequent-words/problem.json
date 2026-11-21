@@ -1,0 +1,130 @@
+{
+  "id": "P031",
+  "slug": "top-k-frequent-words",
+  "title": "Top K Frequent Error Codes",
+  "difficulty": "medium",
+  "tags": [
+    "dict",
+    "sorting"
+  ],
+  "estimatedMinutes": 15,
+  "relatedModules": [
+    "a6-data-structures",
+    "b8-performance-algorithms",
+    "b9-stdlib-analysts"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "top_k_frequent"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Frequency ordering with alphabetical tie-break",
+        "args": [
+          [
+            "timeout",
+            "db",
+            "timeout",
+            "auth",
+            "db",
+            "disk"
+          ],
+          2
+        ],
+        "expected": [
+          "db",
+          "timeout"
+        ]
+      },
+      {
+        "label": "Empty input",
+        "args": [
+          [],
+          3
+        ],
+        "expected": []
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Zero k",
+        "args": [
+          [
+            "a",
+            "b"
+          ],
+          0
+        ],
+        "expected": []
+      },
+      {
+        "label": "k exceeds unique count",
+        "args": [
+          [
+            "z",
+            "a",
+            "z"
+          ],
+          10
+        ],
+        "expected": [
+          "z",
+          "a"
+        ]
+      },
+      {
+        "label": "All counts tied returns sorted lexicographically",
+        "args": [
+          [
+            "delta",
+            "alpha",
+            "charlie",
+            "bravo"
+          ],
+          3
+        ],
+        "expected": [
+          "alpha",
+          "bravo",
+          "charlie"
+        ]
+      },
+      {
+        "label": "Single word repeated",
+        "args": [
+          [
+            "ok",
+            "ok",
+            "ok"
+          ],
+          1
+        ],
+        "expected": [
+          "ok"
+        ]
+      },
+      {
+        "label": "Large event log ranking",
+        "argsExpr": "(['err_' + str(i % 200) for i in range(15000)] + ['err_7', 'err_3'], 3)",
+        "expected": [
+          "err_3",
+          "err_7",
+          "err_0"
+        ],
+        "timeLimitMs": 500,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Count occurrences using collections.Counter or a dictionary first.",
+    "Sort unique `(word, count)` pairs using key=lambda pair: (-pair[1], pair[0]) so higher counts come first and ties sort alphabetically ascending.",
+    "Pseudocode:\n  counts = Counter(words)\n  ordered = sorted(counts.items(), key=lambda item: (-item[1], item[0]))\n  return [w for w, _ in ordered[:max(0, k)]]"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

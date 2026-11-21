@@ -1,0 +1,76 @@
+{
+  "id": "P059",
+  "slug": "student-records-dataclasses",
+  "title": "Student Dataclass Ranking",
+  "difficulty": "medium",
+  "tags": [
+    "dataclasses",
+    "sorting"
+  ],
+  "estimatedMinutes": 18,
+  "relatedModules": [
+    "b2-oop",
+    "a6-data-structures"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Sorts highest average first with ascending student_id tie-break",
+        "inputDisplay": "3 StudentRecords with tied average 85.0",
+        "expectedDisplay": "Higher avg first; tie broken by student_id ascending",
+        "script": "s1 = StudentRecord(\"Zara\", \"S02\", [80, 90])\ns2 = StudentRecord(\"Amy\", \"S01\", [85, 85])\ns3 = StudentRecord(\"Liam\", \"S03\", [95, 95])\nranked = rank_students([s1, s2, s3])\nassert [r.student_id for r in ranked] == [\"S03\", \"S01\", \"S02\"]"
+      },
+      {
+        "label": "Empty scores computes 0.0 average safely",
+        "inputDisplay": "StudentRecord(\"Pat\", \"S10\")",
+        "expectedDisplay": "Pat.average() == 0.0",
+        "script": "p = StudentRecord(\"Pat\", \"S10\")\nassert p.scores == []\nassert p.average() == 0.0"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Two instances do not share mutable default scores list",
+        "inputDisplay": "a = StudentRecord(\"A\", \"1\"); b = StudentRecord(\"B\", \"2\"); a.scores.append(100)",
+        "expectedDisplay": "b.scores remains empty []",
+        "script": "a = StudentRecord(\"A\", \"1\")\nb = StudentRecord(\"B\", \"2\")\na.scores.append(100)\nassert b.scores == []"
+      },
+      {
+        "label": "Rounding average to 2 decimals",
+        "inputDisplay": "[100, 90, 90]",
+        "expectedDisplay": "93.33",
+        "script": "s = StudentRecord(\"K\", \"K1\", [100, 90, 90])\nassert s.average() == 93.33"
+      },
+      {
+        "label": "Does not mutate input list passed to rank_students",
+        "inputDisplay": "orig = [s1, s2]; rank_students(orig)",
+        "expectedDisplay": "orig remains unchanged",
+        "script": "s1 = StudentRecord(\"B\", \"S2\", [70])\ns2 = StudentRecord(\"A\", \"S1\", [90])\norig = [s1, s2]\nout = rank_students(orig)\nassert out == [s2, s1]\nassert orig == [s1, s2]"
+      },
+      {
+        "label": "Empty student list yields []",
+        "inputDisplay": "rank_students([])",
+        "expectedDisplay": "[]",
+        "script": "assert rank_students([]) == []"
+      },
+      {
+        "label": "Dataclass equality works structurally",
+        "inputDisplay": "StudentRecord(...) == StudentRecord(...)",
+        "expectedDisplay": "True",
+        "script": "assert StudentRecord(\"X\", \"1\", [80]) == StudentRecord(\"X\", \"1\", [80])"
+      }
+    ]
+  },
+  "hints": [
+    "Use @dataclass with `scores: list[float] = field(default_factory=list)` so dataclass allows mutable defaults safely.",
+    "Sort a new list with `sorted(records, key=lambda r: (-r.average(), r.student_id))`.",
+    "Pseudocode:\n  @dataclass\n  class StudentRecord:\n      name: str; student_id: str; scores: list[float] = field(default_factory=list)\n      def average(self): return round(sum(self.scores)/len(self.scores), 2) if self.scores else 0.0"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

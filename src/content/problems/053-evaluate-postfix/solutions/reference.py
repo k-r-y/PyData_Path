@@ -1,0 +1,18 @@
+def eval_postfix(tokens: list[str]) -> int:
+    stack: list[int] = []
+    for tok in tokens:
+        if tok == "+":
+            b, a = stack.pop(), stack.pop()
+            stack.append(a + b)
+        elif tok == "-":
+            b, a = stack.pop(), stack.pop()
+            stack.append(a - b)
+        elif tok == "*":
+            b, a = stack.pop(), stack.pop()
+            stack.append(a * b)
+        elif tok == "/":
+            b, a = stack.pop(), stack.pop()
+            stack.append(int(a / b))
+        else:
+            stack.append(int(tok))
+    return stack[-1]

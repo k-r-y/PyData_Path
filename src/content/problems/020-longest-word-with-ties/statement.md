@@ -1,0 +1,1 @@
+Write `longest_word(text: str) -> str` that finds the longest whitespace-separated word in `text`. If multiple words tie for the longest length, return the **first** one encountered. Return `""` if `text` contains no words.

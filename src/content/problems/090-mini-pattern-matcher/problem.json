@@ -1,0 +1,93 @@
+{
+  "id": "P090",
+  "slug": "mini-pattern-matcher",
+  "title": "Regex Subset Matcher (. and *)",
+  "difficulty": "hard",
+  "tags": [
+    "recursion",
+    "dp"
+  ],
+  "estimatedMinutes": 35,
+  "relatedModules": [
+    "a5-functions",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "is_match"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Zero-or-more quantifier and dot wildcard",
+        "args": [
+          "aab",
+          "c*a*b"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Requires full-string match not prefix",
+        "args": [
+          "mississippi",
+          "mis*is*p*."
+        ],
+        "expected": false
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Dot-star matches arbitrary string",
+        "args": [
+          "pydata-2026",
+          ".*"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Empty text vs optional star pairs",
+        "args": [
+          "",
+          "a*b*.*"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Empty text vs literal required char",
+        "args": [
+          "",
+          "a*b"
+        ],
+        "expected": false
+      },
+      {
+        "label": "Exact literal without wildcards",
+        "args": [
+          "exact",
+          "exact"
+        ],
+        "expected": true
+      },
+      {
+        "label": "Backtracking trap exponential without memoization",
+        "args": [
+          "aaaaaaaaaaaaaaaaaaab",
+          "a*a*a*a*a*a*a*a*a*a*c"
+        ],
+        "expected": false,
+        "timeLimitMs": 300,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "When pattern[j + 1] == \"*\", you have two choices: skip 0 copies (`dfs(i, j + 2)`), OR if current chars match, consume one text char and stay at pattern index j (`dfs(i + 1, j)`).",
+    "Memoize `(i, j)` states using `@functools.lru_cache(None)` or a 2D DP table so repeated branches like `\"a*a*a*a*...c\"` run in O(len(text) * len(pattern))!",
+    "Pseudocode:\n  @lru_cache(None)\n  def match(i, j):\n      if j == len(p): return i == len(s)\n      first = i < len(s) and p[j] in (s[i], \".\")\n      if j + 1 < len(p) and p[j + 1] == \"*\":\n          return match(i, j + 2) or (first and match(i + 1, j))\n      return first and match(i + 1, j + 1)"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}

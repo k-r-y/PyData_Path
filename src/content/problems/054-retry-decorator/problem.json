@@ -1,0 +1,76 @@
+{
+  "id": "P054",
+  "slug": "retry-decorator",
+  "title": "Configurable Retry Decorator",
+  "difficulty": "medium",
+  "tags": [
+    "decorators",
+    "functions"
+  ],
+  "estimatedMinutes": 20,
+  "relatedModules": [
+    "b4-functions-deeper",
+    "a8-errors-exceptions"
+  ],
+  "entry": {
+    "type": "script"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Succeeds after transient failures within max_attempts",
+        "inputDisplay": "@retry(max_attempts=3) failing twice then returning \"ok\"",
+        "expectedDisplay": "Returns \"ok\" after 3 total calls",
+        "script": "calls = 0\n@retry(max_attempts=3)\ndef flaky():\n    global calls\n    calls += 1\n    if calls < 3:\n        raise RuntimeError(\"transient\")\n    return \"ok\"\nassert flaky() == \"ok\"\nassert calls == 3"
+      },
+      {
+        "label": "Re-raises final exception when attempts exhausted",
+        "inputDisplay": "@retry(max_attempts=2) always raising ValueError",
+        "expectedDisplay": "Raises ValueError after 2 attempts",
+        "script": "count = 0\n@retry(max_attempts=2)\ndef broken():\n    global count\n    count += 1\n    raise ValueError(\"bad payload\")\ntry:\n    broken()\n    assert False\nexcept ValueError as exc:\n    assert str(exc) == \"bad payload\"\nassert count == 2"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Immediate success calls function once",
+        "inputDisplay": "@retry(max_attempts=4) succeeds on attempt 1",
+        "expectedDisplay": "calls == 1",
+        "script": "n = 0\n@retry(max_attempts=4)\ndef steady(x, y=10):\n    global n\n    n += 1\n    return x + y\nassert steady(5, y=2) == 7\nassert n == 1"
+      },
+      {
+        "label": "Preserves function name with functools.wraps",
+        "inputDisplay": "decorated.__name__",
+        "expectedDisplay": "Matches original function name",
+        "script": "@retry(max_attempts=2)\ndef sync_orders():\n    \"\"\"Doc\"\"\"\n    return True\nassert sync_orders.__name__ == \"sync_orders\"\nassert sync_orders() is True"
+      },
+      {
+        "label": "Default max_attempts works when called as @retry()",
+        "inputDisplay": "@retry() runs multiple attempts",
+        "expectedDisplay": "Retries cleanly",
+        "script": "tries = 0\n@retry()\ndef ping():\n    global tries\n    tries += 1\n    if tries < 2:\n        raise OSError(\"blip\")\n    return 200\nassert ping() == 200\nassert tries == 2"
+      },
+      {
+        "label": "Respects exceptions filter parameter",
+        "inputDisplay": "ValueError not retried when exceptions=(TimeoutError,)",
+        "expectedDisplay": "Stops on attempt 1 for unlisted exception",
+        "script": "hits = 0\n@retry(max_attempts=3, exceptions=(TimeoutError,))\ndef guarded():\n    global hits\n    hits += 1\n    raise ValueError(\"fatal\")\ntry:\n    guarded()\n    assert False\nexcept ValueError:\n    pass\nassert hits == 1"
+      },
+      {
+        "label": "Exact 1 attempt behaves like single call",
+        "inputDisplay": "@retry(max_attempts=1)",
+        "expectedDisplay": "Runs once and raises",
+        "script": "c = 0\n@retry(max_attempts=1)\ndef once():\n    global c\n    c += 1\n    raise RuntimeError(\"boom\")\ntry:\n    once()\n    assert False\nexcept RuntimeError:\n    pass\nassert c == 1"
+      }
+    ]
+  },
+  "hints": [
+    "Because @retry(max_attempts=3) takes configuration arguments, retry(...) is a decorator factory that returns decorator(fn) which returns wrapper(*args, **kwargs).",
+    "Use functools.wraps(fn) on wrapper so metadata stays intact, and catch `exceptions` (defaulting to `(Exception,)`) inside a loop for range(max_attempts).",
+    "Pseudocode:\n  def retry(max_attempts=3, exceptions=(Exception,)):\n      def decorator(fn):\n          @functools.wraps(fn)\n          def wrapper(*args, **kwargs):\n              for attempt in range(max_attempts):\n                  try: return fn(*args, **kwargs)\n                  except exceptions:\n                      if attempt + 1 >= max_attempts: raise"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-lang-ref"
+  ]
+}

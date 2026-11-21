@@ -1,0 +1,84 @@
+{
+  "id": "P020",
+  "slug": "longest-word-with-ties",
+  "title": "Longest Word With First-Seen Tie Break",
+  "difficulty": "easy",
+  "tags": [
+    "strings",
+    "lists"
+  ],
+  "estimatedMinutes": 8,
+  "relatedModules": [
+    "a3-strings-io",
+    "a5-functions"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "longest_word"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Returns first longest token on ties",
+        "args": [
+          "alpha bravo charlie delta"
+        ],
+        "expected": "charlie"
+      },
+      {
+        "label": "Equal length words return earliest word",
+        "args": [
+          "cat dog pig"
+        ],
+        "expected": "cat"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Empty or whitespace returns empty string",
+        "args": [
+          "   "
+        ],
+        "expected": ""
+      },
+      {
+        "label": "Single word",
+        "args": [
+          "analytics"
+        ],
+        "expected": "analytics"
+      },
+      {
+        "label": "Multiple spaces ignored cleanly",
+        "args": [
+          "ok   stream    hub"
+        ],
+        "expected": "stream"
+      },
+      {
+        "label": "Last word strictly longest",
+        "args": [
+          "a ab abc abcd"
+        ],
+        "expected": "abcd"
+      },
+      {
+        "label": "Early tie followed by later tie",
+        "args": [
+          "team work sync play"
+        ],
+        "expected": "team"
+      }
+    ]
+  },
+  "hints": [
+    "Split whitespace tokens cleanly using sentence.split(). If empty, return \"\".",
+    "Compare strictly using `>` (`len(w) > len(best)`) instead of `>=` so the first word with the maximum length wins ties.",
+    "Pseudocode:\n  words = text.split()\n  return max(words, key=len) if words else \"\""
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-stdtypes-docs"
+  ]
+}

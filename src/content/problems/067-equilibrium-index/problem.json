@@ -1,0 +1,107 @@
+{
+  "id": "P067",
+  "slug": "equilibrium-index",
+  "title": "Balance Pivot Equilibrium Index",
+  "difficulty": "medium",
+  "tags": [
+    "prefix sums"
+  ],
+  "estimatedMinutes": 12,
+  "relatedModules": [
+    "a4-control-flow",
+    "b8-performance-algorithms"
+  ],
+  "entry": {
+    "type": "function",
+    "name": "equilibrium_index"
+  },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Middle pivot index 3",
+        "args": [
+          [
+            1,
+            7,
+            3,
+            6,
+            5,
+            6
+          ]
+        ],
+        "expected": 3
+      },
+      {
+        "label": "Pivot at index 0 when right sums to zero",
+        "args": [
+          [
+            2,
+            1,
+            -1
+          ]
+        ],
+        "expected": 0
+      }
+    ],
+    "hidden": [
+      {
+        "label": "No equilibrium index returns -1",
+        "args": [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "expected": -1
+      },
+      {
+        "label": "Empty list returns -1",
+        "args": [
+          []
+        ],
+        "expected": -1
+      },
+      {
+        "label": "Multiple valid pivots return smallest index",
+        "args": [
+          [
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "expected": 0
+      },
+      {
+        "label": "Pivot at final index",
+        "args": [
+          [
+            -1,
+            1,
+            9
+          ]
+        ],
+        "expected": 2
+      },
+      {
+        "label": "O(n) prefix balance on 20k items",
+        "argsExpr": "([1] * 10000 + [99] + [1] * 10000,)",
+        "expected": 10000,
+        "timeLimitMs": 300,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Precompute total = sum(nums) in O(n), then maintain left_sum = 0 across one pass.",
+    "At index i with value x, the strict right sum equals total - left_sum - x. Return i if left_sum == total - left_sum - x!",
+    "Pseudocode:\n  total = sum(nums); left = 0\n  for i, x in enumerate(nums):\n      if left == total - left - x: return i\n      left += x\n  return -1"
+  ],
+  "sources": [
+    "python-tutorial",
+    "python-wiki-timecomplexity"
+  ]
+}
