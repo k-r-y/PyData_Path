@@ -1,5 +1,10 @@
 import { pyodideRunner, type RunResult } from './runner';
 import type { CodeExercise } from '../types/content';
+import type {
+  ProblemSpec,
+  ProblemSuiteResult,
+  ProblemTestResult,
+} from '../types/problem';
 
 export interface GradeResult {
   codeRanOk: boolean;
@@ -24,7 +29,6 @@ export async function gradeCodeExercise(
 ): Promise<GradeResult> {
   const timeoutMs = (exercise.timeoutSeconds ?? 10) * 1000;
 
-  // Step 1: Run learner code + visible tests
   const visibleRun: RunResult = await pyodideRunner.run(code, {
     testCode: exercise.visibleTests,
     inputs: exercise.inputs,
@@ -59,7 +63,6 @@ export async function gradeCodeExercise(
     };
   }
 
-  // Step 2: Run hidden tests only if visible tests passed
   let hiddenPassed = true;
   if (exercise.hiddenTests.trim().length > 0) {
     const hiddenRun = await pyodideRunner.run(code, {
@@ -80,4 +83,18 @@ export async function gradeCodeExercise(
     stderr: visibleRun.stderr,
     pythonVersion: visibleRun.pythonVersion,
   };
+}
+
+/**
+ * Runs a Problem Solver problem in Run (visible tests) or Submit (visible + hidden)
+ * mode via the shared Pyodide worker harness.
+ */
+export async function gradeProblem(options: {
+  code: string;
+  spec: ProblemSpec;
+  mode: 'run' | 'submit';
+  checkerCode?: string;
+  onTestProgress?: (results: ProblemTestResult[]) => void;
+}): Promise<ProblemSuiteResult> {
+  return pyodideRunner.runProblemSuite(options);
 }

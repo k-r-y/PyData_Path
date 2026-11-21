@@ -19,8 +19,10 @@ import {
   Sun,
   Moon,
   CornerDownLeft,
+  Code2,
 } from 'lucide-react';
 import { getAllModules, getLessonsForModule } from '../content/loader';
+import { getAllProblemMeta } from '../content/problemLoader';
 import { useTheme } from './ThemeProvider';
 
 interface CommandItem {
@@ -63,8 +65,20 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
       }
     }
 
+    for (const prob of getAllProblemMeta()) {
+      list.push({
+        id: `problem-${prob.id}`,
+        label: `${prob.id}: ${prob.title}`,
+        category: 'Problem Solver',
+        keywords: `${prob.slug} ${prob.difficulty} ${prob.tags.join(' ')}`,
+        icon: <Code2 className="w-3.5 h-3.5 text-neutral-400" aria-hidden="true" />,
+        action: () => navigate(`/problems/${prob.slug}`),
+      });
+    }
+
     const pages = [
       { to: '/', label: 'Home Workspace', Icon: Terminal },
+      { to: '/problems', label: 'Problem Solver List', Icon: Code2 },
       { to: '/dashboard', label: 'Learning Dashboard', Icon: BarChart3 },
       { to: '/visualizer', label: 'Step Visualizer', Icon: Eye },
       { to: '/flashcards', label: 'Flashcards (SM-2)', Icon: Layers },

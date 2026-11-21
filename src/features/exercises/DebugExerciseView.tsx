@@ -5,7 +5,7 @@ import { oneDark } from '@codemirror/theme-one-dark';
 import { FlaskConical, RotateCcw, CheckCircle2, XCircle, Loader2 } from 'lucide-react';
 import type { DebugExercise } from '../../types/content';
 import { gradeCodeExercise, type GradeResult } from '../../runtime/grader';
-import { getPlainLanguageErrorHint } from '../../runtime/errorHints';
+import { parsePythonError } from '../../runtime/errorHints';
 import { useTheme } from '../../components/ThemeProvider';
 
 interface DebugExerciseViewProps {
@@ -106,16 +106,29 @@ export function DebugExerciseView({
               <XCircle className="w-4 h-4" />
               Still failing
             </div>
-            {(result.error || result.visibleTestError) && (
-              <>
-                <pre className="font-mono whitespace-pre-wrap text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2 rounded border border-rose-200 dark:border-rose-900">
-                  {result.error ?? result.visibleTestError}
-                </pre>
-                <p className="text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/30 p-2 rounded border border-amber-200 dark:border-amber-900">
-                  {getPlainLanguageErrorHint(result.error ?? result.visibleTestError ?? '')}
-                </p>
-              </>
-            )}
+            {(result.error || result.visibleTestError) &&
+              (() => {
+                const rawErr = result.error ?? result.visibleTestError ?? '';
+                const diag = parsePythonError(rawErr);
+                return (
+                  <>
+                    <div className="rounded border border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/40 p-2 text-rose-900 dark:text-rose-200">
+                      <span className="font-semibold">
+                        {diag.errorType}
+                        {diag.line ? ` on line ${diag.line}` : ''}:
+                      </span>{' '}
+                      <span>{diag.message}</span>
+                    </div>
+                    <pre className="font-mono whitespace-pre-wrap text-rose-700 dark:text-rose-400 bg-rose-50/60 dark:bg-rose-950/20 p-2 rounded border border-rose-200 dark:border-rose-900">
+                      {rawErr}
+                    </pre>
+                    <p className="text-amber-800 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/30 p-2 rounded border border-amber-200 dark:border-amber-900">
+                      <span className="font-semibold">What to check: </span>
+                      {diag.hint}
+                    </p>
+                  </>
+                );
+              })()}
           </div>
         )}
       </div>

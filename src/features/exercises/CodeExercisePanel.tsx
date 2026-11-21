@@ -20,7 +20,7 @@ import {
 import type { CodeExercise } from '../../types/content';
 import { pyodideRunner } from '../../runtime/runner';
 import { gradeCodeExercise, type GradeResult } from '../../runtime/grader';
-import { getPlainLanguageErrorHint } from '../../runtime/errorHints';
+import { parsePythonError } from '../../runtime/errorHints';
 import { db, recordExerciseAttempt } from '../../db/database';
 import { useTheme } from '../../components/ThemeProvider';
 
@@ -68,14 +68,14 @@ export function CodeExercisePanel({
         {
           key: 'Mod-Enter',
           run: () => {
-            checkTestsRef.current();
+            runOnlyRef.current();
             return true;
           },
         },
         {
           key: 'Mod-Shift-Enter',
           run: () => {
-            runOnlyRef.current();
+            checkTestsRef.current();
             return true;
           },
         },
@@ -367,7 +367,7 @@ export function CodeExercisePanel({
             )}
             <span>Run &amp; Check</span>
             <kbd className="hidden sm:inline-block font-mono text-[10px] px-1 py-0.5 rounded bg-emerald-700/80 text-emerald-100">
-              ⌘↵
+              ⌘⇧↵
             </kbd>
           </button>
 
@@ -379,6 +379,9 @@ export function CodeExercisePanel({
           >
             <Play className="w-3.5 h-3.5" aria-hidden="true" />
             <span>Run Only</span>
+            <kbd className="hidden sm:inline-block font-mono text-[10px] px-1 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">
+              ⌘↵
+            </kbd>
           </button>
         </div>
 
@@ -498,7 +501,7 @@ export function CodeExercisePanel({
         <div className="flex-1 overflow-auto p-3.5 text-xs font-mono">
           {activeTab === 'output' && (
             <pre className="whitespace-pre-wrap text-neutral-800 dark:text-neutral-200">
-              {lastOutput || 'Ready. Press ⌘↵ to Run & Check or click Run Only.'}
+              {lastOutput || 'Ready. Press ⌘↵ to Run Only or ⌘⇧↵ to Run & Check.'}
             </pre>
           )}
 
@@ -528,15 +531,27 @@ export function CodeExercisePanel({
           {activeTab === 'errors' && (
             <div className="space-y-3">
               {lastError ? (
-                <>
-                  <pre className="whitespace-pre-wrap text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/30 p-2.5 rounded border border-rose-200 dark:border-rose-900">
-                    {lastError}
-                  </pre>
-                  <div className="font-sans text-xs rounded border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-2.5 text-amber-900 dark:text-amber-200">
-                    <span className="font-semibold">What to check: </span>
-                    {getPlainLanguageErrorHint(lastError)}
-                  </div>
-                </>
+                (() => {
+                  const diag = parsePythonError(lastError);
+                  return (
+                    <>
+                      <div className="font-sans text-xs rounded border border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/40 p-2.5 text-rose-900 dark:text-rose-200">
+                        <span className="font-semibold">
+                          {diag.errorType}
+                          {diag.line ? ` on line ${diag.line}` : ''}:
+                        </span>{' '}
+                        <span>{diag.message}</span>
+                      </div>
+                      <pre className="whitespace-pre-wrap text-rose-700 dark:text-rose-400 bg-rose-50/60 dark:bg-rose-950/20 p-2.5 rounded border border-rose-200 dark:border-rose-900">
+                        {lastError}
+                      </pre>
+                      <div className="font-sans text-xs rounded border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-2.5 text-amber-900 dark:text-amber-200">
+                        <span className="font-semibold">What to check: </span>
+                        {diag.hint}
+                      </div>
+                    </>
+                  );
+                })()
               ) : (
                 <p className="font-sans text-neutral-500 dark:text-neutral-400">
                   No errors on the last run.
@@ -546,7 +561,7 @@ export function CodeExercisePanel({
           )}
 
           {activeTab === 'tests' && (
-            <div className="font-sans space-y-2">
+            <div className="font-sans space-y-2.5">
               {!gradeResult ? (
                 <p className="text-neutral-500 dark:text-neutral-400">
                   Click &ldquo;Run &amp; Check&rdquo; to run the visible and hidden tests.
@@ -562,7 +577,7 @@ export function CodeExercisePanel({
                   </p>
                 </div>
               ) : (
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   <div className="flex items-center gap-2 text-xs font-medium">
                     {gradeResult.visiblePassed ? (
                       <span className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400">
@@ -584,11 +599,29 @@ export function CodeExercisePanel({
                     </div>
                   )}
 
-                  {gradeResult.visibleTestError && (
-                    <pre className="font-mono whitespace-pre-wrap text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 p-2 rounded border border-rose-200 dark:border-rose-900">
-                      {gradeResult.visibleTestError}
-                    </pre>
-                  )}
+                  {(gradeResult.error || gradeResult.visibleTestError) &&
+                    (() => {
+                      const rawErr = gradeResult.error ?? gradeResult.visibleTestError ?? '';
+                      const diag = parsePythonError(rawErr);
+                      return (
+                        <>
+                          <div className="text-xs rounded border border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/40 p-2.5 text-rose-900 dark:text-rose-200">
+                            <span className="font-semibold">
+                              {diag.errorType}
+                              {diag.line ? ` on line ${diag.line}` : ''}:
+                            </span>{' '}
+                            <span>{diag.message}</span>
+                          </div>
+                          <pre className="font-mono whitespace-pre-wrap text-rose-700 dark:text-rose-400 bg-rose-50/60 dark:bg-rose-950/20 p-2.5 rounded border border-rose-200 dark:border-rose-900">
+                            {rawErr}
+                          </pre>
+                          <div className="text-xs rounded border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-2.5 text-amber-900 dark:text-amber-200">
+                            <span className="font-semibold">What to check: </span>
+                            {diag.hint}
+                          </div>
+                        </>
+                      );
+                    })()}
                 </div>
               )}
             </div>

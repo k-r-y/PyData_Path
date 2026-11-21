@@ -1,0 +1,30 @@
+{
+  "id": "P001",
+  "slug": "digit-sum",
+  "title": "Digit Sum Checksum",
+  "difficulty": "easy",
+  "tags": ["math", "loops"],
+  "estimatedMinutes": 8,
+  "relatedModules": ["a4-control-flow", "a5-functions"],
+  "entry": { "type": "function", "name": "digit_sum" },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      { "label": "Standard receipt number", "args": [4085], "expected": 17 },
+      { "label": "Zero boundary", "args": [0], "expected": 0 }
+    ],
+    "hidden": [
+      { "label": "Single digit", "args": [7], "expected": 7 },
+      { "label": "Power of ten with trailing zeros", "args": [1000000], "expected": 1 },
+      { "label": "All nines boundary", "args": [99999], "expected": 45 },
+      { "label": "All digits 1 through 9", "args": [123456789], "expected": 45 },
+      { "label": "Very large arbitrary-precision integer", "argsExpr": "(10**200 - 1,)", "expected": 1800 }
+    ]
+  },
+  "hints": [
+    "You can inspect one digit at a time from right to left using remainder (%) and floor division (//) by 10, or convert the number to text.",
+    "With math: while n > 0, add n % 10 to a running total and update n //= 10. With strings: iterate over str(n) and convert each character back with int().",
+    "Pseudocode:\n  total = 0\n  while n > 0:\n      total += n % 10\n      n //= 10\n  return total"
+  ],
+  "sources": ["python-tutorial", "python-stdtypes-docs"]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "P039",
+  "slug": "longest-unique-substring",
+  "title": "Longest Unique Event Window",
+  "difficulty": "medium",
+  "tags": ["sliding window", "strings", "dict"],
+  "estimatedMinutes": 20,
+  "relatedModules": ["a3-strings-io", "a6-data-structures", "b8-performance-algorithms"],
+  "entry": { "type": "function", "name": "longest_unique_window" },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      { "label": "Repeating pattern stream", "args": ["abcabcbb"], "expected": 3 },
+      { "label": "All identical events", "args": ["zzzzz"], "expected": 1 }
+    ],
+    "hidden": [
+      { "label": "Empty stream", "args": [""], "expected": 0 },
+      { "label": "Single event", "args": ["A"], "expected": 1 },
+      { "label": "Overlapping restart case", "args": ["dvdf"], "expected": 3 },
+      { "label": "Palindrome wrap trap", "args": ["abba"], "expected": 2 },
+      { "label": "Distinct tail after early repeat", "args": ["pwwkew"], "expected": 3 },
+      {
+        "label": "Large distinct event stream performance test",
+        "argsExpr": "(''.join(chr(256 + i) for i in range(2500)),)",
+        "expected": 2500,
+        "timeLimitMs": 500,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Keep a sliding window [left, right] where every character inside the window is unique.",
+    "Track the most recent index of each character in a dict. When you see a repeated character inside the current window, move left to max(left, last_seen[ch] + 1).",
+    "Pseudocode:\n  last_seen = {}\n  left = 0\n  best = 0\n  for right, ch in enumerate(events):\n      if ch in last_seen and last_seen[ch] >= left:\n          left = last_seen[ch] + 1\n      last_seen[ch] = right\n      best = max(best, right - left + 1)\n  return best"
+  ],
+  "sources": ["python-tutorial", "python-wiki-timecomplexity"]
+}

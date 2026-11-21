@@ -1,0 +1,8 @@
+var e=`P030`,t=`pair-sum-one-pass`,n=`Pair Sum in One Pass`,r=`easy`,i=[`dict`,`lists`],a=15,o=[`a6-data-structures`,`b8-performance-algorithms`],s={type:`function`,name:`find_pair_indices`},c={checker:`checker.py`},l={visible:[{label:`Matching invoice pair`,args:[[120,45,75,30],105],expected:[2,3]},{label:`No matching pair`,args:[[10,20,30],100],expected:null}],hidden:[{label:`Empty list`,args:[[],10],expected:null},{label:`Single element equal to half target`,args:[[5],10],expected:null},{label:`Two duplicate values summing to target`,args:[[5,5],10],expected:[0,1]},{label:`Negative and zero ledger adjustments`,args:[[-15,8,0,22,-7],7],expected:[0,3]},{label:`Multiple valid pairs accept any valid pair`,args:[[2,4,6,8],10],expected:[0,3]},{label:`Large ledger performance test`,argsExpr:`(list(range(8000)), 15997)`,expected:[7998,7999],timeLimitMs:500,isPerformance:!0}]},u=[`As you inspect each amount at index i, you know the exact complement needed: target - amount.`,`Store previously seen values and their indices in a dict so you can look up the complement in O(1) average time in a single pass.`,`Pseudocode:
+  seen = {}
+  for i, val in enumerate(amounts):
+      need = target - val
+      if need in seen:
+          return (seen[need], i)
+      seen[val] = i
+  return None`],d=[`python-tutorial`,`python-wiki-timecomplexity`],f={id:e,slug:t,title:n,difficulty:r,tags:i,estimatedMinutes:15,relatedModules:o,entry:s,compare:c,tests:l,hints:u,sources:d};export{c as compare,f as default,r as difficulty,s as entry,a as estimatedMinutes,u as hints,e as id,o as relatedModules,t as slug,d as sources,i as tags,l as tests,n as title};

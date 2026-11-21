@@ -1,0 +1,37 @@
+{
+  "id": "P030",
+  "slug": "pair-sum-one-pass",
+  "title": "Pair Sum in One Pass",
+  "difficulty": "easy",
+  "tags": ["dict", "lists"],
+  "estimatedMinutes": 15,
+  "relatedModules": ["a6-data-structures", "b8-performance-algorithms"],
+  "entry": { "type": "function", "name": "find_pair_indices" },
+  "compare": { "checker": "checker.py" },
+  "tests": {
+    "visible": [
+      { "label": "Matching invoice pair", "args": [[120, 45, 75, 30], 105], "expected": [2, 3] },
+      { "label": "No matching pair", "args": [[10, 20, 30], 100], "expected": null }
+    ],
+    "hidden": [
+      { "label": "Empty list", "args": [[], 10], "expected": null },
+      { "label": "Single element equal to half target", "args": [[5], 10], "expected": null },
+      { "label": "Two duplicate values summing to target", "args": [[5, 5], 10], "expected": [0, 1] },
+      { "label": "Negative and zero ledger adjustments", "args": [[-15, 8, 0, 22, -7], 7], "expected": [0, 3] },
+      { "label": "Multiple valid pairs accept any valid pair", "args": [[2, 4, 6, 8], 10], "expected": [0, 3] },
+      {
+        "label": "Large ledger performance test",
+        "argsExpr": "(list(range(8000)), 15997)",
+        "expected": [7998, 7999],
+        "timeLimitMs": 500,
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "As you inspect each amount at index i, you know the exact complement needed: target - amount.",
+    "Store previously seen values and their indices in a dict so you can look up the complement in O(1) average time in a single pass.",
+    "Pseudocode:\n  seen = {}\n  for i, val in enumerate(amounts):\n      need = target - val\n      if need in seen:\n          return (seen[need], i)\n      seen[val] = i\n  return None"
+  ],
+  "sources": ["python-tutorial", "python-wiki-timecomplexity"]
+}

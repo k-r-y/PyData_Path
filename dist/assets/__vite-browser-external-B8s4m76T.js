@@ -1,1 +1,0 @@
-import{t as e}from"./pyodide.worker-CNbxY6iz.js";var t=/* @__PURE__ */ e(((e,t)=>{t.exports={}}));export default t();

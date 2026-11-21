@@ -1,0 +1,6 @@
+var e=`P001`,t=`digit-sum`,n=`Digit Sum Checksum`,r=`easy`,i=[`math`,`loops`],a=8,o=[`a4-control-flow`,`a5-functions`],s={type:`function`,name:`digit_sum`},c=`exact`,l={visible:[{label:`Standard receipt number`,args:[4085],expected:17},{label:`Zero boundary`,args:[0],expected:0}],hidden:[{label:`Single digit`,args:[7],expected:7},{label:`Power of ten with trailing zeros`,args:[1e6],expected:1},{label:`All nines boundary`,args:[99999],expected:45},{label:`All digits 1 through 9`,args:[123456789],expected:45},{label:`Very large arbitrary-precision integer`,argsExpr:`(10**200 - 1,)`,expected:1800}]},u=[`You can inspect one digit at a time from right to left using remainder (%) and floor division (//) by 10, or convert the number to text.`,`With math: while n > 0, add n % 10 to a running total and update n //= 10. With strings: iterate over str(n) and convert each character back with int().`,`Pseudocode:
+  total = 0
+  while n > 0:
+      total += n % 10
+      n //= 10
+  return total`],d=[`python-tutorial`,`python-stdtypes-docs`],f={id:e,slug:t,title:n,difficulty:r,tags:i,estimatedMinutes:8,relatedModules:o,entry:s,compare:c,tests:l,hints:u,sources:d};export{c as compare,f as default,r as difficulty,s as entry,a as estimatedMinutes,u as hints,e as id,o as relatedModules,t as slug,d as sources,i as tags,l as tests,n as title};

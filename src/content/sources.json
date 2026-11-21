@@ -284,5 +284,31 @@
     "accessedOn": null,
     "verified": false,
     "notes": "Secondary supporting reference only; never sole source for a claim."
+  },
+  {
+    "id": "python-wiki-timecomplexity",
+    "title": "Python Wiki: TimeComplexity",
+    "author": "Python Wiki Contributors",
+    "publisher": "wiki.python.org",
+    "url": "https://wiki.python.org/TODO_VERIFY",
+    "type": "official-docs",
+    "license": "UNKNOWN",
+    "versionOrEdition": "CPython",
+    "accessedOn": null,
+    "verified": false,
+    "notes": "Documents average and worst-case CPython operation complexities for list, dict, set, and collections. Verify exact wiki path."
+  },
+  {
+    "id": "python-stdtypes-docs",
+    "title": "Built-in Types - Python Standard Library",
+    "author": "Python Software Foundation",
+    "publisher": "docs.python.org",
+    "url": "https://docs.python.org/TODO_VERIFY",
+    "type": "official-docs",
+    "license": "UNKNOWN",
+    "versionOrEdition": "Python 3.x",
+    "accessedOn": null,
+    "verified": false,
+    "notes": "Official reference for built-in numeric, sequence, str, set, and dict behaviors. Verify exact stdtypes URL path."
   }
 ]

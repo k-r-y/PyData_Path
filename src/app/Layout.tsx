@@ -21,6 +21,7 @@ import {
   Search,
   ArrowUpRight,
   ChevronRight,
+  Code2,
 } from 'lucide-react';
 import { useTheme } from '../components/ThemeProvider';
 import { ProgressRing } from '../components/ProgressRing';
@@ -180,6 +181,7 @@ export function Layout() {
         <nav aria-label="Primary" className="hidden md:flex items-center gap-1">
           {[
             { to: '/', label: 'Curriculum', end: true },
+            { to: '/problems', label: 'Problems' },
             { to: '/dashboard', label: 'Dashboard' },
             { to: '/dataframe-lab', label: 'DataFrame Lab' },
             { to: '/sql-lab', label: 'SQL' },
@@ -383,6 +385,7 @@ export function Layout() {
                   Labs // Workspace
                 </h2>
                 {[
+                  { to: '/problems', label: 'Problem Solver', Icon: Code2 },
                   { to: '/visualizer', label: 'Step Visualizer', Icon: Eye },
                   { to: '/flashcards', label: 'Flashcards (SM-2)', Icon: Layers },
                   { to: '/dataframe-lab', label: 'DataFrame Lab', Icon: Table2 },

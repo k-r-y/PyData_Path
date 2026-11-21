@@ -6,10 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "verify:problems": "node scripts/verify-problems.mjs"
   },
   "dependencies": {
+    "@codemirror/autocomplete": "^6.20.4",
+    "@codemirror/commands": "^6.11.1",
     "@codemirror/lang-python": "latest",
+    "@codemirror/language": "^6.13.1",
+    "@codemirror/search": "^6.7.2",
     "@codemirror/state": "latest",
     "@codemirror/theme-one-dark": "latest",
     "@codemirror/view": "latest",

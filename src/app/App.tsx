@@ -4,8 +4,17 @@ import { ThemeProvider } from '../components/ThemeProvider';
 import { Layout } from './Layout';
 import { HomePage } from './HomePage';
 import { getLessonById } from '../content/loader';
+import { getProblemMetaBySlug } from '../content/problemLoader';
 
 const LessonPage = lazy(() => import('./LessonPage').then((m) => ({ default: m.LessonPage })));
+const ProblemListPage = lazy(() =>
+  import('../features/problems/ProblemListPage').then((m) => ({ default: m.ProblemListPage }))
+);
+const ProblemWorkspacePage = lazy(() =>
+  import('../features/problems/ProblemWorkspacePage').then((m) => ({
+    default: m.ProblemWorkspacePage,
+  }))
+);
 const SourcesPage = lazy(() => import('./SourcesPage').then((m) => ({ default: m.SourcesPage })));
 const GlossaryPage = lazy(() => import('./GlossaryPage').then((m) => ({ default: m.GlossaryPage })));
 const CheatSheetsPage = lazy(() =>
@@ -50,6 +59,10 @@ const ROUTE_META: Record<string, { title: string; description: string }> = {
   '/dashboard': {
     title: 'Learning Dashboard | PyData Path',
     description: 'Track completed lessons, exercise accuracy, active days, and skill mastery locally.',
+  },
+  '/problems': {
+    title: 'Problem Solver | PyData Path',
+    description: 'Practice Python and IS data problem solving in your browser with instant automated grading.',
   },
   '/dataframe-lab': {
     title: 'DataFrame Lab | PyData Path',
@@ -105,11 +118,18 @@ function RouteMeta() {
     let description = ROUTE_META['/'].description;
 
     const lessonMatch = pathname.match(/^\/lesson\/([^/]+)/);
+    const problemMatch = pathname.match(/^\/problems\/([^/]+)/);
     if (lessonMatch) {
       const lesson = getLessonById(lessonMatch[1]);
       if (lesson) {
         title = `${lesson.frontmatter.title} | PyData Path`;
         description = `Interactive Python lesson: ${lesson.frontmatter.title} (${lesson.frontmatter.estimatedMinutes} min, ${lesson.frontmatter.difficulty}).`;
+      }
+    } else if (problemMatch) {
+      const prob = getProblemMetaBySlug(problemMatch[1]);
+      if (prob) {
+        title = `${prob.id}: ${prob.title} | PyData Path`;
+        description = `Solve ${prob.title} (${prob.difficulty}, ${prob.estimatedMinutes} min) in Python.`;
       }
     } else if (ROUTE_META[pathname]) {
       title = ROUTE_META[pathname].title;
@@ -144,6 +164,8 @@ export function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/lesson/:lessonId" element={<LessonPage />} />
+              <Route path="/problems" element={<ProblemListPage />} />
+              <Route path="/problems/:slug" element={<ProblemWorkspacePage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/flashcards" element={<FlashcardsPage />} />
               <Route path="/visualizer" element={<StepVisualizer />} />

@@ -133,3 +133,24 @@ dialog.cmd-dialog[open]::backdrop {
     opacity: 0;
   }
 }
+
+/* Native <dialog> scroll containment (modern-web-guidance: dialog) */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+/* CodeMirror traceback error line highlight */
+.cm-error-line {
+  background-color: rgb(225 29 72 / 0.14) !important;
+  box-shadow: inset 3px 0 0 0 #e11d48;
+}
+
+.dark .cm-error-line {
+  background-color: rgb(244 63 94 / 0.18) !important;
+  box-shadow: inset 3px 0 0 0 #fb7185;
+}

@@ -1,4 +1,6 @@
 import { loadPyodide, version as pyodideVersion, type PyodideInterface } from 'pyodide';
+import problemHarnessPy from './problemHarness.py?raw';
+import type { ProblemCompare, ProblemEntry, ProblemTestCase } from '../types/problem';
 
 export interface WorkerRunRequest {
   type: 'run';
@@ -20,25 +22,80 @@ export interface WorkerInitRequest {
   id: string;
 }
 
+export interface WorkerPrepareProblemRequest {
+  type: 'prepareProblem';
+  id: string;
+  code: string;
+  inputs?: string[];
+  datasets?: Record<string, string>;
+}
+
+export interface WorkerRunProblemTestRequest {
+  type: 'runProblemTest';
+  id: string;
+  entry: ProblemEntry;
+  compare: ProblemCompare;
+  test: ProblemTestCase;
+  checkerCode?: string;
+}
+
+export interface WorkerRunProblemCustomRequest {
+  type: 'runProblemCustom';
+  id: string;
+  code: string;
+  entry: ProblemEntry;
+  customInput: string;
+  inputs?: string[];
+}
+
 export type WorkerRequest =
   | WorkerInitRequest
   | WorkerRunRequest
-  | WorkerLoadPackagesRequest;
+  | WorkerLoadPackagesRequest
+  | WorkerPrepareProblemRequest
+  | WorkerRunProblemTestRequest
+  | WorkerRunProblemCustomRequest;
 
 export interface WorkerResponse {
   id: string;
-  type: 'init' | 'run' | 'loadPackages';
+  type: WorkerRequest['type'];
   ok: boolean;
   pythonVersion?: string;
   stdout: string;
   stderr: string;
   error?: string;
+  errorType?: string;
+  errorLine?: number | null;
   testPassed?: boolean;
   testError?: string;
+  problemTestResult?: {
+    label: string;
+    status: 'Passed' | 'Wrong Answer' | 'Runtime Error';
+    passed: boolean;
+    runtimeMs: number;
+    inputRepr?: string;
+    expectedRepr?: string;
+    actualRepr?: string;
+    stdout: string;
+    stderr: string;
+    error?: string;
+    errorType?: string;
+    errorLine?: number | null;
+  };
+  customResult?: {
+    ok: boolean;
+    runtimeMs: number;
+    returnRepr: string;
+    stdout: string;
+    stderr: string;
+    error?: string;
+    errorLine?: number | null;
+  };
 }
 
 let pyodide: PyodideInterface | null = null;
 let pythonVersion = '';
+let harnessLoaded = false;
 
 async function ensurePyodide(): Promise<PyodideInterface> {
   if (pyodide) return pyodide;
@@ -53,6 +110,12 @@ async function ensurePyodide(): Promise<PyodideInterface> {
   ) as string;
 
   return pyodide;
+}
+
+function ensureProblemHarness(py: PyodideInterface): void {
+  if (harnessLoaded) return;
+  py.runPython(problemHarnessPy);
+  harnessLoaded = true;
 }
 
 self.onmessage = async (event: MessageEvent<WorkerRequest>) => {
@@ -90,15 +153,136 @@ self.onmessage = async (event: MessageEvent<WorkerRequest>) => {
       return;
     }
 
+    if (msg.type === 'prepareProblem') {
+      ensureProblemHarness(py);
+      py.globals.set(
+        '__pdp_prep_payload__',
+        JSON.stringify({
+          code: msg.code,
+          inputs: msg.inputs ?? [],
+          datasets: msg.datasets ?? null,
+        })
+      );
+      const raw = py.runPython(`
+import json
+_payload = json.loads(__pdp_prep_payload__)
+__pdp_problem_ns__, _prep_res = prepare_problem_run(
+    _payload["code"],
+    _payload.get("inputs"),
+    _payload.get("datasets"),
+)
+json.dumps(_prep_res)
+`) as string;
+      const parsed = JSON.parse(raw) as {
+        ok: boolean;
+        stdout: string;
+        stderr: string;
+        error: string;
+        errorType: string;
+        errorLine: number | null;
+      };
+      self.postMessage({
+        id: msg.id,
+        type: 'prepareProblem',
+        ok: parsed.ok,
+        pythonVersion,
+        stdout: parsed.stdout,
+        stderr: parsed.stderr,
+        error: parsed.error || undefined,
+        errorType: parsed.errorType || undefined,
+        errorLine: parsed.errorLine,
+      } satisfies WorkerResponse);
+      return;
+    }
+
+    if (msg.type === 'runProblemTest') {
+      ensureProblemHarness(py);
+      py.globals.set(
+        '__pdp_test_payload__',
+        JSON.stringify({
+          entry: msg.entry,
+          compare: msg.compare,
+          test: msg.test,
+          checkerCode: msg.checkerCode ?? null,
+        })
+      );
+      const raw = py.runPython(`
+import json
+_t_payload = json.loads(__pdp_test_payload__)
+_t_res = run_problem_test(
+    __pdp_problem_ns__,
+    _t_payload["entry"],
+    _t_payload["compare"],
+    _t_payload["test"],
+    _t_payload.get("checkerCode"),
+)
+json.dumps(_t_res)
+`) as string;
+      const parsed = JSON.parse(raw) as NonNullable<WorkerResponse['problemTestResult']>;
+      self.postMessage({
+        id: msg.id,
+        type: 'runProblemTest',
+        ok: parsed.passed,
+        pythonVersion,
+        stdout: parsed.stdout,
+        stderr: parsed.stderr,
+        problemTestResult: parsed,
+      } satisfies WorkerResponse);
+      return;
+    }
+
+    if (msg.type === 'runProblemCustom') {
+      ensureProblemHarness(py);
+      py.globals.set(
+        '__pdp_custom_payload__',
+        JSON.stringify({
+          code: msg.code,
+          entry: msg.entry,
+          customInput: msg.customInput,
+          inputs: msg.inputs ?? [],
+        })
+      );
+      const raw = py.runPython(`
+import json
+_c_payload = json.loads(__pdp_custom_payload__)
+_c_ns, _c_prep = prepare_problem_run(_c_payload["code"], _c_payload.get("inputs"))
+if not _c_prep["ok"]:
+    _out = {
+        "ok": False,
+        "runtimeMs": 0.0,
+        "returnRepr": "",
+        "stdout": _c_prep["stdout"],
+        "stderr": _c_prep["stderr"],
+        "error": _c_prep["error"],
+        "errorLine": _c_prep["errorLine"],
+    }
+else:
+    _out = run_problem_custom(_c_ns, _c_payload["entry"], _c_payload["customInput"])
+    _out["stdout"] = (_c_prep["stdout"] or "") + (_out.get("stdout") or "")
+json.dumps(_out)
+`) as string;
+      const parsed = JSON.parse(raw) as NonNullable<WorkerResponse['customResult']>;
+      self.postMessage({
+        id: msg.id,
+        type: 'runProblemCustom',
+        ok: parsed.ok,
+        pythonVersion,
+        stdout: parsed.stdout,
+        stderr: parsed.stderr,
+        error: parsed.error || undefined,
+        errorLine: parsed.errorLine,
+        customResult: parsed,
+      } satisfies WorkerResponse);
+      return;
+    }
+
     if (msg.type === 'run') {
-      // Write any dataset files into Pyodide's in-memory filesystem
       if (msg.datasets) {
         for (const [filename, content] of Object.entries(msg.datasets)) {
           py.FS.writeFile(filename, content, { encoding: 'utf8' });
         }
       }
 
-      // Pass inputs and code via Python globals cleanly, then execute in an isolated namespace
       py.globals.set('__pdp_code__', msg.code);
       py.globals.set('__pdp_test_code__', msg.testCode ?? '');
       py.globals.set('__pdp_inputs__', py.toPy(msg.inputs ?? []));

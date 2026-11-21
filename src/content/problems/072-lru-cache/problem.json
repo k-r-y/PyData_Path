@@ -1,0 +1,73 @@
+{
+  "id": "P072",
+  "slug": "lru-cache",
+  "title": "LRU Catalog Cache",
+  "difficulty": "hard",
+  "tags": ["oop", "dict", "ordering"],
+  "estimatedMinutes": 35,
+  "relatedModules": ["b2-oop", "b8-performance-algorithms"],
+  "entry": { "type": "script" },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Basic put, get, and LRU eviction",
+        "inputDisplay": "LRUCache(2): put(101, 50), put(102, 75), get(101), put(103, 90), get(102), get(103)",
+        "expectedDisplay": "get(101)=50, get(102)=-1, get(103)=90",
+        "script": "cache = LRUCache(2)\ncache.put(101, 50)\ncache.put(102, 75)\nassert cache.get(101) == 50\ncache.put(103, 90)\nassert cache.get(102) == -1\nassert cache.get(103) == 90\nassert cache.get(101) == 50"
+      },
+      {
+        "label": "Updating existing key refreshes recency without evicting",
+        "inputDisplay": "LRUCache(2): put(1, 10), put(2, 20), put(1, 15), put(3, 30)",
+        "expectedDisplay": "get(1)=15, get(2)=-1, get(3)=30",
+        "script": "cache = LRUCache(2)\ncache.put(1, 10)\ncache.put(2, 20)\ncache.put(1, 15)\ncache.put(3, 30)\nassert cache.get(1) == 15\nassert cache.get(2) == -1\nassert cache.get(3) == 30"
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Capacity 1 replaces single entry",
+        "inputDisplay": "LRUCache(1): put(1, 1), put(2, 2), get(1), get(2)",
+        "expectedDisplay": "get(1)=-1, get(2)=2",
+        "script": "cache = LRUCache(1)\ncache.put(1, 1)\nassert cache.get(1) == 1\ncache.put(2, 2)\nassert cache.get(1) == -1\nassert cache.get(2) == 2"
+      },
+      {
+        "label": "Missing get does not evict or reorder",
+        "inputDisplay": "LRUCache(2): put(1, 1), put(2, 2), get(99), put(3, 3)",
+        "expectedDisplay": "get(99)=-1, get(1)=-1, get(2)=2",
+        "script": "cache = LRUCache(2)\ncache.put(1, 1)\ncache.put(2, 2)\nassert cache.get(99) == -1\ncache.put(3, 3)\nassert cache.get(1) == -1\nassert cache.get(2) == 2\nassert cache.get(3) == 3"
+      },
+      {
+        "label": "Zero capacity stores nothing",
+        "inputDisplay": "LRUCache(0): put(1, 10), get(1)",
+        "expectedDisplay": "get(1)=-1",
+        "script": "cache = LRUCache(0)\ncache.put(1, 10)\nassert cache.get(1) == -1"
+      },
+      {
+        "label": "Repeated updates keep size bounded",
+        "inputDisplay": "LRUCache(2): overwrite key 1 three times then insert key 2 and 3",
+        "expectedDisplay": "key 1 remains when refreshed",
+        "script": "cache = LRUCache(2)\ncache.put(1, 10)\ncache.put(1, 20)\ncache.put(2, 30)\ncache.put(1, 25)\ncache.put(3, 40)\nassert cache.get(2) == -1\nassert cache.get(1) == 25\nassert cache.get(3) == 40"
+      },
+      {
+        "label": "Multi-step recency trace",
+        "inputDisplay": "LRUCache(3) interleaved gets and puts",
+        "expectedDisplay": "Correct evictions across 10 operations",
+        "script": "cache = LRUCache(3)\ncache.put(1, 10)\ncache.put(2, 20)\ncache.put(3, 30)\nassert cache.get(1) == 10\ncache.put(4, 40)\nassert cache.get(2) == -1\nassert cache.get(3) == 30\ncache.put(5, 50)\nassert cache.get(1) == -1\nassert cache.get(4) == 40\nassert cache.get(3) == 30\nassert cache.get(5) == 50"
+      },
+      {
+        "label": "Large O(1) cache performance test",
+        "inputDisplay": "LRUCache(5000) with 50000 put/get operations",
+        "expectedDisplay": "Completes in O(1) per operation",
+        "timeLimitMs": 800,
+        "isPerformance": true,
+        "script": "cache = LRUCache(5000)\nfor i in range(25000):\n    cache.put(i, i * 10)\n    if i >= 10:\n        assert cache.get(i - 10) == (i - 10) * 10\nassert cache.get(0) == -1\nassert cache.get(24999) == 249990"
+      }
+    ]
+  },
+  "hints": [
+    "You need O(1) average lookup by key AND O(1) tracking of which key was least recently used.",
+    "In Python, collections.OrderedDict provides move_to_end(key) and popitem(last=False) in O(1), or you can pair a plain dict with a doubly linked list of nodes.",
+    "Pseudocode (OrderedDict):\n  init(capacity): store capacity and OrderedDict()\n  get(key): if key missing return -1; move_to_end(key); return value\n  put(key, val): if capacity <= 0 return; set/update key and move_to_end(key); if len > capacity popitem(last=False)"
+  ],
+  "sources": ["python-tutorial", "python-stdtypes-docs", "python-wiki-timecomplexity"]
+}

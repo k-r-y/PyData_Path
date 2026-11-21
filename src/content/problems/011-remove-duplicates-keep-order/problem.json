@@ -1,0 +1,67 @@
+{
+  "id": "P011",
+  "slug": "remove-duplicates-keep-order",
+  "title": "Remove Duplicates, Keep Order",
+  "difficulty": "easy",
+  "tags": ["lists", "sets", "dict"],
+  "estimatedMinutes": 12,
+  "relatedModules": ["a6-data-structures", "a7-comprehensions-builtins", "b8-performance-algorithms"],
+  "entry": { "type": "function", "name": "unique_in_order" },
+  "compare": "exact",
+  "tests": {
+    "visible": [
+      {
+        "label": "Repeated SKU scans keep first occurrence",
+        "args": [["SKU-B", "SKU-A", "SKU-B", "SKU-C", "SKU-A"]],
+        "expected": ["SKU-B", "SKU-A", "SKU-C"],
+        "checks": ["inputUnchanged"]
+      },
+      {
+        "label": "Empty log",
+        "args": [[]],
+        "expected": [],
+        "checks": ["inputUnchanged"]
+      }
+    ],
+    "hidden": [
+      {
+        "label": "Single item",
+        "args": [["SKU-1"]],
+        "expected": ["SKU-1"],
+        "checks": ["inputUnchanged"]
+      },
+      {
+        "label": "All items identical",
+        "args": [[7, 7, 7, 7]],
+        "expected": [7],
+        "checks": ["inputUnchanged"]
+      },
+      {
+        "label": "Already unique values in non-sorted order",
+        "args": [[40, 10, 30, 20]],
+        "expected": [40, 10, 30, 20],
+        "checks": ["inputUnchanged"]
+      },
+      {
+        "label": "Mixed duplicates with zero and negatives",
+        "args": [[0, -1, 5, 0, -1, 9, 5]],
+        "expected": [0, -1, 5, 9],
+        "checks": ["inputUnchanged"]
+      },
+      {
+        "label": "Large scan stream performance test",
+        "argsExpr": "(list(range(12000)) + list(range(12000)),)",
+        "expectedExpr": "list(range(12000))",
+        "timeLimitMs": 500,
+        "checks": ["inputUnchanged"],
+        "isPerformance": true
+      }
+    ]
+  },
+  "hints": [
+    "Think about tracking which items you have already encountered while scanning left to right.",
+    "A set checks membership in O(1) average time, unlike scanning a result list with 'not in'. Alternatively, Python dictionaries preserve insertion order.",
+    "Pseudocode:\n  seen = set()\n  out = []\n  for item in items:\n      if item not in seen:\n          seen.add(item)\n          out.append(item)\n  return out"
+  ],
+  "sources": ["python-tutorial", "python-stdtypes-docs", "python-wiki-timecomplexity"]
+}
